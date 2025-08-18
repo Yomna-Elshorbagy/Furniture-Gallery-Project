@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sign up</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="logo"><i class="fa-solid fa-couch"></i> FURNI </a>
+        <nav class="nav-links" id="navLinks">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Services</a>
+          <a href="#">Contact</a>
+        </nav>
+        <div class="menu-toggle" id="menuToggle">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </div>
+    </header>
+
+    <section class="container-sign">
+      <div class="signup-box">
+        <img src="./images/lamp.png" class="lamp" alt="" />
+        <div class="img-section animate__animated animate__bounceIn">
+          <img src="./images/fernuture.png" alt="Image" />
+        </div>
+        <div class="form-section">
+          <h2>Sign Up</h2>
+          <form id="userForm">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              minlength="3"
+              placeholder="✍️"
+              required
+            />
+            <span class="error" id="nameError" style="display: none"></span>
+
+            <label for="name">Phone</label>
+            <input
+              type="tel"
+              name="phone"
+              id="tel"
+              placeholder="📞"
+              required
+              pattern="^(010|011|012|015)[0-9]{8}$"
+            />
+            <span class="error" id="nameError" style="display: none"></span>
+
+            <label for="email">E-mail</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="📨"
+              required
+            />
+            <span class="error" id="emailError" style="display: none"></span>
+
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              minlength="6"
+              placeholder="🔑"
+              required
+            />
+            <span class="error" id="passwordError" style="display: none"></span>
+
+            <!-- here is used to appeare and disappeare according to admin login -->
+            <div style="display: none" id="checkUser">
+              <input
+                type="radio"
+                name="role"
+                id="roleUser"
+                value="user"
+                checked
+              />
+              <label for="roleUser">User</label>
+            </div>
+            <div style="display: none" id="checkSeller">
+              <input type="radio" name="role" id="roleSeller" value="seller" />
+              <label for="roleSeller">Seller</label>
+            </div>
+            <div style="display: none" id="checkAdmin">
+              <input type="radio" name="role" id="roleAdmin" value="admin" />
+              <label for="roleAdmin">Admin</label>
+            </div>
+            <div class="buttons">
+              <button
+                class="btn"
+                type="submit"
+                aria-label="Submit"
+                id="submitBtn"
+                disabled
+              >
+                Submit
+              </button>
+            </div>
+            <div class="register">
+              <p>
+                You already have an account ?
+                <a href="../log-in/login.html">Sign In</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- <script src="./bcrypt.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
+
+    <script>
+      window.bcrypt = dcodeIO.bcrypt;
+      document
+        .getElementById("menuToggle")
+        .addEventListener("click", function () {
+          document.getElementById("navLinks").classList.toggle("active");
+        });
+    </script>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <section class="container">
+      <div class="login-box">
+        <img src="./images/lamp.png" class="lamp" alt="" />
+        <div class="img-section animate__animated animate__bounceIn">
+          <img src="./images/fernuture.png" alt="Image" />
+        </div>
+        <div class="form-section">
+          <h2>Log In</h2>
+          <form id="loginForm">
+            <div class="input-group">
+              <label for="email">E-mail</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="📨"
+                required
+              />
+              <span class="error" id="emailError" style="display: none"></span>
+            </div>
+            <div class="input-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                minlength="6"
+                placeholder="🔑"
+                required
+              />
+              <span
+                class="error"
+                id="passwordError"
+                style="display: none"
+              ></span>
+            </div>
+            <span class="error" id="loginError" style="display: none"></span>
+
+            <div class="buttons">
+              <button
+                class="btn"
+                type="submit"
+                aria-label="Submit"
+                id="submitBtn"
+              >
+                Submit
+              </button>
+            </div>
+            <div class="register">
+              <p>
+                You Don't have an account ?
+                <a href="../sign-up/signup.html">Sign Up</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- <script src="./bcrypt.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
+
+    <script>
+      window.bcrypt = dcodeIO.bcrypt;
+    </script>
+    <script src="./script.js"></script>
+  </body>
+</html>

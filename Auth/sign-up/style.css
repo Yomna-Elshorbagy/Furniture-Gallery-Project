@@ -1,0 +1,257 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(135deg, #97a8ba, #f4f3ee);
+
+  padding: 10px;
+}
+
+/* ****** Container ****** */
+.container-sign {
+  width: 100%;
+  max-width: 80%;
+  padding: 20px;
+  height: 100vh;
+  margin: auto;
+}
+
+.signup-box {
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  position: relative;
+  transition: transform 0.3s ease;
+  flex: 1;
+}
+
+.signup-box:hover {
+  transform: scale(1.01);
+}
+
+/* ****** Image Section ****** */
+.img-section {
+  flex: 1;
+  min-width: 300px;
+  background: #f0f0f0;
+}
+
+.img-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ****** Form Section ****** */
+.form-section {
+  flex: 1;
+  min-width: 300px;
+  padding: 35px;
+  background: #fff;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #323334;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+}
+
+input {
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:hover {
+  border-color: #65686b;
+  box-shadow: 0 0 6px rgba(50, 51, 52, 0.3);
+}
+input:focus {
+  border-color: #0e4984;
+  box-shadow: 0 1px 6px rgba(30, 55, 80, 0.3);
+}
+
+.btn {
+  display: block;
+  width: 140px;
+  height: 45px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #000, #4f8ecd);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  margin: 10px auto;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #416282, #000);
+  transform: translateY(-2px);
+}
+
+.register {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.register a {
+  color: #4f8ecd;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: large;
+}
+
+.register a:hover {
+  text-decoration: underline;
+}
+
+/* ****** Lamp Image ****** */
+.lamp {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  z-index: 2;
+}
+
+.error {
+  color: darkred;
+  font-size: 0.85em;
+  margin: 0 0 8px 0;
+  display: block;
+  background-color: #f8d7da;
+  border-radius: 3px;
+  padding: 12px 10px;
+}
+
+/* ****** Responsive Design ****** */
+@media (max-width: 768px) {
+  .signup-box {
+    flex-direction: column;
+  }
+
+  .img-section {
+    display: none;
+  }
+
+  .form-section {
+    width: 100%;
+    padding: 25px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 16px;
+    height: 40px;
+  }
+}
+
+/* Navbar Styles */
+.navbar {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 12px 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  color: #0e4984;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #4f8ecd;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
