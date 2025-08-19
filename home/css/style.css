@@ -50,14 +50,14 @@
 
 #homeproducts h3{
   font-size: 18px;
-    font-weight: 300;
+    font-weight: 400;
     margin-right: 10px;
     text-align: center;
     letter-spacing: 3px ;
 }
  .product-card img {
       width: 100%;
-      height: 286px;
+      /* height: 286px; */
       object-fit: cover;
       border-radius: 0 !important;
     }
