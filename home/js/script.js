@@ -64,24 +64,24 @@ let productList = document.getElementById("product-list");
 
 let products = JSON.parse(localStorage.getItem("homeprouducts"));
 
-products.forEach(p => {
+products.forEach(prouduct => {
   let card = document.createElement("div");
   card.className = "col-md-3 mb-4";
 
   card.innerHTML = `
     <div class="card product-card ">
-      <img src="${p.image}" class="card-img-top" alt="${p.name}">
+      <img src="${prouduct.image}" class="card-img-top" alt="${prouduct.name}">
       <div class="card-body">
-        <h6 class="card-title text-start">${p.name}</h6>
+        <h6 class="card-title text-start">${prouduct.name}</h6>
         <p class="card-text text-start">
-          <span class="newprice ">$${p.price}</span>
-          ${p.oldPrice ? `<span class="old-price ms-2">${p.oldPrice}</span>` : ""}
+          <span class="newprice ">$${prouduct.price}</span>
+          ${prouduct.oldPrice ? `<span class="old-price ms-2">${prouduct.oldPrice}</span>` : ""}
         </p>
       </div>
     </div>
   `;
    card.addEventListener("click", () => {
-    window.location.href = `#${p.id}`;
+    window.location.href = `#${prouduct.id}`;
   });
 
   productList.appendChild(card);
