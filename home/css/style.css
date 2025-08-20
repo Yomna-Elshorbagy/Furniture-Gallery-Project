@@ -76,6 +76,38 @@ body {
 .card-body h6 {
   font-weight: 300;
 }
+ .product-card img {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 0 !important;
+    }
+  .product-card{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }  
+    .card{
+      border-radius: 0 !important;
+       border: none !important;
+      box-shadow: none !important;
+      
+    }
+    .card:hover{
+     cursor: pointer;
+      
+    }
+    .card-body h6{
+      font-weight: 300;
+    }
+  
+    .newprice{
+      color:  #cf9362;
+      font-size: 0.9rem;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: gray;
+      font-size: 0.9rem;
+    }
 
 .newprice {
   color: #cf9362;

@@ -66,7 +66,7 @@ let products = JSON.parse(localStorage.getItem("homeprouducts"));
 
 products.forEach(product => {
   let card = document.createElement("div");
-  card.className = "col-6 col-md-3 mb-4"; // هنا أضفت col-sm-6
+  card.className = "col-6 col-md-3 mb-4"; 
 
   card.innerHTML = `
     <div class="card product-card">
