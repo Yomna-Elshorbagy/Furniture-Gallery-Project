@@ -191,3 +191,43 @@ footer a:hover {
     height: 18px;
   }
 }
+
+/* ***************************  Fixed Icons ************************** */
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #111;
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px;
+  transition: scale 0.5s ease;
+  z-index: 999;
+}
+.chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #111;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 22px;
+  transition: scale 0.5s ease;
+  z-index: 999;
+}
+.scroll-top:hover,
+.chat-btn:hover {
+  scale: 1.3;
+}
