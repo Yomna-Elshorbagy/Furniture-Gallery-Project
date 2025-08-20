@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "name": "Sofas",
+    "description": "Comfortable sofas and sectionals for living rooms"
+  },
+  {
+    "id": "2",
+    "name": "Chairs",
+    "description": "Accent chairs, recliners, and lounge seating"
+  },
+  {
+    "id": "3",
+    "name": "Tables",
+    "description": "Coffee tables, side tables, and dining tables"
+  },
+  {
+    "id": "4",
+    "name": "Beds",
+    "description": "Beds and bed frames for all room sizes"
+  },
+  {
+    "id": "5",
+    "name": "Storage",
+    "description": "Wardrobes, dressers, and cabinets"
+  },
+  {
+    "id": "6",
+    "name": "Desks",
+    "description": "Office desks and study tables"
+  },
+  {
+    "id": "7",
+    "name": "Outdoor",
+    "description": "Patio furniture and garden seating"
+  },
+  {
+    "id": "8",
+    "name": "Lighting",
+    "description": "Floor lamps, table lamps, and ceiling lights"
+  },
+  {
+    "id": "9",
+    "name": "Rugs",
+    "description": "Area rugs and carpets to complement interiors"
+  },
+  {
+    "id": "10",
+    "name": "Decor",
+    "description": "Wall art, mirrors, and decorative accessories"
+  }
+]

@@ -1,0 +1,200 @@
+[
+  {
+    "id": 1,
+    "name": "Modern Dining Chair",
+    "image": "/products_img/1755542502390.jpg",
+    "price": 80,
+    "category": "sofas",
+    "description": "A sleek dining chair that combines modern design with ergonomic comfort—perfect for family meals and gatherings.",
+    "stock": 30
+  },
+  {
+    "id": 2,
+    "name": "Chair Sofa",
+    "price": 1500,
+    "stock": 11,
+    "category": "Furniture",
+    "image": "/products_img/chair4.jpg",
+    "description": "A premium sofa chair with plush cushions and modern aesthetics, perfect for both lounging and entertaining guests."
+  },
+  {
+    "id": 3,
+    "name": "Scandinavian Wooden Chair",
+    "price": 95,
+    "stock": 50,
+    "category": "Furniture",
+    "image": "/products_img/scandinavian.jpg",
+    "description": "Minimalist and functional, this Scandinavian chair is made with natural wood for a clean and modern look."
+  },
+  {
+    "id": 4,
+    "name": "Leather Recliner Chair",
+    "price": 350,
+    "stock": 12,
+    "category": "Luxury",
+    "image": "/products_img/recliner.jpg",
+    "description": "Unwind in this luxurious leather recliner, featuring adjustable back support and a footrest for maximum relaxation."
+  },
+  {
+    "id": 5,
+    "name": "Patio sofa coach",
+    "price": 70,
+    "stock": 40,
+    "category": "coach",
+    "image": "/products_img/sofa1.jpg",
+    "description": "Built with weather-resistant materials, this patio chair is perfect for garden, balcony, or poolside lounging."
+  },
+  {
+    "id": 6,
+    "name": "Velvet Armchair",
+    "price": 220,
+    "stock": 15,
+    "category": "coach",
+    "image": "/products_img/lazerCoach.jpg",
+    "description": "A soft velvet armchair that adds elegance and sophistication to your living space."
+  },
+  {
+    "id": 7,
+    "name": "Executive Office Chair",
+    "image": "/products_img/Rectangle28.png",
+    "price": 200,
+    "category": "Office",
+    "description": "Work in style and comfort with this executive chair featuring adjustable height, lumbar support, and a premium leather finish.",
+    "stock": 15
+  },
+  {
+    "id": 8,
+    "name": "Vintage Armchair",
+    "image": "/products_img/Rectangle32.png",
+    "price": 120,
+    "category": "Furniture",
+    "description": "Add character to your living space with this timeless armchair, crafted with a vintage wooden frame and soft upholstery.",
+    "stock": 25
+  },
+  {
+    "id": 9,
+    "name": "Sleek Bar Stool",
+    "image": "/products_img/Rectangle31.png",
+    "price": 60,
+    "category": "Furniture",
+    "description": "A modern bar stool with a minimalist design, built for durability and comfort at any counter or bar area.",
+    "stock": 20
+  },
+  {
+    "id": 10,
+    "name": "Cozy Bean Bag",
+    "image": "/products_img/Rectangle26.png",
+    "price": 40,
+    "category": "Furniture",
+    "description": "The perfect casual seating—this oversized bean bag adapts to your shape for unbeatable comfort and relaxation.",
+    "stock": 40
+  },
+  {
+    "id": 11,
+    "name": "Classic Rocking Chair",
+    "image": "/products_img/1755291171767.jpg",
+    "price": 90,
+    "category": "Furniture",
+    "description": "Enjoy peaceful moments with this handcrafted rocking chair, blending traditional charm with everyday comfort.",
+    "stock": 20
+  },
+  {
+    "id": 12,
+    "name": "Elegant Accent Chair",
+    "image": "/products_img/Rectangle28.png",
+    "price": 110,
+    "category": "Furniture",
+    "description": "A stylish accent chair with a refined design, perfect for adding elegance and extra seating to any room.",
+    "stock": 5
+  },
+  {
+    "id": 13,
+    "name": "Industrial Bar Chair",
+    "image": "/products_img/Rectangle32.png",
+    "price": 75,
+    "category": "Furniture",
+    "description": "Bring a modern edge to your dining or bar space with this industrial-style chair featuring a metal frame and rustic seat.",
+    "stock": 30
+  },
+  {
+    "id": 14,
+    "name": "Rustic Wooden Chair",
+    "image": "/products_img/Rectangle31.png",
+    "price": 100,
+    "category": "Furniture",
+    "description": "Crafted from solid wood, this rustic chair adds warmth and natural charm to both indoor and outdoor settings.",
+    "stock": 3
+  },
+  {
+    "id": 15,
+    "name": "Designer Lounge Chair",
+    "image": "/products_img/Rectangle26.png",
+    "price": 180,
+    "category": "Furniture",
+    "description": "A statement piece that blends luxury and comfort—this designer lounge chair elevates any living room or lounge space.",
+    "stock": 23
+  },
+  {
+    "id": 16,
+    "name": "Contemporary Sofa Chair",
+    "image": "/products_img/Rectangle27.png",
+    "price": 150,
+    "category": "Furniture",
+    "description": "This sofa chair combines modern aesthetics with deep seating comfort, making it a perfect fit for any living space.",
+    "stock": 25
+  },
+  {
+    "id": 17,
+    "name": "Comfortable Lounge Sofa",
+    "price": 1200,
+    "stock": 14,
+    "category": "Furniture",
+    "image": "/products_img/chair4.jpg",
+    "description": "Spacious and ultra-comfortable, this lounge sofa is designed for families and gatherings, blending durability with modern style."
+  },
+  {
+    "id": 18,
+    "name": "Modern Yellow Chair",
+    "price": 11,
+    "stock": 1000,
+    "category": "Furniture",
+    "image": "/products_img/chair3.jpg",
+    "description": "A bright and cheerful chair that adds a pop of color and modern charm to any interior setting."
+  },
+  {
+    "id": 19,
+    "name": "Classic Style Chair",
+    "price": 111,
+    "stock": 1200,
+    "category": "Furniture",
+    "image": "/products_img/chair2.jpg",
+    "description": "A timeless chair design that pairs traditional craftsmanship with comfort and durability."
+  },
+  {
+    "id": 20,
+    "name": "",
+    "price": 45,
+    "stock": 60,
+    "category": "interior design",
+    "image": "/products_img/interior1.jpg",
+    "description": "prepared Designed, with touched details for better matched items with each others"
+  },
+  {
+    "id": 21,
+    "name": "Comfortable Lounge Chair",
+    "image": "/products_img/chair1.jpg",
+    "price": 150,
+    "category": "chair",
+    "description": "Sink into comfort with this lounge chair, designed with plush cushions and a supportive frame for long hours of relaxation.",
+    "stock": 30
+  },
+  {
+    "id": 22,
+    "name": "Modern Dining Chair",
+    "price": 100,
+    "stock": 10,
+    "category": "sofas",
+    "image": "/products_img/1755542535219.jpg",
+    "description": "qq"
+  }
+]
