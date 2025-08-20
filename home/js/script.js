@@ -77,9 +77,7 @@ products.forEach(product => {
       <button class="favorite-btn ${isFavorite ? "active" : ""}" data-id="${product.id}">
        <i class="bi ${isFavorite ? 'bi-heart-fill' : 'bi-heart'}"></i>
       </button>
-      <div class="image-scale">
       <img src="${product.image}" class="card-img-top" alt="${product.name}">
-      </div>
       <div class="card-body">
         <h6 class="card-title text-start">${product.name}</h6>
         <p class="card-text text-start">
