@@ -105,38 +105,36 @@ body {
   color: gray;
   font-size: 0.9rem;
 }
- .product-card img {
-      width: 100%;
-      object-fit: cover;
-      border-radius: 0 !important;
-    }
-  .product-card{
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-  }  
-  
-    .card{
-      border-radius: 0 !important;
-       border: none !important;
-      box-shadow: none !important;
-      
-    }
-    .card:hover{
-     cursor: pointer;
-      
-    }
-    .card-body h6{
-      font-weight: 300;
-    }
-  
-    .newprice{
-      color:  #cf9362;
-      font-size: 0.9rem;
-    }
-    .old-price {
-      text-decoration: line-through;
-      font-size: 0.9rem;
-    }
+.product-card img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0 !important;
+}
+.product-card {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.card {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.card:hover {
+  cursor: pointer;
+}
+.card-body h6 {
+  font-weight: 300;
+}
+
+.newprice {
+  color: #cf9362;
+  font-size: 0.9rem;
+}
+.old-price {
+  text-decoration: line-through;
+  font-size: 0.9rem;
+}
 
 .newprice {
   color: #cf9362;
@@ -158,14 +156,14 @@ body {
   cursor: pointer;
   font-size: 18px;
   color: black;
+  z-index: 2;
 }
-.favorite-btn.active{
+.favorite-btn.active {
   color: red;
 }
 
-
-
 .image-scale {
+  position: relative;
   overflow: hidden;
 }
 .image-scale img {
@@ -322,10 +320,6 @@ footer a:hover {
 }
 
 /* ***************  footer-top ***************** */
-.signup-section {
-  /* padding: 60px 0; */
-}
-
 .form-control {
   margin-bottom: 15px;
   border-radius: 6px;
@@ -370,9 +364,6 @@ footer a:hover {
 
 .img-width {
   width: 600px !important;
-}
-.footer-top .footerImage{
-  text-align: center;
 }
 .footer-top .footerImage img {
   height: 650px;
