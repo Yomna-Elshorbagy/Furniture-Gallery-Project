@@ -338,6 +338,57 @@ footer a:hover {
   background-color: var(--main-color);
   border-radius: 10px;
 }
+/* ......................... start social-gallery.......................  */
+.head-section .main{
+    font-size: 1.875rem;
+    font-weight: 500;
+    line-height: 2.5rem;
+    color: #212129;
+    font-style: normal;
+}
+.social-gallery{
+    background-color: #C7B9A9;
+}
+.gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+.social-icons i {
+  font-size: 30px;      
+  margin: 0 15px;         
+  color: black;           
+  transition: color 0.3s; 
+  cursor: pointer;  
+  text-align: center;      
+}
+
+.social-icons i:hover {
+  color: rgba(0, 0, 0,0.5);
+}
+.cards {
+  border: none;  
+}
+.cards .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); 
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;                  
+  transition: opacity 0.4s;   
+  
+}
+.cards:hover .overlay {
+  opacity: 1; 
+}
+/* ...........................end social-gallery........................  */
 /* ***************  footer-top ***************** */
 .form-control {
   margin-bottom: 15px;
