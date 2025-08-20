@@ -65,6 +65,30 @@ let homeProducts = [
   },
 ];
 
+const serverDataFiles = {
+  products: "../../server/data/products.json",
+  categories: "../../server/data/categories.json",
+  orders: "../../server/data/orders.json",
+  users: "../../server/data/users.json",
+};
+window.addEventListener("DOMContentLoaded", () => {
+  Object.entries(serverDataFiles).forEach(([key, url]) => {
+    if (!localStorage.getItem(key)) {
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem(key, JSON.stringify(data));
+          console.log(`${key} saved`, data);
+        })
+        .catch((err) =>
+          console.error(`Error loading ${key} from ${url}:`, err)
+        );
+    } else {
+      console.log(`${key} already in localStorage`);
+    }
+  });
+});
+
 localStorage.setItem("homeproducts", JSON.stringify(homeProducts));
 let products = JSON.parse(localStorage.getItem("homeproducts"));
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];

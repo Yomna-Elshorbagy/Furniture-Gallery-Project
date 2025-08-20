@@ -6,7 +6,7 @@ class User {
     this.Email = _email;
     this.Password = _hashedPassword;
     this.Role = _role;
-    if (this.Role === "user" || this.Role === "seller") {
+    if (this.Role === "admin" || this.Role === "seller") {
       this.cart = [];
       this.orderHistory = [];
     }
