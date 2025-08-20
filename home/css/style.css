@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
 /* ====================> Global Style <====================== */
 * {
   margin: 0;
@@ -6,9 +7,11 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
 body {
   font-family: "Raleway", sans-serif;
 }
+
 :root {
   --section-margin: 40px;
   --section-padding: 20px;
@@ -21,6 +24,143 @@ body {
   /* ===> Font <=== */
   --heading-font: "Raleway", sans-serif;
 }
+
+/* =================== Starting header Details Style  ==================   */
+header {
+  /* z-index: 1; */
+  height: 100vh;
+  overflow: hidden;
+
+}
+
+/* .scrolled{
+    background-color: aliceblue;
+} */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  /* عشان الحركة تبقى ناعمة */
+  padding: 1rem 0;
+  background: transparent;
+
+}
+
+/* 
+.navbar {
+    transition: all 0.3s ease-in-out;
+    
+} */
+
+
+/* .scrolled{
+    background-color: white;
+    position: sticky;
+    top: 0;
+} */
+
+
+
+
+
+
+
+
+hr {
+  position: absolute;
+  bottom: -20px;
+  border: 1px solid white;
+  width: 100%;
+}
+
+.bg-header {
+  /* z-index: -1; */
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-header img {
+  /* width: 100vw; */
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(90%);
+  /* يخلي الصورة أهدأ */
+  transition: transform 0.8s ease-in-out;
+}
+
+.carousel-item img {
+  /* filter: brightness(70%) contrast(110%) saturate(90%); */
+  filter: brightness(110%)
+}
+
+.carousel-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0,0,0,0.4);  */
+  /* أسود شفاف */
+  /* background-image: linear-gradient(to bottom, rgba(79, 79, 79, 0.9) 10%, rgba(184, 172, 162, 0)); */
+  background-image: linear-gradient(to top, rgba(4, 4, 4, 0.15), rgba(54, 54, 54, 0.9));
+  z-index: 1;
+}
+
+.carousel-caption,
+.carousel-control-prev,
+.carousel-control-next {
+  z-index: 2;
+}
+
+
+h5 {
+  font-size: 35px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.carousel-caption p,
+.carousel-caption h5 {
+  animation: fadeInUp 1.5s ease-in-out;
+}
+
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav i {
+  color: white;
+  margin: 10px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+}
+
+.hover-button {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 5px;
+  font-size: 15px;
+  letter-spacing: 2PX;
+}
+
 /* ====================> Starting Home Details Style <====================== */
 #homedetails {
   margin: var(--section-margin) 0;
@@ -28,14 +168,17 @@ body {
   background: var(--primary-color);
   font-family: var(--heading-font);
 }
+
 #homedetails h2 {
   font-size: 22px;
 }
+
 #homedetails p {
   color: var(--Secondary-text-color);
   font-size: 18px;
   margin-top: 20px;
 }
+
 #homeproducts {
   margin: var(--section-margin) 0;
   font-family: var(--heading-font);
@@ -55,43 +198,53 @@ body {
   text-align: center;
   letter-spacing: 3px;
 }
+
 .product-card img {
   width: 100%;
   object-fit: cover;
   border-radius: 0 !important;
 }
+
 .product-card {
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
+
 .card {
   border-radius: 0 !important;
   border: none !important;
   box-shadow: none !important;
 }
+
 .card:hover {
   cursor: pointer;
 }
+
 .card-body h6 {
   font-weight: 300;
 }
+
 .product-card img {
   width: 100%;
   object-fit: cover;
   border-radius: 0 !important;
 }
+
 .product-card {
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
+
 .card {
   border-radius: 0 !important;
   border: none !important;
   box-shadow: none !important;
 }
+
 .card:hover {
   cursor: pointer;
 }
+
 .card-body h6 {
   font-weight: 300;
 }
@@ -100,16 +253,19 @@ body {
   color: #cf9362;
   font-size: 0.9rem;
 }
+
 .old-price {
   text-decoration: line-through;
   color: gray;
   font-size: 0.9rem;
 }
+
 .product-card img {
   width: 100%;
   object-fit: cover;
   border-radius: 0 !important;
 }
+
 .product-card {
   margin-left: 0px !important;
   margin-right: 0px !important;
@@ -120,9 +276,11 @@ body {
   border: none !important;
   box-shadow: none !important;
 }
+
 .card:hover {
   cursor: pointer;
 }
+
 .card-body h6 {
   font-weight: 300;
 }
@@ -131,6 +289,7 @@ body {
   color: #cf9362;
   font-size: 0.9rem;
 }
+
 .old-price {
   text-decoration: line-through;
   font-size: 0.9rem;
@@ -140,6 +299,7 @@ body {
   color: #cf9362;
   font-size: 0.9rem;
 }
+
 .old-price {
   text-decoration: line-through;
   color: gray;
@@ -158,6 +318,7 @@ body {
   color: black;
   z-index: 2;
 }
+
 .favorite-btn.active {
   color: red;
 }
@@ -166,10 +327,12 @@ body {
   position: relative;
   overflow: hidden;
 }
+
 .image-scale img {
   opacity: 0.9;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
+
 .image-scale img:hover {
   transform: scale(1.1);
 }
@@ -181,23 +344,28 @@ footer {
   font-size: 15px;
   padding: 50px 20px 20px;
 }
+
 footer h6 {
   font-weight: 600;
   margin-bottom: 15px;
 }
+
 footer a {
   color: #666;
   text-decoration: none;
 }
+
 footer a:hover {
   color: #000;
 }
+
 .footer-icons i {
   font-size: 20px;
   margin: 0 8px;
   color: #111;
   cursor: pointer;
 }
+
 .footer-icons i:hover {
   color: #555;
 }
@@ -208,25 +376,31 @@ footer a:hover {
   margin-top: 20px;
   text-align: center;
 }
+
 .footer-payments img {
   height: 30px;
   margin: 5px;
 }
+
 .feature-box {
   text-align: center;
   padding: 10px;
 }
+
 .feature-box i {
   font-size: 28px;
   margin-bottom: 10px;
 }
+
 .imageCss {
   cursor: pointer;
   transition: scale 0.5s ease;
 }
+
 .imageCss:hover {
   scale: 1.1;
 }
+
 .feature-box {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -235,13 +409,16 @@ footer a:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
+
 .footer-apps img {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .footer-apps img:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
 .footer-payments ul {
   flex-wrap: wrap;
   gap: 15px;
@@ -280,6 +457,7 @@ footer a:hover {
   transition: scale 0.5s ease;
   z-index: 999;
 }
+
 .chat-btn {
   position: fixed;
   bottom: 20px;
@@ -297,10 +475,12 @@ footer a:hover {
   transition: scale 0.5s ease;
   z-index: 999;
 }
+
 .scroll-top:hover,
 .chat-btn:hover {
   scale: 1.3;
 }
+
 /* ?============== Fixed Icons ================= */
 .fixed-icons .setting-icon {
   position: fixed;
@@ -321,6 +501,7 @@ footer a:hover {
   background-color: var(--main-color);
   border-radius: 10px;
 }
+
 /* ......................... start social-gallery.......................  */
 .head-section .main {
   font-size: 1.875rem;
@@ -329,16 +510,19 @@ footer a:hover {
   color: #212129;
   font-style: normal;
 }
+
 .social-gallery {
   background-color: #c7b9a9;
   height: 700px;
 }
+
 .gallery img {
   width: 100%;
   height: 200px;
   object-fit: cover;
   display: block;
 }
+
 .social-icons i {
   font-size: 30px;
   margin: 0 15px;
@@ -351,9 +535,11 @@ footer a:hover {
 .social-icons i:hover {
   color: rgba(0, 0, 0, 0.5);
 }
+
 .cards {
   border: none;
 }
+
 .cards .overlay {
   position: absolute;
   top: 0;
@@ -368,15 +554,18 @@ footer a:hover {
   opacity: 0;
   transition: opacity 0.4s;
 }
+
 .cards:hover .overlay {
   opacity: 1;
 }
+
 /* ...........................end social-gallery........................  */
 /* ***************  footer-top ***************** */
 .form-control {
   margin-bottom: 15px;
   border-radius: 6px;
 }
+
 .btn-custom {
   background-color: #c8875f;
   color: #fff;
@@ -384,17 +573,21 @@ footer a:hover {
   border-radius: 6px;
   border: none;
 }
+
 .btn-custom:hover {
   background-color: #b66e46;
   color: white;
 }
+
 .form-check {
   margin-bottom: 20px;
 }
+
 .vases img {
   max-height: 120px;
   margin: 0 5px;
 }
+
 .decor-right img {
   max-width: 100%;
   border-radius: 8px;
@@ -404,9 +597,11 @@ footer a:hover {
 .footer-top {
   background-color: #f9f9f9;
 }
+
 .signup-form .form-control {
   background-color: #f1f1f1;
 }
+
 .signup-form h2 {
   font-weight: 500;
   font-size: 40px;
@@ -418,18 +613,23 @@ footer a:hover {
 .img-width {
   width: 600px !important;
 }
+
 .footer-top .footerImage img {
   height: 650px;
   width: 115%;
 }
+
 @media (max-width: 768px) {
+
   .footer-payments img,
   .footer-payments svg {
     height: 22px;
   }
+
   .footer-top .footerImage img {
     width: 600px !important;
   }
+
   .social-gallery {
     height: auto;
   }
@@ -439,11 +639,13 @@ footer a:hover {
   .footer-payments ul {
     gap: 10px;
   }
+
   .footer-payments img,
   .footer-payments svg {
     height: 18px;
   }
-    .footer-top .footerImage img {
+
+  .footer-top .footerImage img {
     width: 400px !important;
   }
 }
