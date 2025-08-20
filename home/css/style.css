@@ -318,7 +318,26 @@ footer a:hover {
 .chat-btn:hover {
   scale: 1.3;
 }
+/* ?============== Fixed Icons ================= */
+.fixed-icons .setting-icon {
+  position: fixed;
+  top: 40%;
+  left: -5px;
+  color: #fff;
+  background-color: RGB(43, 36, 36);
+  padding: 7px 10px;
+  border-radius: 5px;
+}
 
+.fixed-icons .up-icon {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 10px;
+  color: #fff;
+  background-color: var(--main-color);
+  border-radius: 10px;
+}
 /* ***************  footer-top ***************** */
 .form-control {
   margin-bottom: 15px;

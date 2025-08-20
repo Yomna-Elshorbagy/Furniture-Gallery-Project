@@ -11,3 +11,18 @@ body {
   scroll-behavior: smooth;
 }
 
+/* ****** client section ***** */
+.carousel-indicators [data-bs-target] {
+  background-color:  #e65f78;
+  border: 1px solid  #e65f78;
+  border-radius: 10px;
+  width: 15px;
+  height: 10px;
+}
+
+.carousel-indicators .active {
+  width: 20px;
+}
+.main-color{
+  color:  #e65f78 ;
+}
