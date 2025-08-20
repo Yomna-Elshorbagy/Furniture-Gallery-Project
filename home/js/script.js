@@ -4,7 +4,8 @@ let homeProducts = [
       name: "Clove Console Table",
       price: "700",
       oldPrice: null,
-      image: "https://thefurnituregallery.com.au/cdn/shop/files/G1A4277_800x.jpg?v=1752558496"
+      image: "https://thefurnituregallery.com.au/cdn/shop/files/G1A4277_800x.jpg?v=1752558496",
+      
     },
     {
       id: 2,
@@ -58,26 +59,30 @@ let homeProducts = [
 
   ];
 
-localStorage.setItem("homeprouducts",JSON.stringify(homeProducts)); 
+localStorage.setItem("homeproducts",JSON.stringify(homeProducts)); 
+let products = JSON.parse(localStorage.getItem("homeproducts"));
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 let productList = document.getElementById("product-list");
 
-let products = JSON.parse(localStorage.getItem("homeprouducts"));
+
 
 products.forEach(product => {
   let card = document.createElement("div");
-  card.className = "col-6 col-md-3 mb-4"; 
+  card.className = "col-6 col-md-3 mb-4";
+  let isFavorite = favorites.includes(product.id); 
 
   card.innerHTML = `
     <div class="card product-card">
-      <div class="image-scale">
+      <button class="favorite-btn ${isFavorite ? "active" : ""}" data-id="${product.id}">
+       <i class="bi ${isFavorite ? 'bi-heart-fill' : 'bi-heart'}"></i>
+      </button>
       <img src="${product.image}" class="card-img-top" alt="${product.name}">
-      </div>
       <div class="card-body">
         <h6 class="card-title text-start">${product.name}</h6>
         <p class="card-text text-start">
           <span class="newprice ">$${product.price}</span>
-          ${product.oldPrice ? `<span class="old-price ms-2">${product.oldPrice}</span>` : ""}
+          ${product.oldPrice ? `<span class="old-price ms-2 text-secondary">${product.oldPrice}</span>` : ""}
         </p>
       </div>
     </div>
@@ -89,5 +94,36 @@ products.forEach(product => {
 
   productList.appendChild(card);
 });
+let allfavoritebtn = document.querySelectorAll(".favorite-btn");
+// هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
+allfavoritebtn.forEach(btn => {
+  let id = parseInt(btn.getAttribute("data-id"));
+  let icon = btn.querySelector("i");
 
+  if (favorites.includes(id)) {
+    btn.classList.add("active");
+    icon.classList.remove("bi-heart");
+    icon.classList.add("bi-heart-fill");
+  }
 
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    if (favorites.includes(id)) {
+      favorites = favorites.filter(f => f !== id);
+      btn.classList.remove("active");
+      icon.classList.remove("bi-heart-fill");
+      icon.classList.add("bi-heart");
+    } else {
+      favorites.push(id);
+      btn.classList.add("active");
+      icon.classList.remove("bi-heart");
+      icon.classList.add("bi-heart-fill");
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+
+    let favoriteProducts = products.filter(p => favorites.includes(p.id));
+    localStorage.setItem("favoriteProducts", JSON.stringify(favoriteProducts));
+  });
+});
