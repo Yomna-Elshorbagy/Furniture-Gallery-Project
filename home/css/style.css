@@ -4,8 +4,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
-
+body {
+  font-family: "Raleway", sans-serif;
+}
 :root {
   --section-margin: 40px;
   --section-padding: 20px;
@@ -18,42 +21,60 @@
   /* ===> Font <=== */
   --heading-font: "Raleway", sans-serif;
 }
-
-
+/* ====================> Starting Home Details Style <====================== */
 #homedetails {
-  margin: var(--section-margin) 0; 
-  padding:50px 0px ; 
-  background:#c7b9a9;
+  margin: var(--section-margin) 0;
+  padding: 50px 0px;
+  background: var(--primary-color);
   font-family: var(--heading-font);
-  
 }
-#homedetails h2{
+#homedetails h2 {
   font-size: 22px;
 }
-#homedetails p{
+#homedetails p {
   color: var(--Secondary-text-color);
-  font-size:18px;
+  font-size: 18px;
   margin-top: 20px;
 }
-#homeproducts{
+#homeproducts {
   margin: var(--section-margin) 0;
-
   font-family: var(--heading-font);
 }
 
-#homeproducts h2{
+#homeproducts h2 {
   font-size: 24px;
-    letter-spacing: 0;
-    font-weight: 400;
-    line-height: normal;
+  letter-spacing: 0;
+  font-weight: 400;
+  line-height: normal;
 }
 
-#homeproducts h3{
+#homeproducts h3 {
   font-size: 18px;
-    font-weight: 400;
-    margin-right: 10px;
-    text-align: center;
-    letter-spacing: 3px ;
+  font-weight: 400;
+  margin-right: 10px;
+  text-align: center;
+  letter-spacing: 3px;
+}
+.product-card img {
+  width: 100%;
+  /* height: 286px; */
+  object-fit: cover;
+  border-radius: 0 !important;
+}
+.product-card {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+.card {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.card:hover {
+  cursor: pointer;
+}
+.card-body h6 {
+  font-weight: 300;
 }
  .product-card img {
       width: 100%;
@@ -88,3 +109,157 @@
       font-size: 0.9rem;
     }
 
+.newprice {
+  color: #cf9362;
+  font-size: 0.9rem;
+}
+.old-price {
+  text-decoration: line-through;
+  color: gray;
+  font-size: 0.9rem;
+}
+
+/* ***************************  footer bottom ************************** */
+footer {
+  background: #f9f9f6;
+  color: #333;
+  font-size: 15px;
+  padding: 50px 20px 20px;
+}
+footer h6 {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+footer a {
+  color: #666;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #000;
+}
+.footer-icons i {
+  font-size: 20px;
+  margin: 0 8px;
+  color: #111;
+  cursor: pointer;
+}
+.footer-icons i:hover {
+  color: #555;
+}
+
+.footer-bottom {
+  font-size: 13px;
+  color: #777;
+  margin-top: 20px;
+  text-align: center;
+}
+.footer-payments img {
+  height: 30px;
+  margin: 5px;
+}
+.feature-box {
+  text-align: center;
+  padding: 10px;
+}
+.feature-box i {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.imageCss {
+  cursor: pointer;
+  transition: scale 0.5s ease;
+}
+.imageCss:hover {
+  scale: 1.1;
+}
+.feature-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.footer-apps img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.footer-apps img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.footer-payments ul {
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-payments li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-payments img,
+.footer-payments svg {
+  height: 28px;
+  width: auto;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .footer-payments img,
+  .footer-payments svg {
+    height: 22px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-payments ul {
+    gap: 10px;
+  }
+  .footer-payments img,
+  .footer-payments svg {
+    height: 18px;
+  }
+}
+
+/* ***************************  Fixed Icons ************************** */
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #111;
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px;
+  transition: scale 0.5s ease;
+  z-index: 999;
+}
+.chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #111;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 22px;
+  transition: scale 0.5s ease;
+  z-index: 999;
+}
+.scroll-top:hover,
+.chat-btn:hover {
+  scale: 1.3;
+}
