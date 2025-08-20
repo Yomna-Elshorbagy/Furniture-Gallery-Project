@@ -90,7 +90,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
         }
       },
     }).then(() => {
-      window.location.href = "../../index.html";
+      window.location.href = "../../home/home.html";
     });
   } else {
     loginError.textContent = "Invalid email or password.";

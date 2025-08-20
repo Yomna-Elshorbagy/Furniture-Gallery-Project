@@ -87,6 +87,17 @@ body {
   font-size: 0.9rem;
 }
 
+.image-scale {
+  overflow: hidden;
+}
+.image-scale img {
+  opacity: 0.9;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.image-scale img:hover {
+  transform: scale(1.1);
+}
+
 /* ***************************  footer bottom ************************** */
 footer {
   background: #f9f9f6;

@@ -70,7 +70,9 @@ products.forEach(product => {
 
   card.innerHTML = `
     <div class="card product-card">
+      <div class="image-scale">
       <img src="${product.image}" class="card-img-top" alt="${product.name}">
+      </div>
       <div class="card-body">
         <h6 class="card-title text-start">${product.name}</h6>
         <p class="card-text text-start">
