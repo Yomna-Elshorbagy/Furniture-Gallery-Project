@@ -184,41 +184,6 @@ function renderFavoriteModal() {
 }
 
 // هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
-// allfavoritebtn.forEach((btn) => {
-//   let id = parseInt(btn.getAttribute("data-id"));
-//   let icon = btn.querySelector("i");
-
-//   if (favorites.includes(id)) {
-//     btn.classList.add("active");
-//     icon.classList.remove("bi-heart");
-//     icon.classList.add("bi-heart-fill");
-//   }
-
-//   btn.addEventListener("click", (e) => {
-//     e.stopPropagation();
-
-//     if (favorites.includes(id)) {
-//       favorites = favorites.filter((f) => f !== id);
-//       btn.classList.remove("active");
-//       icon.classList.remove("bi-heart-fill");
-//       icon.classList.add("bi-heart");
-//     } else {
-//       favorites.push(id);
-//       btn.classList.add("active");
-//       icon.classList.remove("bi-heart");
-//       icon.classList.add("bi-heart-fill");
-//     }
-
-//     localStorage.setItem("favorites", JSON.stringify(favorites));
-//     let favoriteProducts = products.filter((p) => favorites.includes(p.id));
-//     localStorage.setItem("favoriteProducts", JSON.stringify(favoriteProducts));
-//     // Update the modal
-//     renderFavoriteModal();
-//   });
-// });
-
-
-
 allfavoritebtn.forEach((btn) => {
   let id = parseInt(btn.getAttribute("data-id"));
   let icon = btn.querySelector("i");
