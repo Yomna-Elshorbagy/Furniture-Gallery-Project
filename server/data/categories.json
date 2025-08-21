@@ -1,52 +1,22 @@
 [
   {
-    "id": "1",
-    "name": "Sofas",
-    "description": "Comfortable sofas and sectionals for living rooms"
+    "id": 1,
+    "name": "Living",
+    "description": "Discover sofas, recliners, lounges, and armchairs designed for everyday comfort and timeless elegance. Perfect for modern homes where relaxation meets style."
   },
   {
-    "id": "2",
-    "name": "Chairs",
-    "description": "Accent chairs, recliners, and lounge seating"
+    "id": 2,
+    "name": "Dining",
+    "description": "Bring people together with dining tables, chairs, and sets crafted for both casual meals and formal gatherings. Designed to balance functionality and sophistication."
   },
   {
-    "id": "3",
-    "name": "Tables",
-    "description": "Coffee tables, side tables, and dining tables"
+    "id": 3,
+    "name": "Bedroom",
+    "description": "Create your personal sanctuary with beds, frames, and bedroom essentials. Blending comfort and design to ensure restful nights and beautiful interiors."
   },
   {
-    "id": "4",
-    "name": "Beds",
-    "description": "Beds and bed frames for all room sizes"
-  },
-  {
-    "id": "5",
-    "name": "Storage",
-    "description": "Wardrobes, dressers, and cabinets"
-  },
-  {
-    "id": "6",
-    "name": "Desks",
-    "description": "Office desks and study tables"
-  },
-  {
-    "id": "7",
+    "id": 4,
     "name": "Outdoor",
-    "description": "Patio furniture and garden seating"
-  },
-  {
-    "id": "8",
-    "name": "Lighting",
-    "description": "Floor lamps, table lamps, and ceiling lights"
-  },
-  {
-    "id": "9",
-    "name": "Rugs",
-    "description": "Area rugs and carpets to complement interiors"
-  },
-  {
-    "id": "10",
-    "name": "Decor",
-    "description": "Wall art, mirrors, and decorative accessories"
+    "description": "Enjoy the outdoors with weather-resistant lounges, tables, and chairs. Built for durability and style, making open-air living both comfortable and inviting."
   }
 ]
