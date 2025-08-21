@@ -256,6 +256,66 @@ button.hover-button-main:hover::after {
     transform-origin: right center;
     transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
+
+/* -------------favorite modal style ---------------- */
+
+.madal{
+  font-family: var(--heading-font);
+}
+#favModal .modal-content{
+    border-radius: 0 !important;
+    
+}
+  .modal-dialog {
+  max-width: 70% !important; /* العرض */
+}
+
+.modal-content {
+  height: 550px !important; /* الطول */
+}
+.modal-header{
+    border-radius: 0 !important;
+    color: #ffffff !important;
+    font-family: var(--heading-font);
+}
+#favoritelabel{
+    font-size: 14px !important;
+}
+.modal-body hr{
+    width: 95% !important;
+    margin: 20px auto !important;
+    text-align: start !important;
+}
+.modal-body h5{
+    font-weight: 400;
+    letter-spacing: 0 !important;
+    font-size: 18px !important;
+
+}
+.nofavoritediv{
+    margin-top: 70px !important;
+}
+.nofavoritediv h5{
+    margin-bottom: 30px !important;
+    font-size: 16px !important;
+    font-weight: 500 ;
+}
+.nofavoritediv p{
+    font-size: 12px !important;
+}
+.nofavoritediv button{
+    background-color: #434655 !important;
+    color: white !important;
+    font-size: 12px !important; 
+    padding: 5px 20px !important;
+    font-weight: bold;
+    margin-top: 20px;
+
+ 
+}
+.nofavoritediv button:hover{
+    opacity: 0.8 !important;
+}
 /* ====================> Starting Home Details Style <====================== */
 #homedetails {
   margin: var(--section-margin) 0;

@@ -89,6 +89,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+////////// build productcard from localstorage 
 localStorage.setItem("homeproducts", JSON.stringify(homeProducts));
 let products = JSON.parse(localStorage.getItem("homeproducts"));
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -131,6 +132,8 @@ products.forEach((product) => {
 
   productList.appendChild(card);
 });
+
+///////// add favorite button fuctionality 
 let allfavoritebtn = document.querySelectorAll(".favorite-btn");
 // هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
 allfavoritebtn.forEach((btn) => {
@@ -164,3 +167,7 @@ allfavoritebtn.forEach((btn) => {
     localStorage.setItem("favoriteProducts", JSON.stringify(favoriteProducts));
   });
 });
+
+
+
+
