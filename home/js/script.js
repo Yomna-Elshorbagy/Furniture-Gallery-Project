@@ -212,7 +212,6 @@ allfavoritebtn.forEach((btn) => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
     let favoriteProducts = products.filter((p) => favorites.includes(p.id));
     localStorage.setItem("favoriteProducts", JSON.stringify(favoriteProducts));
-
     // Update the modal
     renderFavoriteModal();
   });
