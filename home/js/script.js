@@ -169,5 +169,10 @@ allfavoritebtn.forEach((btn) => {
 });
 
 
+// ///////////// favorite modal ////////////////
+
+
+let favoriteProduct =localStorage.getItem("")
+
 
 
