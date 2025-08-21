@@ -1,5 +1,7 @@
 import { productsTemplate } from "./pages/productsTemplate.js";
 import { initProductsPage } from "./pages/products.js";
+import { ordersTemplate } from "./pages/orders/ordersTemplete.js";
+import { initOrdersPage } from "./pages/orders/orders.js";
 
 const serverDataFiles = {
   products: "../server/data/products.json",
@@ -32,7 +34,10 @@ document.getElementById("products").addEventListener("click", () => {
 document.getElementById("addSeller").addEventListener("click", () => {
   window.location.href = "../Auth/sign-up/signup.html";
 });
-
+document.getElementById("orders").addEventListener("click", () => {
+  document.getElementById("mainContent").innerHTML = ordersTemplate;
+  initOrdersPage();
+});
 function countProducts() {
   const countElement = document.getElementById("productCount");
   if (countElement) {
