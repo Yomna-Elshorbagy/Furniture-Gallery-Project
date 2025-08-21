@@ -30,43 +30,22 @@ header {
   /* z-index: 1; */
   height: 100vh;
   overflow: hidden;
-
+  position: relative;
 }
-
-/* .scrolled{
-    background-color: aliceblue;
-} */
 .nav {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1050;
+  z-index: 2000;
   width: 100%;
   transition: all 0.3s ease-in-out;
-  /* عشان الحركة تبقى ناعمة */
   padding: 1rem 0;
   background: transparent;
-
 }
-
-/* 
-.navbar {
-    transition: all 0.3s ease-in-out;
-    
-} */
-
-
-/* .scrolled{
-    background-color: white;
-    position: sticky;
-    top: 0;
-} */
-
-
-
-
-
-
-
+.nav.scrolled,
+.nav:hover {
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
 hr {
   position: absolute;
@@ -88,13 +67,11 @@ hr {
   height: 100vh;
   object-fit: cover;
   filter: brightness(90%);
-  /* يخلي الصورة أهدأ */
   transition: transform 0.8s ease-in-out;
 }
 
 .carousel-item img {
-  /* filter: brightness(70%) contrast(110%) saturate(90%); */
-  filter: brightness(110%)
+  filter: brightness(110%);
 }
 
 .carousel-item::after {
@@ -104,19 +81,20 @@ hr {
   left: 0;
   width: 100%;
   height: 100%;
-  /* background: rgba(0,0,0,0.4);  */
-  /* أسود شفاف */
-  /* background-image: linear-gradient(to bottom, rgba(79, 79, 79, 0.9) 10%, rgba(184, 172, 162, 0)); */
-  background-image: linear-gradient(to top, rgba(4, 4, 4, 0.15), rgba(54, 54, 54, 0.9));
+  background-image: linear-gradient(
+    to top,
+    rgba(4, 4, 4, 0.15),
+    rgba(54, 54, 54, 0.9)
+  );
   z-index: 1;
+  pointer-events: none;
 }
 
 .carousel-caption,
 .carousel-control-prev,
 .carousel-control-next {
-  z-index: 2;
+  z-index: 100;
 }
-
 
 h5 {
   font-size: 35px;
@@ -128,7 +106,6 @@ h5 {
 .carousel-caption h5 {
   animation: fadeInUp 1.5s ease-in-out;
 }
-
 
 @keyframes fadeInUp {
   from {
@@ -142,11 +119,30 @@ h5 {
   }
 }
 
+.nav .nav-link {
+  color: white;
+  transition: color 0.3s ease;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0 10px;
+}
+.nav.scrolled .nav-link,
+.nav:hover .nav-link {
+  color: #111;
+}
+.nav .nav-link:hover {
+  color: #c59d5f;
+}
+
 .nav i {
   color: white;
   margin: 10px;
+  font-size: 20px;
 }
-
+.nav.scrolled i,
+.nav:hover i {
+  color: #111;
+}
 .nav a {
   text-decoration: none;
   color: white;
@@ -158,9 +154,18 @@ h5 {
   color: white;
   padding: 5px;
   font-size: 15px;
-  letter-spacing: 2PX;
+  letter-spacing: 2px;
 }
-
+.nav.scrolled .hover-button,
+.nav:hover .hover-button {
+  border-color: #111;
+  color: #111;
+}
+.nav.scrolled .nav-logo img,
+.nav:hover .nav-logo img {
+  width: 180px !important;   
+  transform: scale(0.9); 
+}
 /* ====================> Starting Home Details Style <====================== */
 #homedetails {
   margin: var(--section-margin) 0;
@@ -620,7 +625,6 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
-
   .footer-payments img,
   .footer-payments svg {
     height: 22px;
