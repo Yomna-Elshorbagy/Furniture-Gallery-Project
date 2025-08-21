@@ -343,7 +343,7 @@ h5.producttitlefav:hover {
 
 
 .toaststyle{
-  background-color: rgb(195, 193, 193) !important;
+  background-color:var(--primary-color)!important;
 }
 
 /* ====================> Starting Home Details Style <====================== */

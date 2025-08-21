@@ -1,70 +1,3 @@
-let homeProducts = [
-  {
-    id: 1,
-    name: "Clove Console Table",
-    price: "700",
-    oldPrice: null,
-    image:
-      "https://thefurnituregallery.com.au/cdn/shop/files/G1A4277_800x.jpg?v=1752558496",
-  },
-  {
-    id: 2,
-    name: "Seville Nest of Coffee Tables",
-    price: "899",
-    oldPrice: "$1599",
-    image:
-      "https://thefurnituregallery.com.au/cdn/shop/files/G1A4111_800x.jpg?v=1754356774",
-  },
-  {
-    id: 3,
-    name: "Reeves 6 Seater with Ottoman - Exclusive Cobblestone",
-    price: "6198",
-    oldPrice: "$10296",
-    image:
-      "https://thefurnituregallery.com.au/cdn/shop/files/Hero_5310cd76-5b6b-4368-9f9d-ce5ebc820ba5_800x.png?v=1753264119",
-  },
-  {
-    id: 4,
-    name: "Allure Bed with Drawers",
-    price: "1399",
-    oldPrice: "$1999",
-    image:
-      "https://thefurnituregallery.com.au/cdn/shop/files/G1A3666copy_800x.jpg?v=1753456616",
-  },
-  {
-    id: 5,
-    name: "Coco Dining Chair",
-    price: "299",
-    oldPrice: "$399",
-    image:
-      "https://thefurnituregallery.com.au/cdn/shop/files/G1A4176_3_800x.jpg?v=1752558760",
-  },
-  {
-    id: 6,
-    name: "Juni 2400 Dining Table - White",
-    price: "3699",
-    oldPrice: "$7699",
-    image:
-      "https://thefurnituregallery.com.au/cdn/shop/files/IMG_7996_800x.jpg?v=1752561036",
-  },
-  {
-    id: 7,
-    name: "Nolan Bedside Table - Oak",
-    price: "499",
-    oldPrice: "$599",
-    image:
-      "https://thefurnituregallery.com.au/cdn/shop/files/G1A3791_800x.jpg?v=1752711759",
-  },
-  {
-    id: 8,
-    name: "Florabelle Arm Chair - Cookie",
-    price: "1699",
-    oldPrice: "$2399",
-    image:
-      "https://thefurnituregallery.com.au/cdn/shop/files/G1A3826_800x.jpg?v=1753852623",
-  },
-];
-
 const serverDataFiles = {
   products: "../../server/data/products.json",
   categories: "../../server/data/categories.json",
@@ -90,13 +23,13 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 ////////// build productcard from localstorage 
-localStorage.setItem("homeproducts", JSON.stringify(homeProducts));
-let products = JSON.parse(localStorage.getItem("homeproducts"));
+let products = JSON.parse(localStorage.getItem("products")) || [];
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 let productList = document.getElementById("product-list");
+let homeproducts =products.slice(0,8);
 
-products.forEach((product) => {
+homeproducts.forEach((product) => {
   let card = document.createElement("div");
   card.className = "col-6 col-md-3 mb-4";
   let isFavorite = favorites.includes(product.id);
@@ -201,7 +134,7 @@ allfavoritebtn.forEach((btn) => {
     let toastEl = document.getElementById("favToast");
     let toastBody = document.getElementById("favToastBody");
     let toast = new bootstrap.Toast(toastEl);
-let product = homeProducts.find((p) => p.id === id)
+    let product = products.find((p) => p.id === id)
     if (favorites.includes(id)) {
       // remove from favorites
       favorites = favorites.filter((f) => f !== id);
