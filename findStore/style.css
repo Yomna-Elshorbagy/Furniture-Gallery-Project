@@ -9,12 +9,64 @@
 body {
   font-family: "Raleway", sans-serif;
   scroll-behavior: smooth;
+  padding-top: 100px;
+}
+
+/* *************** Starting navbar styling ******************** */
+.nav {
+  position: fixed;
+  top: 0;
+  z-index: 2000;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  padding: 1rem 0;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav .nav-link {
+  color: #111;
+  transition: color 0.3s ease;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0 10px;
+}
+
+.nav .nav-link:hover {
+  color: #c59d5f;
+}
+.navbar .active {
+  color: #c59d5f !important;
+  border-color: #c59d5f !important;
+}
+.nav i {
+  color: #111;
+  margin: 10px;
+  font-size: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #111;
+}
+
+.hover-button {
+  background-color: transparent;
+  border: 1px solid #111;
+  color: #111;
+  padding: 5px;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+.nav .nav-logo img {
+  width: 180px !important;
+  transform: scale(0.9);
 }
 
 /* ****** client section ***** */
 .carousel-indicators [data-bs-target] {
-  background-color:  #e65f78;
-  border: 1px solid  #e65f78;
+  background-color: #e65f78;
+  border: 1px solid #e65f78;
   border-radius: 10px;
   width: 15px;
   height: 10px;
@@ -23,6 +75,6 @@ body {
 .carousel-indicators .active {
   width: 20px;
 }
-.main-color{
-  color:  #e65f78 ;
+.main-color {
+  color: #e65f78;
 }
