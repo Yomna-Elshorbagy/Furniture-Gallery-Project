@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", addContactDetails);
 
-const form = document.getElementById("contactForm");
-const alertPlaceholder = document.getElementById("alertPlaceholder");
+let form = document.getElementById("contactForm");
+let alertPlaceholder = document.getElementById("alertPlaceholder");
 
 function showAlert(message, type) {
-  const wrapper = document.createElement("div");
+  let wrapper = document.createElement("div");
   wrapper.innerHTML = `
       <div class="alert alert-${type} alert-dismissible fade show" role="alert">
         ${message}
@@ -19,7 +19,7 @@ function addContactDetails() {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const contactData = {
+    let contactData = {
       firstName: document.getElementById("firstName").value.trim(),
       lastName: document.getElementById("lastName").value.trim(),
       email: document.getElementById("email").value.trim(),
@@ -70,3 +70,33 @@ function addContactDetails() {
     form.reset();
   });
 }
+
+
+// handel logged in and logged out 
+document.addEventListener("DOMContentLoaded", () => {
+  let loginBtn = document.getElementById("loginBtn");
+  let logoutBtn = document.getElementById("logoutBtn");
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  if (loggedInUser) {
+    // show logout, hide login
+    loginBtn.classList.add("d-none");
+    logoutBtn.classList.remove("d-none");
+  } else {
+    // show login, hide logout
+    loginBtn.classList.remove("d-none");
+    logoutBtn.classList.add("d-none");
+  }
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("loggedInUser"); 
+    Swal.fire({
+      title: "👋 Logged out",
+      text: "You have been logged out successfully.",
+      icon: "success",
+      timer: 2000,
+      showConfirmButton: false
+    }).then(() => {
+      window.location.href = "../Auth/log-in/login.html";
+    });
+  });
+});

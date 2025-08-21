@@ -1,1 +1,52 @@
-[]
+[
+  {
+    "ID": "1",
+    "Name": "Yomna Mohamed",
+    "Email": "yomna@gmail.com",
+    "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
+    "Role": "admin",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  },
+  {
+    "ID": "1692612345678",
+    "Name": "Anan Hamdy",
+    "Email": "anan@example.com",
+    "Password": "$2a$10$E0aCIYxGDBKwU9vfN/K5jey47I0fHvir3T37CG1nxBnNTitWnWohC",
+    "Role": "admin",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  },
+  {
+    "ID": "1692612398765",
+    "Name": "Eman Ahmed",
+    "Email": "eman@example.com",
+    "Password": "$2a$10$A4mxxOoIiEMQMaw7aH4mNuE7nSvGe39ijjWMQbysUnWZCtbsBJNnu",
+    "Role": "seller",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  },
+  {
+    "ID": "2",
+    "Name": "Khaled Mahamed",
+    "Email": "khaled@gmail.com",
+    "Password": "$2a$10$A4mxxOoIiEMQMaw7aH4mNuE7nSvGe39ijjWMQbysUnWZCtbsBJNnu",
+    "Role": "admin",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  },
+    {
+    "ID": "2",
+    "Name": "Abdelhameed Mossad",
+    "Email": "abdelhamedd@gmail.com",
+    "Password": "$2a$10$ozNMD4Na/T8vKJjEriByN.11zQHNGFfvhtdfj.QT/jDP3qHFOeKRq",
+    "Role": "admin",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  }
+]

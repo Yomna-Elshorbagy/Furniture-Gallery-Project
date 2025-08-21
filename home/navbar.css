@@ -1,0 +1,85 @@
+.nav {
+    font-weight: 500;
+    z-index: 1050;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    background: transparent;
+    border-bottom: 1px solid white;
+}
+/* nav icon */
+.nav i {
+    color: #111;
+    margin: 10px;
+    font-size: 20px;
+}
+
+/* for line under nav item (Home ...)*/
+.navbar-nav .nav-item a {
+    position: relative;
+}
+
+.navbar-nav .nav-item a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #c7b9a9;
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-item a:hover::after {
+    width: 100%;
+}
+
+
+/* for Find strore */
+button.hover-button {
+    background-color: transparent;
+    color: #c7b9a9;
+    border: 1px solid #c7b9a9;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    padding: 5px;
+    position: relative;
+    z-index: 2;
+}
+
+/* link in button */
+button.hover-button a {
+    color: #c7b9a9;
+    text-decoration: none;
+}
+
+button.hover-button:hover:after {
+    transform: scale(1);
+    transform-origin: left center;
+    color: white;
+}
+
+button.hover-button:hover {
+    color: white;
+}
+
+/* link in button */
+button.hover-button a:hover {
+    color: white;
+}
+
+button.hover-button::after {
+    transform-origin: right center;
+    transform: scaleX(0);
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    background-color: #c7b9a9;
+    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}

@@ -61,7 +61,7 @@
               >
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link text-black" aria-current="page" href="#"
+                    <a class="nav-link text-black active" aria-current="page" href="#"
                       >Home</a
                     >
                   </li>
@@ -73,7 +73,7 @@
                     >
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-black" href="#">Adout</a>
+                    <a class="nav-link text-black" href="#">About</a>
                   </li>
                   <li class="nav-item">
                     <a
@@ -85,8 +85,15 @@
                 </ul>
               </div>
               <div class="logo d-none d-lg-block">
-                <button class="hover-button ms-2 px-3 py-2">Find a store</button>
-                <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#favModal">
+                <button class="hover-button ms-2 px-3 py-2">
+                  Find a store
+                </button>
+                <a
+                  href="#"
+                  class="text-decoration-none"
+                  data-bs-toggle="modal"
+                  data-bs-target="#favModal"
+                >
                   <i class="fa-solid fa-heart text-black m-2"></i>
                 </a>
                 <a href="#" class="text-decoration-none">
@@ -220,7 +227,50 @@
 </button>
   <button type="button" class="btn-close btn-close-white opacity-100 me-1" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
+      <!---------------------- favorite modal ---------------------->
 
+      <div class="modal fade" id="favModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div
+              class="d-flex flex-row bg-black d-flex justify-content-end align-items-center gap-3"
+            >
+              <button class="btn bg-black text-white opacity-100 border-0">
+                <i class="bi bi-person-fill-add text-white"></i>
+                <span class="text-white" id="favoritelabel"
+                  >example@gmail.com</span
+                >
+              </button>
+              <button
+                type="button"
+                class="btn-close btn-close-white opacity-100 me-1"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="modal-body text-center">
+              <div class="d-flex flex-row justify-content-between mt-3 mx-3">
+                <h5>Favorites</h5>
+                <i class="bi bi-three-dots-vertical"></i>
+              </div>
+              <hr />
+              <div class="nofavoritediv">
+                <h5>Love It? Add to My Favorites</h5>
+                <p>
+                  My Favorites allows you to keep track of all of your favorites
+                  and shopping activity whether <br />
+                  you're on your computer, phone, or tablet. You won't have to
+                  waste time searching all over <br />
+                  again for that item you loved on your phone the other day -
+                  it's all here in one place!
+                </p>
+                <button>Continue Shopping</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="modal-body text-center">
       <div class="d-flex flex-row justify-content-between mt-3 mx-3">  
         <h5>Favorites</h5>
@@ -239,6 +289,55 @@
 
 
 
+
+
+=======
+      <!---------------------- favorite modal ---------------------->
+
+      <div class="modal fade" id="favModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div
+              class="d-flex flex-row bg-black d-flex justify-content-end align-items-center gap-3"
+            >
+              <button class="btn bg-black text-white opacity-100 border-0">
+                <i class="bi bi-person-fill-add text-white"></i>
+                <span class="text-white" id="favoritelabel"
+                  >example@gmail.com</span
+                >
+              </button>
+              <button
+                type="button"
+                class="btn-close btn-close-white opacity-100 me-1"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="modal-body text-center">
+              <div class="d-flex flex-row justify-content-between mt-3 mx-3">
+                <h5>Favorites</h5>
+                <i class="bi bi-three-dots-vertical"></i>
+              </div>
+              <hr />
+              <div class="nofavoritediv">
+                <h5>Love It? Add to My Favorites</h5>
+                <p>
+                  My Favorites allows you to keep track of all of your favorites
+                  and shopping activity whether <br />
+                  you're on your computer, phone, or tablet. You won't have to
+                  waste time searching all over <br />
+                  again for that item you loved on your phone the other day -
+                  it's all here in one place!
+                </p>
+                <button>Continue Shopping</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+>>>>>>> 6c45180c3279821ccc2e7e6fac76523c278ee41b
       <!-- ==================  Home Details ==================  -->
       <section
         class="d-flex flex-column text-center px-3 px-md-0"
