@@ -26,145 +26,235 @@ body {
 }
 
 /* =================== Starting header Details Style  ==================   */
-header {
-  /* z-index: 1; */
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-}
-.nav {
-  position: fixed;
-  top: 0;
-  z-index: 2000;
-  width: 100%;
-  transition: all 0.3s ease-in-out;
-  padding: 1rem 0;
-  background: transparent;
-}
-.nav.scrolled,
-.nav:hover {
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+body {
+    background-color: rgb(77, 75, 75);
 }
 
-hr {
-  position: absolute;
-  bottom: -20px;
-  border: 1px solid white;
-  width: 100%;
+body {
+
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+header {
+    /* z-index: 1; */
+    height: 100vh;
+    overflow: hidden;
+
+}
+
+
+.nav {
+    z-index: 1050;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    background: transparent;
+    border-bottom: 1px solid white;
+
 }
 
 .bg-header {
-  /* z-index: -1; */
-  position: absolute;
-  top: 0px;
-  width: 100%;
-  height: 100%;
+    /* z-index: -1; */
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
 }
 
 .bg-header img {
-  /* width: 100vw; */
-  height: 100vh;
-  object-fit: cover;
-  filter: brightness(90%);
-  transition: transform 0.8s ease-in-out;
+    /* width: 100vw; */
+    height: 100vh;
+    object-fit: cover;
+    filter: brightness(90%);
+    /* يخلي الصورة أهدأ */
+    transition: transform 0.8s ease-in-out;
 }
 
 .carousel-item img {
-  filter: brightness(110%);
+    /* filter: brightness(70%) contrast(110%) saturate(90%); */
+    filter: brightness(110%)
 }
 
 .carousel-item::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(
-    to top,
-    rgba(4, 4, 4, 0.15),
-    rgba(54, 54, 54, 0.9)
-  );
-  z-index: 1;
-  pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(0,0,0,0.4);  */
+    /* أسود شفاف */
+    /* background-image: linear-gradient(to bottom, rgba(79, 79, 79, 0.9) 10%, rgba(184, 172, 162, 0)); */
+    background-image: linear-gradient(to top, rgba(4, 4, 4, 0.15), rgba(54, 54, 54, 0.9));
+    z-index: 1;
 }
 
 .carousel-caption,
 .carousel-control-prev,
 .carousel-control-next {
-  z-index: 100;
+    z-index: 2;
 }
+
 
 h5 {
-  font-size: 35px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
+    font-size: 35px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
 }
 
-.carousel-caption p,
+.carousel-caption button,
 .carousel-caption h5 {
-  animation: fadeInUp 1.5s ease-in-out;
+    animation: fadeInUp 1.5s ease-in-out;
+    padding: 10px 20px;
+
 }
+
+.carousel-caption .hover-button {
+
+    background-color: white;
+}
+
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.nav .nav-link {
-  color: white;
-  transition: color 0.3s ease;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin: 0 10px;
-}
-.nav.scrolled .nav-link,
-.nav:hover .nav-link {
-  color: #111;
-}
-.nav .nav-link:hover {
-  color: #c59d5f;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.nav i {
-  color: white;
-  margin: 10px;
-  font-size: 20px;
-}
-.nav.scrolled i,
-.nav:hover i {
-  color: #111;
-}
-.nav a {
-  text-decoration: none;
-  color: white;
+.navbar-nav .nav-item a {
+    position: relative;
 }
 
-.hover-button {
-  background-color: transparent;
-  border: 1px solid white;
-  color: white;
-  padding: 5px;
-  font-size: 15px;
-  letter-spacing: 2px;
+.navbar-nav .nav-item a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #c7b9a9;
+    transition: width 0.3s ease-in-out;
 }
-.nav.scrolled .hover-button,
-.nav:hover .hover-button {
-  border-color: #111;
-  color: #111;
+
+.navbar-nav .nav-item a:hover::after {
+    width: 100%;
 }
-.nav.scrolled .nav-logo img,
-.nav:hover .nav-logo img {
-  width: 180px !important;   
-  transform: scale(0.9); 
+
+
+
+
+.Header-Transparent a,
+.Header-Transparent i {
+    color: white !important;
+}
+
+.Header-Transparent .navbar {
+    background-color: transparent !important;
+}
+
+.Header-Transparent button {
+    background: rgb(14 14 14 / 0%);
+    color: white;
+    border: 1px solid white;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    padding: 5px;
+    position: relative;
+
+}
+
+button.hover-button {
+    background-color: transparent;
+    color: #c7b9a9;
+    border: 1px solid #c7b9a9;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    padding: 5px;
+    position: relative;
+    z-index: 2;
+}
+
+
+button.hover-button:hover:after {
+    transform: scale(1);
+    transform-origin: left center;
+    color: white;
+}
+
+button.hover-button:hover {
+    color: white;
+}
+
+
+
+button.hover-button::after {
+    transform-origin: right center;
+    transform: scaleX(0);
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    background-color: #c7b9a9;
+    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+
+button.hover-button-main {
+    background-color: white;
+    /* أبيض في البداية */
+    border: none;
+    color: #000000;
+    /* خط أسود */
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    transition: background-color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86)
+}
+
+button.hover-button-main::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: -1;
+    transform: scaleX(1);
+    /* مغطّي الزر بالكامل */
+    transform-origin: left center;
+    /* نقطة البداية واحدة وثابتة */
+    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+button.hover-button-main:hover {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+button.hover-button-main:hover::after {
+    transform: scaleX(0);
+    /* الأبيض ينسحب بس */
+    transform-origin: right center;
+    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 /* ====================> Starting Home Details Style <====================== */
 #homedetails {
