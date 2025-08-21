@@ -102,7 +102,7 @@ products.forEach((product) => {
   let isFavorite = favorites.includes(product.id);
 
   card.innerHTML = `
-    <div class="card product-card">
+    <div class="card product-card homecardproduct">
           <div class="image-scale">
 
       <button class="favorite-btn ${isFavorite ? "active" : ""}" data-id="${
@@ -112,17 +112,17 @@ products.forEach((product) => {
       </button>
       <img src="${product.image}" class="card-img-top" alt="${product.name}">
       </div>
-      <div class="card-body">
-        <h6 class="card-title text-start">${product.name}</h6>
-        <p class="card-text text-start">
-          <span class="newprice ">$${product.price}</span>
-          ${
-            product.oldPrice
-              ? `<span class="old-price ms-2 text-secondary">${product.oldPrice}</span>`
-              : ""
-          }
-        </p>
-      </div>
+     <div class="card-body text-center">
+  <h6 class=" card-title text-truncate">${product.name}</h6>
+  <div class="card-text mb-2">
+    <span class="newprice fw-bold">$${product.price}</span>
+    ${
+      product.oldPrice
+        ? `<span class="old-price text-secondary text-decoration-line-through">${product.oldPrice}</span>`
+        : ""
+    }
+  </div>
+</div>
     </div>
   `;
 
@@ -135,6 +135,54 @@ products.forEach((product) => {
 
 ///////// add favorite button fuctionality 
 let allfavoritebtn = document.querySelectorAll(".favorite-btn");
+
+function renderFavoriteModal() {
+  let favoriteProducts = JSON.parse(localStorage.getItem("favoriteProducts")) || [];
+  let favmodalbody = document.getElementById("favmodalbody");
+  favmodalbody.innerHTML = ""; 
+
+  if (favoriteProducts.length === 0) {
+    var nofav = document.createElement("div");
+    nofav.className = "nofavoritediv";
+    nofav.innerHTML = `
+      <h5>Love It? Add to My Favorites</h5>
+      <p>My Favorites allows you to keep track of all of your favorites and shopping activity whether <br> 
+        you're on your computer, phone, or tablet. You won't have to waste time searching all over <br>
+         again for that item you loved on your phone the other day - it's all here in one place!</p>
+         <button >Continue Shopping</button>
+    `;
+    favmodalbody.appendChild(nofav);
+  } else {
+    let favdiv = document.createElement("div");
+    favdiv.className = "favdiv";
+    favoriteProducts.forEach(product => {
+      let card = document.createElement("div");
+      card.className = "cardstyle";
+      card.innerHTML = `
+        <div class="card product-card">
+          <img src="${product.image}" class="card-img-top" alt="${product.name}">
+          <div class="card-body text-center ">
+            <div class="d-flex flex-column text-start mb-0">
+              <h5 class=" text-truncate producttitlefav">${product.name}</h5>
+              <h4 class="card-text">
+                <h4 class="newprice fw-bold text-danger">$${product.price}</h4>
+                ${
+                  product.oldPrice
+                    ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
+                    : ""
+                }
+              </h4>
+            </div>
+            <button class="btn btn-dark w-100 btnaddtocard">ADD TO CART</button>
+          </div>
+        </div>
+      `;
+      favdiv.appendChild(card);
+    });
+    favmodalbody.appendChild(favdiv);
+  }
+}
+
 // هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
 allfavoritebtn.forEach((btn) => {
   let id = parseInt(btn.getAttribute("data-id"));
@@ -162,17 +210,12 @@ allfavoritebtn.forEach((btn) => {
     }
 
     localStorage.setItem("favorites", JSON.stringify(favorites));
-
     let favoriteProducts = products.filter((p) => favorites.includes(p.id));
     localStorage.setItem("favoriteProducts", JSON.stringify(favoriteProducts));
+
+    // Update the modal
+    renderFavoriteModal();
   });
 });
 
-
-// ///////////// favorite modal ////////////////
-
-
-let favoriteProduct =localStorage.getItem("")
-
-
-
+renderFavoriteModal();

@@ -305,6 +305,42 @@ button.hover-button-main:hover::after {
 .nofavoritediv button:hover{
     opacity: 0.8 !important;
 }
+.cardstyle{
+  width: 150px;
+  height: 200px;
+  margin-right: 20px;
+  margin-bottom: 100px !important;
+}
+.btnaddtocard{
+  height: 30px !important;
+  font-size:10px !important ;
+}
+
+.favdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center !important;
+  flex-wrap: wrap;
+  max-height: 400px; 
+  overflow-y: auto;
+  gap: 10px; 
+}
+
+
+h5.producttitlefav{
+  font-size: 10px !important;
+  font-weight: 500 !important;
+}
+h5.producttitlefav:hover {
+  font-size: 10px !important;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+
+
+
 /* ====================> Starting Home Details Style <====================== */
 #homedetails {
   margin: var(--section-margin) 0;
@@ -354,7 +390,7 @@ button.hover-button-main:hover::after {
   margin-right: 0px !important;
 }
 
-.card {
+.homecardproduct {
   border-radius: 0 !important;
   border: none !important;
   box-shadow: none !important;
@@ -366,6 +402,7 @@ button.hover-button-main:hover::after {
 
 .card-body h6 {
   font-weight: 300;
+  font-size: 16px !important;
 }
 
 .product-card img {
@@ -379,11 +416,7 @@ button.hover-button-main:hover::after {
   margin-right: 0px !important;
 }
 
-.card {
-  border-radius: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-}
+
 
 .card:hover {
   cursor: pointer;
@@ -415,15 +448,7 @@ button.hover-button-main:hover::after {
   margin-right: 0px !important;
 }
 
-.card {
-  border-radius: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-}
 
-.card:hover {
-  cursor: pointer;
-}
 
 .card-body h6 {
   font-weight: 300;
