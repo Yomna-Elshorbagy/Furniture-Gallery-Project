@@ -246,7 +246,10 @@ button.hover-button-main:hover::after {
 }
 
 /* -------------favorite modal style ---------------- */
-
+.navbar .active {
+  color: #c59d5f !important;
+  border-color: #c59d5f !important;
+}
 .madal{
   font-family: var(--heading-font);
 }
@@ -255,11 +258,11 @@ button.hover-button-main:hover::after {
     
 }
   .modal-dialog {
-  max-width: 70% !important; /* العرض */
+  max-width: 70% !important; 
 }
 
 .modal-content {
-  height: 550px !important; /* الطول */
+  height: 550px !important; 
 }
 .modal-header{
     border-radius: 0 !important;
