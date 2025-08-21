@@ -305,6 +305,10 @@ button.hover-button-main:hover::after {
 .nofavoritediv button:hover{
     opacity: 0.8 !important;
 }
+.navbar .active {
+  color: #c59d5f !important;
+  border-color: #c59d5f !important;
+}
 /* ====================> Starting Home Details Style <====================== */
 #homedetails {
   margin: var(--section-margin) 0;
