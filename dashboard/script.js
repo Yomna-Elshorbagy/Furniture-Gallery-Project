@@ -4,6 +4,8 @@ import { ordersTemplate } from "./pages/orders/ordersTemplete.js";
 import { initOrdersPage } from "./pages/orders/orders.js";
 import { initUsersPage } from "./pages/users/users.js";
 import { UsersTemplate } from "./pages/users/userTemplete.js";
+import { categoriesTemplate } from "./pages/categories/categoriesTemplate.js";
+import { initCategoriesPage } from "./pages/categories/categories.js";
 
 const serverDataFiles = {
   products: "../server/data/products.json",
@@ -31,6 +33,10 @@ window.addEventListener("DOMContentLoaded", () => {
 document.getElementById("products").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = productsTemplate;
   initProductsPage();
+});
+document.getElementById("categories").addEventListener("click", () => {
+  document.getElementById("mainContent").innerHTML = categoriesTemplate;
+  initCategoriesPage();
 });
 
 document.getElementById("addSeller").addEventListener("click", () => {
