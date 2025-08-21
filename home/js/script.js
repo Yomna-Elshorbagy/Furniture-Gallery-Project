@@ -184,6 +184,41 @@ function renderFavoriteModal() {
 }
 
 // هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
+// allfavoritebtn.forEach((btn) => {
+//   let id = parseInt(btn.getAttribute("data-id"));
+//   let icon = btn.querySelector("i");
+
+//   if (favorites.includes(id)) {
+//     btn.classList.add("active");
+//     icon.classList.remove("bi-heart");
+//     icon.classList.add("bi-heart-fill");
+//   }
+
+//   btn.addEventListener("click", (e) => {
+//     e.stopPropagation();
+
+//     if (favorites.includes(id)) {
+//       favorites = favorites.filter((f) => f !== id);
+//       btn.classList.remove("active");
+//       icon.classList.remove("bi-heart-fill");
+//       icon.classList.add("bi-heart");
+//     } else {
+//       favorites.push(id);
+//       btn.classList.add("active");
+//       icon.classList.remove("bi-heart");
+//       icon.classList.add("bi-heart-fill");
+//     }
+
+//     localStorage.setItem("favorites", JSON.stringify(favorites));
+//     let favoriteProducts = products.filter((p) => favorites.includes(p.id));
+//     localStorage.setItem("favoriteProducts", JSON.stringify(favoriteProducts));
+//     // Update the modal
+//     renderFavoriteModal();
+//   });
+// });
+
+
+
 allfavoritebtn.forEach((btn) => {
   let id = parseInt(btn.getAttribute("data-id"));
   let icon = btn.querySelector("i");
@@ -197,24 +232,43 @@ allfavoritebtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
 
+    // Toast references
+    let toastEl = document.getElementById("favToast");
+    let toastBody = document.getElementById("favToastBody");
+    let toast = new bootstrap.Toast(toastEl);
+let product = homeProducts.find((p) => p.id === id)
     if (favorites.includes(id)) {
+      // remove from favorites
       favorites = favorites.filter((f) => f !== id);
       btn.classList.remove("active");
       icon.classList.remove("bi-heart-fill");
       icon.classList.add("bi-heart");
-    } else {
+
+      toastBody.innerHTML = `<p class=" text-black text-center ">${product.name} has been removed from Favorites!`;
+      toastEl.className = "opacity-100 toast align-items-center border-0 toaststyle";
+    } else { 
+      // add to favorites
       favorites.push(id);
       btn.classList.add("active");
       icon.classList.remove("bi-heart");
       icon.classList.add("bi-heart-fill");
+
+      toastBody.innerHTML = `<p class="text-black text-center "> ${product.name}  has been added to Favorites!</p>`;
+      toastEl.className = "opacity-100 toast align-items-center  border-0 toaststyle";
     }
 
+    // Update localStorage
     localStorage.setItem("favorites", JSON.stringify(favorites));
     let favoriteProducts = products.filter((p) => favorites.includes(p.id));
     localStorage.setItem("favoriteProducts", JSON.stringify(favoriteProducts));
-    // Update the modal
+
+    // Update the modal content
     renderFavoriteModal();
+
+    // Show toast
+    toast.show();
   });
 });
+
 
 renderFavoriteModal();

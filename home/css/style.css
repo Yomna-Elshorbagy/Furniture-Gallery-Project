@@ -311,6 +311,7 @@ button.hover-button-main:hover::after {
   width: 150px;
   height: 200px;
   margin-right: 20px;
+  margin-left: 30px;
   margin-bottom: 100px !important;
 }
 .btnaddtocard{
@@ -341,7 +342,9 @@ h5.producttitlefav:hover {
 }
 
 
-
+.toaststyle{
+  background-color: rgb(195, 193, 193) !important;
+}
 
 /* ====================> Starting Home Details Style <====================== */
 #homedetails {
