@@ -95,7 +95,7 @@ input:focus {
   box-shadow: 0 1px 6px rgba(30, 55, 80, 0.3);
 }
 
-.btn {
+.buttons .btn {
   display: block;
   width: 140px;
   height: 45px;
@@ -110,7 +110,7 @@ input:focus {
   transition: background 0.3s, transform 0.2s;
 }
 
-.btn:hover {
+.buttons .btn:hover {
   background: linear-gradient(135deg, #416282, #000);
   transform: translateY(-2px);
 }

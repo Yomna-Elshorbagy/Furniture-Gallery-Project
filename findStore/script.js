@@ -1,20 +1,23 @@
-// handel logged in and logged out 
 document.addEventListener("DOMContentLoaded", () => {
-  let loginBtn = document.getElementById("loginBtn");
-  let logoutBtn = document.getElementById("logoutBtn");
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  const loginBtn = document.getElementById("loginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  // Check if a user is logged in
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
   if (loggedInUser) {
-    // show logout, hide login
+    // Show logout, hide login
     loginBtn.classList.add("d-none");
     logoutBtn.classList.remove("d-none");
   } else {
-    // show login, hide logout
+    // Show login, hide logout
     loginBtn.classList.remove("d-none");
     logoutBtn.classList.add("d-none");
   }
+
+  // Handle logout
   logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("loggedInUser"); 
+    localStorage.removeItem("loggedInUser"); // remove user
     Swal.fire({
       title: "👋 Logged out",
       text: "You have been logged out successfully.",
@@ -22,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       timer: 2000,
       showConfirmButton: false
     }).then(() => {
-      window.location.href = "../Auth/log-in/login.html";
+      window.location.href = "../Auth/log-in/login.html"; // redirect to login page
     });
   });
 });

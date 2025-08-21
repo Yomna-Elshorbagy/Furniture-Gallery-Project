@@ -1,4 +1,4 @@
-// handel logged in and logged out 
+// handel logged in and logged out
 document.addEventListener("DOMContentLoaded", () => {
   let loginBtn = document.getElementById("loginBtn");
   let logoutBtn = document.getElementById("logoutBtn");
@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
     logoutBtn.classList.add("d-none");
   }
   logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("loggedInUser"); 
+    localStorage.removeItem("loggedInUser");
     Swal.fire({
       title: "👋 Logged out",
       text: "You have been logged out successfully.",
       icon: "success",
       timer: 2000,
-      showConfirmButton: false
+      showConfirmButton: false,
     }).then(() => {
       window.location.href = "../Auth/log-in/login.html";
     });
