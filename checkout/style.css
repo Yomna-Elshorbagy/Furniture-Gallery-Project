@@ -1,0 +1,263 @@
+/* =====================> Global Reset =====================> */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f7f8fa;
+  color: #333;
+  line-height: 1.6;
+  padding-top: 110px;
+}
+
+
+/* *************** Starting navbar styling ******************** */
+.top.nav {
+  position: fixed;
+  top: 0;
+  z-index: 2000;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  padding: 1rem 0;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.top.nav .nav-link {
+  color: #111;
+  transition: color 0.3s ease;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0 10px;
+}
+
+.top.nav .nav-link:hover {
+  color: #c59d5f;
+}
+.active {
+  color: #c59d5f !important;
+}
+.top.nav i {
+  color: #111;
+  margin: 10px;
+  font-size: 20px;
+}
+
+.top.nav a {
+  text-decoration: none;
+  color: #111;
+}
+
+.hover-button {
+  background-color: transparent;
+  border: 1px solid #111;
+  color: #111;
+  padding: 5px;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+.top.nav .nav-logo img {
+  width: 180px !important;
+  transform: scale(0.9);
+}
+
+/* ***************** Contact details ****************** */
+.breadcrumb {
+  background: none;
+  padding-left: 0;
+  font-size: 0.9rem;
+}
+.breadcrumb-item a {
+  text-decoration: none;
+  color: #5a5a5a;
+}
+.breadcrumb-item.active {
+  color: #9c9c9c;
+}
+.contact-section {
+  max-width: 1000px;
+  margin: auto;
+  background: #f9f9f9;
+  padding: 2rem;
+  border-radius: 10px;
+}
+h2 {
+  font-weight: 700;
+  color: #0b1444;
+}
+p.subtitle {
+  color: #9c9c9c;
+}
+.form-control {
+  border: 1px solid #b68a60;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+.form-control:focus {
+  border-color: #a06935;
+  box-shadow: 0 0 0 0.2rem rgba(160, 105, 53, 0.25);
+}
+.form-check-label {
+  color: #9c9c9c;
+  font-size: 0.9rem;
+}
+.btn-custom {
+  background-color: #a06935;
+  color: #fff;
+  padding: 0.6rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  border: none;
+  transition: all 0.3s ease;
+}
+.btn-custom:hover {
+  background-color: #7a5026;
+}
+
+
+/* =====================> Container Styling ==================> */
+.container {
+  padding: 20px;
+}
+
+.content .status-order,
+.p-3.p-lg-5.border.bg-white {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.content .status-order:hover,
+.p-3.p-lg-5.border.bg-white:hover {
+  transform: translateY(-2px);
+}
+
+/* =====================> Table Styling =====================> */
+.content .table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.content .table th {
+  background: #f4f6f8;
+  color: #444;
+  padding: 12px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.content .table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.content .table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* =====================> Form Styling =====================> */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px 14px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  font-size: 15px;
+  background-color: #fafafa;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #04aa6d;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(4, 170, 109, 0.15);
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* ========================> Labels ========================> */
+label {
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 600;
+  color: #555;
+}
+
+/* =====================> Payment Icons =====================> */
+.icon-container {
+  margin-bottom: 20px;
+  padding: 10px 0;
+  font-size: 28px;
+  display: flex;
+  gap: 10px;
+}
+
+.icon-container i {
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon-container i:hover {
+  transform: scale(1.2);
+}
+
+/* =======================> Buttons ========================> */
+.content  .btn {
+  background-color: #b68a60;
+  color: white;
+  padding: 14px;
+  margin: 12px 0;
+  border: none;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.content  .btn:hover {
+  background-color: #b68a60;
+  box-shadow: 0px 4px 14px #815a35;
+  color: rgb(206, 200, 200);
+}
+
+/* =========================> Links =======================> */
+.content  a {
+  color: #b68a60;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.content  a:hover {
+  text-decoration: underline;
+}
+
+/* =======================> Alerts ========================> */
+.content  .alert {
+  border-radius: 6px;
+  font-size: 0.95rem;
+  padding: 12px 14px;
+}
+
+/* =====================> Responsive ======================> */
+@media (max-width: 800px) {
+  .content .row {
+    flex-direction: column-reverse;
+  }
+
+  .content .col-25 {
+    margin-bottom: 20px;
+  }
+}
