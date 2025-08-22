@@ -73,6 +73,7 @@ function renderFavoriteModal() {
   let favoriteProducts =
     JSON.parse(localStorage.getItem("favoriteProducts")) || [];
   let favmodalbody = document.getElementById("favmodalbody");
+
   favmodalbody.innerHTML = "";
 
   if (favoriteProducts.length === 0) {
@@ -129,6 +130,14 @@ if (loggedInUser && loggedInUser.Email) {
   favoriteLabel.textContent = "example@gmail.com";
 }
 
+// update favorite badge
+let favBadge = document.getElementById("favBadge");
+
+function updateFavBadge() {
+  favBadge.textContent = favorites.length>0? favorites.length : 0;
+
+}
+updateFavBadge();
 // هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
 allfavoritebtn.forEach((btn) => {
   let id = parseInt(btn.getAttribute("data-id"));
@@ -143,7 +152,6 @@ allfavoritebtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
 
-    // Toast references
     let toastEl = document.getElementById("favToast");
     let toastBody = document.getElementById("favToastBody");
     let toast = new bootstrap.Toast(toastEl);
@@ -177,6 +185,9 @@ allfavoritebtn.forEach((btn) => {
 
     // Update the modal content
     renderFavoriteModal();
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    updateFavBadge();
 
     // Show toast
     toast.show();

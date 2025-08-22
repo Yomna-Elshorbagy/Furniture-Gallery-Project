@@ -340,10 +340,14 @@ h5.producttitlefav:hover {
   overflow: visible;
   text-overflow: unset;
 }
-
-
 .toaststyle{
   background-color:var(--primary-color)!important;
+}
+.badgestyle{
+  width: 15px;
+  height: 15px;
+  font-size:8px;
+  margin: auto;
 }
 
 /* ====================> Starting Home Details Style <====================== */
