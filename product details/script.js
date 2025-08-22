@@ -142,11 +142,12 @@ decreaseBtn.addEventListener("click", () => {
 
 
 // go to cart page
-
-document.getElementById("gotocart").addEventListener("click",function(){
-  let caertarr=[];
-  let productId= product.id;
-  caertarr.push(productId);
-  localStorage.setItem("cartproducts",JSON.stringify(caertarr));
-  window.location.href ="../cart/cart.html";
+  document.getElementById("gotocart").addEventListener("click", function () {
+  let cartArr = JSON.parse(localStorage.getItem("cartproducts")) || [];
+  let productId = product.id;
+   if (!cartArr.includes(productId)) {
+    cartArr.push(productId);
+    localStorage.setItem("cartproducts", JSON.stringify(cartArr));
+  }
+  window.location.href = "../cart/cart.html";
 });

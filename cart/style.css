@@ -63,12 +63,13 @@ body {
   transform: scale(0.9);
 }
 
-
-#emptycart{
+.emptycart{
 margin-top: 140px !important;
 }
-#emptycarttitle{
+.emptycarttitle{
   font-size: 16px !important;
+  font-weight:400;
+  letter-spacing: 4px;
 }
 .emptycartbtn {
   position: relative;
@@ -126,4 +127,25 @@ margin-top: 140px !important;
 
 .emptycartbtn:hover {
   color: #212129;
+}
+
+.theadstyle th{
+  font-size: 10px;
+  font-weight: 300 !important;
+  letter-spacing: 2px;
+}
+.table{
+  width: 70%;
+  margin: auto !important;
+}
+.alltotal{
+  margin-right:200px ;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+.checkoutbtn{
+  margin-top: 10px;
+  margin-right: 160px;
+
 }
