@@ -20,8 +20,18 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(`${key} already in localStorage`);
     }
   });
+
+    updateCartBadge();
+
 });
 
+function updateCartBadge() {
+  let cartproducts = JSON.parse(localStorage.getItem("cartproducts")) || [];
+  let cartBadge = document.getElementById("cartbadge");
+  if (cartBadge) {
+    cartBadge.textContent = cartproducts.length;
+  }
+}
 ////////// build productcard from localstorage
 let products = JSON.parse(localStorage.getItem("products")) || [];
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];

@@ -24,12 +24,21 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "../Auth/log-in/login.html";
     });
   });
+
+
+  updateCartBadge();
 });
 
 
+// cart badge
+function updateCartBadge() {
+  let cartproducts = JSON.parse(localStorage.getItem("cartproducts")) || [];
+  let cartBadge = document.getElementById("cartbadge");
+  if (cartBadge) {
+    cartBadge.textContent = cartproducts.length;
+  }
+}
 // build cart body
-
-
 
 let cartbody = document.getElementById("cartbody");
 let cartproducts = JSON.parse(localStorage.getItem("cartproducts")) || [];
@@ -140,6 +149,7 @@ if (cartproducts.length === 0) {
       localStorage.setItem("cartproducts", JSON.stringify(cartproducts));
 
       btn.closest("tr").remove();
+      updateCartBadge();
 
       if (cartproducts.length === 0) {
         cartbody.innerHTML = "";
@@ -162,3 +172,6 @@ if (cartproducts.length === 0) {
   cartbody.appendChild(divbtn);
   updateGrandTotal();
 }
+
+updateCartBadge();
+
