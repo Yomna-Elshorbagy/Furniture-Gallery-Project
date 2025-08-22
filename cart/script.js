@@ -44,7 +44,7 @@ if (cartproducts.length === 0) {
 } else {
   let carttitle = document.createElement("h4");
   carttitle.className = "emptycarttitle";
-  carttitle.textContent = "SELECT YOUR DELIVERY OPTIONS";
+  carttitle.textContent = " CART DETAILS ";
   cartbody.appendChild(carttitle);
 
   let table = document.createElement("table");
