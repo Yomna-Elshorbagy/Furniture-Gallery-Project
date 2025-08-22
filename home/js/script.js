@@ -22,12 +22,12 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-////////// build productcard from localstorage 
+////////// build productcard from localstorage
 let products = JSON.parse(localStorage.getItem("products")) || [];
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 let productList = document.getElementById("product-list");
-let homeproducts =products.slice(0,8);
+let homeproducts = products.slice(0, 8);
 
 homeproducts.forEach((product) => {
   let card = document.createElement("div");
@@ -66,13 +66,14 @@ homeproducts.forEach((product) => {
   productList.appendChild(card);
 });
 
-///////// add favorite button fuctionality 
+///////// add favorite button fuctionality
 let allfavoritebtn = document.querySelectorAll(".favorite-btn");
 
 function renderFavoriteModal() {
-  let favoriteProducts = JSON.parse(localStorage.getItem("favoriteProducts")) || [];
+  let favoriteProducts =
+    JSON.parse(localStorage.getItem("favoriteProducts")) || [];
   let favmodalbody = document.getElementById("favmodalbody");
-  favmodalbody.innerHTML = ""; 
+  favmodalbody.innerHTML = "";
 
   if (favoriteProducts.length === 0) {
     var nofav = document.createElement("div");
@@ -88,12 +89,14 @@ function renderFavoriteModal() {
   } else {
     let favdiv = document.createElement("div");
     favdiv.className = "favdiv";
-    favoriteProducts.forEach(product => {
+    favoriteProducts.forEach((product) => {
       let card = document.createElement("div");
       card.className = "cardstyle";
       card.innerHTML = `
         <div class="card product-card">
-          <img src="${product.image}" class="card-img-top" alt="${product.name}">
+          <img src="${product.image}" class="card-img-top" alt="${
+        product.name
+      }">
           <div class="card-body text-center ">
             <div class="d-flex flex-column text-start mb-0">
               <h5 class=" text-truncate producttitlefav">${product.name}</h5>
@@ -116,6 +119,16 @@ function renderFavoriteModal() {
   }
 }
 
+// Update the favorite modal email label
+let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+let favoriteLabel = document.getElementById("favoritelabel");
+if (loggedInUser && loggedInUser.Email) {
+  favoriteLabel.textContent = loggedInUser.Email;
+} else {
+  favoriteLabel.textContent = "example@gmail.com";
+}
+
 // هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
 allfavoritebtn.forEach((btn) => {
   let id = parseInt(btn.getAttribute("data-id"));
@@ -134,7 +147,7 @@ allfavoritebtn.forEach((btn) => {
     let toastEl = document.getElementById("favToast");
     let toastBody = document.getElementById("favToastBody");
     let toast = new bootstrap.Toast(toastEl);
-    let product = products.find((p) => p.id === id)
+    let product = products.find((p) => p.id === id);
     if (favorites.includes(id)) {
       // remove from favorites
       favorites = favorites.filter((f) => f !== id);
@@ -143,8 +156,9 @@ allfavoritebtn.forEach((btn) => {
       icon.classList.add("bi-heart");
 
       toastBody.innerHTML = `<p class=" text-black text-center ">${product.name} has been removed from Favorites!`;
-      toastEl.className = "opacity-100 toast align-items-center border-0 toaststyle";
-    } else { 
+      toastEl.className =
+        "opacity-100 toast align-items-center border-0 toaststyle";
+    } else {
       // add to favorites
       favorites.push(id);
       btn.classList.add("active");
@@ -152,7 +166,8 @@ allfavoritebtn.forEach((btn) => {
       icon.classList.add("bi-heart-fill");
 
       toastBody.innerHTML = `<p class="text-black text-center "> ${product.name}  has been added to Favorites!</p>`;
-      toastEl.className = "opacity-100 toast align-items-center  border-0 toaststyle";
+      toastEl.className =
+        "opacity-100 toast align-items-center  border-0 toaststyle";
     }
 
     // Update localStorage
@@ -167,6 +182,5 @@ allfavoritebtn.forEach((btn) => {
     toast.show();
   });
 });
-
 
 renderFavoriteModal();
