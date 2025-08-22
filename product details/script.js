@@ -60,10 +60,16 @@ document.getElementById("details").innerHTML = `
       </p>
       <p class="text-muted">${product.description}</p>
       <p><strong>In Stock:</strong> ${product.stock}</p>
+        <div class="d-flex align-items-center mb-3">
+        <button class="btn btn-outline-secondary me-2" id="decrease">-</button>
+        <input type="text" id="quantity" value="1" class="form-control text-center" style="width:70px;" readonly>
+        <button class="btn btn-outline-secondary ms-2" id="increase">+</button>
+      </div>
       <button class="btn btn-dark w-100 mb-2 mt-2 py-2">Add to Cart</button>
       <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2">ADD TO WISHLIST</button>
       <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2">FIND IN STORES</button>
       <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2">Ask A QUESTIONS</button>
+      <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2">GET DELEVERY ESTIMATE</button>
 
        <div class="accordion py-3" id="accordionExample">
         <div class="accordion-item">
@@ -72,7 +78,7 @@ document.getElementById("details").innerHTML = `
               <i class="fa-solid fa-ruler me-2"></i> Dimensions
             </button>
           </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show">
+          <div id="collapseOne" class="accordion-collapse collapse">
             <div class="accordion-body">
               <p><i class="fa-solid fa-arrows-left-right me-2"></i> <strong>Width:</strong> ${product.dimensions.width}</p>
               <p><i class="fa-solid fa-arrows-up-down me-2"></i> <strong>Height:</strong> ${product.dimensions.height}</p>
@@ -112,4 +118,23 @@ product.subImages.forEach((img) => {
   });
   wrapper.appendChild(imgEl);
   subImagesContainer.appendChild(wrapper);
+});
+
+// ===> counter logic
+let quantityInput = document.getElementById("quantity");
+let increaseBtn = document.getElementById("increase");
+let decreaseBtn = document.getElementById("decrease");
+
+increaseBtn.addEventListener("click", () => {
+  let current = Number(quantityInput.value);
+  if (current < product.stock) {
+    quantityInput.value = current + 1;
+  }
+});
+
+decreaseBtn.addEventListener("click", () => {
+  let current = Number(quantityInput.value);
+  if (current > 1) {
+    quantityInput.value = current - 1;
+  }
 });
