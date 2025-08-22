@@ -65,7 +65,7 @@ document.getElementById("details").innerHTML = `
         <input type="text" id="quantity" value="1" class="form-control text-center" style="width:70px;" readonly>
         <button class="btn btn-outline-secondary ms-2" id="increase">+</button>
       </div>
-      <button class="btn btn-dark w-100 mb-2 mt-2 py-2">Add to Cart</button>
+      <button class="btn btn-dark w-100 mb-2 mt-2 py-2 " id="gotocart">Add to Cart</button>
       <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2">ADD TO WISHLIST</button>
       <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2">FIND IN STORES</button>
       <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2">Ask A QUESTIONS</button>
@@ -99,6 +99,7 @@ document.getElementById("details").innerHTML = `
       </div>
     `;
 
+    
 //====> get main image
 document.getElementById("mainImage").innerHTML = `
       <img src="${product.image}" id="currentImage" class="img-fluid shadow-sm" />
@@ -137,4 +138,15 @@ decreaseBtn.addEventListener("click", () => {
   if (current > 1) {
     quantityInput.value = current - 1;
   }
+});
+
+
+// go to cart page
+
+document.getElementById("gotocart").addEventListener("click",function(){
+  let caertarr=[];
+  let productId= product.id;
+  caertarr.push(productId);
+  localStorage.setItem("cartproducts",JSON.stringify(caertarr));
+  window.location.href ="../cart/cart.html";
 });
