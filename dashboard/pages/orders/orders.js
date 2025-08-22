@@ -6,16 +6,23 @@ export function initOrdersPage() {
   const statusInput = document.getElementById("omStatus");
   const dateInput = document.getElementById("omDate");
   const saveBtn = document.getElementById("omSave");
+  const paginationContainer = document.getElementById("pagination");
 
   let orders = JSON.parse(localStorage.getItem("orders")) || [];
   let editingId = null;
-
-  renderOrders();
+  let currentPage = 1;
+  const pageSize = 6;
 
   // ---- render Orders table ----
   function renderOrders() {
     tableBody.innerHTML = "";
-    orders.forEach((order) => {
+
+    // slice orders for pagination
+    let start = (currentPage - 1) * pageSize;
+    let end = start + pageSize;
+    let currentOrders = orders.slice(start, end);
+
+    currentOrders.forEach((order) => {
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${order.ID}</td>
@@ -35,13 +42,59 @@ export function initOrdersPage() {
       tableBody.appendChild(row);
     });
 
-    // ---- attach events for edit and delete
+    // Attach events
     document.querySelectorAll(".edit-order").forEach((btn) => {
       btn.addEventListener("click", handleEditOrder);
     });
     document.querySelectorAll(".del-order").forEach((btn) => {
       btn.addEventListener("click", handleDeleteOrder);
     });
+
+    renderPagination();
+  }
+
+  // ---- Pagination ----
+  function renderPagination() {
+    if (!paginationContainer) return;
+    paginationContainer.innerHTML = "";
+
+    const totalPages = Math.ceil(orders.length / pageSize);
+
+    // Prev button
+    const prevBtn = document.createElement("button");
+    prevBtn.textContent = "Prev";
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.onclick = () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderOrders();
+      }
+    };
+    paginationContainer.appendChild(prevBtn);
+
+    // Page numbers
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      if (i === currentPage) btn.style.fontWeight = "bold";
+      btn.onclick = () => {
+        currentPage = i;
+        renderOrders();
+      };
+      paginationContainer.appendChild(btn);
+    }
+
+    // Next button
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = "Next";
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.onclick = () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderOrders();
+      }
+    };
+    paginationContainer.appendChild(nextBtn);
   }
 
   // ---- add order ----
@@ -57,7 +110,7 @@ export function initOrdersPage() {
     modal.show();
   });
 
-  // ---- edit order ---->
+  // ---- edit order ----
   function handleEditOrder(e) {
     editingId = parseInt(e.currentTarget.dataset.id);
     const order = orders.find((o) => o.ID === editingId);
@@ -87,15 +140,23 @@ export function initOrdersPage() {
     }
 
     if (editingId) {
-      // ----- Update existing
+      // update existing
       orders = orders.map((o) =>
         o.ID === editingId
-          ? { ...o, UserName: user, TotalPrice: price, Status: status, Date: date }
+          ? {
+              ...o,
+              UserName: user,
+              TotalPrice: price,
+              Status: status,
+              Date: date,
+            }
           : o
       );
     } else {
-      //------ add new
-      const newId = orders.length ? Math.max(...orders.map((o) => o.ID)) + 1 : 1;
+      // add new
+      const newId = orders.length
+        ? Math.max(...orders.map((o) => o.ID)) + 1
+        : 1;
       orders.push({
         ID: newId,
         UserName: user,
@@ -105,19 +166,41 @@ export function initOrdersPage() {
       });
     }
 
-    // Save & re-render
     localStorage.setItem("orders", JSON.stringify(orders));
     renderOrders();
 
-    // Close modal
     bootstrap.Modal.getInstance(document.getElementById("orderModal")).hide();
   });
 
-  // ---- Delete Order ----
+  // ---- delete order  ----
   function handleDeleteOrder(e) {
     const id = parseInt(e.currentTarget.dataset.id);
-    orders = orders.filter((o) => o.ID !== id);
-    localStorage.setItem("orders", JSON.stringify(orders));
-    renderOrders();
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This order will be permanently deleted!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // delete from orders array
+        orders = orders.filter((o) => o.ID !== id);
+        localStorage.setItem("orders", JSON.stringify(orders));
+
+        // handle empty page after deletion
+        const totalPages = Math.ceil(orders.length / pageSize);
+        if (currentPage > totalPages) currentPage = totalPages || 1;
+
+        renderOrders(); // re-render table + pagination
+
+        Swal.fire("Deleted!", "Order has been deleted.", "success");
+      }
+    });
   }
+
+  // Initial render
+  renderOrders();
 }

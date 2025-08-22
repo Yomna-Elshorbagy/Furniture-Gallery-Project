@@ -66,29 +66,29 @@ function checkFormValidity() {
   submitBtn.disabled = !(nameValid && emailValid && passwordValid);
 }
 // ======= 6- Seed default admins to be read when open the page ========>
-(async function seedAdmins() {
-  let users = getUsers();
-  if (users.length === 0) {
-    let defaultAdmins = [
-      {
-        id: "1",
-        name: "yomna",
-        email: "yomna@gmail.com",
-        password: "123yomna",
-      },
-      { id: "2", name: "omar", email: "omar@gmail.com", password: "123omar" },
-    ];
+// (async function seedAdmins() {
+//   let users = getUsers();
+//   if (users.length === 0) {
+//     let defaultAdmins = [
+//       {
+//         id: "1",
+//         name: "yomna",
+//         email: "yomna@gmail.com",
+//         password: "123yomna",
+//       },
+//       { id: "2", name: "omar", email: "omar@gmail.com", password: "123omar" },
+//     ];
 
-    for (let adminData of defaultAdmins) {
-      let hashed = bcrypt.hashSync(adminData.password, 10);
+//     for (let adminData of defaultAdmins) {
+//       let hashed = bcrypt.hashSync(adminData.password, 10);
 
-      users.push(
-        new User(adminData.id, adminData.name, adminData.email, hashed, "admin")
-      );
-    }
-    saveUsers(users);
-  }
-})();
+//       users.push(
+//         new User(adminData.id, adminData.name, adminData.email, hashed, "admin")
+//       );
+//     }
+//     saveUsers(users);
+//   }
+// })();
 
 // ======= 7- validate errors =====>
 nameInput.addEventListener("input", () => {

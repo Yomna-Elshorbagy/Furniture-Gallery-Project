@@ -12,6 +12,7 @@ export const UsersTemplate = `
     </thead>
     <tbody id="usersTable"></tbody>
   </table>
+<div id="pagination" class="mt-3 d-flex justify-content-center align-items-center gap-1"></div>
 
   <!-- Edit User Modal -->
   <div class="modal fade" id="editUserModal" tabindex="-1" aria-hidden="true">

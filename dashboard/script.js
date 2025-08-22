@@ -7,13 +7,24 @@ import { UsersTemplate } from "./pages/users/userTemplete.js";
 import { categoriesTemplate } from "./pages/categories/categoriesTemplate.js";
 import { initCategoriesPage } from "./pages/categories/categories.js";
 
-const serverDataFiles = {
+let serverDataFiles = {
   products: "../server/data/products.json",
   categories: "../server/data/categories.json",
   orders: "../server/data/orders.json",
   users: "../server/data/users.json",
 };
 window.addEventListener("DOMContentLoaded", () => {
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  // ===> 1. If not logged in at all so login first
+  if (!loggedInUser) {
+    window.location.href = "../Auth/log-in/login.html";
+    return;
+  }
+  // ===> 2. If logged in but not admin/seller redirect im to home
+  if (loggedInUser.Role !== "admin" && loggedInUser.Role !== "seller") {
+    window.location.href = "../home/home.html";
+  }
   Object.entries(serverDataFiles).forEach(([key, url]) => {
     if (!localStorage.getItem(key)) {
       fetch(url)
@@ -29,6 +40,9 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(`${key} already in localStorage`);
     }
   });
+  countProducts();
+  countOrders();
+  countTotalRevenues();
 });
 document.getElementById("products").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = productsTemplate;
@@ -51,8 +65,33 @@ document.getElementById("orders").addEventListener("click", () => {
   initOrdersPage();
 });
 function countProducts() {
-  const countElement = document.getElementById("productCount");
-  if (countElement) {
-    // countElement.textContent =
-  }
+  let countElement = document.getElementById("productCount");
+  if (!countElement) return;
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  countElement.textContent = products.length;
+}
+
+function countOrders() {
+  let countElement = document.getElementById("ordersCount");
+  if (!countElement) return;
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+  countElement.textContent = orders.length;
+}
+
+function countTotalRevenues() {
+  let countElement = document.getElementById("totalRevenues");
+  if (!countElement) return;
+
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+  let total = orders
+    .filter((order) => order.Status === "Completed")
+    .reduce((sum, order) => {
+      let price = parseFloat(order.TotalPrice);
+      console.log(sum + (isNaN(price) ? 0 : price));
+      
+      return sum + (isNaN(price) ? 0 : price);
+    }, 0);
+
+  countElement.textContent = `$${total}`;
 }

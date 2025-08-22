@@ -1,13 +1,21 @@
 export async function initUsersPage() {
-  const tableBody = document.getElementById("usersTable");
+  let tableBody = document.getElementById("usersTable");
   let users = JSON.parse(localStorage.getItem("users")) || [];
+  let currentPage = 1;
+  let pageSize = 6;
+  let paginationContainer = document.getElementById("pagination");
 
   renderUsers();
 
   // ---- render users data table----
   function renderUsers() {
+    // slice users for pagination
+    let start = (currentPage - 1) * pageSize;
+    let end = start + pageSize;
+    let currentUsers = users.slice(start, end);
+
     tableBody.innerHTML = "";
-    users.forEach((user) => {
+    currentUsers.forEach((user) => {
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${user.ID}</td>
@@ -25,20 +33,65 @@ export async function initUsersPage() {
       `;
       tableBody.appendChild(row);
     });
+    attachEventListeners();
 
     // ------ attach events edit and remove
     document.querySelectorAll(".edit-user").forEach((btn) => {
       btn.addEventListener("click", handleEditUser);
     });
-    document.querySelectorAll(".del-user").forEach((btn) => {
-      btn.addEventListener("click", handleDeleteUser);
-    });
+    // document.querySelectorAll(".del-user").forEach((btn) => {
+    //   btn.addEventListener("click", handleDeleteUser);
+    // });
+    renderPagination();
   }
 
+  // ---- Pagination ----
+  function renderPagination() {
+    if (!paginationContainer) return;
+    paginationContainer.innerHTML = "";
+
+    const totalPages = Math.ceil(users.length / pageSize);
+
+    // Prev button
+    const prevBtn = document.createElement("button");
+    prevBtn.textContent = "Prev";
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.onclick = () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderUsers();
+      }
+    };
+    paginationContainer.appendChild(prevBtn);
+
+    // Page numbers
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      if (i === currentPage) btn.style.fontWeight = "bold";
+      btn.onclick = () => {
+        currentPage = i;
+        renderUsers();
+      };
+      paginationContainer.appendChild(btn);
+    }
+
+    // Next button
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = "Next";
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.onclick = () => {
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderUsers();
+      }
+    };
+    paginationContainer.appendChild(nextBtn);
+  }
   // ---- edit user ----
   function handleEditUser(e) {
     const userId = e.currentTarget.dataset.id;
-    const user = users.find((u) => u.ID == userId);
+    const user = users.find((u) => u.ID === userId);
 
     if (user) {
       document.getElementById("editUserId").value = user.ID;
@@ -47,7 +100,9 @@ export async function initUsersPage() {
       document.getElementById("editUserRole").value = user.Role;
 
       // Show modal
-      const modal = new bootstrap.Modal(document.getElementById("editUserModal"));
+      const modal = new bootstrap.Modal(
+        document.getElementById("editUserModal")
+      );
       modal.show();
     }
   }
@@ -72,14 +127,62 @@ export async function initUsersPage() {
     renderUsers();
 
     // hide modal
-    bootstrap.Modal.getInstance(document.getElementById("editUserModal")).hide();
+    bootstrap.Modal.getInstance(
+      document.getElementById("editUserModal")
+    ).hide();
   });
 
-  // ---- delete user ----
-  function handleDeleteUser(e) {
-    const userId = e.currentTarget.dataset.id;
-    users = users.filter((u) => u.ID != userId);
-    localStorage.setItem("users", JSON.stringify(users));
-    renderUsers();
+  // ===== Attach delete events =====
+  function attachEventListeners() {
+    // ---- delete user ----
+   document.querySelectorAll(".del-user").forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const id = Number(this.dataset.id);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // convert ID to number to match dataset
+        users = users.filter((u) => Number(u.ID) !== id);
+        localStorage.setItem("users", JSON.stringify(users));
+
+        // fix pagination if page empty
+        const totalPages = Math.ceil(users.length / pageSize);
+        if (currentPage > totalPages) currentPage = totalPages || 1;
+
+        renderUsers(); // re-render table + pagination
+        Swal.fire("Deleted!", "User has been deleted.", "success");
+      }
+    });
+  });
+});
+
+
+    // ---- edit user ----
+    document.querySelectorAll(".edit-btn").forEach((btn) => {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const id = Number(this.dataset.id);
+        const user = users.find((u) => u.ID === id);
+        if (!user) return;
+
+        document.getElementById("editUserId").value = user.ID;
+        document.getElementById("editUserName").value = user.Name;
+        document.getElementById("editUserEmail").value = user.Email;
+        document.getElementById("editUserRole").value = user.Role;
+
+        new bootstrap.Modal(document.getElementById("editUserModal")).show();
+      });
+    });
   }
 }

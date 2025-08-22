@@ -14,93 +14,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     />
-    <style>
-      :root {
-        --main-gradient: linear-gradient(135deg, #0d9488, #2563eb);
-        --card-bg: rgba(255, 255, 255, 0.7);
-        --dark-bg: #0f172a;
-      }
-
-      body {
-        background: linear-gradient(120deg, #f9fafb, #e0f2fe);
-        min-height: 100vh;
-        color: #1f2937;
-        font-family: "Segoe UI", sans-serif;
-        transition: all 0.3s ease;
-      }
-      body.dark {
-        background: var(--dark-bg);
-        color: #e2e8f0;
-      }
-
-      .bg-panel {
-        background: #255267 !important;
-        backdrop-filter: blur(12px);
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      }
-
-      .nav button {
-        border: none !important;
-        background: transparent !important;
-        color: #cbd5e1 !important;
-        transition: 0.3s;
-      }
-      .nav button:hover {
-        background: var(--main-gradient) !important;
-        color: #fff !important;
-        transform: translateX(6px);
-      }
-
-      .bg-card {
-        background: var(--card-bg) !important;
-        border-radius: 20px;
-        backdrop-filter: blur(15px);
-        box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1),
-          -8px -8px 20px rgba(255, 255, 255, 0.6);
-        transition: 0.4s;
-      }
-      .bg-card:hover {
-        transform: translateY(-6px) scale(1.03);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      table {
-        border-collapse: separate;
-        border-spacing: 0 10px;
-      }
-      table thead {
-        position: sticky;
-        top: 0;
-        background: var(--main-gradient);
-        color: white;
-      }
-      table tbody tr {
-        background: #fff;
-        transition: 0.3s;
-      }
-      table tbody tr:hover {
-        background: #dbeafe;
-        transform: scale(1.01);
-      }
-
-      .theme-toggle {
-        cursor: pointer;
-        border-radius: 50%;
-        padding: 8px;
-        transition: 0.3s;
-      }
-      .theme-toggle:hover {
-        background: rgba(0, 0, 0, 0.1);
-      }
-    </style>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="container-fluid">
       <div class="row min-vh-100">
         <aside class="col-md-3 col-lg-2 bg-panel p-3 d-flex flex-column">
           <div class="fw-bold fs-5 mb-3 text-white">
-            <i class="fa-solid fa-couch" style="color: #0d9488"></i> Furniture Gallery
+            <i class="fa-solid fa-couch" style="color: #0d9488"></i> Furniture
+            Gallery
           </div>
           <div
             class="p-3 rounded mb-3"
@@ -166,14 +88,14 @@
               <div class="card bg-card p-3 text-dark">
                 <i class="fa-solid fa-sack-dollar fs-4"></i>
                 <div>Total Revenue</div>
-                <div class="fw-bold fs-5">$0</div>
+                <div class="fw-bold fs-5" id="totalRevenues">$0</div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="card bg-card p-3 text-dark">
                 <i class="fa-solid fa-cart-shopping fs-4"></i>
                 <div>Orders</div>
-                <div class="fw-bold fs-5">0</div>
+                <div class="fw-bold fs-5" id="ordersCount">0</div>
               </div>
             </div>
             <div class="col-md-4">

@@ -18,6 +18,7 @@ export const ordersTemplate = `
     </thead>
     <tbody id="ordersTable"></tbody>
   </table>
+<div id="pagination" class="mt-3 d-flex justify-content-center align-items-center gap-1"></div>
 
   <!-- Order Modal -->
   <div class="modal fade" id="orderModal" tabindex="-1">

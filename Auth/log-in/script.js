@@ -73,9 +73,10 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 
     Swal.fire({
       title: "✅ Login Successful!",
-      text: loggedInUser.Role === "admin"
-        ? "Welcome back, Admin!"
-        : `Welcome back, ${loggedInUser.Name}!`,
+      text:
+        loggedInUser.Role === "admin" || loggedInUser.Role === "seller"
+          ? `Welcome back, ${loggedInUser.Role}!`
+          : `Welcome back, ${loggedInUser.Name}!`,
       icon: "success",
       showConfirmButton: false,
       timer: 2500,
@@ -90,7 +91,11 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
         }
       },
     }).then(() => {
-      window.location.href = "../../home/home.html";
+      if (loggedInUser.Role === "admin" || loggedInUser.Role === "seller") {
+        window.location.href = "../../dashboard/dashboard.html";
+      } else {
+        window.location.href = "../../home/home.html";
+      }
     });
   } else {
     loginError.textContent = "Invalid email or password.";

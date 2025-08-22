@@ -24,7 +24,7 @@
     "Name": "Eman Ahmed",
     "Email": "eman@example.com",
     "Password": "$2a$10$A4mxxOoIiEMQMaw7aH4mNuE7nSvGe39ijjWMQbysUnWZCtbsBJNnu",
-    "Role": "seller",
+    "Role": "admin",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -40,9 +40,9 @@
     "orderHistory": []
   },
     {
-    "ID": "2",
+    "ID": "3",
     "Name": "Abdelhameed Mossad",
-    "Email": "abdelhamedd@gmail.com",
+    "Email": "abdelhamed@gmail.com",
     "Password": "$2a$10$ozNMD4Na/T8vKJjEriByN.11zQHNGFfvhtdfj.QT/jDP3qHFOeKRq",
     "Role": "admin",
     "cart": [],
