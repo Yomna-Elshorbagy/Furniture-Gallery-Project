@@ -61,3 +61,47 @@ body {
   width: 180px !important;
   transform: scale(0.9);
 }
+
+/* *************** product details *************** */
+.sub-images .blockCont {
+  overflow: hidden;
+  border-color: #312d2d;
+  border-radius: 4px;
+}
+.sub-images img {
+  width: 100%;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  transition: transform 1.5s ease !important;
+}
+.sub-images img:hover {
+  transform: scale(1.2) !important;
+}
+.main-image img {
+  width: 100%;
+  border-radius: 8px;
+}
+.old-price {
+  text-decoration: line-through;
+  color: gray;
+}
+.btnHover:hover {
+  background-color: #c7b9a9 !important;
+}
+.social-icons a {
+  font-size: 1.4rem;
+  margin-right: 10px;
+  color: #333;
+  display: inline-block;
+  transition: color 0.3s, transform 0.3s ease !important;
+}
+
+.social-icons a:hover {
+  color: #635f5f;
+  transform: scale(1.3) !important;
+}
+.text-color {
+  color: #ddbc97;
+}
