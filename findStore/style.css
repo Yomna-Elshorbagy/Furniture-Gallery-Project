@@ -19,7 +19,7 @@ body {
   z-index: 2000;
   width: 100%;
   transition: all 0.3s ease-in-out;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   background: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -63,21 +63,22 @@ body {
   transform: scale(0.9);
 }
 /*---------------- header section------------ */
-.contact{
+.contact {
   color: #212129;
   font-family: 400;
   font-size: 20px;
   line-height: 33px;
   letter-spacing: 3px;
 }
-.loc{
+.loc {
   color: #212129;
   font-family: 500;
   font-size: 30px;
   line-height: normal;
 }
 .header-img {
-  background: url("../findStore/images/1_1500x.webp") no-repeat center center/cover;
+  background: url("../findStore/images/1_1500x.webp") no-repeat center
+    center/cover;
   height: 400px;
   margin-top: 20px;
   border-radius: 10px;
@@ -98,7 +99,12 @@ body {
 .main-color {
   color: #e65f78;
 }
-
+.hoverLink {
+  color: #9c8367 !important;
+}
+.hoverLink:hover {
+  color: #b9ac9d !important;
+}
 /* ......................... start social-gallery.......................  */
 .head-section .main {
   font-size: 1.875rem;
@@ -346,4 +352,3 @@ footer a:hover {
   width: auto;
   max-width: 100%;
 }
-
