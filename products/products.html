@@ -128,14 +128,35 @@
 
 
 
-            <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#favModal">
-              <i class="fa-solid fa-heart text-black m-2"></i>
+            <a href="# " class="text-decoration-none position-relative" data-bs-toggle="modal" data-bs-target="#favModal">
+              <i class="fa-solid fa-heart text-black m-2">
+
+                 <span
+                      class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
+                      id="favBadge"
+                    >
+                      0
+                      <span class="visually-hidden"
+                        >number of products in favorites</span
+                      >
+                    </span>
+              </i>
             </a>
 
             <a href="#" class="text-decoration-none">
               <i class="fa-solid fa-user text-black m-2"></i>
             </a>
-            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#" class="position-relative"><i class="fa-solid fa-cart-shopping">
+               <span
+                      class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
+                      id="cartbadge"
+                    >
+                      0
+                      <span class="visually-hidden"
+                        >number of products in card</span
+                      >
+                    </span>
+            </i></a>
 
             <a href="../Auth/log-in/login.html" id="loginBtn" class="btn btn-outline-success">login</a>
             <button href="../log-in/login.html" id="logoutBtn" class="btn btn-outline-danger d-none">
@@ -147,6 +168,61 @@
     </div>
 
   </header>
+
+
+
+   <!---------------------- favorite modal ---------------------->
+
+      <div class="modal fade" id="favModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div
+              class="d-flex flex-row bg-black d-flex justify-content-end align-items-center gap-3"
+            >
+              <button class="btn bg-black text-white opacity-100 border-0">
+                <i class="bi bi-person-fill-add text-white"></i>
+                <span class="text-white" id="favoritelabel"
+                  >example@gmail.com</span
+                >
+              </button>
+              <button
+                type="button"
+                class="btn-close btn-close-white opacity-100 me-1"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body text-center">
+              <div class="d-flex flex-row justify-content-between mt-3 mx-3">
+                <h5>Favorites</h5>
+                <i class="bi bi-three-dots-vertical"></i>
+              </div>
+              <hr />
+              <div id="favmodalbody"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Toast container -->
+      <div class="toast-container position-fixed top-0 start-0 p-3">
+        <div
+          id="favToast"
+          class="toast align-items-center text-bg-success border-0"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+        >
+          <div class="d-flex">
+            <div class="toast-body" id="favToastBody">Added to favorites!</div>
+            <button
+              type="button"
+              class="btn-close btn-close-white me-2 m-auto"
+              data-bs-dismiss="toast"
+            ></button>
+          </div>
+        </div>
+      </div>
+
   <!----------------------  products padg ---------------------------->
   <section class="d-flex flex-column px-3 px-md-0 text-center pt-5" id="homeproducts">
     <h3 class="pt-5">BROWSE OUR FEATURED PRODUCTS</h3>
