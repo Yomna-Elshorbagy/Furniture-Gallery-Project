@@ -102,15 +102,22 @@ button.hover-button::after {
     transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
-.navbar .active {
-  color: #c59d5f !important;
-  border-color: #c59d5f !important;
+ .active {
+  color: #c59d5f ;
+  border-color: #c59d5f ;
 }
 
 .nav .nav-logo img {
   width: 180px !important;
   transform: scale(0.9);
 }
+
+#categorySearch{
+    border: none;
+    border-bottom: 2px solid #c7b9a9 ;
+    
+}
+
 /* -------------End header modal style ---------------- */
 
 
@@ -180,7 +187,7 @@ button.hover-button::after {
 .asideCategory {
     /* border-right: 1.5px solid #2125294d; */
     position: fixed;
-    top: 370px;
+    top: 330px;
     left: 0px;
 }
 
