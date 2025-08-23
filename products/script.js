@@ -105,7 +105,7 @@ function drowProduct(product, productList) {
   let card = document.createElement("div");
   card.className = "col-6 col-md-3 mb-4";
 
-    card.innerHTML = `
+  card.innerHTML = `
         <div class="card product-card">
             <div class="image-scale">
                  <button class="favorite-btn ${isFavorite ? "active" : ""}" data-id="${product.id}">
@@ -117,11 +117,10 @@ function drowProduct(product, productList) {
                 <h6 class="card-title text-start">${product.name}</h6>
                 <p class="card-text text-start">
                     <span class="newprice ">$${product.price}</span>
-                    ${
-                      product.oldPrice
-                        ? `<span class="old-price ms-2 text-secondary">${product.oldPrice}</span>`
-                        : ""
-                    }
+                    ${product.oldPrice
+      ? `<span class="old-price ms-2 text-secondary">${product.oldPrice}</span>`
+      : ""
+    }
                 </p>
             </div>
         </div>
@@ -131,7 +130,7 @@ function drowProduct(product, productList) {
   // card.addEventListener("click", () => {
   //   window.location.href = `#${product.id}`;
   // });
-card.querySelector(".product-card").addEventListener("click", (e) => {
+  card.querySelector(".product-card").addEventListener("click", (e) => {
     if (!e.target.closest(".favorite-btn")) {
       window.location.href = `../product details/proDetails.html?id=${product.id}`;
     }
@@ -192,7 +191,13 @@ function filterfun() {
 
   console.log(+min);
   console.log(+max);
+  // if (+min <=0 || +max<=0) {
 
+  //   products.forEach((pro) => {
+  //     drowProduct(pro, productList);
+
+  //   });
+  // }
   products.forEach((pro) => {
     if (pro.price > +min && pro.price < +max) {
       console.log(pro.price);
@@ -216,30 +221,30 @@ var sortbtnMintoMAx = document.getElementById("sortbtnMintoMAx");
 
 
 sortbtnMintoMAx.addEventListener("click", () => {
-    let productList = document.getElementById("product-list");
-    productList.innerHTML = "";
+  let productList = document.getElementById("product-list");
+  productList.innerHTML = "";
 
-    let AllproductSorted = []
-    let categorySorted = []
-    const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get("category");
+  let AllproductSorted = []
+  let categorySorted = []
+  const urlParams = new URLSearchParams(window.location.search);
+  const category = urlParams.get("category");
 
-    // لو مفيش category اعرض الكل
-    if (!category) {
-        AllproductSorted = products.slice();
-        AllproductSorted.sort((a, b) => a.price - b.price);
-        AllproductSorted.forEach(pro => {
-            drowProduct(pro, productList)
-        })
-    } else {
-        categorySorted = products.filter(pro => pro.category === category)
-        console.log(categorySorted);
+  // لو مفيش category اعرض الكل
+  if (!category) {
+    AllproductSorted = products.slice();
+    AllproductSorted.sort((a, b) => a.price - b.price);
+    AllproductSorted.forEach(pro => {
+      drowProduct(pro, productList)
+    })
+  } else {
+    categorySorted = products.filter(pro => pro.category === category)
+    console.log(categorySorted);
 
-        categorySorted.sort((a, b) => a.price - b.price);
-        categorySorted.forEach(pro => {
-            drowProduct(pro, productList)
-        })
-    }
+    categorySorted.sort((a, b) => a.price - b.price);
+    categorySorted.forEach(pro => {
+      drowProduct(pro, productList)
+    })
+  }
 });
 
 
@@ -250,33 +255,33 @@ var sortbtnMaxtoMin = document.getElementById("sortbtnMaxtoMin");
 
 
 sortbtnMaxtoMin.addEventListener("click", () => {
-    let productList = document.getElementById("product-list");
-    productList.innerHTML = "";
+  let productList = document.getElementById("product-list");
+  productList.innerHTML = "";
 
-    let AllproductSorted = []
-    let categorySorted = []
+  let AllproductSorted = []
+  let categorySorted = []
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get("category");
+  const urlParams = new URLSearchParams(window.location.search);
+  const category = urlParams.get("category");
 
 
 
-    // لو مفيش category اعرض الكل
-    if (!category) {
-        AllproductSorted = products.slice();
-        AllproductSorted.sort((a, b) => b.price - a.price);
-        AllproductSorted.forEach(pro => {
-            drowProduct(pro, productList)
-        })
-    } else {
-        categorySorted = products.filter(pro => pro.category === category)
-        console.log(categorySorted);
+  // لو مفيش category اعرض الكل
+  if (!category) {
+    AllproductSorted = products.slice();
+    AllproductSorted.sort((a, b) => b.price - a.price);
+    AllproductSorted.forEach(pro => {
+      drowProduct(pro, productList)
+    })
+  } else {
+    categorySorted = products.filter(pro => pro.category === category)
+    console.log(categorySorted);
 
-        categorySorted.sort((a, b) => b.price - a.price);
-        categorySorted.forEach(pro => {
-            drowProduct(pro, productList)
-        })
-    }
+    categorySorted.sort((a, b) => b.price - a.price);
+    categorySorted.forEach(pro => {
+      drowProduct(pro, productList)
+    })
+  }
 });
 
 
@@ -344,7 +349,7 @@ function renderPagination() {
 
 // تحديث البادج بتاع favorites
 
-    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
+let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
 
 // رسم الـ favorites في المودال
 function renderFavoriteModal() {
@@ -378,24 +383,21 @@ function renderFavoriteModal() {
       card.className = "cardstyle";
       card.innerHTML = `
         <div class="card product-card">
-          <img src="${product.image}" class="card-img-top" alt="${
-        product.name
-      }">
+          <img src="${product.image}" class="card-img-top" alt="${product.name
+        }">
           <div class="card-body text-center ">
             <div class="d-flex flex-column text-start mb-0">
               <h5 class=" text-truncate producttitlefav">${product.name}</h5>
               <h4 class="card-text">
                 <h4 class="newprice fw-bold text-danger">$${product.price}</h4>
-                ${
-                  product.oldPrice
-                    ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
-                    : ""
-                }
+                ${product.oldPrice
+          ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
+          : ""
+        }
               </h4>
             </div>
-            <button class="btn btn-dark w-100 btnaddtocard" data-id="${
-              product.id
-            }">ADD TO CART</button>
+            <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id
+        }">ADD TO CART</button>
           </div>
         </div>
       `;
@@ -448,10 +450,10 @@ document.addEventListener("click", function (e) {
     let productToAdd = products.find((p) => p.id === productId);
 
     if (productToAdd && !loggedInUser.cart.some((p) => p.id === productId)) {
-       let productCopy = { ...productToAdd };
-    productCopy.quantity = 1;
-    loggedInUser.cart.push(productCopy);
-      
+      let productCopy = { ...productToAdd };
+      productCopy.quantity = 1;
+      loggedInUser.cart.push(productCopy);
+
     }
 
     localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
@@ -469,52 +471,52 @@ document.addEventListener("click", (e) => {
   if (!btn) return;
   e.stopPropagation();
   let products = JSON.parse(localStorage.getItem("products")) || [];
-let id = parseInt(btn.getAttribute("data-id"));
+  let id = parseInt(btn.getAttribute("data-id"));
   let product = products.find(p => p.id === id);
   let icon = btn.querySelector("i");
-if (!product) return;
+  if (!product) return;
 
   let toastEl = document.getElementById("favToast");
   let toastBody = document.getElementById("favToastBody");
   let toast = new bootstrap.Toast(toastEl);
 
 
-  
+
 
   if (loggedInUser.wishlist.some(p => p.id === id)) {
-      // remove from favorites
-      loggedInUser.wishlist = loggedInUser.wishlist.filter((p) => p.id !== id);
-      btn.classList.remove("active");
-      icon.classList.remove("bi-heart-fill");
-      icon.classList.add("bi-heart");
+    // remove from favorites
+    loggedInUser.wishlist = loggedInUser.wishlist.filter((p) => p.id !== id);
+    btn.classList.remove("active");
+    icon.classList.remove("bi-heart-fill");
+    icon.classList.add("bi-heart");
 
-      toastBody.innerHTML = `<p class=" text-black text-center ">${product.name} has been removed from Favorites!`;
-      toastEl.className =
-        "opacity-100 toast align-items-center border-0 toaststyle";
-    } else {
-      // add to favorites
-      loggedInUser.wishlist.push(product);
-      btn.classList.add("active");
-      icon.classList.remove("bi-heart");
-      icon.classList.add("bi-heart-fill");
+    toastBody.innerHTML = `<p class=" text-black text-center ">${product.name} has been removed from Favorites!`;
+    toastEl.className =
+      "opacity-100 toast align-items-center border-0 toaststyle";
+  } else {
+    // add to favorites
+    loggedInUser.wishlist.push(product);
+    btn.classList.add("active");
+    icon.classList.remove("bi-heart");
+    icon.classList.add("bi-heart-fill");
 
-      toastBody.innerHTML = `<p class="text-black text-center "> ${product.name}  has been added to Favorites!</p>`;
-      toastEl.className =
-        "opacity-100 toast align-items-center  border-0 toaststyle";
-    }
+    toastBody.innerHTML = `<p class="text-black text-center "> ${product.name}  has been added to Favorites!</p>`;
+    toastEl.className =
+      "opacity-100 toast align-items-center  border-0 toaststyle";
+  }
 
-    // Update localStorage
+  // Update localStorage
   localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
-    // Update the modal content
-    renderFavoriteModal();
+  // Update the modal content
+  renderFavoriteModal();
 
-    updateFavBadge();
+  updateFavBadge();
 
-    // Show toast
-    toast.show();
-  });
-  let favBadge = document.getElementById("favBadge");
+  // Show toast
+  toast.show();
+});
+let favBadge = document.getElementById("favBadge");
 function updateFavBadge() {
   favBadge.textContent =
     loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
@@ -522,7 +524,7 @@ function updateFavBadge() {
 
 
 function updateCartBadge() {
-    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { cart: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { cart: [] };
 
   let cartBadge = document.getElementById("cartbadge");
   if (cartBadge) {
