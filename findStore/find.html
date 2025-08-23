@@ -15,7 +15,7 @@
 
 <body>
   <main>
-    <div class="nav">
+    <!-- <div class="nav">
       <nav class="navbar navbar-expand-lg navbar-dark" style="width: 100%">
         <div class="container-fluid">
           <a class="navbar-brand nav-logo" href="../home/home.html"><img
@@ -61,10 +61,84 @@
           <hr />
         </div>
       </nav>
+    </div> -->
+
+    <header>
+    <div class="nav position-fixed w-100 ">
+      <nav class="navbar navbar-expand-lg bg-white" style="width: 100%">
+        <div class="container-fluid">
+          <a class=" navbar-brand " href="../home/home.html"><img
+              src="https://thefurnituregallery.com.au/cdn/shop/files/TFG_logo_200x.png?v=1655618786" alt=""
+              class="w-75" /></a>
+
+          <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link text-black " aria-current="page" href="../home/home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-black " href="../products/products.html">Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-black" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-black active" href="../contact-us/contact.html">Contact US</a>
+              </li>
+            </ul>
+          </div>
+          <div class="logo d-none d-lg-block">
+            <!-- <button class="hover-button ms-2 px-3 py-2">
+              <a href="../findStore/find.html">Find a store</a>
+            </button> -->
+            <a href="# " class="text-decoration-none position-relative" data-bs-toggle="modal"
+              data-bs-target="#favModal">
+              <i class="fa-solid fa-heart text-black m-2">
+                <span
+                  class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
+                  id="favBadge">
+                  0
+                  <span class="visually-hidden">number of products in favorites</span>
+                </span>
+              </i>
+            </a>
+
+            <a href="#" class="text-decoration-none">
+              <i class="fa-solid fa-user text-black m-2"></i>
+            </a>
+            <a href="../cart/cart.html" class="position-relative"><i class="fa-solid fa-cart-shopping">
+                <span
+                  class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
+                  id="cartbadge">
+                  0
+                  <span class="visually-hidden">number of products in card</span>
+                </span>
+              </i></a>
+
+            <!-- <a href="../Auth/log-in/login.html" id="loginBtn" class="btn btn-outline-success">login</a> -->
+            <button class="hover-button ms-2 px-3 py-2">
+              <a href="../Auth/log-in/login.html" id="loginBtn">login</a>
+
+            </button>
+            <!-- <button href="../log-in/login.html" id="logoutBtn" class="btn btn-outline-danger d-none">
+              Log out
+            </button> -->
+            <button href="../log-in/login.html" id="logoutBtn" class="hover-button-main d-none">
+              Log out
+            </button>
+          </div>
+        </div>
+      </nav>
     </div>
+
+  </header>
     <!-------------------------------------start header section--------------------------- -->
     <header class=" text-center">
-      <div class="container pt-3 mb-5 ">
+      <div class="container pt-5 mb-5 ">
         <p class="mt-5 contact "> CONTACT US </p>
         <h4 class="loc">LOCATOINS TO FALL IN LOVE WITH</h4>
       </div>
