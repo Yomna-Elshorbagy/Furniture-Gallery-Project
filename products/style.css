@@ -105,9 +105,10 @@ button.hover-button::after {
 
 
 .navbar .active {
-  color: #c59d5f !important;
-  border-color: #c59d5f !important;
+    color: #c59d5f !important;
+    border-color: #c59d5f !important;
 }
+
 .nav .nav-logo img {
     width: 180px !important;
     transform: scale(0.9);
