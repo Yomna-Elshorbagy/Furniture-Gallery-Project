@@ -38,6 +38,13 @@ document.getElementById("editButton").addEventListener("click", () => {
   let email = document.getElementById("email").value.trim();
   let newPassword = document.getElementById("password").value.trim();
 
+    if (!firstName && !lastName && !email && !newPassword) {
+    let toastEl = document.getElementById("ToastNoUpdate");
+    toastEl.classList.add("bg-danger");
+    let toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+    toast.show();
+    return;
+  }
   // 2- ===> VALIDATIONS ===
   if (firstName && !validateName(firstName)) {
     document.getElementById("firstNameFeedback").textContent =
@@ -107,10 +114,10 @@ document.getElementById("editButton").addEventListener("click", () => {
   });
 
   //====> Show Toast
-  let toastEl = document.getElementById("ToastProfile");
-  toastEl.classList.add("styleToast")
-  let toast = new bootstrap.Toast(toastEl, { delay: 3000 });
-  toast.show();
+    let toastEl = document.getElementById("ToastProfile");
+    toastEl.classList.add("styleToast");
+    let toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+    toast.show();
 });
 
 // ====> Toggle Password Visibility ===
