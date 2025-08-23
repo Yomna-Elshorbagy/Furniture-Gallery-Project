@@ -25,10 +25,17 @@ window.addEventListener("DOMContentLoaded", () => {
 ////////// build productcard from localstorage
 let products = JSON.parse(localStorage.getItem("products")) || [];
 // let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
-  wishlist: [],
-  cart: [],
-};
+
+// cart badge
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let loggedInUserId = localStorage.getItem("loggedInUserId");
+let userIndex = users.findIndex((user) => user.ID === loggedInUserId);
+let loggedInUser = users[userIndex];
+
+function saveUsers() {
+  localStorage.setItem("users", JSON.stringify(users));
+  localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+}
 
 let productList = document.getElementById("product-list");
 let homeproducts = products.slice(0, 8);
@@ -147,7 +154,7 @@ document.addEventListener("click", function (e) {
       loggedInUser.cart.push(productToAdd);
     }
 
-    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+    saveUsers();
     updateCartBadge();
 
     window.location.href = "../cart/cart.html";
@@ -234,8 +241,7 @@ allfavoritebtn.forEach((btn) => {
     }
 
     // Update localStorage
-    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
-
+    saveUsers();
     // Update the modal content
     renderFavoriteModal();
 
@@ -257,7 +263,7 @@ function updateCartBadge() {
 
 renderFavoriteModal();
 
-  // ===>redirect to products page with category query 
+// ===>redirect to products page with category query
 function goToCategory(categoryName) {
   window.location.href = `../products/products.html?category=${encodeURIComponent(
     categoryName
