@@ -90,8 +90,8 @@ function showProductDetails(products) {
       <button class="btn btn-dark w-100 mb-2 mt-2 py-2 " id="gotocart">Add to Cart</button>
       <button class="btn  hover-button w-100 mt-2 py-2">ADD TO WISHLIST</button>
       <button class="btn  hover-button w-100 mt-2 py-2">FIND IN STORES</button>
-     <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#questionModal">  Ask A QUESTIONS</button>
-     <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#deliveryModal"> GET DELIVERY ESTIMATE</button>
+     <button class="btn hover-button w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#questionModal">  Ask A QUESTIONS</button>
+     <button class="btn hover-button w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#deliveryModal"> GET DELIVERY ESTIMATE</button>
        <div class="accordion py-3" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header">
