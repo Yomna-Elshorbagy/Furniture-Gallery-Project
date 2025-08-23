@@ -24,6 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 ////////// build productcard from localstorage
 let products = JSON.parse(localStorage.getItem("products")) || [];
+// let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
   wishlist: [],
   cart: [],
@@ -160,8 +161,6 @@ if (loggedInUser && loggedInUser.Email) {
   favoriteLabel.textContent = "example@gmail.com";
 }
 
-// check if user logged in or not to access userData links
-
 document.addEventListener("click", (e) => {
   let link = e.target.closest("a.userData");
   if (!link) return;
@@ -257,3 +256,10 @@ function updateCartBadge() {
 }
 
 renderFavoriteModal();
+
+  // ===>redirect to products page with category query 
+function goToCategory(categoryName) {
+  window.location.href = `../products/products.html?category=${encodeURIComponent(
+    categoryName
+  )}`;
+}

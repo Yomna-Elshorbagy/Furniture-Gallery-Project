@@ -1,12 +1,12 @@
 let signedIn;
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const emailError = document.getElementById("emailError");
-const passwordError = document.getElementById("passwordError");
-const loginError = document.getElementById("loginError");
-const submitBtn = document.getElementById("submitBtn");
+let emailInput = document.getElementById("email");
+let passwordInput = document.getElementById("password");
+let emailError = document.getElementById("emailError");
+let passwordError = document.getElementById("passwordError");
+let loginError = document.getElementById("loginError");
+let submitBtn = document.getElementById("submitBtn");
 
 function validateEmailExists(email) {
   return users.some((user) => user.Email.toLowerCase() === email.toLowerCase());
@@ -70,6 +70,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     );
 
     localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+    localStorage.setItem("loggedInUserId", loggedInUser.ID);
 
     Swal.fire({
       title: "✅ Login Successful!",
