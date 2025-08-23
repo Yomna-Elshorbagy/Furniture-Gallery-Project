@@ -102,12 +102,12 @@ if (cartproducts.length === 0) {
       <td class="text-center">
         <div class="d-flex justify-content-center align-items-center">
           <button class="btn btn-sm btn-outline-secondary minus-btn" data-id="${product.id}">-</button>
-          <span class="mx-2 quantity" id="quantity-${product.id}">1</span>
+          <span class="mx-2 quantity" id="quantity-${product.id}">${product.quantity}</span>
           <button class="btn btn-sm btn-outline-secondary plus-btn" data-id="${product.id}">+</button>
         </div>
         <button class="btn btn-link text-muted p-0 remove-btn mt-3" data-id="${product.id}">REMOVE</button>
       </td>
-      <td class="text-end" id="total-${product.id}">$${product.price}</td>
+      <td class="text-end" id="total-${product.id}">$${product.price * product.quantity}</td>
     `;
     tbody.appendChild(row);
   });
@@ -130,6 +130,9 @@ if (cartproducts.length === 0) {
     if (btn.classList.contains("plus-btn") || btn.classList.contains("minus-btn")) {
       quantitySpan.textContent = quantity;
       totalCell.textContent = `$${product.price * quantity}`;
+       product.quantity = quantity;
+         localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+
       updateGrandTotal();
     }
 

@@ -87,7 +87,7 @@ function showProductDetails(products) {
         <input type="text" id="quantity" value="1" class="form-control text-center" style="width:70px;" readonly>
         <button class="btn btn-outline-secondary ms-2" id="increase">+</button>
       </div>
-      <button class="btn btn-dark w-100 mb-2 mt-2 py-2 " id="gotocart">Add to Cart</button>
+      <button class="btn btn-dark w-100 mb-2 mt-2 py-2 btnaddtocard" data-id="${product.id}">Add to Cart</button>
       <button class="btn  hover-button w-100 mt-2 py-2">ADD TO WISHLIST</button>
       <button class="btn  hover-button w-100 mt-2 py-2">FIND IN STORES</button>
      <button class="btn hover-button w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#questionModal">  Ask A QUESTIONS</button>
@@ -162,13 +162,33 @@ function showProductDetails(products) {
   });
 
 // go to cart page
-document.getElementById("gotocart").addEventListener("click", function () {
-  let cartArr = JSON.parse(localStorage.getItem("cartproducts")) || [];
-  let productId = product.id;
-  if (!cartArr.includes(productId)) {
-    cartArr.push(productId);
-    localStorage.setItem("cartproducts", JSON.stringify(cartArr));
+document.addEventListener("click", function (e) {
+  
+  if (e.target.classList.contains("btnaddtocard")) {
+    let productId = parseInt(e.target.getAttribute("data-id"));
+        let quantityInput = document.getElementById("quantity"); // جيب قيمة input
+
+
+    if (!loggedInUser.cart) {
+      loggedInUser.cart = [];
+    }
+
+    // هات المنتج نفسه من الـ products
+    let productToAdd = products.find(p => p.id === productId);
+
+    if (productToAdd && !loggedInUser.cart.some(p => p.id === productId)) {
+loggedInUser.cart.push({
+  ...productToAdd,              // كل بيانات المنتج
+  quantity: Number(quantityInput.value)  // الكمية
+});    }
+
+    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+
+
+    window.location.href = "../cart/cart.html";
+    console.log(loggedInUser.wishlist);
+    
   }
-  window.location.href = "../cart/cart.html";
 });
+
 }
