@@ -31,7 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // cart badge
 function updateCartBadge() {
-  let cartproducts = JSON.parse(localStorage.getItem("cartproducts")) || [];
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  let cartproducts = loggedInUser.cart;
   let cartBadge = document.getElementById("cartbadge");
   if (cartBadge) {
     cartBadge.textContent = cartproducts.length;
@@ -40,7 +41,8 @@ function updateCartBadge() {
 // build cart body
 
 let cartbody = document.getElementById("cartbody");
-let cartproducts = JSON.parse(localStorage.getItem("cartproducts")) || [];
+loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { cart: [] };
+let cartproducts = loggedInUser.cart;
 
 if (cartproducts.length === 0) {
   let noproductsdiv = document.createElement("div");
@@ -49,6 +51,7 @@ if (cartproducts.length === 0) {
     <h4 class="text-uppercase fw-light emptycarttitle">Your cart is empty</h4>
     <button class="emptycartbtn">Shop our products</button>`;
   cartbody.appendChild(noproductsdiv);
+
   let shopBtn = document.querySelector(".emptycartbtn");
   if (shopBtn) {
     shopBtn.addEventListener("click", () => {
@@ -73,9 +76,7 @@ if (cartproducts.length === 0) {
     </thead>
     <tbody></tbody>
   `;
-
   let tbody = table.querySelector("tbody");
-  let products = JSON.parse(localStorage.getItem("products"));
 
   function updateGrandTotal() {
     let totals = document.querySelectorAll("[id^='total-']");
@@ -86,80 +87,59 @@ if (cartproducts.length === 0) {
     document.getElementById("grand-total").textContent = `$${total}`;
   }
 
-  cartproducts.forEach((id) => {
-    let product = products.find((p) => p.id === id);
-    if (product) {
-      let row = document.createElement("tr");
-      row.innerHTML = `
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="${product.image}" alt="${product.name}" class="me-3" style="width:80px; height:80px; object-fit:cover;">
-            <div>
-              <h6 class="mb-1 fw-light">${product.name}</h6>
-              <p class="mb-0 text-muted">$${product.price}</p>
-            </div>
+  cartproducts.forEach((product) => {
+    let row = document.createElement("tr");
+    row.innerHTML = `
+      <td>
+        <div class="d-flex align-items-center">
+          <img src="${product.image}" alt="${product.name}" class="me-3" style="width:80px; height:80px; object-fit:cover;">
+          <div>
+            <h6 class="mb-1 fw-light">${product.name}</h6>
+            <p class="mb-0 text-muted">$${product.price}</p>
           </div>
-        </td>
-        <td class="text-center">
-          <div class="d-flex justify-content-center align-items-center">
-            <button class="btn btn-sm btn-outline-secondary minus-btn" data-id="${product.id}">-</button>
-            <span class="mx-2 quantity" id="quantity-${product.id}">1</span>
-            <button class="btn btn-sm btn-outline-secondary plus-btn" data-id="${product.id}">+</button>
-          </div>
-          <button class="btn btn-link text-muted p-0 remove-btn mt-3" data-id="${product.id}">REMOVE</button>
-        </td>
-        <td class="text-end" id="total-${product.id}">$${product.price}</td>
-      `;
-      tbody.appendChild(row);
-    }
+        </div>
+      </td>
+      <td class="text-center">
+        <div class="d-flex justify-content-center align-items-center">
+          <button class="btn btn-sm btn-outline-secondary minus-btn" data-id="${product.id}">-</button>
+          <span class="mx-2 quantity" id="quantity-${product.id}">1</span>
+          <button class="btn btn-sm btn-outline-secondary plus-btn" data-id="${product.id}">+</button>
+        </div>
+        <button class="btn btn-link text-muted p-0 remove-btn mt-3" data-id="${product.id}">REMOVE</button>
+      </td>
+      <td class="text-end" id="total-${product.id}">$${product.price}</td>
+    `;
+    tbody.appendChild(row);
   });
-
-  let grandTotalDiv = document.createElement("div");
-  grandTotalDiv.className = "text-end mt-3 alltotal";
-  grandTotalDiv.innerHTML = ` Total: <span id="grand-total"></span>`;
-
-  let divbtn = document.createElement("div");
-  divbtn.className = "d-flex flex-row justify-content-end checkoutbtn";
-  let checkoutbtn = document.createElement("button");
-  checkoutbtn.classList = " emptycartbtn ";
-  checkoutbtn.textContent = "CHECKOUT";
-
-  divbtn.appendChild(checkoutbtn);
 
   tbody.addEventListener("click", function (event) {
     let btn = event.target.closest("button");
     if (!btn) return;
 
     let id = parseInt(btn.dataset.id);
-    let product = products.find((p) => p.id === id);
+    let product = loggedInUser.cart.find(p => p.id === id);
+    if (!product) return;
 
-    if (
-      btn.classList.contains("plus-btn") ||
-      btn.classList.contains("minus-btn")
-    ) {
-      let quantitySpan = document.getElementById(`quantity-${id}`);
-      let totalCell = document.getElementById(`total-${id}`);
-      let quantity = parseInt(quantitySpan.textContent);
+    let quantitySpan = document.getElementById(`quantity-${id}`);
+    let totalCell = document.getElementById(`total-${id}`);
+    let quantity = parseInt(quantitySpan.textContent);
 
-      if (btn.classList.contains("plus-btn")) {
-        quantity++;
-      } else if (btn.classList.contains("minus-btn") && quantity > 1) {
-        quantity--;
-      }
+    if (btn.classList.contains("plus-btn")) quantity++;
+    if (btn.classList.contains("minus-btn") && quantity > 1) quantity--;
 
+    if (btn.classList.contains("plus-btn") || btn.classList.contains("minus-btn")) {
       quantitySpan.textContent = quantity;
       totalCell.textContent = `$${product.price * quantity}`;
       updateGrandTotal();
     }
 
     if (btn.classList.contains("remove-btn")) {
-      cartproducts = cartproducts.filter((pid) => pid !== id);
-      localStorage.setItem("cartproducts", JSON.stringify(cartproducts));
-
+      loggedInUser.cart = loggedInUser.cart.filter(p => p.id !== id);
+      localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
       btn.closest("tr").remove();
       updateCartBadge();
 
-      if (cartproducts.length === 0) {
+      if (loggedInUser.cart.length === 0) {
         cartbody.innerHTML = "";
         let noproductsdiv = document.createElement("div");
         noproductsdiv.className = "emptycart";
@@ -173,10 +153,19 @@ if (cartproducts.length === 0) {
     }
   });
 
+  let grandTotalDiv = document.createElement("div");
+  grandTotalDiv.className = "text-end mt-3 alltotal";
+  grandTotalDiv.innerHTML = ` Total: <span id="grand-total"></span>`;
   cartbody.appendChild(table);
   cartbody.appendChild(grandTotalDiv);
-  cartbody.appendChild(divbtn);
   updateGrandTotal();
-}
 
-updateCartBadge();
+  let checkoutdiv =document.createElement("div");
+  checkoutdiv.className ="d-flex flex-row justify-content-end"
+
+  let checkoutBtn = document.createElement("button");
+  checkoutBtn.className="btn checkoutbtn emptycartbtn";
+  checkoutBtn.textContent ="CHECKOUT ";
+  checkoutdiv.appendChild(checkoutBtn);
+  cartbody.appendChild(checkoutdiv);
+}
