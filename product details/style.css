@@ -140,3 +140,31 @@ body {
   border: 1px solid gray;
   transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86) !important;
 }
+
+
+
+.custom-margin {
+  margin-top: 150px; 
+}
+
+.modal-body {
+  padding: 20px; 
+}
+ 
+.modal-dialog {
+  max-width: 600px;
+   padding: 30px; 
+}
+
+
+#questionModal .modal-dialog {
+  margin-top: 100px;
+}
+
+.form-label {
+  font-size: 0.8rem;
+} 
+
+
+
+
