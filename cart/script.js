@@ -1,7 +1,8 @@
+let loggedInUser;
 document.addEventListener("DOMContentLoaded", () => {
   let loginBtn = document.getElementById("loginBtn");
   let logoutBtn = document.getElementById("logoutBtn");
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
   if (loggedInUser) {
     // show logout, hide login
@@ -25,10 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-
   updateCartBadge();
 });
-
 
 // cart badge
 function updateCartBadge() {
@@ -50,6 +49,12 @@ if (cartproducts.length === 0) {
     <h4 class="text-uppercase fw-light emptycarttitle">Your cart is empty</h4>
     <button class="emptycartbtn">Shop our products</button>`;
   cartbody.appendChild(noproductsdiv);
+  let shopBtn = document.querySelector(".emptycartbtn");
+  if (shopBtn) {
+    shopBtn.addEventListener("click", () => {
+      window.location.href = "../products/products.html";
+    });
+  }
 } else {
   let carttitle = document.createElement("h4");
   carttitle.className = "emptycarttitle";
@@ -75,14 +80,14 @@ if (cartproducts.length === 0) {
   function updateGrandTotal() {
     let totals = document.querySelectorAll("[id^='total-']");
     let total = 0;
-    totals.forEach(cell => {
+    totals.forEach((cell) => {
       total += parseFloat(cell.textContent.replace("$", ""));
     });
     document.getElementById("grand-total").textContent = `$${total}`;
   }
 
-  cartproducts.forEach(id => {
-    let product = products.find(p => p.id === id);
+  cartproducts.forEach((id) => {
+    let product = products.find((p) => p.id === id);
     if (product) {
       let row = document.createElement("tr");
       row.innerHTML = `
@@ -112,12 +117,12 @@ if (cartproducts.length === 0) {
   let grandTotalDiv = document.createElement("div");
   grandTotalDiv.className = "text-end mt-3 alltotal";
   grandTotalDiv.innerHTML = ` Total: <span id="grand-total"></span>`;
-  
+
   let divbtn = document.createElement("div");
-  divbtn.className="d-flex flex-row justify-content-end checkoutbtn"
-  let checkoutbtn= document.createElement("button");
-  checkoutbtn.classList=" emptycartbtn ";
-  checkoutbtn.textContent="CHECKOUT";
+  divbtn.className = "d-flex flex-row justify-content-end checkoutbtn";
+  let checkoutbtn = document.createElement("button");
+  checkoutbtn.classList = " emptycartbtn ";
+  checkoutbtn.textContent = "CHECKOUT";
 
   divbtn.appendChild(checkoutbtn);
 
@@ -126,9 +131,12 @@ if (cartproducts.length === 0) {
     if (!btn) return;
 
     let id = parseInt(btn.dataset.id);
-    let product = products.find(p => p.id === id);
+    let product = products.find((p) => p.id === id);
 
-    if (btn.classList.contains("plus-btn") || btn.classList.contains("minus-btn")) {
+    if (
+      btn.classList.contains("plus-btn") ||
+      btn.classList.contains("minus-btn")
+    ) {
       let quantitySpan = document.getElementById(`quantity-${id}`);
       let totalCell = document.getElementById(`total-${id}`);
       let quantity = parseInt(quantitySpan.textContent);
@@ -140,12 +148,12 @@ if (cartproducts.length === 0) {
       }
 
       quantitySpan.textContent = quantity;
-      totalCell.textContent = `$${(product.price * quantity)}`;
+      totalCell.textContent = `$${product.price * quantity}`;
       updateGrandTotal();
     }
 
     if (btn.classList.contains("remove-btn")) {
-      cartproducts = cartproducts.filter(pid => pid !== id);
+      cartproducts = cartproducts.filter((pid) => pid !== id);
       localStorage.setItem("cartproducts", JSON.stringify(cartproducts));
 
       btn.closest("tr").remove();
@@ -165,8 +173,6 @@ if (cartproducts.length === 0) {
     }
   });
 
-  
-
   cartbody.appendChild(table);
   cartbody.appendChild(grandTotalDiv);
   cartbody.appendChild(divbtn);
@@ -174,4 +180,3 @@ if (cartproducts.length === 0) {
 }
 
 updateCartBadge();
-

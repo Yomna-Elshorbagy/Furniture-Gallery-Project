@@ -1,8 +1,9 @@
 // handel logged in and logged out
+let loggedInUser;
 document.addEventListener("DOMContentLoaded", () => {
   let loginBtn = document.getElementById("loginBtn");
   let logoutBtn = document.getElementById("logoutBtn");
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
   if (loggedInUser) {
     // show logout, hide login
@@ -26,7 +27,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
+document.addEventListener("click", (e) => {
+  let link = e.target.closest("a.userData");
+  if (!link) return;
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!loggedInUser) {
+    e.preventDefault();
+    Swal.fire({
+      title: "🔒 Login Required",
+      text: "You must be logged in to access this page.",
+      icon: "warning",
+      showConfirmButton: true,
+      confirmButtonText: "Go to Login",
+    }).then(() => {
+      window.location.href = "../Auth/log-in/login.html";
+    });
+  } else {
+    window.location.href = link.href;
+  }
+});
 // product details section
 let product = {
   id: 1,
@@ -35,6 +56,7 @@ let product = {
   oldPrice: "6798",
   category: "living",
   stock: 30,
+  reviews: "⭐⭐⭐ ",
   description:
     "Elevated comfort meets timeless elegance in the Valletta 3 Seater with Chaise — a luxurious modular lounge designed for modern living with classic taste.",
   image:
@@ -59,6 +81,7 @@ document.getElementById("details").innerHTML = `
         <span class="text-color fs-4 fw-bold">$${product.price}</span>
       </p>
       <p class="text-muted">${product.description}</p>
+      <p class="text-muted"> Reviews: <span class="text-secondary text-capitalize">${product.reviews}</span></p>
       <p><strong>In Stock:</strong> ${product.stock}</p>
         <div class="d-flex align-items-center mb-3">
         <button class="btn btn-outline-secondary me-2" id="decrease">-</button>
@@ -66,10 +89,10 @@ document.getElementById("details").innerHTML = `
         <button class="btn btn-outline-secondary ms-2" id="increase">+</button>
       </div>
       <button class="btn btn-dark w-100 mb-2 mt-2 py-2 " id="gotocart">Add to Cart</button>
-      <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2">ADD TO WISHLIST</button>
-      <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2">FIND IN STORES</button>
-      <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2">Ask A QUESTIONS</button>
-      <button class="btn btn-outline-secondary btnHover w-100 mt-2 py-2">GET DELEVERY ESTIMATE</button>
+      <button class="btn  hover-button w-100 mt-2 py-2">ADD TO WISHLIST</button>
+      <button class="btn  hover-button w-100 mt-2 py-2">FIND IN STORES</button>
+      <button class="btn  hover-button w-100 mt-2 py-2">Ask A QUESTIONS</button>
+      <button class="btn  hover-button w-100 mt-2 py-2">GET DELEVERY ESTIMATE</button>
 
        <div class="accordion py-3" id="accordionExample">
         <div class="accordion-item">
@@ -99,7 +122,6 @@ document.getElementById("details").innerHTML = `
       </div>
     `;
 
-    
 //====> get main image
 document.getElementById("mainImage").innerHTML = `
       <img src="${product.image}" id="currentImage" class="img-fluid shadow-sm" />
@@ -140,12 +162,11 @@ decreaseBtn.addEventListener("click", () => {
   }
 });
 
-
 // go to cart page
-  document.getElementById("gotocart").addEventListener("click", function () {
+document.getElementById("gotocart").addEventListener("click", function () {
   let cartArr = JSON.parse(localStorage.getItem("cartproducts")) || [];
   let productId = product.id;
-   if (!cartArr.includes(productId)) {
+  if (!cartArr.includes(productId)) {
     cartArr.push(productId);
     localStorage.setItem("cartproducts", JSON.stringify(cartArr));
   }

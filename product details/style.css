@@ -74,7 +74,7 @@ body {
   cursor: pointer;
   border: 2px solid transparent;
   border-radius: 6px;
-  transition: transform 1.5s ease !important;
+  transition: transform 2s ease !important;
 }
 .sub-images img:hover {
   transform: scale(1.2) !important;
@@ -104,4 +104,39 @@ body {
 }
 .text-color {
   color: #ddbc97;
+}
+/* link in button */
+#details button.hover-button {
+  color: #353434 !important;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+#details button.hover-button:hover:after {
+  transform: scale(1) !important;
+  transform-origin: left center !important;
+  color: white !important;
+}
+
+#details button.hover-button:hover {
+  color: white !important;
+}
+
+#details button.hover-button::after {
+  transform-origin: right center !important;
+  transform: scaleX(0) !important;
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background-color: #c7b9a9;
+  border: 1px solid gray;
+  transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86) !important;
 }

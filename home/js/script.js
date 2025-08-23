@@ -93,9 +93,15 @@ function renderFavoriteModal() {
       <p>My Favorites allows you to keep track of all of your favorites and shopping activity whether <br> 
         you're on your computer, phone, or tablet. You won't have to waste time searching all over <br>
          again for that item you loved on your phone the other day - it's all here in one place!</p>
-         <button >Continue Shopping</button>
+         <button class="continueShop">Continue Shopping</button>
     `;
     favmodalbody.appendChild(nofav);
+    let shopBtn = document.querySelector(".continueShop");
+    if (shopBtn) {
+      shopBtn.addEventListener("click", () => {
+        window.location.href = "../products/products.html";
+      });
+    }
   } else {
     let favdiv = document.createElement("div");
     favdiv.className = "favdiv";
@@ -138,6 +144,26 @@ if (loggedInUser && loggedInUser.Email) {
 } else {
   favoriteLabel.textContent = "example@gmail.com";
 }
+
+document.addEventListener("click", (e) => {
+  let link = e.target.closest("a.userData");
+  if (!link) return;
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!loggedInUser) {
+    e.preventDefault();
+    Swal.fire({
+      title: "🔒 Login Required",
+      text: "You must be logged in to access this page.",
+      icon: "warning",
+      showConfirmButton: true,
+      confirmButtonText: "Go to Login",
+    }).then(() => {
+      window.location.href = "../Auth/log-in/login.html";
+    });
+  } else {
+    window.location.href = link.href;
+  }
+});
 
 // update favorite badge
 let favBadge = document.getElementById("favBadge");

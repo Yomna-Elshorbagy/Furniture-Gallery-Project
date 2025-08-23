@@ -71,12 +71,12 @@ function addContactDetails() {
   });
 }
 
-
-// handel logged in and logged out 
+let loggedInUser;
+// handel logged in and logged out
 document.addEventListener("DOMContentLoaded", () => {
   let loginBtn = document.getElementById("loginBtn");
   let logoutBtn = document.getElementById("logoutBtn");
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
   if (loggedInUser) {
     // show logout, hide login
@@ -88,15 +88,36 @@ document.addEventListener("DOMContentLoaded", () => {
     logoutBtn.classList.add("d-none");
   }
   logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("loggedInUser"); 
+    localStorage.removeItem("loggedInUser");
     Swal.fire({
       title: "👋 Logged out",
       text: "You have been logged out successfully.",
       icon: "success",
       timer: 2000,
-      showConfirmButton: false
+      showConfirmButton: false,
     }).then(() => {
       window.location.href = "../Auth/log-in/login.html";
     });
   });
+});
+loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+document.addEventListener("click", (e) => {
+  let link = e.target.closest("a.userData");
+  if (!link) return;
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!loggedInUser) {
+    e.preventDefault();
+    Swal.fire({
+      title: "🔒 Login Required",
+      text: "You must be logged in to access this page.",
+      icon: "warning",
+      showConfirmButton: true,
+      confirmButtonText: "Go to Login",
+    }).then(() => {
+      window.location.href = "../Auth/log-in/login.html";
+    });
+  } else {
+    window.location.href = link.href;
+  }
 });
