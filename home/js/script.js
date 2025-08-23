@@ -21,19 +21,13 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  updateCartBadge();
 });
 
-function updateCartBadge() {
-  let cartproducts = JSON.parse(localStorage.getItem("cartproducts")) || [];
-  let cartBadge = document.getElementById("cartbadge");
-  if (cartBadge) {
-    cartBadge.textContent = cartproducts.length;
-  }
-}
+
 ////////// build productcard from localstorage
 let products = JSON.parse(localStorage.getItem("products")) || [];
-let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+// let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {wishlist:[], cart:[]};
 
 let productList = document.getElementById("product-list");
 let homeproducts = products.slice(0, 8);
@@ -41,7 +35,7 @@ let homeproducts = products.slice(0, 8);
 homeproducts.forEach((product) => {
   let card = document.createElement("div");
   card.className = "col-6 col-md-3 mb-4";
-  let isFavorite = favorites.includes(product.id);
+let isFavorite = loggedInUser.wishlist.some(p => p.id === product.id);
 
   card.innerHTML = `
     <div class="card product-card homecardproduct">
@@ -79,13 +73,12 @@ homeproducts.forEach((product) => {
 let allfavoritebtn = document.querySelectorAll(".favorite-btn");
 
 function renderFavoriteModal() {
-  let favoriteProducts =
-    JSON.parse(localStorage.getItem("favoriteProducts")) || [];
+
   let favmodalbody = document.getElementById("favmodalbody");
 
   favmodalbody.innerHTML = "";
 
-  if (favoriteProducts.length === 0) {
+  if (loggedInUser.wishlist.length === 0) {
     var nofav = document.createElement("div");
     nofav.className = "nofavoritediv";
     nofav.innerHTML = `
@@ -105,7 +98,8 @@ function renderFavoriteModal() {
   } else {
     let favdiv = document.createElement("div");
     favdiv.className = "favdiv";
-    favoriteProducts.forEach((product) => {
+    loggedInUser.wishlist.forEach((product) => {
+      
       let card = document.createElement("div");
       card.className = "cardstyle";
       card.innerHTML = `
@@ -125,7 +119,7 @@ function renderFavoriteModal() {
                 }
               </h4>
             </div>
-            <button class="btn btn-dark w-100 btnaddtocard">ADD TO CART</button>
+            <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id}">ADD TO CART</button>
           </div>
         </div>
       `;
@@ -135,9 +129,32 @@ function renderFavoriteModal() {
   }
 }
 
-// Update the favorite modal email label
-let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+//go to cart
 
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("btnaddtocard")) {
+    let productId = parseInt(e.target.getAttribute("data-id"));
+
+    if (!loggedInUser.cart) {
+      loggedInUser.cart = [];
+    }
+
+    // هات المنتج نفسه من الـ products
+    let productToAdd = products.find(p => p.id === productId);
+
+    if (productToAdd && !loggedInUser.cart.some(p => p.id === productId)) {
+      loggedInUser.cart.push(productToAdd);
+    }
+
+    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+    updateCartBadge();
+
+
+    window.location.href = "../cart/cart.html";
+    console.log(loggedInUser.wishlist);
+    
+  }
+});
 let favoriteLabel = document.getElementById("favoritelabel");
 if (loggedInUser && loggedInUser.Email) {
   favoriteLabel.textContent = loggedInUser.Email;
@@ -169,15 +186,16 @@ document.addEventListener("click", (e) => {
 let favBadge = document.getElementById("favBadge");
 
 function updateFavBadge() {
-  favBadge.textContent = favorites.length > 0 ? favorites.length : 0;
+  favBadge.textContent = loggedInUser.wishlist.length>0? loggedInUser.wishlist.length:0;
 }
 updateFavBadge();
 // هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
 allfavoritebtn.forEach((btn) => {
   let id = parseInt(btn.getAttribute("data-id"));
   let icon = btn.querySelector("i");
+   let isFavorite = loggedInUser.wishlist.some(p => p.id === id);
 
-  if (favorites.includes(id)) {
+  if (isFavorite) {
     btn.classList.add("active");
     icon.classList.remove("bi-heart");
     icon.classList.add("bi-heart-fill");
@@ -190,9 +208,12 @@ allfavoritebtn.forEach((btn) => {
     let toastBody = document.getElementById("favToastBody");
     let toast = new bootstrap.Toast(toastEl);
     let product = products.find((p) => p.id === id);
-    if (favorites.includes(id)) {
+
+      let inWishlist = loggedInUser.wishlist.some((p) => p.id === id);
+
+    if (inWishlist) {
       // remove from favorites
-      favorites = favorites.filter((f) => f !== id);
+      loggedInUser.wishlist = loggedInUser.wishlist.filter((p) => p.id !== id);
       btn.classList.remove("active");
       icon.classList.remove("bi-heart-fill");
       icon.classList.add("bi-heart");
@@ -202,7 +223,7 @@ allfavoritebtn.forEach((btn) => {
         "opacity-100 toast align-items-center border-0 toaststyle";
     } else {
       // add to favorites
-      favorites.push(id);
+      loggedInUser.wishlist.push(product);
       btn.classList.add("active");
       icon.classList.remove("bi-heart");
       icon.classList.add("bi-heart-fill");
@@ -213,19 +234,27 @@ allfavoritebtn.forEach((btn) => {
     }
 
     // Update localStorage
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-    let favoriteProducts = products.filter((p) => favorites.includes(p.id));
-    localStorage.setItem("favoriteProducts", JSON.stringify(favoriteProducts));
+localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
     // Update the modal content
     renderFavoriteModal();
 
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+
     updateFavBadge();
 
     // Show toast
     toast.show();
   });
 });
+function updateCartBadge() {
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { cart: [] };
+  let cartBadge = document.getElementById("cartbadge");
+  if (cartBadge) {
+    cartBadge.textContent = loggedInUser.cart.length;
+  }
+}
+
 
 renderFavoriteModal();
+
+
