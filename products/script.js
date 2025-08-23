@@ -1,4 +1,4 @@
-// handel logged in and logged out
+//=====>  handel logged in and logged out
 document.addEventListener("DOMContentLoaded", () => {
   let loginBtn = document.getElementById("loginBtn");
   let logoutBtn = document.getElementById("logoutBtn");
@@ -27,8 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// draw all categorys
-
+// ====> draw all categories on load
 window.addEventListener("DOMContentLoaded", () => {
   fetch("../server/data/products.json")
     .then((res) => {
@@ -36,33 +35,45 @@ window.addEventListener("DOMContentLoaded", () => {
       return res.json();
     })
     .then((prod) => {
-      // حفظ البيانات
       localStorage.setItem("products", JSON.stringify(prod));
-      // عرض المنتجات
-      displayProducts(prod);
+      allProducts = prod;
+      displayProducts();
+      renderPagination();
     })
     .catch((error) => console.error("Error fetch JSON data: ", error));
 });
 
+let allProducts = [];
+let currentPage = 1;
+let pageSize = 20;
+
 products = JSON.parse(localStorage.getItem("products"));
 
-// دالة عرض المنتجات حسب الكاتيجوري أو كلها
-function displayProducts(products) {
+// display products according to categories
+function displayProducts() {
   let productList = document.getElementById("product-list");
-  productList.innerHTML = ""; // مسح القديم قبل ما نرسم جديد
+  productList.innerHTML = "";
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const category = urlParams.get("category");
+  let urlParams = new URLSearchParams(window.location.search);
+  let category = urlParams.get("category");
+  let filtered = allProducts.filter(
+    (p) => !category || p.category === category
+  );
+  let start = (currentPage - 1) * pageSize;
+  let end = start + pageSize;
+  let currentProducts = filtered.slice(start, end);
 
-  products.forEach((product) => {
-    // لو مفيش category اعرض الكل
+  currentProducts.forEach((product) => {
     if (!category || product.category === category) {
       drowProduct(product, productList);
     }
   });
+  if (currentProducts.length === 0) {
+    productList.innerHTML = `<p class="text-center text-muted">No products found</p>`;
+  }
 }
 
-// دالة رسم الكارت
+// display cart of products
 function drowProduct(product, productList) {
   let card = document.createElement("div");
   card.className = "col-6 col-md-3 mb-4";
@@ -99,7 +110,7 @@ function drowProduct(product, productList) {
   productList.appendChild(card);
 }
 
-// دالة تغيير الكاتيجوري في الرابط
+//change url category
 function openCategory(categoryName) {
   window.location.href = `?category=${categoryName}`;
 }
@@ -129,10 +140,11 @@ function searchfun(name) {
 }
 input.addEventListener("keyup", (e) => {
   searchfun(e.target.value.toLowerCase());
+  let paginationContainer = document.getElementById("pagination");
+  if (paginationContainer) paginationContainer.innerHTML = "";
 });
 
-//Felter function
-
+//======> filter function by value of price
 let minValue = document.getElementById("minValue");
 let maxValue = document.getElementById("maxValue");
 
@@ -161,9 +173,61 @@ function filterfun() {
   if (productList.innerText.length == 0) {
     productList.innerHTML = "There are no product";
   }
+  let paginationContainer = document.getElementById("pagination");
+  if (paginationContainer) paginationContainer.innerHTML = "";
 }
 
+//====> pagination for products
+function renderPagination() {
+  let paginationContainer = document.getElementById("pagination");
+  if (!paginationContainer) return;
+  paginationContainer.innerHTML = "";
 
-card.addEventListener("click", () => {
-  window.location.href = `../product details/proDetails.html?id=${product.id}`;
-});
+  let urlParams = new URLSearchParams(window.location.search);
+  let category = urlParams.get("category");
+
+  let filtered = allProducts.filter(
+    (p) => !category || p.category === category
+  );
+
+  let totalPages = Math.ceil(filtered.length / pageSize);
+
+  // prev button
+  let prevBtn = document.createElement("button");
+  prevBtn.textContent = "Prev";
+  prevBtn.disabled = currentPage === 1;
+  prevBtn.onclick = () => {
+    if (currentPage > 1) {
+      currentPage--;
+      displayProducts();
+      renderPagination();
+    }
+  };
+  paginationContainer.appendChild(prevBtn);
+
+  // page numbers
+  for (let i = 1; i <= totalPages; i++) {
+    let btn = document.createElement("button");
+    btn.textContent = i;
+    if (i === currentPage) btn.style.fontWeight = "bold";
+    btn.onclick = () => {
+      currentPage = i;
+      displayProducts();
+      renderPagination();
+    };
+    paginationContainer.appendChild(btn);
+  }
+
+  // next button
+  let nextBtn = document.createElement("button");
+  nextBtn.textContent = "Next";
+  nextBtn.disabled = currentPage === totalPages;
+  nextBtn.onclick = () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      displayProducts();
+      renderPagination();
+    }
+  };
+  paginationContainer.appendChild(nextBtn);
+}
