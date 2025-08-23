@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "../Auth/log-in/login.html";
     });
   });
+  updateCartBadge();
 });
 
 // ====> draw all categories on load
@@ -265,11 +266,13 @@ function renderPagination() {
 // build favorite fuctionality
 
 // تحديث البادج بتاع favorites
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
 
+    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
 
 // رسم الـ favorites في المودال
 function renderFavoriteModal() {
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
+
   let favmodalbody = document.getElementById("favmodalbody");
   favmodalbody.innerHTML = "";
 
@@ -355,6 +358,33 @@ document.addEventListener("click", (e) => {
   }
 });
 
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("btnaddtocard")) {
+    let productId = parseInt(e.target.getAttribute("data-id"));
+    let quantity = 1;
+
+    if (!loggedInUser.cart) {
+      loggedInUser.cart = [];
+    }
+
+    // هات المنتج نفسه من الـ products
+    let productToAdd = products.find((p) => p.id === productId);
+
+    if (productToAdd && !loggedInUser.cart.some((p) => p.id === productId)) {
+       let productCopy = { ...productToAdd };
+    productCopy.quantity = 1;
+    loggedInUser.cart.push(productCopy);
+      
+    }
+
+    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+    updateCartBadge();
+
+    window.location.href = "../cart/cart.html";
+    console.log(loggedInUser.wishlist);
+  }
+});
+
 
 // هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
 document.addEventListener("click", (e) => {
@@ -414,7 +444,14 @@ function updateFavBadge() {
 }
 
 
+function updateCartBadge() {
+    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { cart: [] };
 
+  let cartBadge = document.getElementById("cartbadge");
+  if (cartBadge) {
+    cartBadge.textContent = loggedInUser.cart.length;
+  }
+}
 // شغّلهم مرة في البداية
 updateFavBadge();
 renderFavoriteModal();

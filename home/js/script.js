@@ -135,6 +135,7 @@ function renderFavoriteModal() {
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("btnaddtocard")) {
     let productId = parseInt(e.target.getAttribute("data-id"));
+    let quantity = 1;
 
     if (!loggedInUser.cart) {
       loggedInUser.cart = [];
@@ -144,7 +145,10 @@ document.addEventListener("click", function (e) {
     let productToAdd = products.find((p) => p.id === productId);
 
     if (productToAdd && !loggedInUser.cart.some((p) => p.id === productId)) {
-      loggedInUser.cart.push(productToAdd);
+       let productCopy = { ...productToAdd };
+    productCopy.quantity = 1;
+    loggedInUser.cart.push(productCopy);
+      
     }
 
     localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
@@ -154,6 +158,7 @@ document.addEventListener("click", function (e) {
     console.log(loggedInUser.wishlist);
   }
 });
+
 let favoriteLabel = document.getElementById("favoritelabel");
 if (loggedInUser && loggedInUser.Email) {
   favoriteLabel.textContent = loggedInUser.Email;
@@ -257,7 +262,7 @@ function updateCartBadge() {
 
 renderFavoriteModal();
 
-  // ===>redirect to products page with category query 
+// ===>redirect to products page with category query
 function goToCategory(categoryName) {
   window.location.href = `../products/products.html?category=${encodeURIComponent(
     categoryName
