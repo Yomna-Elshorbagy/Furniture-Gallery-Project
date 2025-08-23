@@ -20,14 +20,15 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(`${key} already in localStorage`);
     }
   });
-
 });
-
 
 ////////// build productcard from localstorage
 let products = JSON.parse(localStorage.getItem("products")) || [];
 // let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {wishlist:[], cart:[]};
+let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+  wishlist: [],
+  cart: [],
+};
 
 let productList = document.getElementById("product-list");
 let homeproducts = products.slice(0, 8);
@@ -35,7 +36,7 @@ let homeproducts = products.slice(0, 8);
 homeproducts.forEach((product) => {
   let card = document.createElement("div");
   card.className = "col-6 col-md-3 mb-4";
-let isFavorite = loggedInUser.wishlist.some(p => p.id === product.id);
+  let isFavorite = loggedInUser.wishlist.some((p) => p.id === product.id);
 
   card.innerHTML = `
     <div class="card product-card homecardproduct">
@@ -73,7 +74,6 @@ let isFavorite = loggedInUser.wishlist.some(p => p.id === product.id);
 let allfavoritebtn = document.querySelectorAll(".favorite-btn");
 
 function renderFavoriteModal() {
-
   let favmodalbody = document.getElementById("favmodalbody");
 
   favmodalbody.innerHTML = "";
@@ -99,7 +99,6 @@ function renderFavoriteModal() {
     let favdiv = document.createElement("div");
     favdiv.className = "favdiv";
     loggedInUser.wishlist.forEach((product) => {
-      
       let card = document.createElement("div");
       card.className = "cardstyle";
       card.innerHTML = `
@@ -119,7 +118,9 @@ function renderFavoriteModal() {
                 }
               </h4>
             </div>
-            <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id}">ADD TO CART</button>
+            <button class="btn btn-dark w-100 btnaddtocard" data-id="${
+              product.id
+            }">ADD TO CART</button>
           </div>
         </div>
       `;
@@ -140,19 +141,17 @@ document.addEventListener("click", function (e) {
     }
 
     // هات المنتج نفسه من الـ products
-    let productToAdd = products.find(p => p.id === productId);
+    let productToAdd = products.find((p) => p.id === productId);
 
-    if (productToAdd && !loggedInUser.cart.some(p => p.id === productId)) {
+    if (productToAdd && !loggedInUser.cart.some((p) => p.id === productId)) {
       loggedInUser.cart.push(productToAdd);
     }
 
     localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
     updateCartBadge();
 
-
     window.location.href = "../cart/cart.html";
     console.log(loggedInUser.wishlist);
-    
   }
 });
 let favoriteLabel = document.getElementById("favoritelabel");
@@ -186,14 +185,15 @@ document.addEventListener("click", (e) => {
 let favBadge = document.getElementById("favBadge");
 
 function updateFavBadge() {
-  favBadge.textContent = loggedInUser.wishlist.length>0? loggedInUser.wishlist.length:0;
+  favBadge.textContent =
+    loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
 }
 updateFavBadge();
 // هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
 allfavoritebtn.forEach((btn) => {
   let id = parseInt(btn.getAttribute("data-id"));
   let icon = btn.querySelector("i");
-   let isFavorite = loggedInUser.wishlist.some(p => p.id === id);
+  let isFavorite = loggedInUser.wishlist.some((p) => p.id === id);
 
   if (isFavorite) {
     btn.classList.add("active");
@@ -209,7 +209,7 @@ allfavoritebtn.forEach((btn) => {
     let toast = new bootstrap.Toast(toastEl);
     let product = products.find((p) => p.id === id);
 
-      let inWishlist = loggedInUser.wishlist.some((p) => p.id === id);
+    let inWishlist = loggedInUser.wishlist.some((p) => p.id === id);
 
     if (inWishlist) {
       // remove from favorites
@@ -234,11 +234,10 @@ allfavoritebtn.forEach((btn) => {
     }
 
     // Update localStorage
-localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
     // Update the modal content
     renderFavoriteModal();
-
 
     updateFavBadge();
 
@@ -247,14 +246,20 @@ localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
   });
 });
 function updateCartBadge() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { cart: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+    cart: [],
+  };
   let cartBadge = document.getElementById("cartbadge");
   if (cartBadge) {
     cartBadge.textContent = loggedInUser.cart.length;
   }
 }
 
-
 renderFavoriteModal();
 
-
+  // ===>redirect to products page with category query 
+function goToCategory(categoryName) {
+  window.location.href = `../products/products.html?category=${encodeURIComponent(
+    categoryName
+  )}`;
+}
