@@ -228,13 +228,47 @@
     <h3 class="pt-5">BROWSE OUR FEATURED PRODUCTS</h3>
     <h2>TRENDING PRODUCTS</h2>
     <br>
-    <div style="display: block; " class=" text-end ">
+    <!-- <div style="display: block; " class=" text-end ">
       <input type="text" name="search" id="categorySearch" class="d-none w-75 " placeholder=" Search in product">
       <button class="border-0 bg-transparent float-end" onclick="opensearchfun()"><i
           class="fa-solid fa-magnifying-glass text-black m-2 "></i></button>
     </div>
-    <hr>
+    <hr> -->
 
+    <section class="SortSearchsec row-reverce">
+
+            <div class="d-flex flex-row-reverse align-items-center border opacity-75 mb-5">
+                <div class="p-2">
+                    <!-- =============Sort=============== -->
+                    <div class="dropdown col-2">
+                        <button class="btn transparent dropdown-toggle " type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            SORT 
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item " id="sortbtnMintoMAx">Sort from min price to max
+                                    price</button>
+                            </li>
+                            <li><button class="dropdown-item " id="sortbtnMaxtoMin">Sort from min price to max
+                                    price</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- ============search================ -->
+                <div class="p-2">
+                    <div >
+                        <input type="text" name="search" id="categorySearch" class="d-none w-75 "
+                            placeholder=" Search in product">
+                        <button class="border-0 bg-transparent border-end px-3" onclick="opensearchfun()"><i
+                                class="fa-solid fa-magnifying-glass text-black "></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        
     <!-- category for mobile -->
     <aside>
       <div class="d-md-none mobileCategory">

@@ -207,6 +207,83 @@ function filterfun() {
   if (paginationContainer) paginationContainer.innerHTML = "";
 }
 
+
+
+// ===============Sort Function
+
+// from min to max
+var sortbtnMintoMAx = document.getElementById("sortbtnMintoMAx");
+
+
+sortbtnMintoMAx.addEventListener("click", () => {
+    let productList = document.getElementById("product-list");
+    productList.innerHTML = "";
+
+    let AllproductSorted = []
+    let categorySorted = []
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get("category");
+
+    // لو مفيش category اعرض الكل
+    if (!category) {
+        AllproductSorted = products.slice();
+        AllproductSorted.sort((a, b) => a.price - b.price);
+        AllproductSorted.forEach(pro => {
+            drowProduct(pro, productList)
+        })
+    } else {
+        categorySorted = products.filter(pro => pro.category === category)
+        console.log(categorySorted);
+
+        categorySorted.sort((a, b) => a.price - b.price);
+        categorySorted.forEach(pro => {
+            drowProduct(pro, productList)
+        })
+    }
+});
+
+
+
+// from max to min
+var sortbtnMaxtoMin = document.getElementById("sortbtnMaxtoMin");
+
+
+
+sortbtnMaxtoMin.addEventListener("click", () => {
+    let productList = document.getElementById("product-list");
+    productList.innerHTML = "";
+
+    let AllproductSorted = []
+    let categorySorted = []
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get("category");
+
+
+
+    // لو مفيش category اعرض الكل
+    if (!category) {
+        AllproductSorted = products.slice();
+        AllproductSorted.sort((a, b) => b.price - a.price);
+        AllproductSorted.forEach(pro => {
+            drowProduct(pro, productList)
+        })
+    } else {
+        categorySorted = products.filter(pro => pro.category === category)
+        console.log(categorySorted);
+
+        categorySorted.sort((a, b) => b.price - a.price);
+        categorySorted.forEach(pro => {
+            drowProduct(pro, productList)
+        })
+    }
+});
+
+
+
+
+
+
 //====> pagination for products
 function renderPagination() {
   let paginationContainer = document.getElementById("pagination");
