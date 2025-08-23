@@ -99,10 +99,19 @@ body {
 }
 
 .edit-btn {
-  background-color: #c59d5f;
+  background-color: #c19e68;
   color: white;
 }
 .edit-btn:hover {
   border-color: #896735;
   color: black;
+}
+
+.toast-container {
+  top: 70px !important;      
+  z-index: 9999 !important;  
+}
+
+.styleToast{
+  background-color: #9e8e76 !important;
 }

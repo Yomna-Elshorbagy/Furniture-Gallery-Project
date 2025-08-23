@@ -21,8 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-    updateCartBadge();
-
+  updateCartBadge();
 });
 
 function updateCartBadge() {
@@ -144,8 +143,7 @@ if (loggedInUser && loggedInUser.Email) {
 let favBadge = document.getElementById("favBadge");
 
 function updateFavBadge() {
-  favBadge.textContent = favorites.length>0? favorites.length : 0;
-
+  favBadge.textContent = favorites.length > 0 ? favorites.length : 0;
 }
 updateFavBadge();
 // هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
