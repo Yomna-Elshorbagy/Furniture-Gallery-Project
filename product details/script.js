@@ -48,33 +48,32 @@ document.addEventListener("click", (e) => {
     window.location.href = link.href;
   }
 });
-// product details section
-let product = {
-  id: 1,
-  name: "Valletta 3 Seater with Chaise - Mystique Heritage",
-  price: "3998",
-  oldPrice: "6798",
-  category: "living",
-  stock: 30,
-  reviews: "⭐⭐⭐ ",
-  description:
-    "Elevated comfort meets timeless elegance in the Valletta 3 Seater with Chaise — a luxurious modular lounge designed for modern living with classic taste.",
-  image:
-    "https://thefurnituregallery.com.au/cdn/shop/files/Hero_33f2069c-7716-4b98-ad54-4fb936923eb8_1800x1800.png?v=1754888318",
-  subImages: [
-    "https://thefurnituregallery.com.au/cdn/shop/files/G1A4479_1800x1800.jpg?v=1754888390",
-    "https://thefurnituregallery.com.au/cdn/shop/files/G1A4429_1800x1800.jpg?v=1754888740",
-    "https://thefurnituregallery.com.au/cdn/shop/files/G1A4446_1800x1800.jpg?v=1754888740",
-  ],
-  dimensions: {
-    width: "178cm",
-    height: "183cm",
-    length: "278cm",
-  },
-};
 
 // =====> get product details
-document.getElementById("details").innerHTML = `
+let urlParams = new URLSearchParams(window.location.search);
+let productId = parseInt(urlParams.get("id"));
+let products = JSON.parse(localStorage.getItem("products"));
+
+if (!products) {
+  // If not found in localStorage, fetch from server
+  fetch("../server/data/products.json")
+    .then((res) => res.json())
+    .then((prod) => {
+      localStorage.setItem("products", JSON.stringify(prod));
+      showProductDetails(prod);
+    })
+    .catch((err) => console.error("Error loading products:", err));
+} else {
+  showProductDetails(products);
+}
+function showProductDetails(products) {
+  let product = products.find((p) => p.id === productId);
+
+  if (!product) {
+    document.getElementById("details").innerHTML = "<p>Product not found</p>";
+    return;
+  }
+  document.getElementById("details").innerHTML = `
       <h2 class="fw-bold">${product.name}</h2>
       <p>
         <span class="old-price me-2">$${product.oldPrice}</span> 
@@ -103,9 +102,10 @@ document.getElementById("details").innerHTML = `
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse">
             <div class="accordion-body">
-              <p><i class="fa-solid fa-arrows-left-right me-2"></i> <strong>Width:</strong> ${product.dimensions.width}</p>
-              <p><i class="fa-solid fa-arrows-up-down me-2"></i> <strong>Height:</strong> ${product.dimensions.height}</p>
-              <p><i class="fa-solid fa-up-right-and-down-left-from-center me-2"></i> <strong>Length:</strong> ${product.dimensions.length}</p>
+             <div class="accordion-body">
+              <p><i class="fa-solid fa-arrows-left-right me-2"></i> <strong>Width:</strong> ${product.dimentions?.width || "N/A"}</p>
+              <p><i class="fa-solid fa-arrows-up-down me-2"></i> <strong>Height:</strong> ${product.dimentions?.height || "N/A"}</p>
+              <p><i class="fa-solid fa-up-right-and-down-left-from-center me-2"></i> <strong>Length:</strong> ${product.dimentions?.length}</p>
             </div>
           </div>
         </div>
@@ -122,45 +122,45 @@ document.getElementById("details").innerHTML = `
       </div>
     `;
 
-//====> get main image
-document.getElementById("mainImage").innerHTML = `
+  //====> get main image
+  document.getElementById("mainImage").innerHTML = `
       <img src="${product.image}" id="currentImage" class="img-fluid shadow-sm" />
     `;
 
-// ====> get sub-images
-let subImagesContainer = document.getElementById("subImages");
-product.subImages.forEach((img) => {
-  let wrapper = document.createElement("div");
-  wrapper.classList.add("blockCont");
-  wrapper.classList.add("sub-image-wrapper");
-  let imgEl = document.createElement("img");
-  imgEl.src = img;
-  imgEl.classList.add("img-fluid", "shadow-md");
-  imgEl.addEventListener("click", () => {
-    document.getElementById("currentImage").src = img;
+  // ====> get sub-images
+  let subImagesContainer = document.getElementById("subImages");
+  product.subImages.forEach((img) => {
+    let wrapper = document.createElement("div");
+    wrapper.classList.add("blockCont");
+    wrapper.classList.add("sub-image-wrapper");
+    let imgEl = document.createElement("img");
+    imgEl.src = img;
+    imgEl.classList.add("img-fluid", "shadow-md");
+    imgEl.addEventListener("click", () => {
+      document.getElementById("currentImage").src = img;
+    });
+    wrapper.appendChild(imgEl);
+    subImagesContainer.appendChild(wrapper);
   });
-  wrapper.appendChild(imgEl);
-  subImagesContainer.appendChild(wrapper);
-});
 
-// ===> counter logic
-let quantityInput = document.getElementById("quantity");
-let increaseBtn = document.getElementById("increase");
-let decreaseBtn = document.getElementById("decrease");
+  // ===> counter logic
+  let quantityInput = document.getElementById("quantity");
+  let increaseBtn = document.getElementById("increase");
+  let decreaseBtn = document.getElementById("decrease");
 
-increaseBtn.addEventListener("click", () => {
-  let current = Number(quantityInput.value);
-  if (current < product.stock) {
-    quantityInput.value = current + 1;
-  }
-});
+  increaseBtn.addEventListener("click", () => {
+    let current = Number(quantityInput.value);
+    if (current < product.stock) {
+      quantityInput.value = current + 1;
+    }
+  });
 
-decreaseBtn.addEventListener("click", () => {
-  let current = Number(quantityInput.value);
-  if (current > 1) {
-    quantityInput.value = current - 1;
-  }
-});
+  decreaseBtn.addEventListener("click", () => {
+    let current = Number(quantityInput.value);
+    if (current > 1) {
+      quantityInput.value = current - 1;
+    }
+  });
 
 // go to cart page
 document.getElementById("gotocart").addEventListener("click", function () {
@@ -172,3 +172,4 @@ document.getElementById("gotocart").addEventListener("click", function () {
   }
   window.location.href = "../cart/cart.html";
 });
+}
