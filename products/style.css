@@ -9,55 +9,327 @@
 body {
   font-family: "Raleway", sans-serif;
   scroll-behavior: smooth;
-  padding-top: 100px;
 }
 
 /* *************** Starting navbar styling ******************** */
+
+
+/* -------------header modal style ---------------- */
 .nav {
-  position: fixed;
-  top: 0;
-  z-index: 2000;
-  width: 100%;
-  transition: all 0.3s ease-in-out;
-  padding: 0.5rem 0;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+    z-index: 1050;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    /* background: transparent; */
+    /* border-bottom: 1px solid rgb(254, 254, 254); */
 }
 
-.nav .nav-link {
-  color: #111;
-  transition: color 0.3s ease;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin: 0 10px;
-}
-
-.nav .nav-link:hover {
-  color: #c59d5f;
-}
-.nav .nav-link.active {
-  color: #c59d5f;
-}
+/* nav icon */
 .nav i {
-  color: #111;
-  margin: 10px;
-  font-size: 20px;
+    color: #111;
+    margin: 10px;
+    font-size: 20px;
 }
 
-.nav a {
-  text-decoration: none;
-  color: #111;
+/* for line under nav item (Home ...)*/
+.navbar-nav .nav-item a {
+    position: relative;
 }
 
-.hover-button {
-  background-color: transparent;
-  border: 1px solid #111;
-  color: #111;
-  padding: 5px;
-  font-size: 15px;
-  letter-spacing: 2px;
+.navbar-nav .nav-item a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #c7b9a9;
+    transition: width 0.3s ease-in-out;
 }
+
+.navbar-nav .nav-item a:hover::after {
+    width: 100%;
+}
+
+
+/* for Find strore */
+button.hover-button {
+    background-color: transparent;
+    color: #c7b9a9;
+    border: 1px solid #c7b9a9;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    padding: 5px;
+    position: relative;
+    z-index: 2;
+}
+
+/* link in button */
+button.hover-button a {
+    color: #c7b9a9;
+    text-decoration: none;
+}
+
+button.hover-button:hover:after {
+    transform: scale(1);
+    transform-origin: left center;
+    color: white;
+}
+
+button.hover-button:hover {
+    color: white;
+}
+
+/* link in button */
+button.hover-button a:hover {
+    color: white;
+}
+
+button.hover-button::after {
+    transform-origin: right center;
+    transform: scaleX(0);
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    background-color: #c7b9a9;
+    transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.navbar .active {
+  color: #c59d5f !important;
+  border-color: #c59d5f !important;
+}
+
 .nav .nav-logo img {
   width: 180px !important;
   transform: scale(0.9);
+}
+/* -------------End header modal style ---------------- */
+
+
+/* ====================> Starting Home Details Style <====================== */
+#homedetails {
+    margin: var(--section-margin) 0;
+    padding: 50px 0px;
+    background: var(--primary-color);
+    font-family: var(--heading-font);
+}
+
+#homedetails h2 {
+    font-size: 22px;
+}
+
+#homedetails p {
+    color: var(--Secondary-text-color);
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#homeproducts {
+    margin: var(--section-margin) 0;
+    font-family: var(--heading-font);
+}
+
+#homeproducts h2 {
+    font-size: 24px;
+    letter-spacing: 0;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#homeproducts h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-right: 10px;
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+.categorysec {
+    /* margin: 10px; */
+    border-right: 1.5px solid #2125294d;
+}
+
+.categorysec button,
+.mobileCategory button {
+    opacity: 0.65;
+    border: none;
+    background-color: transparent;
+    /* position: sticky; */
+
+}
+
+#minValue,
+#maxValue {
+    width: 50px;
+    margin-bottom: 5px;
+}
+
+.categorysec button:hover,
+.mobileCategory button:hover {
+    opacity: 1;
+}
+
+.asideCategory {
+    /* border-right: 1.5px solid #2125294d; */
+    position: fixed;
+    top: 370px;
+    left: 0px;
+}
+
+@media (max-width:800px) {
+    .categorysec {
+        display: none;
+    }
+}
+
+
+
+
+
+.product-card img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0 !important;
+    /* overflow: hidden; */
+    aspect-ratio: 1/1;
+}
+
+.product-card {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.card {
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.card-body h6 {
+    font-weight: 300;
+}
+
+.product-card img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0 !important;
+}
+
+.product-card {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.card {
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.card-body h6 {
+    font-weight: 300;
+}
+
+.newprice {
+    color: #cf9362;
+    font-size: 0.9rem;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 0.9rem;
+}
+
+.product-card img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0 !important;
+}
+
+.product-card {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+.card {
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.card-body h6 {
+    font-weight: 300;
+}
+
+.newprice {
+    color: #cf9362;
+    font-size: 0.9rem;
+}
+
+.old-price {
+    text-decoration: line-through;
+    font-size: 0.9rem;
+}
+
+.newprice {
+    color: #cf9362;
+    font-size: 0.9rem;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 0.9rem;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background: none !important;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 18px;
+    color: black;
+    z-index: 2;
+}
+
+.favorite-btn.active {
+    color: red;
+}
+
+.image-scale {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-scale img {
+    opacity: 0.9;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.image-scale img:hover {
+    transform: scale(1.1);
 }
