@@ -213,7 +213,7 @@ button.hover-button-main {
   position: relative;
   z-index: 2;
   overflow: hidden;
-  transition: background-color 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: background-color 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
 button.hover-button-main::after {
@@ -229,7 +229,7 @@ button.hover-button-main::after {
   /* مغطّي الزر بالكامل */
   transform-origin: left center;
   /* نقطة البداية واحدة وثابتة */
-  transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: transform 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
 button.hover-button-main:hover {
@@ -242,7 +242,7 @@ button.hover-button-main:hover::after {
   transform: scaleX(0);
   /* الأبيض ينسحب بس */
   transform-origin: right center;
-  transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: transform 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
 /* -------------favorite modal style ---------------- */

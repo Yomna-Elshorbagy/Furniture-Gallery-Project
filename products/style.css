@@ -2,13 +2,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
+
 body {
-  font-family: "Raleway", sans-serif;
-  scroll-behavior: smooth;
+    font-family: "Raleway", sans-serif;
+    scroll-behavior: smooth;
 }
 
 /* *************** Starting navbar styling ******************** */
@@ -102,20 +103,20 @@ button.hover-button::after {
     transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
- .active {
-  color: #c59d5f ;
-  border-color: #c59d5f ;
-}
 
+.navbar .active {
+  color: #c59d5f !important;
+  border-color: #c59d5f !important;
+}
 .nav .nav-logo img {
-  width: 180px !important;
-  transform: scale(0.9);
+    width: 180px !important;
+    transform: scale(0.9);
 }
 
-#categorySearch{
+#categorySearch {
     border: none;
-    border-bottom: 2px solid #c7b9a9 ;
-    
+    border-bottom: 2px solid #c7b9a9;
+
 }
 
 /* -------------End header modal style ---------------- */
