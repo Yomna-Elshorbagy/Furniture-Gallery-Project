@@ -20,6 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(`${key} already in localStorage`);
     }
   });
+  updateCartBadge();
 });
 
 ////////// build productcard from localstorage
