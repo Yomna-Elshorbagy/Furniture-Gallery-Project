@@ -104,3 +104,16 @@ table tbody tr:hover {
 .theme-toggle:hover {
   background: rgba(0, 0, 0, 0.1);
 }
+
+/* Ensure modal always appears above dashboard containers */
+.modal {
+  z-index: 2000 !important;
+}
+.modal-backdrop {
+  z-index: 1999 !important;
+}
+/* Prevent parent (like #mainContent) from clipping the modal */
+#mainContent {
+  overflow: visible !important;
+  position: static !important;
+}

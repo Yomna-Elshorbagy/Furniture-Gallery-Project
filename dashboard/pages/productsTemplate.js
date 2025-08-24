@@ -65,10 +65,10 @@ export const productsTemplate = `
                     <label class="form-label">Category</label>
                     <select id="pmCategory" class="form-select">
                       <option value="">Select Category</option>
-                      <option value="sofas">Sofas</option>
-                      <option value="beds">Beds</option>
-                      <option value="chairs">Chairs</option>
-                      <option value="tables">Tables</option>
+                      <option value="Living">Living</option>
+                      <option value="Dining">Dining</option>
+                      <option value="Bedroom">Bedroom</option>
+                      <option value="Outdoor">Outdoor</option>
                     </select>
                   </div>
                   <div class="col-12">

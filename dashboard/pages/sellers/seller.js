@@ -1,7 +1,7 @@
 export async function initSellerPage() {
   let tableBody = document.getElementById("sellersTable");
   let users = JSON.parse(localStorage.getItem("users")) || [];
-  let filteredUsers = users.filter(u => u.Role === "seller"); 
+  let filteredUsers = users.filter((u) => u.Role === "seller");
   let currentPage = 1;
   let pageSize = 6;
   let paginationContainer = document.getElementById("pagination");
@@ -15,7 +15,7 @@ export async function initSellerPage() {
 
     tableBody.innerHTML = "";
     currentUsers.forEach((user) => {
-      const row = document.createElement("tr");
+      let row = document.createElement("tr");
       row.innerHTML = `
         <td>${user.ID}</td>
         <td>${user.Name}</td>
@@ -38,11 +38,11 @@ export async function initSellerPage() {
 
   function renderPagination() {
     paginationContainer.innerHTML = "";
-    const totalPages = Math.ceil(filteredUsers.length / pageSize);
+    let totalPages = Math.ceil(filteredUsers.length / pageSize);
 
     if (totalPages === 0) return;
 
-    const prevBtn = document.createElement("button");
+    let prevBtn = document.createElement("button");
     prevBtn.textContent = "Prev";
     prevBtn.disabled = currentPage === 1;
     prevBtn.onclick = () => {
@@ -54,7 +54,7 @@ export async function initSellerPage() {
     paginationContainer.appendChild(prevBtn);
 
     for (let i = 1; i <= totalPages; i++) {
-      const btn = document.createElement("button");
+      let btn = document.createElement("button");
       btn.textContent = i;
       if (i === currentPage) btn.style.fontWeight = "bold";
       btn.onclick = () => {
@@ -64,7 +64,7 @@ export async function initSellerPage() {
       paginationContainer.appendChild(btn);
     }
 
-    const nextBtn = document.createElement("button");
+    let nextBtn = document.createElement("button");
     nextBtn.textContent = "Next";
     nextBtn.disabled = currentPage === totalPages;
     nextBtn.onclick = () => {
@@ -77,44 +77,50 @@ export async function initSellerPage() {
   }
 
   function handleEditUser(e) {
-    const userId = e.currentTarget.dataset.id;
-    const user = users.find((u) => u.ID === userId);
+    let userId = e.currentTarget.dataset.id;
+    let user = users.find((u) => u.ID === userId);
 
     if (user) {
-      document.getElementById("editUserId").value = user.ID;
-      document.getElementById("editUserName").value = user.Name;
-      document.getElementById("editUserEmail").value = user.Email;
-      document.getElementById("editUserRole").value = user.Role;
+      document.getElementById("editSellerId").value = user.ID;
+      document.getElementById("editSellerName").value = user.Name;
+      document.getElementById("editSellerEmail").value = user.Email;
+      document.getElementById("editSellerRole").value = user.Role;
 
-      new bootstrap.Modal(document.getElementById("editUserModal")).show();
+      new bootstrap.Modal(document.getElementById("editSellerModal")).show();
     }
   }
-
-  document.getElementById("editUserForm").addEventListener("submit", (e) => {
+  //apply style on js to remove layer because of positioning
+  let sellerModal = document.getElementById("editSellerModal");
+  sellerModal.addEventListener("show.bs.modal", () => {
+    document.body.appendChild(sellerModal);
+  });
+  document.getElementById("editSellerForm").addEventListener("submit", (e) => {
     e.preventDefault();
-    const id = document.getElementById("editUserId").value;
-    const name = document.getElementById("editUserName").value;
-    const email = document.getElementById("editUserEmail").value;
-    const role = document.getElementById("editUserRole").value;
+    let id = document.getElementById("editSellerId").value;
+    let name = document.getElementById("editSellerName").value;
+    let email = document.getElementById("editSellerEmail").value;
+    let role = document.getElementById("editSellerRole").value;
 
     users = users.map((user) =>
       user.ID == id ? { ...user, Name: name, Email: email, Role: role } : user
     );
 
     localStorage.setItem("users", JSON.stringify(users));
-    filteredUsers = users.filter(user => user.Role === "user"); 
+    filteredUsers = users.filter((user) => user.Role === "seller");
     renderUsers();
-    bootstrap.Modal.getInstance(document.getElementById("editUserModal")).hide();
+      bootstrap.Modal.getInstance(
+        document.getElementById("editSellerModal")
+      ).hide();
   });
 
   function attachEventListeners() {
-    document.querySelectorAll(".edit-user").forEach((btn) =>
-      btn.addEventListener("click", handleEditUser)
-    );
+    document
+      .querySelectorAll(".edit-user")
+      .forEach((btn) => btn.addEventListener("click", handleEditUser));
 
     document.querySelectorAll(".del-user").forEach((btn) =>
       btn.addEventListener("click", function () {
-        const id = Number(this.dataset.id);
+        let id = Number(this.dataset.id);
         Swal.fire({
           title: "Are you sure?",
           text: "This will delete the user!",
@@ -124,7 +130,7 @@ export async function initSellerPage() {
           if (result.isConfirmed) {
             users = users.filter((user) => Number(user.ID) !== id);
             localStorage.setItem("users", JSON.stringify(users));
-            filteredUsers = users.filter(user => user.Role === "user");
+            filteredUsers = users.filter((user) => user.Role === "seller"); 
             renderUsers();
           }
         });

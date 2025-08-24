@@ -231,7 +231,11 @@ export async function initProductsPage() {
       renderPage(currentPage);
     }
   });
-
+  //apply style on js to remove layer because of positioning
+  let productModal = document.getElementById("productModal");
+  productModal.addEventListener("show.bs.modal", () => {
+    document.body.appendChild(productModal);
+  });
   // ===== Initial load =====
   loadProducts();
 }

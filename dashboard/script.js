@@ -45,6 +45,12 @@ window.addEventListener("DOMContentLoaded", () => {
   countProducts();
   countOrders();
   countTotalRevenues();
+  CountLowStock()
+  const adminEmailEl = document.getElementById("adminEmail");
+
+  if (adminEmailEl && loggedInUser?.Email) {
+    adminEmailEl.textContent = loggedInUser.Email;
+  }
 });
 document.getElementById("products").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = productsTemplate;
@@ -69,6 +75,10 @@ document.getElementById("orders").addEventListener("click", () => {
 document.getElementById("sellers").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = SellersTemplate;
   initSellerPage();
+});
+document.getElementById("logOut").addEventListener("click", () => {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "../Auth/log-in/login.html";
 });
 function countProducts() {
   let countElement = document.getElementById("productCount");
@@ -95,9 +105,16 @@ function countTotalRevenues() {
     .reduce((sum, order) => {
       let price = parseFloat(order.TotalPrice);
       console.log(sum + (isNaN(price) ? 0 : price));
-      
+
       return sum + (isNaN(price) ? 0 : price);
     }, 0);
 
   countElement.textContent = `$${total}`;
+}
+function CountLowStock() {
+  let countLowStock = document.getElementById("lowStockCount");
+  let products = JSON.parse(localStorage.getItem("products"));
+  let filteredData = products.filter((prod) => prod.stock < 10);
+  let lengthData = filteredData.length;
+  countLowStock.innerText = lengthData;
 }

@@ -201,6 +201,11 @@ export function initOrdersPage() {
     });
   }
 
+  //apply style on js to remove layer because of positioning
+  let orderModal = document.getElementById("orderModal");
+  orderModal.addEventListener("show.bs.modal", () => {
+    document.body.appendChild(orderModal);
+  });
   // Initial render
   renderOrders();
 }

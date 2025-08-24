@@ -2,10 +2,10 @@
   {
     "id": 1,
     "name": "Valletta 3 Seater with Chaise - Mystique Heritage",
-    "price": "3998",
+    "price": 3998,
     "oldPrice": "6798",
-    "category": "living",
-    "stock": 30,
+    "category": "sofas",
+    "stock": 31,
     "description": "Elevated comfort meets timeless elegance in the Valletta 3 Seater with Chaise — a luxurious modular lounge designed for modern living with classic taste. Upholstered in luminous heritage green velvet, this statement piece brings a rich, textural warmth to your home while offering the flexibility of customisable configuration. Deep, plush cushions filled with high-density foam, a spring support system, and solid European beech wood legs combine to deliver next-level lounging without compromising on style. Each modular section features refined tufted detailing, allowing you to rearrange and expand your seating as your space or lifestyle evolves.",
     "image": "https://thefurnituregallery.com.au/cdn/shop/files/Hero_33f2069c-7716-4b98-ad54-4fb936923eb8_1800x1800.png?v=1754888318",
     "subImages": [

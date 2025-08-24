@@ -61,7 +61,9 @@ export function initCategoriesPage() {
       nameInput.value = cat.name;
       descInput.value = cat.description;
 
-      const modal = new bootstrap.Modal(document.getElementById("categoryModal"));
+      const modal = new bootstrap.Modal(
+        document.getElementById("categoryModal")
+      );
       modal.show();
     }
   }
@@ -93,7 +95,9 @@ export function initCategoriesPage() {
     renderCategories();
 
     // Close modal
-    bootstrap.Modal.getInstance(document.getElementById("categoryModal")).hide();
+    bootstrap.Modal.getInstance(
+      document.getElementById("categoryModal")
+    ).hide();
   });
 
   // ---- Delete Category ----
@@ -103,4 +107,9 @@ export function initCategoriesPage() {
     localStorage.setItem("categories", JSON.stringify(categories));
     renderCategories();
   }
+  //apply style on js to remove layer because of positioning
+  let categoryModal = document.getElementById("categoryModal");
+  categoryModal.addEventListener("show.bs.modal", () => {
+    document.body.appendChild(categoryModal);
+  });
 }
