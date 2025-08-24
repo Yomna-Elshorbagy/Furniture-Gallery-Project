@@ -32,18 +32,18 @@
   {
     "ID": "2",
     "Name": "Khaled Mahamed",
-    "Email": "khaled@gmail.com",
-    "Password": "$2a$10$A4mxxOoIiEMQMaw7aH4mNuE7nSvGe39ijjWMQbysUnWZCtbsBJNnu",
+    "Email": "khaled2@gmail.com",
+    "Password": "$2a$10$4MQSYjdKgS1f08JvbuiFguU8CwBn9Z0if2rfR6SuLDyqDCYOoZuJi",
     "Role": "admin",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
   },
-    {
+  {
     "ID": "3",
     "Name": "Abdelhameed Mossad",
     "Email": "abdelhamed@gmail.com",
-    "Password": "$2a$10$ozNMD4Na/T8vKJjEriByN.11zQHNGFfvhtdfj.QT/jDP3qHFOeKRq",
+    "Password": "$2a$10$N/IeW9oPSkXojqXDbMfeC.16JzQIVJeVJ.N0idhjxPC30oUp2XI/u",
     "Role": "admin",
     "cart": [],
     "wishlist": [],
