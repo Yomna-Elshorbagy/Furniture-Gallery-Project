@@ -89,7 +89,7 @@
     "wishlist": [],
     "orderHistory": []
   },
-    {
+  {
     "ID": "8",
     "Name": "omnia Mohamed",
     "Email": "omnia@gmail.com",
@@ -99,7 +99,7 @@
     "wishlist": [],
     "orderHistory": []
   },
-    {
+  {
     "ID": "9",
     "Name": "sohila Mohamed",
     "Email": "sohila@gmail.com",
@@ -109,10 +109,30 @@
     "wishlist": [],
     "orderHistory": []
   },
-    {
+  {
     "ID": "10",
     "Name": "rahma Mohamed",
     "Email": "rahma@gmail.com",
+    "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
+    "Role": "user",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  },
+  {
+    "ID": "11",
+    "Name": "aya Mohamed",
+    "Email": "aya@gmail.com",
+    "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
+    "Role": "user",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  },
+  {
+    "ID": "12",
+    "Name": "amira Mohamed",
+    "Email": "amira@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "user",
     "cart": [],

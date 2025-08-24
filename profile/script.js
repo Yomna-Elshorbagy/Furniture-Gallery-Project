@@ -1,3 +1,43 @@
+document.addEventListener("DOMContentLoaded", () => {
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+  let orderItem = document.getElementById("orderItem");
+  let ordersSection = document.getElementById("ordersSection");
+  let ordersTableBody = document.getElementById("ordersTableBody");
+
+  orderItem.addEventListener("click", (e) => {
+    e.preventDefault();
+    ordersTableBody.innerHTML = "";
+    let userOrders = orders.filter((order) => order.userId == loggedInUser.ID);
+
+    if (userOrders.length === 0) {
+      ordersTableBody.innerHTML = `
+        <tr>
+          <td colspan="5" class="text-center">No orders found</td>
+        </tr>
+      `;
+    } else {
+      userOrders.forEach((order) => {
+        let itemsList = Array.isArray(order.items)
+          ? order.items.map((item) => `${item.name} (x${item.qty})`).join(", ")
+          : "No items";
+
+        let row = `
+          <tr>
+            <td>${order.ID}</td>
+            <td>${order.Date}</td>
+            <td>${order.Status}</td>
+            <td>${order.TotalPrice}</td>
+            <td>${itemsList}</td>
+          </tr>
+        `;
+        ordersTableBody.innerHTML += row;
+      });
+    }
+    ordersSection.classList.remove("d-none");
+  });
+});
+
 // === Validation needed ===
 const validateEmail = (email) =>
   /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(email);
@@ -38,7 +78,7 @@ document.getElementById("editButton").addEventListener("click", () => {
   let email = document.getElementById("email").value.trim();
   let newPassword = document.getElementById("password").value.trim();
 
-    if (!firstName && !lastName && !email && !newPassword) {
+  if (!firstName && !lastName && !email && !newPassword) {
     let toastEl = document.getElementById("ToastNoUpdate");
     toastEl.classList.add("bg-danger");
     let toast = new bootstrap.Toast(toastEl, { delay: 3000 });
@@ -114,10 +154,10 @@ document.getElementById("editButton").addEventListener("click", () => {
   });
 
   //====> Show Toast
-    let toastEl = document.getElementById("ToastProfile");
-    toastEl.classList.add("styleToast");
-    let toast = new bootstrap.Toast(toastEl, { delay: 3000 });
-    toast.show();
+  let toastEl = document.getElementById("ToastProfile");
+  toastEl.classList.add("styleToast");
+  let toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+  toast.show();
 });
 
 // ====> Toggle Password Visibility ===
