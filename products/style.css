@@ -425,7 +425,7 @@ h5.producttitlefav:hover {
   text-overflow: unset;
 }
 .toaststyle{
-  background-color:var(--primary-color)!important;
+  background-color:#c7b9a9 !important;
 }
 .badgestyle{
   width: 15px;
