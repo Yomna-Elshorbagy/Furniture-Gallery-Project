@@ -6,6 +6,8 @@ import { initUsersPage } from "./pages/users/users.js";
 import { UsersTemplate } from "./pages/users/userTemplete.js";
 import { categoriesTemplate } from "./pages/categories/categoriesTemplate.js";
 import { initCategoriesPage } from "./pages/categories/categories.js";
+import { initSellerPage } from "./pages/sellers/seller.js";
+import { SellersTemplate } from "./pages/sellers/sellerTemplete.js";
 
 let serverDataFiles = {
   products: "../server/data/products.json",
@@ -63,6 +65,10 @@ document.getElementById("users").addEventListener("click", () => {
 document.getElementById("orders").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = ordersTemplate;
   initOrdersPage();
+});
+document.getElementById("sellers").addEventListener("click", () => {
+  document.getElementById("mainContent").innerHTML = SellersTemplate;
+  initSellerPage();
 });
 function countProducts() {
   let countElement = document.getElementById("productCount");

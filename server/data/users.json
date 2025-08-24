@@ -48,5 +48,75 @@
     "cart": [],
     "wishlist": [],
     "orderHistory": []
+  },
+  {
+    "ID": "4",
+    "Name": "omar Mohamed",
+    "Email": "omar@gmail.com",
+    "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
+    "Role": "seller",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  },
+  {
+    "ID": "5",
+    "Name": "ahmed Mohamed",
+    "Email": "ahmed@gmail.com",
+    "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
+    "Role": "seller",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  },
+  {
+    "ID": "6",
+    "Name": "asmaa Mohamed",
+    "Email": "asmaa@gmail.com",
+    "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
+    "Role": "seller",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  },
+  {
+    "ID": "7",
+    "Name": "Doaa Mohamed",
+    "Email": "doaa@gmail.com",
+    "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
+    "Role": "seller",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  },
+    {
+    "ID": "8",
+    "Name": "omnia Mohamed",
+    "Email": "omnia@gmail.com",
+    "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
+    "Role": "user",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  },
+    {
+    "ID": "9",
+    "Name": "sohila Mohamed",
+    "Email": "sohila@gmail.com",
+    "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
+    "Role": "user",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
+  },
+    {
+    "ID": "10",
+    "Name": "rahma Mohamed",
+    "Email": "rahma@gmail.com",
+    "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
+    "Role": "user",
+    "cart": [],
+    "wishlist": [],
+    "orderHistory": []
   }
 ]

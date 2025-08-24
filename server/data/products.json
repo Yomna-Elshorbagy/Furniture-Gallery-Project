@@ -18,7 +18,9 @@
       "width": "178cm",
       "height": "183cm",
       "Length": "278cm"
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
   {
     "id": 2,
@@ -39,7 +41,9 @@
       "width": "120cm",
       "height": "75cm",
       "Length": "360cm"
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
   {
     "id": 3,
@@ -60,7 +64,9 @@
       "width": "120cm",
       "height": "75cm",
       "Length": "360cm"
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
   {
     "id": 4,
@@ -81,7 +87,9 @@
       "width": "153cm",
       "height": "88cm",
       "Length": "328cm"
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
   {
     "id": 5,
@@ -102,7 +110,9 @@
       "width": "329cm",
       "height": "83cm",
       "Length": "426cm"
-    }
+    },
+    "sellerId": "6",
+    "sellerName": "asmaa Mohamed"
   },
   {
     "id": 6,
@@ -123,7 +133,9 @@
       "width": "220cm",
       "height": "82cm",
       "Length": "440cm"
-    }
+    },
+    "sellerId": "6",
+    "sellerName": "asmaa Mohamed"
   },
   {
     "id": 7,
@@ -144,7 +156,9 @@
       "width": "170cm",
       "height": "83cm",
       "Length": "160cm"
-    }
+    },
+    "sellerId": "6",
+    "sellerName": "asmaa Mohamed"
   },
   {
     "id": 8,
@@ -156,7 +170,7 @@
     "description": "The Alina 3 Seater Sofa is a masterpiece of design and functionality, promising to be the centrepiece of your home. Its combination of deluxe Nappa leather in Olive, resilient foam seating, and a quality spring system ensures you experience the highest level of comfort and support. ",
     "image": "https://thefurnituregallery.com.au/cdn/shop/files/Alina_Olive_1334x1334.jpg?v=1752042520",
     "subImages": [
-       "https://thefurnituregallery.com.au/cdn/shop/files/Alina_Olive_1334x1334.jpg?v=1752042520",
+      "https://thefurnituregallery.com.au/cdn/shop/files/Alina_Olive_1334x1334.jpg?v=1752042520",
       "https://thefurnituregallery.com.au/cdn/shop/files/AlinaSofaSwatch_2_1800x1800.jpg?v=1753839158",
       "https://thefurnituregallery.com.au/cdn/shop/files/RxqUf-Jg_1800x1200.jpg?v=1753839158",
       "https://thefurnituregallery.com.au/cdn/shop/files/8V7VmIGQ_1200x1800.jpg?v=1753839158"
@@ -165,7 +179,9 @@
       "width": "97cm",
       "height": "84cm",
       "Length": "234cm"
-    }
+    },
+    "sellerId": "6",
+    "sellerName": "asmaa Mohamed"
   },
   {
     "id": 9,
@@ -186,7 +202,9 @@
       "width": "170cm",
       "height": "83cm",
       "Length": "160cm"
-    }
+    },
+    "sellerId": "5",
+    "sellerName": "ahmed Mohamed"
   },
   {
     "id": 10,
@@ -198,7 +216,7 @@
     "description": "Meet the Berlin Dining Chair — effortlessly chic, endlessly versatile, and made for modern living. Wrapped in soft white boucle, with a gently curved back and generously padded seat, it’s the kind of piece that feels just as good as it looks. Placed in a pared-back dining space or styled solo as a statement accent in the bedroom or living room, the Berlin will look right at home. Whether you're hosting dinner or lounging with a book, it’s comfort and style in equal measure — and a quiet favourite for design lovers who appreciate those little details.",
     "image": "https://thefurnituregallery.com.au/cdn/shop/files/G1A4419_1_700x.jpg?v=1753847391",
     "subImages": [
-       "https://thefurnituregallery.com.au/cdn/shop/files/G1A4419_1_700x.jpg?v=1753847391",
+      "https://thefurnituregallery.com.au/cdn/shop/files/G1A4419_1_700x.jpg?v=1753847391",
       "https://thefurnituregallery.com.au/cdn/shop/files/G1A4392_149b9f05-d310-499c-89eb-026ca462b78d_1800x1800.jpg?v=1754282986",
       "https://thefurnituregallery.com.au/cdn/shop/files/G1A4426_1800x1800.jpg?v=1754282986",
       "https://thefurnituregallery.com.au/cdn/shop/files/G1A4423_1800x1800.jpg?v=1754282986"
@@ -207,7 +225,9 @@
       "width": "53cm",
       "height": "74cm",
       "Length": "54cm"
-    }
+    },
+    "sellerId": "5",
+    "sellerName": "ahmed Mohamed"
   },
   {
     "id": 11,
@@ -228,7 +248,9 @@
       "width": "44cm",
       "height": "79cm",
       "Length": "46cm"
-    }
+    },
+    "sellerId": "7",
+    "sellerName": "doaa Mohamed"
   },
   {
     "id": 12,
@@ -249,7 +271,9 @@
       "width": "42cm",
       "height": "76cm",
       "Length": "50cm"
-    }
+    },
+    "sellerId": "5",
+    "sellerName": "ahmed Mohamed"
   },
   {
     "id": 13,
@@ -270,7 +294,9 @@
       "width": "60cm",
       "height": "70cm",
       "Length": "75cm"
-    }
+    },
+    "sellerId": "7",
+    "sellerName": "doaa Mohamed"
   },
   {
     "id": 14,
@@ -291,7 +317,9 @@
       "width": "58cm",
       "height": "78cm",
       "Length": "57cm"
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
   {
     "id": 15,
@@ -312,7 +340,9 @@
       "width": "101cm",
       "height": "78cm",
       "Length": "240cm"
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
   {
     "id": 16,
@@ -324,7 +354,7 @@
     "description": "Dress up your kitchen bar with the Martini Backless Counter Stool, featuring a soft beige upholstery combined with a brushed gold iron base for a sleek, modern look. ",
     "image": "https://thefurnituregallery.com.au/cdn/shop/files/BK002I1A_1800x1800.jpg?v=1752644542",
     "subImages": [
-       "https://thefurnituregallery.com.au/cdn/shop/files/BK002I1A_1800x1800.jpg?v=1752644542",
+      "https://thefurnituregallery.com.au/cdn/shop/files/BK002I1A_1800x1800.jpg?v=1752644542",
       "https://thefurnituregallery.com.au/cdn/shop/files/K8Ft4Xfw_1349x1799.jpg?v=1741647991",
       "https://thefurnituregallery.com.au/cdn/shop/files/yMG84H9Q_1349x1799.jpg?v=1741647991",
       "https://thefurnituregallery.com.au/cdn/shop/files/R8ax92NA_1349x1800.jpg?v=1741647991"
@@ -333,7 +363,9 @@
       "width": "39cm",
       "height": "76cm",
       "Length": "45cm"
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
   {
     "id": 17,
@@ -354,9 +386,11 @@
       "width": "90cm",
       "height": "75cm",
       "Length": "200cm"
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
-  { 
+  {
     "id": 18,
     "name": "Sienna Dining Table",
     "price": "2499",
@@ -374,7 +408,9 @@
       "width": "120cm",
       "height": "77cm",
       "Length": "240cm"
-    }
+    },
+    "sellerId": "6",
+    "sellerName": "asmaa Mohamed"
   },
   {
     "id": 19,
@@ -393,7 +429,9 @@
       "width": "150cm",
       "height": "77cm",
       "Length": "150cm"
-    }
+    },
+    "sellerId": "6",
+    "sellerName": "asmaa Mohamed"
   },
   {
     "id": 41,
@@ -414,7 +452,9 @@
       "width": "140cm",
       "height": "73cm",
       "Length": "265cm"
-    }
+    },
+    "sellerId": "7",
+    "sellerName": "doaa Mohamed"
   },
   {
     "id": 20,
@@ -434,7 +474,9 @@
       "width": "Q: 192 cm - K: 222 cm",
       "height": "138 cm",
       "Length": "234 cm"
-    }
+    },
+    "sellerId": "7",
+    "sellerName": "doaa Mohamed"
   },
   {
     "id": 21,
@@ -454,7 +496,9 @@
       "width": "Q: 177 cm - K: 207 cm",
       "height": "Q: 139 cm - K: 139 cm",
       "Length": "Q: 222 cm - K: 222 cm"
-    }
+    },
+    "sellerId": "7",
+    "sellerName": "doaa Mohamed"
   },
   {
     "id": 22,
@@ -474,7 +518,9 @@
       "width": "39.5 cm",
       "height": "49.5 cm",
       "Length": "153.5 cm"
-    }
+    },
+    "sellerId": "7",
+    "sellerName": "doaa Mohamed"
   },
   {
     "id": 23,
@@ -494,7 +540,9 @@
       "width": "Q: 197 cm - K: 207 cm",
       "height": "112 cm",
       "Length": "128 cm"
-    }
+    },
+    "sellerId": "7",
+    "sellerName": "doaa Mohamed"
   },
   {
     "id": 24,
@@ -514,7 +562,9 @@
       "width": "Q: 153 cm - K: 183 cm",
       "height": "157 cm",
       "Length": "203 cm"
-    }
+    },
+    "sellerId": "7",
+    "sellerName": "doaa Mohamed"
   },
   {
     "id": 25,
@@ -532,7 +582,9 @@
       "width": "Q: 155 cm - K: 188 cm",
       "height": "Q: 130 cm - K: 130 cm",
       "Length": "Q: 205 cm - K: 205 cm"
-    }
+    },
+    "sellerId": "6",
+    "sellerName": "asmaa Mohamed"
   },
   {
     "id": 26,
@@ -550,7 +602,9 @@
       "width": "45cm",
       "height": "193",
       "Length": "135cm"
-    }
+    },
+    "sellerId": "6",
+    "sellerName": "asmaa Mohamed"
   },
   {
     "id": 27,
@@ -571,7 +625,9 @@
       "width": "k: 197 cm - Q: 167 cm",
       "height": "k: 120 cm - Q: 120 cm",
       "Length": "k: 215 cm - Q: 219 cm"
-    }
+    },
+    "sellerId": "6",
+    "sellerName": "asmaa Mohamed"
   },
   {
     "id": 28,
@@ -592,7 +648,9 @@
       "width": "45 cm",
       "height": "82 cm",
       "Length": "150 cm"
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
   {
     "id": 29,
@@ -613,7 +671,9 @@
       "width": "45 cm",
       "height": "119 cm",
       "Length": "86 cm"
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
   {
     "id": 30,
@@ -633,7 +693,9 @@
       "width": "240 cm",
       "height": "10 cm",
       "Length": "330 cm"
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
   {
     "id": 31,
@@ -652,7 +714,9 @@
       "width": "0 cm",
       "height": "150 cm",
       "Length": "120 cm"
-    }
+    },
+    "sellerId": "6",
+    "sellerName": "asmaa Mohamed"
   },
   {
     "id": 32,
@@ -672,7 +736,9 @@
       "width": "4 cm",
       "height": "200 cm",
       "Length": "100 cm"
-    }
+    },
+    "sellerId": "6",
+    "sellerName": "asmaa Mohamed"
   },
   {
     "id": 33,
@@ -691,7 +757,9 @@
       "width": "61 cm",
       "height": "53 cm",
       "Length": "61 cm"
-    }
+    },
+    "sellerId": "6",
+    "sellerName": "asmaa Mohamed"
   },
   {
     "id": 34,
@@ -709,7 +777,9 @@
       "width": "46 cm",
       "height": "79 cm",
       "Length": "75 cm"
-    }
+    },
+    "sellerId": "5",
+    "sellerName": "ahmed Mohamed"
   },
   {
     "id": 35,
@@ -727,7 +797,9 @@
       "width": "3 cm",
       "height": "76 cm",
       "Length": "76 cm"
-    }
+    },
+    "sellerId": "5",
+    "sellerName": "ahmed Mohamed"
   },
   {
     "id": 36,
@@ -745,7 +817,9 @@
       "width": "0 cm",
       "height": "101 cm",
       "Length": "101 cm"
-    }
+    },
+    "sellerId": "5",
+    "sellerName": "ahmed Mohamed"
   },
   {
     "id": 37,
@@ -766,7 +840,9 @@
       "width": "240 cm",
       "height": "3 cm",
       "Length": "330 cm"
-    }
+    },
+    "sellerId": "5",
+    "sellerName": "ahmed Mohamed"
   },
   {
     "id": 38,
@@ -787,7 +863,9 @@
       "width": "200 cm",
       "height": "2 cm",
       "Length": "290 cm"
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
   {
     "id": 39,
@@ -806,7 +884,9 @@
       "width": "9 cm",
       "height": "26 cm",
       "Length": null
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   },
   {
     "id": 40,
@@ -825,6 +905,8 @@
       "width": "28 cm",
       "height": "25 cm",
       "Length": null
-    }
+    },
+    "sellerId": "4",
+    "sellerName": "omar Mohamed"
   }
 ]
