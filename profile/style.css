@@ -300,3 +300,110 @@ footer a:hover {
     width: 400px !important;
   }
 }
+
+
+/* ================= Orders Table Styling ================= */
+#ordersSection {
+  background: #fdfdfc;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#ordersSection h4 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #4a3f35;
+  margin-bottom: 20px;
+}
+
+/* Table */
+#ordersSection table {
+  border-collapse: separate;
+  border-spacing: 0 12px; /* row spacing */
+  width: 100%;
+}
+
+#ordersSection thead th {
+  background: #c7b9a9;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 10px 10px 0 0;
+}
+
+#ordersSection tbody tr {
+  background: #fff;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#ordersSection tbody tr:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+#ordersSection tbody td {
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  color: #333;
+  vertical-align: middle;
+  border: none;
+}
+
+/* Rounded row effect */
+#ordersSection tbody tr td:first-child {
+  border-radius: 12px 0 0 12px;
+  font-weight: 600;
+  color: #896735;
+}
+
+#ordersSection tbody tr td:last-child {
+  border-radius: 0 12px 12px 0;
+}
+
+/* Status badges */
+.order-status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.order-status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.order-status.shipped {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.order-status.delivered {
+  background: #d4edda;
+  color: #155724;
+}
+
+.order-status.cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
