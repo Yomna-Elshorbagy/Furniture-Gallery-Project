@@ -14,7 +14,7 @@ body {
 }
 
 /* *************** Starting navbar styling ******************** */
-.top.nav {
+/* .top.nav {
   position: fixed;
   top: 0;
   z-index: 2000;
@@ -61,6 +61,273 @@ body {
 .top.nav .nav-logo img {
   width: 180px !important;
   transform: scale(0.9);
+} */
+
+.nav {
+  font-weight: 500;
+  z-index: 1050;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  top: 0;
+  
+}
+
+/* nav icon */
+.nav i {
+  color: #111;
+  margin: 10px;
+  font-size: 20px;
+}
+
+/* .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000; 
+  background: #fff; 
+}*/
+
+/* for line under nav item (Home ...)*/
+.navbar-nav .nav-item a {
+  position: relative;
+}
+
+.navbar-nav .nav-item a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #c7b9a9;
+  transition: width 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-item a:hover::after {
+  width: 100%;
+}
+
+/* for Find strore */
+button.hover-button {
+  background-color: transparent;
+  color: #c7b9a9;
+  border: 1px solid #c7b9a9;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  padding: 5px;
+  position: relative;
+  z-index: 2;
+}
+
+/* link in button */
+button.hover-button a {
+  color: #c7b9a9;
+  text-decoration: none;
+}
+
+button.hover-button:hover:after {
+  transform: scale(1);
+  transform-origin: left center;
+  color: white;
+}
+
+button.hover-button:hover {
+  color: white;
+}
+
+/* link in button */
+button.hover-button a:hover {
+  color: white;
+}
+
+button.hover-button::after {
+  transform-origin: right center;
+  transform: scaleX(0);
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background-color: #c7b9a9;
+  transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.navbar .active {
+  color: #c59d5f !important;
+  border-color: #c59d5f !important;
+}
+
+.nav .nav-logo img {
+  width: 180px !important;
+  transform: scale(0.9);
+}
+
+#categorySearch {
+  border: none;
+  border-bottom: 2px solid #c7b9a9;
+}
+
+.badgestyle{
+  width: 15px;
+  height: 15px;
+  font-size:8px;
+  margin: auto;
+
+
+}
+/* -------------favorite modal style ---------------- */
+
+.navbar .active {
+  color: #c59d5f !important;
+  border-color: #c59d5f !important;
+}
+.madal{
+  font-family: var(--heading-font);
+}
+#favModal .modal-content{
+    border-radius: 0 !important;
+    
+}
+  .modal-dialog {
+  max-width: 70% !important; 
+}
+
+.modal-content {
+  height: 550px !important; 
+}
+.modal-header{
+    border-radius: 0 !important;
+    color: #ffffff !important;
+    font-family: var(--heading-font);
+}
+#favoritelabel{
+    font-size: 14px !important;
+}
+.modal-body hr{
+    width: 95% !important;
+    margin: 20px auto !important;
+    text-align: start !important;
+}
+.modal-body h5{
+    font-weight: 400;
+    letter-spacing: 0 !important;
+    font-size: 18px !important;
+
+}
+.nofavoritediv{
+    margin-top: 70px !important;
+}
+.nofavoritediv h5{
+    margin-bottom: 30px !important;
+    font-size: 16px !important;
+    font-weight: 500 ;
+}
+.nofavoritediv p{
+    font-size: 12px !important;
+}
+.nofavoritediv button{
+    background-color: #434655 !important;
+    color: white !important;
+    font-size: 12px !important; 
+    padding: 5px 20px !important;
+    font-weight: bold;
+    margin-top: 20px;
+
+ 
+}
+.nofavoritediv button:hover{
+    opacity: 0.8 !important;
+}
+.cardstyle{
+  width: 150px;
+  height: 200px;
+  margin-right: 20px;
+  margin-left: 30px;
+  margin-bottom: 100px !important;
+}
+.btnaddtocard{
+  height: 30px !important;
+  font-size:10px !important ;
+}
+
+.favdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: start !important;
+  flex-wrap: wrap;
+  max-height: 400px; 
+  overflow-y: auto;
+  gap: 10px; 
+}
+
+
+h5.producttitlefav{
+  font-size: 10px !important;
+  font-weight: 500 !important;
+}
+h5.producttitlefav:hover {
+  font-size: 10px !important;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+.toaststyle{
+  background-color:#c7b9a9 !important;
+}
+.badgestyle{
+  width: 15px;
+  height: 15px;
+  font-size:8px;
+  margin: auto;
+}
+/*---------------- header section------------ */
+.contact {
+  color: #212129;
+  font-family: 400;
+  font-size: 20px;
+  line-height: 33px;
+  letter-spacing: 3px;
+}
+.loc {
+  color: #212129;
+  font-family: 500;
+  font-size: 30px;
+  line-height: normal;
+}
+.header-img {
+  background: url("../findStore/images/1_1500x.webp") no-repeat center
+    center/cover;
+  height: 400px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+/* ****** client section ***** */
+.carousel-indicators [data-bs-target] {
+  background-color: #e65f78;
+  border: 1px solid #e65f78;
+  border-radius: 10px;
+  width: 15px;
+  height: 10px;
+}
+
+.carousel-indicators .active {
+  width: 20px;
+}
+.main-color {
+  color: #e65f78;
+}
+.hoverLink {
+  color: #9c8367 !important;
+}
+.hoverLink:hover {
+  color: #b9ac9d !important;
 }
 
 .emptycart{
