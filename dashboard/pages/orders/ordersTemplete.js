@@ -64,7 +64,7 @@ export const ordersTemplate = `
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" id="omSave" class="btn btn-primary">Save</button>
+          <button type="button" id="omSave" class="btn btn-color">Save</button>
         </div>
       </div>
     </div>
