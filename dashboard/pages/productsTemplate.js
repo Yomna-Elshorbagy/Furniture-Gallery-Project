@@ -11,6 +11,7 @@ export const productsTemplate = `
         <th>Image</th>
         <th>Name</th>
         <th>Price ($)</th>
+        <th>old price</th>
         <th>Stock</th>
         <th>Category</th>
         <th>Actions</th>
@@ -24,7 +25,7 @@ export const productsTemplate = `
     <button id="nextPage" class="btn btn-outline-secondary btn-sm">Next</button>
   </div>
 
-  <!-- Advanced Product Modal -->
+  <!-- Product Modal -->
   <div class="modal fade" id="productModal" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content border-0 shadow-lg rounded-4">
@@ -40,6 +41,7 @@ export const productsTemplate = `
               <div class="card border-0 shadow-sm rounded-3 p-3">
                 <h6 class="fw-bold mb-3">Product Details</h6>
                 <div class="row g-3">
+                  
                   <div class="col-md-6">
                     <label class="form-label">Name</label>
                     <div class="input-group">
@@ -47,6 +49,7 @@ export const productsTemplate = `
                       <input id="pmTitle" type="text" class="form-control" placeholder="Product Name" />
                     </div>
                   </div>
+                  
                   <div class="col-md-3">
                     <label class="form-label">Price ($)</label>
                     <div class="input-group">
@@ -54,14 +57,24 @@ export const productsTemplate = `
                       <input id="pmPrice" type="number" step="0.01" class="form-control" placeholder="0.00" />
                     </div>
                   </div>
+
                   <div class="col-md-3">
+                    <label class="form-label">Old Price ($)</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fa-solid fa-tag"></i></span>
+                      <input id="pmOldPrice" type="number" step="0.01" class="form-control" placeholder="0.00" />
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-4">
                     <label class="form-label">Stock</label>
                     <div class="input-group">
                       <span class="input-group-text"><i class="fa-solid fa-box"></i></span>
                       <input id="pmStock" type="number" class="form-control" placeholder="0" />
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  
+                  <div class="col-md-8">
                     <label class="form-label">Category</label>
                     <select id="pmCategory" class="form-select">
                       <option value="">Select Category</option>
@@ -71,6 +84,13 @@ export const productsTemplate = `
                       <option value="Outdoor">Outdoor</option>
                     </select>
                   </div>
+
+                <div class="col-12 mt-3">
+                    <label class="form-label">Sub Images </label>
+                      <textarea id="pmSubImages" class="form-control" rows="3" placeholder="Enter image URLs..."></textarea>
+                    </div>
+
+
                   <div class="col-12">
                     <label class="form-label">Description</label>
                     <textarea id="pmDesc" class="form-control" rows="3" placeholder="Write product description..."></textarea>
@@ -79,12 +99,21 @@ export const productsTemplate = `
               </div>
             </div>
 
-            <!-- Right Column: Image Upload -->
+
+
+            <!-- Right Column: Images -->
             <div class="col-md-5">
               <div class="card border-0 shadow-sm rounded-3 p-3 text-center">
-                <label class="form-label">Image</label> <input id="pmImage" type="file" class="form-control" />
+                <label class="form-label">Main Image</label>
+                <input id="pmImage" type="file" class="form-control" />
                 <img id="pmImagePreview" src="" alt="Preview" style="display:none;max-height:200px;margin-top:5px;">
+                <hr/>
+                <label class="form-label">Sub Images</label>
+                <input id="pmSubImages" type="file" class="form-control" multiple />
+                <div id="pmSubImagesPreview" class="d-flex flex-wrap gap-2 mt-2"></div>
+              </div>
             </div>
+
           </div>
         </div>
         
