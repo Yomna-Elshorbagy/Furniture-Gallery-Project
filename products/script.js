@@ -126,10 +126,6 @@ function drowProduct(product, productList) {
         </div>
     `;
 
-  // عند الضغط على الكارت نروح للمنتج
-  // card.addEventListener("click", () => {
-  //   window.location.href = `#${product.id}`;
-  // });
   card.querySelector(".product-card").addEventListener("click", (e) => {
     if (!e.target.closest(".favorite-btn")) {
       window.location.href = `../product details/proDetails.html?id=${product.id}`;
@@ -191,24 +187,16 @@ function filterfun() {
 
   let minVal = minValue.value.trim();
   let maxVal = maxValue.value.trim();
-
-  // ✅ لو الاتنين فاضيين → عرض الكل
   if (minVal === "" && maxVal === "") {
     products.forEach(pro => drowProduct(pro, productList));
     return;
   }
-
-  // تحويل لأرقام
   minVal = +minVal || 0;
   maxVal = +maxVal || Infinity;
-
-  // ✅ لو min أكبر من max → رسالة خطأ
   if (minVal > maxVal) {
-    productList.innerHTML = `<p class="text-danger text-center">❌ الحد الأدنى أكبر من الحد الأقصى</p>`;
+    productList.innerHTML = `<p class="text-danger text-center"> minimum value is greater than maximum value</p>`;
     return;
   }
-
-  // فلترة المنتجات
   let filtered = products.filter(pro => pro.price >= minVal && pro.price <= maxVal);
 
   if (filtered.length > 0) {
@@ -216,8 +204,6 @@ function filterfun() {
   } else {
     productList.innerHTML = `<p class="text-muted text-center">No products found in this range</p>`;
   }
-
-  // تفريغ الباجيناشن لو موجود
   let paginationContainer = document.getElementById("pagination");
   if (paginationContainer) paginationContainer.innerHTML = "";
 }

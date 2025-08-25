@@ -12,10 +12,17 @@ export function initOrdersPage() {
   let editingId = null;
   let currentPage = 1;
   const pageSize = 6;
+  let selectedFilter = "All";
 
   // ---- render Orders table ----
   function renderOrders() {
     tableBody.innerHTML = "";
+
+    // apply filter
+    let filteredOrders =
+      selectedFilter === "All"
+        ? orders
+        : orders.filter((o) => o.Status === selectedFilter);
 
     // slice orders for pagination
     let start = (currentPage - 1) * pageSize;
@@ -97,6 +104,13 @@ export function initOrdersPage() {
     paginationContainer.appendChild(nextBtn);
   }
 
+
+    statusFilter.addEventListener("change", () => {
+    selectedFilter = statusFilter.value;
+    currentPage = 1; // reset to first page
+    renderOrders();
+  });
+  
   // ---- add order ----
   document.getElementById("addOrderBtn")?.addEventListener("click", () => {
     editingId = null;

@@ -5,6 +5,18 @@ export const ordersTemplate = `
     <i class="fa-solid fa-plus"></i> Add Order
   </button>
   
+    <!-- Filter Dropdown -->
+  <div class="mb-3">
+    <label class="form-label me-2 fw-bold">Filter by Status:</label>
+    <select id="statusFilter" class="form-select w-auto d-inline-block">
+      <option value="All">All</option>
+      <option value="Pending">Pending</option>
+      <option value="Completed">Completed</option>
+      <option value="Shipped">Shipped</option>
+      <option value="Cancelled">Cancelled</option>
+    </select>
+  </div>
+  
   <table class="table">
     <thead class="table-light">
       <tr>

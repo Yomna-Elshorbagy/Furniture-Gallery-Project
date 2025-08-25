@@ -485,7 +485,6 @@ h5.producttitlefav:hover {
   cursor: not-allowed;
 }
 
-/* Optional: add arrow style for Prev/Next */
 #pagination button.prev::before {
   content: "◀";
   margin-right: 4px;
