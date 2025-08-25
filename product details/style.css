@@ -273,7 +273,352 @@ button.hover-button::after {
 .form-label {
   font-size: 0.8rem;
 } 
+/* start feature */
+ .features-wrapper {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 40px 20px; /* باديج حوالين البوردر */
+        background: #fff;
+        max-width: 1200px;
+        margin: auto;
+    }
+    .feature-box {
+        text-align: center;
+        padding: 20px;
+    }
+    .feature-box i {
+        font-size: 50px;
+        color: #d2a88a; /* نفس اللون في الصورة */
+        margin-bottom: 15px;
+        display: block;
+    }
+    .feature-box h5 {
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .feature-box ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
+    .feature-box ul li {
+        position: relative;
+        padding-left: 20px;
+        color: #777;
+        margin-bottom: 10px;
+        font-size: 16px;
+        
+        align-items: left;
+    }
+    .feature-box ul li::before {
+        content: "▶"; /* السهم */
+        position: absolute;
+        left: 0px;
+        color: #d2a88a;
+        font-size: 14px;
+    }
+/*---------------------------------- END features----------------------- */
+/* *************************** start realeted section************************** */
+.related-section {
+  margin-top: 40px ;
+  padding: 40px;
+
+}
+
+.related-section h3 {
+  text-align: center;
+  margin: 40px;
+  font-size: 20px;
+  font-family: 400;
+  line-height: 33px;
+  letter-spacing: 5px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.related-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.related-card:hover {
+  transform: translateY(-5px);
+}
+
+.related-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.related-card h4 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.related-card p {
+  font-weight: bold;
+}
+
+/* *************************** end realeted section************************** */
+/* ......................... start social-gallery.......................  */
+.head-section .main {
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 2.5rem;
+  color: #212129;
+  font-style: normal;
+}
+
+.social-gallery {
+  background-color: #c7b9a9;
+  height: 700px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.social-icons i {
+  font-size: 30px;
+  margin: 0 15px;
+  color: black;
+  transition: color 0.3s;
+  cursor: pointer;
+  text-align: center;
+}
+
+.social-icons i:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.cards {
+  border: none;
+}
+
+.cards .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.cards:hover .overlay {
+  opacity: 1;
+}
+
+/* ...........................end social-gallery........................  */
+/* ***************  footer-top ***************** */
+.form-control {
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+
+.btn-custom {
+  background-color: #c8875f;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: #b66e46;
+  color: white;
+}
+
+.form-check {
+  margin-bottom: 20px;
+}
+
+.vases img {
+  max-height: 120px;
+  margin: 0 5px;
+}
+
+.decor-right img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.footer-top {
+  background-color: #f9f9f9;
+}
+
+.signup-form .form-control {
+  background-color: #f1f1f1;
+}
+
+.signup-form h2 {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: normal;
+  color: rgb(0, 0, 0);
+  margin-bottom: 20px;
+}
+
+.img-width {
+  width: 600px !important;
+}
+
+.footer-top .footerImage img {
+  height: 650px;
+  width: 115%;
+}
+
+@media (max-width: 768px) {
+  .footer-payments img,
+  .footer-payments svg {
+    height: 22px;
+  }
+
+  .footer-top .footerImage img {
+    width: 600px !important;
+  }
+
+  .social-gallery {
+    height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-payments ul {
+    gap: 10px;
+  }
+
+  .footer-payments img,
+  .footer-payments svg {
+    height: 18px;
+  }
+
+  .footer-top .footerImage img {
+    width: 400px !important;
+  }
+}
 
 
 
+/* *************************** footer bottom ************************** */
+footer {
+  background: #f9f9f6;
+  color: #333;
+  font-size: 15px;
+  padding: 50px 20px 20px;
+}
 
+footer h6 {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+footer a {
+  color: #666;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #000;
+}
+
+.footer-icons i {
+  font-size: 20px;
+  margin: 0 8px;
+  color: #111;
+  cursor: pointer;
+}
+
+.footer-icons i:hover {
+  color: #555;
+}
+
+.footer-bottom {
+  font-size: 13px;
+  color: #777;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer-payments img {
+  height: 30px;
+  margin: 5px;
+}
+
+.feature-box {
+  text-align: center;
+  padding: 10px;
+}
+
+.feature-box i {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.imageCss {
+  cursor: pointer;
+  transition: scale 0.5s ease;
+}
+
+.imageCss:hover {
+  scale: 1.1;
+}
+
+.feature-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.footer-apps img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-apps img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.footer-payments ul {
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-payments li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-payments img,
+.footer-payments svg {
+  height: 28px;
+  width: auto;
+  max-width: 100%;
+}

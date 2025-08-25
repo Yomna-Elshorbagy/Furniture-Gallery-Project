@@ -161,34 +161,80 @@ function showProductDetails(products) {
     }
   });
 
-// go to cart page
-document.addEventListener("click", function (e) {
-  
-  if (e.target.classList.contains("btnaddtocard")) {
-    let productId = parseInt(e.target.getAttribute("data-id"));
-        let quantityInput = document.getElementById("quantity"); // جيب قيمة input
+  // go to cart page
+  document.addEventListener("click", function (e) {
+
+    if (e.target.classList.contains("btnaddtocard")) {
+      let productId = parseInt(e.target.getAttribute("data-id"));
+      let quantityInput = document.getElementById("quantity"); // جيب قيمة input
 
 
-    if (!loggedInUser.cart) {
-      loggedInUser.cart = [];
+      if (!loggedInUser.cart) {
+        loggedInUser.cart = [];
+      }
+
+      // هات المنتج نفسه من الـ products
+      let productToAdd = products.find(p => p.id === productId);
+
+      if (productToAdd && !loggedInUser.cart.some(p => p.id === productId)) {
+        loggedInUser.cart.push({
+          ...productToAdd,              // كل بيانات المنتج
+          quantity: Number(quantityInput.value)  // الكمية
+        });
+      }
+
+      localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+
+
+      window.location.href = "../cart/cart.html";
+      console.log(loggedInUser.wishlist);
+
     }
-
-    // هات المنتج نفسه من الـ products
-    let productToAdd = products.find(p => p.id === productId);
-
-    if (productToAdd && !loggedInUser.cart.some(p => p.id === productId)) {
-loggedInUser.cart.push({
-  ...productToAdd,              // كل بيانات المنتج
-  quantity: Number(quantityInput.value)  // الكمية
-});    }
-
-    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
-
-
-    window.location.href = "../cart/cart.html";
-    console.log(loggedInUser.wishlist);
-    
-  }
-});
-
+  });
+  // ------------------------------------------> related products-----------------------------------------------------
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+
+  // جلب ID المنتج الحالي من الرابط
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentId = parseInt(urlParams.get("id"));
+
+  const currentProduct = products.find(p => p.id === currentId);
+  if (!currentProduct) return;
+
+  function getRelatedProducts() {
+    // هات كل المنتجات اللي من نفس الكاتيجوري وغير الحالية
+    const sameCategory = products.filter(p =>
+      p.category === currentProduct.category && p.id !== currentId
+    );
+
+    // لو أقل من 4، هتعرض العدد الموجود
+    return sameCategory.sort(() => Math.random() - 0.5).slice(0, 4);
+  }
+
+  function renderRelatedProducts(related) {
+    const container = document.getElementById("related-products");
+    container.innerHTML = "";
+
+    related.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "related-card";
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h4>${product.name}</h4>
+         <p>
+        <span class="old-price me-2">$${product.oldPrice}</span> 
+        <span class="text-color fs-4 fw-bold">$${product.price}</span>
+      </p>
+      `;
+      card.addEventListener("click", () => {
+        window.location.href = `proDetails.html?id=${product.id}`;
+      });
+      container.appendChild(card);
+    });
+  }
+
+  const related = getRelatedProducts();
+  renderRelatedProducts(related);
+});
