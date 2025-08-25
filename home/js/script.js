@@ -20,18 +20,23 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(`${key} already in localStorage`);
     }
   });
+  
+  // renderFavoriteModal();
   updateCartBadge();
 });
 
-////////// build productcard from localstorage
-let products = JSON.parse(localStorage.getItem("products")) || [];
-// let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-// cart badge
+
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
 let users = JSON.parse(localStorage.getItem("users")) || [];
 let loggedInUserId = localStorage.getItem("loggedInUserId");
 let userIndex = users.findIndex((user) => user.ID === loggedInUserId);
 let loggedInUser = users[userIndex];
+
+function getLoggedInUser() {
+  return JSON.parse(localStorage.getItem("loggedInUser"));
+}
 
 function saveUsers() {
   localStorage.setItem("users", JSON.stringify(users));
@@ -83,6 +88,7 @@ let allfavoritebtn = document.querySelectorAll(".favorite-btn");
 
 function renderFavoriteModal() {
   let favmodalbody = document.getElementById("favmodalbody");
+  let loggedInUser =getLoggedInUser();
 
   favmodalbody.innerHTML = "";
 
@@ -136,6 +142,7 @@ function renderFavoriteModal() {
     });
     favmodalbody.appendChild(favdiv);
   }
+
 }
 
 //go to cart
@@ -161,6 +168,7 @@ document.addEventListener("click", function (e) {
 
     saveUsers();
     updateCartBadge();
+    updateFavBadge();
 
     window.location.href = "../cart/cart.html";
     console.log(loggedInUser.wishlist);
@@ -198,6 +206,7 @@ document.addEventListener("click", (e) => {
 let favBadge = document.getElementById("favBadge");
 
 function updateFavBadge() {
+  let loggedInUser=getLoggedInUser();
   favBadge.textContent =
     loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
 }
