@@ -45,7 +45,7 @@ export const UsersTemplate = `
               </select>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+            <button type="submit" class="btn btn-color w-100">Save Changes</button>
           </form>
         </div>
       </div>

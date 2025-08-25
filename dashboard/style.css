@@ -117,3 +117,8 @@ table tbody tr:hover {
   overflow: visible !important;
   position: static !important;
 }
+/* *** model header *** */
+.modal-header, .btn-color {
+  background: linear-gradient(135deg, #2d6762, #0d9488) !important;
+  color: #fff;
+}

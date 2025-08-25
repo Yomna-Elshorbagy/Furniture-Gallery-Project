@@ -32,7 +32,7 @@ export const categoriesTemplate = `
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" id="cmSave" class="btn btn-primary">Save</button>
+        <button type="button" id="cmSave" class="btn btn-color">Save</button>
       </div>
     </div>
   </div>
