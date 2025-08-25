@@ -191,8 +191,32 @@ function showProductDetails(products) {
 
     }
   });
+
+
+
+
   // ------------------------------------------> related products-----------------------------------------------------
 }
+  // add fav badge
+  let favBadge = document.getElementById("favBadge");
+
+function updateFavBadge() {
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
+
+  favBadge.textContent =
+    loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
+}
+
+// add cart badge
+function updateCartBadge() {
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))|| { cart: [] };
+
+  let cartBadge = document.getElementById("cartbadge");
+  if (cartBadge) {
+    cartBadge.textContent = loggedInUser.cart.length;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const products = JSON.parse(localStorage.getItem("products")) || [];
 
@@ -237,4 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const related = getRelatedProducts();
   renderRelatedProducts(related);
+  updateCartBadge();
+  updateFavBadge();
+  
 });
