@@ -286,6 +286,16 @@ h5.producttitlefav:hover {
   font-size:8px;
   margin: auto;
 }
+.newprice {
+  color: #cf9362;
+  font-size: 0.9rem;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: gray;
+  font-size: 0.9rem;
+}
 /*---------------- header section------------ */
 .contact {
   color: #212129;

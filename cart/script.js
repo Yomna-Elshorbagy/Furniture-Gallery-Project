@@ -173,6 +173,13 @@ if (cartproducts.length === 0) {
   checkoutdiv.appendChild(checkoutBtn);
   cartbody.appendChild(checkoutdiv);
 }
+let favoriteLabel = document.getElementById("favoritelabel");
+if (loggedInUser && loggedInUser.Email) {
+  favoriteLabel.textContent = loggedInUser.Email;
+} else {
+  favoriteLabel.textContent = "example@gmail.com";
+}
+
 
 function renderFavoriteModal() {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };

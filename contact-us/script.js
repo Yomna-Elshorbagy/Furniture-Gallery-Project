@@ -216,6 +216,12 @@ document.addEventListener("click", function (e) {
     console.log(loggedInUser.wishlist);
   }
 });
+let favoriteLabel = document.getElementById("favoritelabel");
+if (loggedInUser && loggedInUser.Email) {
+  favoriteLabel.textContent = loggedInUser.Email;
+} else {
+  favoriteLabel.textContent = "example@gmail.com";
+}
 
 let favBadge = document.getElementById("favBadge");
 

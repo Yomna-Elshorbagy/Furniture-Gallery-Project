@@ -216,6 +216,67 @@ function updateCartBadge() {
     cartBadge.textContent = loggedInUser.cart.length;
   }
 }
+function renderFavoriteModal() {
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
+
+  let favmodalbody = document.getElementById("favmodalbody");
+  favmodalbody.innerHTML = "";
+
+  if (loggedInUser.wishlist.length === 0) {
+    var nofav = document.createElement("div");
+    nofav.className = "nofavoritediv";
+    nofav.innerHTML = `
+      <h5>Love It? Add to My Favorites</h5>
+      <p>My Favorites allows you to keep track of all of your favorites and shopping activity whether <br> 
+        you're on your computer, phone, or tablet. You won't have to waste time searching all over <br>
+         again for that item you loved on your phone the other day - it's all here in one place!</p>
+         <button class="continueShop">Continue Shopping</button>
+    `;
+    favmodalbody.appendChild(nofav);
+    let shopBtn = document.querySelector(".continueShop");
+    if (shopBtn) {
+      shopBtn.addEventListener("click", () => {
+        window.location.href = "../products/products.html";
+      });
+    }
+  } else {
+    let favdiv = document.createElement("div");
+    favdiv.className = "favdiv";
+    loggedInUser.wishlist.forEach((product) => {
+      let card = document.createElement("div");
+      card.className = "cardstyle";
+      card.innerHTML = `
+        <div class="card product-card">
+          <img src="${product.image}" class="card-img-top" alt="${product.name
+        }">
+          <div class="card-body text-center ">
+            <div class="d-flex flex-column text-start mb-0">
+              <h5 class=" text-truncate producttitlefav">${product.name}</h5>
+              <h4 class="card-text">
+                <h4 class="newprice fw-bold text-danger">$${product.price}</h4>
+                ${product.oldPrice
+          ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
+          : ""
+        }
+              </h4>
+            </div>
+            <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id
+        }">ADD TO CART</button>
+          </div>
+        </div>
+      `;
+      favdiv.appendChild(card);
+    });
+    favmodalbody.appendChild(favdiv);
+  }
+}
+let favoriteLabel = document.getElementById("favoritelabel");
+if (loggedInUser && loggedInUser.Email) {
+  favoriteLabel.textContent = loggedInUser.Email;
+} else {
+  favoriteLabel.textContent = "example@gmail.com";
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const products = JSON.parse(localStorage.getItem("products")) || [];
@@ -259,9 +320,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
   const related = getRelatedProducts();
   renderRelatedProducts(related);
   updateCartBadge();
+  
   updateFavBadge();
+  renderFavoriteModal();
   
 });
