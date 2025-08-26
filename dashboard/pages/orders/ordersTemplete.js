@@ -1,9 +1,6 @@
 // ordersTemplate.js
 export const ordersTemplate = `
   <h3>Orders</h3>
-  <button id="addOrderBtn" class="btn btn-success mb-3">
-    <i class="fa-solid fa-plus"></i> Add Order
-  </button>
   
     <!-- Filter Dropdown -->
   <div class="mb-3">

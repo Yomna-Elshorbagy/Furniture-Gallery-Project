@@ -22,13 +22,16 @@ export function initOrdersPage() {
     let filteredOrders =
       selectedFilter === "All"
         ? orders
-        : orders.filter((o) => o.Status === selectedFilter);
+        : orders.filter((order) => order.Status === selectedFilter);
 
     // slice orders for pagination
     let start = (currentPage - 1) * pageSize;
     let end = start + pageSize;
-    let currentOrders = orders.slice(start, end);
+    let currentOrders = filteredOrders.slice(start, end);
 
+    if (currentOrders.length === 0) {
+      tableBody.innerHTML = `<tr><td colspan="6" class="text-center">No orders found</td></tr>`;
+    }
     currentOrders.forEach((order) => {
       const row = document.createElement("tr");
       row.innerHTML = `
@@ -57,16 +60,16 @@ export function initOrdersPage() {
       btn.addEventListener("click", handleDeleteOrder);
     });
 
-    renderPagination();
+    renderPagination(filteredOrders.length);
   }
 
   // ---- Pagination ----
-  function renderPagination() {
+  function renderPagination(totalItems) {
     if (!paginationContainer) return;
     paginationContainer.innerHTML = "";
 
-    const totalPages = Math.ceil(orders.length / pageSize);
-
+    const totalPages = Math.ceil(totalItems / pageSize);
+    if (totalPages <= 1) return;
     // Prev button
     const prevBtn = document.createElement("button");
     prevBtn.textContent = "Prev";
@@ -104,24 +107,10 @@ export function initOrdersPage() {
     paginationContainer.appendChild(nextBtn);
   }
 
-
-    statusFilter.addEventListener("change", () => {
+  statusFilter.addEventListener("change", () => {
     selectedFilter = statusFilter.value;
     currentPage = 1; // reset to first page
     renderOrders();
-  });
-  
-  // ---- add order ----
-  document.getElementById("addOrderBtn")?.addEventListener("click", () => {
-    editingId = null;
-    modalTitle.textContent = "Add Order";
-    userInput.value = "";
-    priceInput.value = "";
-    statusInput.value = "Pending";
-    dateInput.value = new Date().toISOString().split("T")[0];
-
-    const modal = new bootstrap.Modal(document.getElementById("orderModal"));
-    modal.show();
   });
 
   // ---- edit order ----
