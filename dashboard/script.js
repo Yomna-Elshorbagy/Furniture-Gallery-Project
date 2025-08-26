@@ -8,12 +8,15 @@ import { categoriesTemplate } from "./pages/categories/categoriesTemplate.js";
 import { initCategoriesPage } from "./pages/categories/categories.js";
 import { initSellerPage } from "./pages/sellers/seller.js";
 import { SellersTemplate } from "./pages/sellers/sellerTemplete.js";
+import { overviewTemplate } from "./pages/overview/overviewTemplate.js";
+import { initOverviewPage } from "./pages/overview/overview.js";
 
 let serverDataFiles = {
   products: "../server/data/products.json",
   categories: "../server/data/categories.json",
   orders: "../server/data/orders.json",
   users: "../server/data/users.json",
+  ordersPerMonth: "../server/data/ordersPerMonth.json",
 };
 window.addEventListener("DOMContentLoaded", () => {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -51,6 +54,10 @@ window.addEventListener("DOMContentLoaded", () => {
   if (adminEmailEl && loggedInUser?.Email) {
     adminEmailEl.textContent = loggedInUser.Email;
   }
+});
+document.getElementById("overview").addEventListener("click", () => {
+  document.getElementById("mainContent").innerHTML = overviewTemplate;
+  initOverviewPage();
 });
 document.getElementById("products").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = productsTemplate;

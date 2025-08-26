@@ -1,147 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Furniture Admin Dashboard</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="row min-vh-100">
-        <aside class="col-md-3 col-lg-2 bg-panel p-3 d-flex flex-column">
-          <div class="fw-bold fs-5 mb-3 text-white">
-            <i class="fa-solid fa-couch" style="color: #0d9488"></i> Furniture
-            Gallery
-          </div>
-          <div
-            class="p-3 rounded mb-3"
-            style="background: var(--main-gradient); color: #fff"
-            id="profileAdmin"
-          >
-            <div id="adminName" class="fw-semibold">
-              <i
-                class="fa-solid fa-user text-black m-2"
-                style="color: #0c514c !important"
-              ></i
-              >Admin
-            </div>
-            <small id="adminEmail">admin@gmail.com</small>
-          </div>
-          <div class="nav flex-column gap-2">
-            <button class="btn text-start py-3">
-              <i class="fa-solid fa-chart-line"></i> Overview
-            </button>
-            <button class="btn text-start py-3" id="products">
-              <i class="fa-solid fa-chair"></i> Products
-            </button>
-            <button class="btn text-start py-3" id="categories">
-              <i class="fa-solid fa-layer-group"></i> Categories
-            </button>
-            <button class="btn text-start py-3" id="orders">
-              <i class="fa-solid fa-receipt"></i> Orders
-            </button>
-            <button class="btn text-start py-3" id="users">
-              <i class="fa-solid fa-user-group"></i> Users
-            </button>
-            <button class="btn text-start py-3" id="sellers">
-              <i class="fa-solid fa-user-group"></i> Sellers
-            </button>
-            <button class="btn text-start py-3">
-              <i class="fa-solid fa-gear"></i> Settings
-            </button>
-            <button class="btn btn-danger text-start mt-auto py-3" id="logOut">
-              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
-            </button>
-          </div>
-        </aside>
 
-        <main class="col-md-9 col-lg-10 p-4">
-          <div class="d-flex align-items-center flex-wrap gap-3 mb-4">
-            <button class="btn btn-secondary">
-              <i class="fa-solid fa-bars"></i>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Furniture Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
+
+  <!-- for charts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+
+
+  <!--End for charts -->
+  
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row min-vh-100">
+      <aside class="col-md-3 col-lg-2 bg-panel p-3 d-flex flex-column">
+        <div class="fw-bold fs-5 mb-3 text-white">
+          <i class="fa-solid fa-couch" style="color: #0d9488"></i> Furniture
+          Gallery
+        </div>
+        <div class="p-3 rounded mb-3" style="background: var(--main-gradient); color: #fff" id="profileAdmin">
+          <div id="adminName" class="fw-semibold">
+            <i class="fa-solid fa-user text-black m-2" style="color: #0c514c !important"></i>Admin
+          </div>
+          <small id="adminEmail">admin@gmail.com</small>
+        </div>
+        <div class="nav flex-column gap-2">
+          <button class="btn text-start py-3" id="overview">
+            <i class="fa-solid fa-chart-line"></i> Overview
+          </button>
+          <button class="btn text-start py-3" id="products">
+            <i class="fa-solid fa-chair"></i> Products
+          </button>
+          <button class="btn text-start py-3" id="categories">
+            <i class="fa-solid fa-layer-group"></i> Categories
+          </button>
+          <button class="btn text-start py-3" id="orders">
+            <i class="fa-solid fa-receipt"></i> Orders
+          </button>
+          <button class="btn text-start py-3" id="users">
+            <i class="fa-solid fa-user-group"></i> Users
+          </button>
+          <button class="btn text-start py-3" id="sellers">
+            <i class="fa-solid fa-user-group"></i> Sellers
+          </button>
+          <button class="btn text-start py-3">
+            <i class="fa-solid fa-gear"></i> Settings
+          </button>
+          <button class="btn btn-danger text-start mt-auto py-3" id="logOut">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+          </button>
+        </div>
+      </aside>
+
+      <main class="col-md-9 col-lg-10 p-4">
+        <div class="d-flex align-items-center flex-wrap gap-3 mb-4">
+          <button class="btn btn-secondary">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <h1 class="h3 m-0">Overview</h1>
+          <div class="ms-auto d-flex gap-2 align-items-center">
+            <div>
+              <a href="../home/home.html"><i class="fa-solid fa-house text-success"></i></a>
+            </div>
+            <div class="theme-toggle" id="themeToggle">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+            <button class="btn btn-outline-dark" id="exportBtn">
+              <i class="fa-solid fa-file-export"></i> Export JSON
             </button>
-            <h1 class="h3 m-0">Overview</h1>
-            <div class="ms-auto d-flex gap-2 align-items-center">
-              <div>
-                <a href="../home/home.html"
-                  ><i class="fa-solid fa-house text-success"></i
-                ></a>
-              </div>
-              <div class="theme-toggle" id="themeToggle">
-                <i class="fa-solid fa-moon"></i>
-              </div>
-              <button class="btn btn-outline-dark" id="exportBtn">
-                <i class="fa-solid fa-file-export"></i> Export JSON
-              </button>
-              <label class="btn btn-outline-dark mb-0"
-                ><i class="fa-solid fa-file-import"></i> Import JSON<input
-                  type="file"
-                  hidden
-              /></label>
-              <button class="btn btn-success text-start" id="addSeller">
-                <i class="fa-solid fa-user-plus"></i> Add Seller
-              </button>
-            </div>
+            <label class="btn btn-outline-dark mb-0"><i class="fa-solid fa-file-import"></i> Import JSON<input
+                type="file" hidden /></label>
+            <button class="btn btn-success text-start" id="addSeller">
+              <i class="fa-solid fa-user-plus"></i> Add Seller
+            </button>
           </div>
+        </div>
 
-          <div class="carddatabg row g-3">
-            <div class="col-md-4">
-              <div class="card bg-card p-3 text-dark">
-                <i class="fa-solid fa-sack-dollar fs-4"></i>
-                <div>Total Revenue</div>
-                <div class="fw-bold fs-5" id="totalRevenues">$0</div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card bg-card p-3 text-dark">
-                <i class="fa-solid fa-cart-shopping fs-4"></i>
-                <div>Orders</div>
-                <div class="fw-bold fs-5" id="ordersCount">0</div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card bg-card p-3 text-dark">
-                <i class="fa-solid fa-couch fs-4"></i>
-                <div>Products</div>
-                <div class="fw-bold fs-5" id="productCount">0</div>
-              </div>
+        <div class="carddatabg row g-3">
+          <div class="col-md-4">
+            <div class="card bg-card p-3 text-dark">
+              <i class="fa-solid fa-sack-dollar fs-4"></i>
+              <div>Total Revenue</div>
+              <div class="fw-bold fs-5" id="totalRevenues">$0</div>
             </div>
           </div>
+          <div class="col-md-4">
+            <div class="card bg-card p-3 text-dark">
+              <i class="fa-solid fa-cart-shopping fs-4"></i>
+              <div>Orders</div>
+              <div class="fw-bold fs-5" id="ordersCount">0</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-card p-3 text-dark">
+              <i class="fa-solid fa-couch fs-4"></i>
+              <div>Products</div>
+              <div class="fw-bold fs-5" id="productCount">0</div>
+            </div>
+          </div>
+        </div>
 
-          <div class="row g-3 mt-2">
-            <div class="col-md-12">
-              <div class="card bg-card p-3">
-                <h5>Low Stock (<span id="lowStockCount">0</span>)</h5>
-                <div id="mainContent"></div>
-              </div>
+        <div class="row g-3 mt-2">
+          <div class="col-md-12">
+            <div class="card bg-card p-3">
+              <h5>Low Stock (<span id="lowStockCount">0</span>)</h5>
+              <div id="mainContent"></div>
             </div>
           </div>
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
+  </div>
 
-    <script>
-      const toggle = document.getElementById("themeToggle");
-      toggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-        toggle.innerHTML = document.body.classList.contains("dark")
-          ? '<i class="fa-solid fa-sun"></i>'
-          : '<i class="fa-solid fa-moon"></i>';
-      });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./script.js" type="module"></script>
-  </body>
+  <script>
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggle.innerHTML = document.body.classList.contains("dark")
+        ? '<i class="fa-solid fa-sun"></i>'
+        : '<i class="fa-solid fa-moon"></i>';
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./script.js" type="module"></script>
+</body>
+
 </html>
