@@ -16,9 +16,32 @@ export function initProductsPage() {
   let pageInfo = document.getElementById("pageInfo");
 
   let products = JSON.parse(localStorage.getItem("products")) || [];
+    let searchededProducts = [...products];
+
   let editingId = null;
   let currentPage = 1;
   let pageSize = 6;
+
+
+  ////// search for product
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  let query = e.target.value.toLowerCase().trim();
+if (query === "") {
+    searchededProducts = [...products];
+  } else {
+
+ searchededProducts = products.filter((product)=>
+  product.id.toString().toLowerCase().includes(query)||
+  product.name.toLowerCase().includes(query)||
+  product.category.toLowerCase().includes(query)
+
+);
+  }
+currentPage =1;
+renderProducts();
+});
+
+  
 
   // ---- >> render Products table << ----
   function renderProducts() {
@@ -26,7 +49,7 @@ export function initProductsPage() {
 
     let start = (currentPage - 1) * pageSize;
     let end = start + pageSize;
-    let currentProducts = products.slice(start, end);
+    let currentProducts = searchededProducts.slice(start, end);
 
     currentProducts.forEach((prod) => {
       let row = document.createElement("tr");
@@ -68,7 +91,7 @@ export function initProductsPage() {
 
   // ---->> Pagination <<----
   function renderPagination() {
-    let totalPages = Math.ceil(products.length / pageSize);
+    let totalPages = Math.ceil(searchededProducts.length / pageSize);
     pageInfo.textContent = `Page ${currentPage} of ${totalPages || 1}`;
 
     prevBtn.disabled = currentPage === 1;
@@ -83,7 +106,7 @@ export function initProductsPage() {
   });
 
   nextBtn.addEventListener("click", () => {
-    let totalPages = Math.ceil(products.length / pageSize);
+    let totalPages = Math.ceil(searchededProducts.length / pageSize);
     if (currentPage < totalPages) {
       currentPage++;
       renderProducts();
