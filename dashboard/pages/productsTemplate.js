@@ -111,7 +111,7 @@ export const productsTemplate = `
                 <img id="pmImagePreview" src="" alt="Preview" style="display:none;max-height:200px;margin-top:5px;">
                 <hr/>
                 <label class="form-label">Sub Images</label>
-                <input id="pmSubImages" type="file" class="form-control" multiple />
+                <input id="pmSubImagesInput" type="file" class="form-control" multiple />
                 <div id="pmSubImagesPreview" class="d-flex flex-wrap gap-2 mt-2"></div>
               </div>
             </div>
