@@ -433,3 +433,27 @@ margin-top: 140px !important;
   font-size:8px;
   margin: auto;
 }
+
+/* موبايل لحد 576px */
+@media (max-width: 576px) {
+  .emptycarttitle {
+    font-size: 16px;
+    text-align: center;
+  }
+  .alltotal{
+  margin:10px auto !important ;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+  .checkoutbtn {
+    width: 90%;
+    margin: auto !important; /* يخلي زرار الـ checkout ياخد العرض كله */
+  }
+  .product-card {
+    margin-bottom: 15px; /* مسافة بين الكروت */
+  }
+  table td {
+    font-size: 14px; /* تصغير الخط في الجدول */
+  }
+}
