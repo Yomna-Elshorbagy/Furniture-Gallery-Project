@@ -156,7 +156,6 @@ document.addEventListener("click", function (e) {
       loggedInUser.cart = [];
     }
 
-    // هات المنتج نفسه من الـ products
     let productToAdd = products.find((p) => p.id === productId);
 
     if (productToAdd && !loggedInUser.cart.some((p) => p.id === productId)) {
@@ -182,6 +181,7 @@ if (loggedInUser && loggedInUser.Email) {
   favoriteLabel.textContent = "example@gmail.com";
 }
 
+// if user Not logged in redirect him to login page
 document.addEventListener("click", (e) => {
   let link = e.target.closest("a.userData");
   if (!link) return;
@@ -211,7 +211,6 @@ function updateFavBadge() {
     loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
 }
 updateFavBadge();
-// هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
 allfavoritebtn.forEach((btn) => {
   let id = parseInt(btn.getAttribute("data-id"));
   let icon = btn.querySelector("i");
