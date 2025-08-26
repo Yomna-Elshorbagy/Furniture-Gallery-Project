@@ -126,3 +126,29 @@ profileAdmin.addEventListener("click", () => {
     window.location.href = "./pages/profile/profile.html";
   }, 500);
 });
+
+// =====> Export Json Data
+document.getElementById("exportBtn").addEventListener("click", () => {
+  // ===> 1- collect all the data you want to export
+  let data = {
+    products: JSON.parse(localStorage.getItem("products")) || [],
+    categories: JSON.parse(localStorage.getItem("categories")) || [],
+    orders: JSON.parse(localStorage.getItem("orders")) || [],
+    users: JSON.parse(localStorage.getItem("users")) || [],
+  };
+
+  //===> 2- convert data to JSON string
+  let jsonString = JSON.stringify(data, null, 2);
+
+  //===> 3- create a blob
+  let blob = new Blob([jsonString], { type: "application/json" });
+
+  //===> 4- create a link element
+  let link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "furniture_data.json"; 
+  link.click();
+
+  //===> 5- cleanup
+  URL.revokeObjectURL(link.href);
+});

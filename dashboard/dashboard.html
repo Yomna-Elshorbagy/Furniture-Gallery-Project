@@ -30,7 +30,11 @@
             id="profileAdmin"
           >
             <div id="adminName" class="fw-semibold">
-              <i class="fa-solid fa-user text-black m-2" style="color: #0c514c !important"></i>Admin 
+              <i
+                class="fa-solid fa-user text-black m-2"
+                style="color: #0c514c !important"
+              ></i
+              >Admin
             </div>
             <small id="adminEmail">admin@gmail.com</small>
           </div>
@@ -77,7 +81,7 @@
               <div class="theme-toggle" id="themeToggle">
                 <i class="fa-solid fa-moon"></i>
               </div>
-              <button class="btn btn-outline-dark">
+              <button class="btn btn-outline-dark" id="exportBtn">
                 <i class="fa-solid fa-file-export"></i> Export JSON
               </button>
               <label class="btn btn-outline-dark mb-0"
@@ -92,14 +96,14 @@
           </div>
 
           <div class="carddatabg row g-3">
-            <div class=" col-md-4">
+            <div class="col-md-4">
               <div class="card bg-card p-3 text-dark">
                 <i class="fa-solid fa-sack-dollar fs-4"></i>
                 <div>Total Revenue</div>
                 <div class="fw-bold fs-5" id="totalRevenues">$0</div>
               </div>
             </div>
-            <div class=" col-md-4">
+            <div class="col-md-4">
               <div class="card bg-card p-3 text-dark">
                 <i class="fa-solid fa-cart-shopping fs-4"></i>
                 <div>Orders</div>
@@ -107,7 +111,7 @@
               </div>
             </div>
             <div class="col-md-4">
-              <div class=" card bg-card p-3 text-dark">
+              <div class="card bg-card p-3 text-dark">
                 <i class="fa-solid fa-couch fs-4"></i>
                 <div>Products</div>
                 <div class="fw-bold fs-5" id="productCount">0</div>
