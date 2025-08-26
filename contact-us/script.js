@@ -231,17 +231,6 @@ function updateFavBadge() {
   favBadge.textContent =
     loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
 }
-
-
-function updateCartBadge() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))|| { cart: [] };
-
-  let cartBadge = document.getElementById("cartbadge");
-  if (cartBadge) {
-    cartBadge.textContent = loggedInUser.cart.length;
-  }
-}
-
 updateCartBadge();
 renderFavoriteModal();
 updateFavBadge();
