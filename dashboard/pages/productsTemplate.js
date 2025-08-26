@@ -1,6 +1,8 @@
 export const productsTemplate = `
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Products</h3>
+    <input type="text" id="searchInput" placeholder="&#128269; Search For Product" class="form-control mb-3 productSearch">
+
     <button type="button" id="addProductBtn" class="btn btn-secondary btn-sm me-5 p-2">
       <i class="fa-solid fa-plus"></i> Add Product
     </button>

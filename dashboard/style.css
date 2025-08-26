@@ -71,10 +71,10 @@ body.dark {
     -8px -8px 20px rgba(255, 255, 255, 0.6);
   transition: 0.4s;
 }
-.bg-card:hover {
+/* .bg-card:hover {
   transform: translateY(-6px) scale(1.03);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-}
+} */
 
 table {
   border-collapse: separate;
@@ -149,4 +149,9 @@ body.fade-out {
 background: linear-gradient(135deg, #398590, #56cfe1) !important;
   color: #fff !important; 
 
+}
+
+.productSearch{
+  width: 40% !important;
+  border: 2px solid #398590 !important;
 }
