@@ -145,3 +145,8 @@ body.fade-out {
 .styleToast {
   background-color: #9e8e76 !important;
 }
+.carddatabg .card  {
+background: linear-gradient(135deg, #398590, #56cfe1) !important;
+  color: #fff !important; 
+
+}
