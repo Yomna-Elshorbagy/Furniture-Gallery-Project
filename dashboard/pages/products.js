@@ -31,17 +31,23 @@ export function initProductsPage() {
     currentProducts.forEach((prod) => {
       let row = document.createElement("tr");
       row.innerHTML = `
-        <td><img src="${prod.image}" alt="Product" style="height:50px;width:50px;object-fit:cover;border-radius:4px;"></td>
+        <td><img src="${
+          prod.image
+        }" alt="Product" style="height:50px;width:50px;object-fit:cover;border-radius:4px;"></td>
         <td>$${prod.name}</td>
         <td>${prod.price}</td>
-        <td>${prod.oldPrice}</td>
+        <td>${prod.oldPrice ? prod.oldPrice : "—"}</td>
         <td>${prod.stock}</td>
         <td>${prod.category}</td>
         <td>
-          <button class="btn btn-sm btn-warning me-2 edit-product" data-id="${prod.id}">
+          <button class="btn btn-sm btn-warning me-2 edit-product" data-id="${
+            prod.id
+          }">
             <i class="fa-solid fa-pen"></i>
           </button>
-          <button class="btn btn-sm btn-danger del-product" data-id="${prod.id}">
+          <button class="btn btn-sm btn-danger del-product" data-id="${
+            prod.id
+          }">
             <i class="fa-solid fa-trash"></i>
           </button>
         </td>
@@ -86,9 +92,7 @@ export function initProductsPage() {
 
   // ---->> Add Product <<----
   document.getElementById("addProductBtn")?.addEventListener("click", () => {
-    editingId = products.length
-      ? Math.max(...products.map((p) => p.id)) + 1
-      : 1;
+    editingId = null;
     modalTitle.textContent = "Add Product";
     nameInput.value = "";
     priceInput.value = "";
@@ -125,7 +129,7 @@ export function initProductsPage() {
       modalTitle.textContent = "Edit Product";
       nameInput.value = prod.name;
       priceInput.value = prod.price;
-      OldPriceInput.value = prod.oldPrice;
+      OldPriceInput.value = prod.oldPrice ?? "";
       stockInput.value = prod.stock;
       categoryInput.value = prod.category;
       descInput.value = prod.description;
@@ -182,7 +186,7 @@ export function initProductsPage() {
         id: newId,
         name,
         price,
-        oldPrice: "",
+        oldPrice,
         stock,
         category,
         description: desc,

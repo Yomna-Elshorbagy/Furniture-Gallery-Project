@@ -1,5 +1,5 @@
 const serverDataFiles = {
-  products: "../../server/data/products.json",
+  // products: "../../server/data/products.json",
   categories: "../../server/data/categories.json",
   orders: "../../server/data/orders.json",
   users: "../../server/data/users.json",
@@ -18,6 +18,27 @@ window.addEventListener("DOMContentLoaded", () => {
         );
     } else {
       console.log(`${key} already in localStorage`);
+    }
+
+    let storedProducts = localStorage.getItem("products");
+
+    if (storedProducts) {
+      allProducts = JSON.parse(storedProducts);
+      displayProducts();
+      renderPagination();
+    } else {
+      fetch("../server/data/products.json")
+        .then((res) => {
+          if (!res.ok) throw new Error("Network response was not ok");
+          return res.json();
+        })
+        .then((prod) => {
+          localStorage.setItem("products", JSON.stringify(prod));
+          allProducts = prod;
+          displayProducts();
+          renderPagination();
+        })
+        .catch((error) => console.error("Error fetch JSON data: ", error));
     }
   });
   //=====>  handel logged in and logged out
@@ -46,22 +67,6 @@ window.addEventListener("DOMContentLoaded", () => {
       window.location.href = "../Auth/log-in/login.html";
     });
   });
-});
-
-// ====> draw all categories on load
-window.addEventListener("DOMContentLoaded", () => {
-  fetch("../server/data/products.json")
-    .then((res) => {
-      if (!res.ok) throw new Error("Network response was not ok");
-      return res.json();
-    })
-    .then((prod) => {
-      localStorage.setItem("products", JSON.stringify(prod));
-      allProducts = prod;
-      displayProducts();
-      renderPagination();
-    })
-    .catch((error) => console.error("Error fetch JSON data: ", error));
 });
 
 let allProducts = [];
