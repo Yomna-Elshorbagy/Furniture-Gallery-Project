@@ -109,8 +109,8 @@ function showProductDetails(products) {
         </div>
       </div>
 
-        <div class="social-icons mb-4">
-        <span class="fw-bold d-block mb-2">Share:</span>
+        <div class="social-icons mb-4 pt-2">
+        <span class="fw-bold  mb-2">Share:</span>
         <a href="#"><i class="fab fa-facebook"></i></a>
         <a href="#"><i class="fab fa-twitter"></i></a>
         <a href="#"><i class="fab fa-pinterest"></i></a>

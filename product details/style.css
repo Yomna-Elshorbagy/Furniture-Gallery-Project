@@ -119,22 +119,29 @@ button.hover-button::after {
 /* *************** product details *************** */
 .sub-images .blockCont {
   overflow: hidden;
-  border-color: #312d2d;
   border-radius: 4px;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 15px;
+}
+.sub-images .blockCont:hover {
+  border: 1px solid black;
 }
 .sub-images img {
   width: 100%;
-  margin-bottom: 10px;
+  height: 150px;
   cursor: pointer;
   border: 2px solid transparent;
   border-radius: 6px;
-  transition: transform 2s ease !important;
+  transition: transform 1s ease !important;
 }
 .sub-images img:hover {
-  transform: scale(1.2) !important;
+  transform: scale(1.05) !important;
 }
+
 .main-image img {
   width: 100%;
+  height: 80%;
   border-radius: 8px;
 }
 .old-price {
