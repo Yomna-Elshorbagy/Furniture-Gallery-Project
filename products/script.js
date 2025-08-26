@@ -1,4 +1,3 @@
-
 const serverDataFiles = {
   products: "../../server/data/products.json",
   categories: "../../server/data/categories.json",
@@ -21,12 +20,10 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(`${key} already in localStorage`);
     }
   });
-});
-//=====>  handel logged in and logged out
-document.addEventListener("DOMContentLoaded", () => {
+  //=====>  handel logged in and logged out
   let loginBtn = document.getElementById("loginBtn");
   let logoutBtn = document.getElementById("logoutBtn");
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
   if (loggedInUser) {
     // show logout, hide login
@@ -49,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "../Auth/log-in/login.html";
     });
   });
-  updateCartBadge();
 });
 
 // ====> draw all categories on load
@@ -100,27 +96,34 @@ function displayProducts() {
 
 // display cart of products
 function drowProduct(product, productList) {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
-  let isFavorite = loggedInUser.wishlist.some(p => p.id === product.id);
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+    wishlist: [],
+  };
+  let isFavorite = loggedInUser.wishlist.some((p) => p.id === product.id);
   let card = document.createElement("div");
   card.className = "col-6 col-md-3 mb-4";
 
   card.innerHTML = `
         <div class="card product-card">
             <div class="image-scale">
-                 <button class="favorite-btn ${isFavorite ? "active" : ""}" data-id="${product.id}">
+                 <button class="favorite-btn ${
+                   isFavorite ? "active" : ""
+                 }" data-id="${product.id}">
        <i class="bi ${isFavorite ? "bi-heart-fill" : "bi-heart"}"></i>
       </button>
-                <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                <img src="${product.image}" class="card-img-top" alt="${
+    product.name
+  }">
             </div>
             <div class="card-body">
                 <h6 class="card-title text-start">${product.name}</h6>
                 <p class="card-text text-start">
                     <span class="newprice ">$${product.price}</span>
-                    ${product.oldPrice
-      ? `<span class="old-price ms-2 text-secondary">${product.oldPrice}</span>`
-      : ""
-    }
+                    ${
+                      product.oldPrice
+                        ? `<span class="old-price ms-2 text-secondary">${product.oldPrice}</span>`
+                        : ""
+                    }
                 </p>
             </div>
         </div>
@@ -180,7 +183,6 @@ maxValue.addEventListener("blur", () => {
   max = maxValue.value;
 });
 
-
 function filterfun() {
   let productList = document.getElementById("product-list");
   productList.innerHTML = "";
@@ -188,7 +190,7 @@ function filterfun() {
   let minVal = minValue.value.trim();
   let maxVal = maxValue.value.trim();
   if (minVal === "" && maxVal === "") {
-    products.forEach(pro => drowProduct(pro, productList));
+    products.forEach((pro) => drowProduct(pro, productList));
     return;
   }
   minVal = +minVal || 0;
@@ -197,10 +199,12 @@ function filterfun() {
     productList.innerHTML = `<p class="text-danger text-center"> minimum value is greater than maximum value</p>`;
     return;
   }
-  let filtered = products.filter(pro => pro.price >= minVal && pro.price <= maxVal);
+  let filtered = products.filter(
+    (pro) => pro.price >= minVal && pro.price <= maxVal
+  );
 
   if (filtered.length > 0) {
-    filtered.forEach(pro => drowProduct(pro, productList));
+    filtered.forEach((pro) => drowProduct(pro, productList));
   } else {
     productList.innerHTML = `<p class="text-muted text-center">No products found in this range</p>`;
   }
@@ -208,20 +212,17 @@ function filterfun() {
   if (paginationContainer) paginationContainer.innerHTML = "";
 }
 
-
-
 // ===============Sort Function
 
 // from min to max
 var sortbtnMintoMAx = document.getElementById("sortbtnMintoMAx");
 
-
 sortbtnMintoMAx.addEventListener("click", () => {
   let productList = document.getElementById("product-list");
   productList.innerHTML = "";
 
-  let AllproductSorted = []
-  let categorySorted = []
+  let AllproductSorted = [];
+  let categorySorted = [];
   const urlParams = new URLSearchParams(window.location.search);
   const category = urlParams.get("category");
 
@@ -229,61 +230,50 @@ sortbtnMintoMAx.addEventListener("click", () => {
   if (!category) {
     AllproductSorted = products.slice();
     AllproductSorted.sort((a, b) => a.price - b.price);
-    AllproductSorted.forEach(pro => {
-      drowProduct(pro, productList)
-    })
+    AllproductSorted.forEach((pro) => {
+      drowProduct(pro, productList);
+    });
   } else {
-    categorySorted = products.filter(pro => pro.category === category)
+    categorySorted = products.filter((pro) => pro.category === category);
     console.log(categorySorted);
 
     categorySorted.sort((a, b) => a.price - b.price);
-    categorySorted.forEach(pro => {
-      drowProduct(pro, productList)
-    })
+    categorySorted.forEach((pro) => {
+      drowProduct(pro, productList);
+    });
   }
 });
 
-
-
 // from max to min
 var sortbtnMaxtoMin = document.getElementById("sortbtnMaxtoMin");
-
-
 
 sortbtnMaxtoMin.addEventListener("click", () => {
   let productList = document.getElementById("product-list");
   productList.innerHTML = "";
 
-  let AllproductSorted = []
-  let categorySorted = []
+  let AllproductSorted = [];
+  let categorySorted = [];
 
   const urlParams = new URLSearchParams(window.location.search);
   const category = urlParams.get("category");
 
-
-
-  // لو مفيش category اعرض الكل
+  // if not categries display all
   if (!category) {
     AllproductSorted = products.slice();
     AllproductSorted.sort((a, b) => b.price - a.price);
-    AllproductSorted.forEach(pro => {
-      drowProduct(pro, productList)
-    })
+    AllproductSorted.forEach((pro) => {
+      drowProduct(pro, productList);
+    });
   } else {
-    categorySorted = products.filter(pro => pro.category === category)
+    categorySorted = products.filter((pro) => pro.category === category);
     console.log(categorySorted);
 
     categorySorted.sort((a, b) => b.price - a.price);
-    categorySorted.forEach(pro => {
-      drowProduct(pro, productList)
-    })
+    categorySorted.forEach((pro) => {
+      drowProduct(pro, productList);
+    });
   }
 });
-
-
-
-
-
 
 //====> pagination for products
 function renderPagination() {
@@ -340,16 +330,18 @@ function renderPagination() {
   paginationContainer.appendChild(nextBtn);
 }
 
+// build favorite functionality
 
-// build favorite fuctionality
+//update padge in favorite
+let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+  wishlist: [],
+};
 
-// تحديث البادج بتاع favorites
-
-let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
-
-// رسم الـ favorites في المودال
+// draw favorite in model
 function renderFavoriteModal() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+    wishlist: [],
+  };
 
   let favmodalbody = document.getElementById("favmodalbody");
   favmodalbody.innerHTML = "";
@@ -379,21 +371,24 @@ function renderFavoriteModal() {
       card.className = "cardstyle";
       card.innerHTML = `
         <div class="card product-card">
-          <img src="${product.image}" class="card-img-top" alt="${product.name
-        }">
+          <img src="${product.image}" class="card-img-top" alt="${
+        product.name
+      }">
           <div class="card-body text-center ">
             <div class="d-flex flex-column text-start mb-0">
               <h5 class=" text-truncate producttitlefav">${product.name}</h5>
               <h4 class="card-text">
                 <h4 class="newprice fw-bold text-danger">$${product.price}</h4>
-                ${product.oldPrice
-          ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
-          : ""
-        }
+                ${
+                  product.oldPrice
+                    ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
+                    : ""
+                }
               </h4>
             </div>
-            <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id
-        }">ADD TO CART</button>
+            <button class="btn btn-dark w-100 btnaddtocard" data-id="${
+              product.id
+            }">ADD TO CART</button>
           </div>
         </div>
       `;
@@ -411,7 +406,6 @@ if (loggedInUser && loggedInUser.Email) {
 }
 
 // check if user logged in or not to access userData links
-
 document.addEventListener("click", (e) => {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
@@ -449,7 +443,6 @@ document.addEventListener("click", function (e) {
       let productCopy = { ...productToAdd };
       productCopy.quantity = 1;
       loggedInUser.cart.push(productCopy);
-
     }
 
     localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
@@ -460,15 +453,14 @@ document.addEventListener("click", function (e) {
   }
 });
 
-
-// هنا بعمل check علشان لما اعمل reload  favorite products تبقي موجوده
+// make check when reload favorite still exist
 document.addEventListener("click", (e) => {
   let btn = e.target.closest(".favorite-btn");
   if (!btn) return;
   e.stopPropagation();
   let products = JSON.parse(localStorage.getItem("products")) || [];
   let id = parseInt(btn.getAttribute("data-id"));
-  let product = products.find(p => p.id === id);
+  let product = products.find((p) => p.id === id);
   let icon = btn.querySelector("i");
   if (!product) return;
 
@@ -476,10 +468,7 @@ document.addEventListener("click", (e) => {
   let toastBody = document.getElementById("favToastBody");
   let toast = new bootstrap.Toast(toastEl);
 
-
-
-
-  if (loggedInUser.wishlist.some(p => p.id === id)) {
+  if (loggedInUser.wishlist.some((p) => p.id === id)) {
     // remove from favorites
     loggedInUser.wishlist = loggedInUser.wishlist.filter((p) => p.id !== id);
     btn.classList.remove("active");
@@ -518,16 +507,16 @@ function updateFavBadge() {
     loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
 }
 
-
 function updateCartBadge() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { cart: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+    cart: [],
+  };
 
   let cartBadge = document.getElementById("cartbadge");
   if (cartBadge) {
     cartBadge.textContent = loggedInUser.cart.length;
   }
 }
-// شغّلهم مرة في البداية
+// display
 updateFavBadge();
 renderFavoriteModal();
-

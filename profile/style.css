@@ -3,22 +3,10 @@ body {
 }
 
 /* *************** Starting navbar styling ******************** */
-/* .nav {
-  position: fixed;
-  top: 0;
-  z-index: 2000;
-  width: 100%;
-  transition: all 0.3s ease-in-out;
-  padding: 0.5rem 0;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-} */
-
 .nav .nav-link {
   color: #111;
   transition: color 0.3s ease;
   font-weight: 500;
-  text-transform: uppercase;
   margin: 0 10px;
 }
 
@@ -60,23 +48,23 @@ body {
   gap: 20px;
 }
 
-.sidebar {
+.main-section .sidebar {
   flex: 1;
   max-width: 300px;
 }
 
-.content {
+.main-section .content {
   flex: 2;
 }
 
-.sidebar {
+.main-section .sidebar {
   border: 1px solid #ddd;
   padding: 20px;
   border-radius: 10px;
   background-color: #f8f9fa;
 }
 
-.profile-pic {
+.main-section .profile-pic {
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -84,32 +72,34 @@ body {
   margin-bottom: 15px;
 }
 
-.list-group-item {
+.main-section .list-group-item {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.list-group-item.active {
+.main-section .list-group-item.active {
   background-color: #c7b9a9;
   color: white;
 }
 
-.edit-btn {
+.main-section .edit-btn,
+#logoutBtnProfile {
   background-color: #c7b9a9;
   color: white;
 }
-.edit-btn:hover {
+.main-section .edit-btn:hover,
+#logoutBtnProfile:hover {
   border-color: #896735;
   color: black;
 }
 
-.toast-container {
+.main-section .toast-container {
   top: 70px !important;
   z-index: 9999 !important;
 }
 
-.styleToast {
+.main-section .styleToast {
   background-color: #9e8e76 !important;
 }
 
@@ -301,7 +291,6 @@ footer a:hover {
   }
 }
 
-
 /* ================= Orders Table Styling ================= */
 #ordersSection {
   background: #fdfdfc;
@@ -413,9 +402,7 @@ footer a:hover {
   width: 100%;
   top: 0;
   transition: all 0.3s ease-in-out;
-  /* background: transparent; */
-  /* border-bottom: 1px solid rgb(254, 254, 254); */
- } 
+}
 /* nav icon */
 .nav i {
   color: #111;
@@ -552,80 +539,75 @@ button.hover-button-main:hover::after {
   border-bottom: 2px solid #c7b9a9;
 }
 
-
 /* -------------favorite modal style ---------------- */
 
 .navbar .active {
   color: #c59d5f !important;
   border-color: #c59d5f !important;
 }
-.madal{
+.madal {
   font-family: var(--heading-font);
 }
-#favModal .modal-content{
-    border-radius: 0 !important;
-    
+#favModal .modal-content {
+  border-radius: 0 !important;
 }
-  .modal-dialog {
-  max-width: 70% !important; 
+.modal-dialog {
+  max-width: 70% !important;
 }
 
 .modal-content {
-  height: 550px !important; 
+  height: 550px !important;
 }
-.modal-header{
-    border-radius: 0 !important;
-    color: #ffffff !important;
-    font-family: var(--heading-font);
+.modal-header {
+  border-radius: 0 !important;
+  color: #ffffff !important;
+  font-family: var(--heading-font);
 }
-#favoritelabel{
-    font-size: 14px !important;
+#favoritelabel {
+  font-size: 14px !important;
 }
-.modal-body hr{
-    width: 95% !important;
-    margin: 20px auto !important;
-    text-align: start !important;
+.modal-body hr {
+  width: 95% !important;
+  margin: 20px auto !important;
+  text-align: start !important;
 }
-.modal-body h5{
-    font-weight: 400;
-    letter-spacing: 0 !important;
-    font-size: 18px !important;
-
+.modal-body h5 {
+  font-weight: 400;
+  letter-spacing: 0 !important;
+  font-size: 18px !important;
 }
-.nofavoritediv{
-    margin-top: 70px !important;
+.nofavoritediv {
+  margin-top: 70px !important;
 }
-.nofavoritediv h5{
-    margin-bottom: 30px !important;
-    font-size: 16px !important;
-    font-weight: 500 ;
+.nofavoritediv h5 {
+  margin-bottom: 30px !important;
+  font-size: 16px !important;
+  font-weight: 500;
 }
-.nofavoritediv p{
-    font-size: 12px !important;
+.nofavoritediv p {
+  font-size: 12px !important;
 }
-.nofavoritediv button{
-    background-color: #434655 !important;
-    color: white !important;
-    font-size: 12px !important; 
-    padding: 5px 20px !important;
-    font-weight: bold;
-    margin-top: 20px;
-
- 
+.nofavoritediv button {
+  background-color: #434655 !important;
+  color: white !important;
+  font-size: 12px !important;
+  padding: 5px 20px !important;
+  font-weight: bold;
+  margin-top: 20px;
 }
-.nofavoritediv button:hover{
-    opacity: 0.8 !important;
+.nofavoritediv button:hover {
+  opacity: 0.8 !important;
 }
-.cardstyle{
+.cardstyle {
   width: 150px;
   height: 200px;
   margin-right: 20px;
   margin-left: 30px;
   margin-bottom: 100px !important;
 }
-.btnaddtocard{
+.btnaddtocard {
   height: 30px !important;
-  font-size:10px !important ;
+  font-size: 10px !important ;
 }
 
 .favdiv {
@@ -633,13 +615,12 @@ button.hover-button-main:hover::after {
   flex-direction: row;
   justify-content: start !important;
   flex-wrap: wrap;
-  max-height: 400px; 
+  max-height: 400px;
   overflow-y: auto;
-  gap: 10px; 
+  gap: 10px;
 }
 
-
-h5.producttitlefav{
+h5.producttitlefav {
   font-size: 10px !important;
   font-weight: 500 !important;
 }
@@ -649,13 +630,13 @@ h5.producttitlefav:hover {
   overflow: visible;
   text-overflow: unset;
 }
-.toaststyle{
-  background-color:#c7b9a9 !important;
+.toaststyle {
+  background-color: #c7b9a9 !important;
 }
-.badgestyle{
+.badgestyle {
   width: 15px;
   height: 15px;
-  font-size:8px;
+  font-size: 8px;
   margin: auto;
 }
 .newprice {
@@ -668,4 +649,3 @@ h5.producttitlefav:hover {
   color: gray;
   font-size: 0.9rem;
 }
-

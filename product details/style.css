@@ -9,66 +9,13 @@
 body {
   font-family: "Raleway", sans-serif;
   scroll-behavior: smooth;
-  /* padding-top: 100px; */
 }
-
-/* *************** Starting navbar styling ******************** */
-/* .nav {
-  position: fixed;
-  top: 0;
-  z-index: 2000;
-  width: 100%;
-  transition: all 0.3s ease-in-out;
-  padding: 0.5rem 0;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.nav .nav-link {
-  color: #111;
-  transition: color 0.3s ease;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin: 0 10px;
-}
-
-.nav .nav-link:hover {
-  color: #c59d5f;
-}
-.nav .nav-link.active {
-  color: #c59d5f;
-}
-.nav i {
-  color: #111;
-  margin: 10px;
-  font-size: 20px;
-}
-
-.nav a {
-  text-decoration: none;
-  color: #111;
-}
-
-.hover-button {
-  background-color: transparent;
-  border: 1px solid #111;
-  color: #111;
-  padding: 5px;
-  font-size: 15px;
-  letter-spacing: 2px;
-}
-.nav .nav-logo img {
-  width: 180px !important;
-  transform: scale(0.9);
-} */
 
 .nav {
   font-weight: 500;
   z-index: 1050;
   width: 100%;
   transition: all 0.3s ease-in-out;
-  /* background: transparent; */
-  /* border-bottom: 1px solid rgb(254, 254, 254); */
 }
 
 /* nav icon */
@@ -163,13 +110,11 @@ button.hover-button::after {
   border-bottom: 2px solid #c7b9a9;
 }
 
-.badgestyle{
+.badgestyle {
   width: 15px;
   height: 15px;
-  font-size:8px;
+  font-size: 8px;
   margin: auto;
-
-
 }
 /* *************** product details *************** */
 .sub-images .blockCont {
@@ -250,21 +195,18 @@ button.hover-button::after {
   transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86) !important;
 }
 
-
-
 .custom-margin {
-  margin-top: 150px; 
+  margin-top: 150px;
 }
 
 .modal-body {
-  padding: 20px; 
-}
- 
-.modal-dialog {
-  max-width: 600px;
-   padding: 30px; 
+  padding: 20px;
 }
 
+.modal-dialog {
+  max-width: 600px;
+  padding: 30px;
+}
 
 #questionModal .modal-dialog {
   margin-top: 100px;
@@ -272,60 +214,58 @@ button.hover-button::after {
 
 .form-label {
   font-size: 0.8rem;
-} 
+}
 /* start feature */
- .features-wrapper {
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 40px 20px; /* باديج حوالين البوردر */
-        background: #fff;
-        max-width: 1200px;
-        margin: auto;
-    }
-    .feature-box {
-        text-align: center;
-        padding: 20px;
-    }
-    .feature-box i {
-        font-size: 50px;
-        color: #d2a88a; /* نفس اللون في الصورة */
-        margin-bottom: 15px;
-        display: block;
-    }
-    .feature-box h5 {
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
-    .feature-box ul {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        
-    }
-    .feature-box ul li {
-        position: relative;
-        padding-left: 20px;
-        color: #777;
-        margin-bottom: 10px;
-        font-size: 16px;
-        
-        align-items: left;
-    }
-    .feature-box ul li::before {
-        content: "▶"; /* السهم */
-        position: absolute;
-        left: 0px;
-        color: #d2a88a;
-        font-size: 14px;
-    }
+#features .features-wrapper {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 40px 20px; /* باديج حوالين البوردر */
+  background: #fff;
+  max-width: 1200px;
+  margin: auto;
+}
+#features .feature-box {
+  text-align: center;
+  padding: 20px;
+}
+#features .feature-box i {
+  font-size: 50px;
+  color: #d2a88a; /* نفس اللون في الصورة */
+  margin-bottom: 15px;
+  display: block;
+}
+#features .feature-box h5 {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+#features .feature-box ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#features .feature-box ul li {
+  position: relative;
+  padding-left: 20px;
+  color: #777;
+  margin-bottom: 10px;
+  font-size: 16px;
+
+  align-items: left;
+}
+#features .feature-box ul li::before {
+  content: "▶"; /* السهم */
+  position: absolute;
+  left: 0px;
+  color: #d2a88a;
+  font-size: 14px;
+}
 /*---------------------------------- END features----------------------- */
 /* *************************** start realeted section************************** */
 .related-section {
-  margin-top: 40px ;
+  margin-top: 40px;
   padding: 40px;
-
 }
 
 .related-section h3 {
@@ -386,14 +326,14 @@ button.hover-button::after {
   height: 700px;
 }
 
-.gallery img {
+.social-gallery .gallery img {
   width: 100%;
   height: 200px;
   object-fit: cover;
   display: block;
 }
 
-.social-icons i {
+.social-gallery .social-icons i {
   font-size: 30px;
   margin: 0 15px;
   color: black;
@@ -402,15 +342,15 @@ button.hover-button::after {
   text-align: center;
 }
 
-.social-icons i:hover {
+.social-gallery .social-icons i:hover {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.cards {
+.social-gallery .cards {
   border: none;
 }
 
-.cards .overlay {
+.social-gallery .cards .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -425,102 +365,11 @@ button.hover-button::after {
   transition: opacity 0.4s;
 }
 
-.cards:hover .overlay {
+.social-gallery .cards:hover .overlay {
   opacity: 1;
 }
 
 /* ...........................end social-gallery........................  */
-/* ***************  footer-top ***************** */
-.form-control {
-  margin-bottom: 15px;
-  border-radius: 6px;
-}
-
-.btn-custom {
-  background-color: #c8875f;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 6px;
-  border: none;
-}
-
-.btn-custom:hover {
-  background-color: #b66e46;
-  color: white;
-}
-
-.form-check {
-  margin-bottom: 20px;
-}
-
-.vases img {
-  max-height: 120px;
-  margin: 0 5px;
-}
-
-.decor-right img {
-  max-width: 100%;
-  border-radius: 8px;
-  margin: 10px 0;
-}
-
-.footer-top {
-  background-color: #f9f9f9;
-}
-
-.signup-form .form-control {
-  background-color: #f1f1f1;
-}
-
-.signup-form h2 {
-  font-weight: 500;
-  font-size: 40px;
-  line-height: normal;
-  color: rgb(0, 0, 0);
-  margin-bottom: 20px;
-}
-
-.img-width {
-  width: 600px !important;
-}
-
-.footer-top .footerImage img {
-  height: 650px;
-  width: 115%;
-}
-
-@media (max-width: 768px) {
-  .footer-payments img,
-  .footer-payments svg {
-    height: 22px;
-  }
-
-  .footer-top .footerImage img {
-    width: 600px !important;
-  }
-
-  .social-gallery {
-    height: auto;
-  }
-}
-
-@media (max-width: 576px) {
-  .footer-payments ul {
-    gap: 10px;
-  }
-
-  .footer-payments img,
-  .footer-payments svg {
-    height: 18px;
-  }
-
-  .footer-top .footerImage img {
-    width: 400px !important;
-  }
-}
-
-
-
 /* *************************** footer bottom ************************** */
 footer {
   background: #f9f9f6;
@@ -629,73 +478,69 @@ footer a:hover {
   color: #c59d5f !important;
   border-color: #c59d5f !important;
 }
-.madal{
+.madal {
   font-family: var(--heading-font);
 }
-#favModal .modal-content{
-    border-radius: 0 !important;
-    
+#favModal .modal-content {
+  border-radius: 0 !important;
 }
-  .modal-dialog {
-  max-width: 70% !important; 
+.modal-dialog {
+  max-width: 70% !important;
 }
 
 .modal-content {
-  height: 550px !important; 
+  height: 550px !important;
 }
-.modal-header{
-    border-radius: 0 !important;
-    color: #ffffff !important;
-    font-family: var(--heading-font);
+.modal-header {
+  border-radius: 0 !important;
+  color: #ffffff !important;
+  font-family: var(--heading-font);
 }
-#favoritelabel{
-    font-size: 14px !important;
+#favoritelabel {
+  font-size: 14px !important;
 }
-.modal-body hr{
-    width: 95% !important;
-    margin: 20px auto !important;
-    text-align: start !important;
+.modal-body hr {
+  width: 95% !important;
+  margin: 20px auto !important;
+  text-align: start !important;
 }
-.modal-body h5{
-    font-weight: 400;
-    letter-spacing: 0 !important;
-    font-size: 18px !important;
-
+.modal-body h5 {
+  font-weight: 400;
+  letter-spacing: 0 !important;
+  font-size: 18px !important;
 }
-.nofavoritediv{
-    margin-top: 70px !important;
+.nofavoritediv {
+  margin-top: 70px !important;
 }
-.nofavoritediv h5{
-    margin-bottom: 30px !important;
-    font-size: 16px !important;
-    font-weight: 500 ;
+.nofavoritediv h5 {
+  margin-bottom: 30px !important;
+  font-size: 16px !important;
+  font-weight: 500;
 }
-.nofavoritediv p{
-    font-size: 12px !important;
+.nofavoritediv p {
+  font-size: 12px !important;
 }
-.nofavoritediv button{
-    background-color: #434655 !important;
-    color: white !important;
-    font-size: 12px !important; 
-    padding: 5px 20px !important;
-    font-weight: bold;
-    margin-top: 20px;
-
- 
+.nofavoritediv button {
+  background-color: #434655 !important;
+  color: white !important;
+  font-size: 12px !important;
+  padding: 5px 20px !important;
+  font-weight: bold;
+  margin-top: 20px;
 }
-.nofavoritediv button:hover{
-    opacity: 0.8 !important;
+.nofavoritediv button:hover {
+  opacity: 0.8 !important;
 }
-.cardstyle{
+.cardstyle {
   width: 150px;
   height: 200px;
   margin-right: 20px;
   margin-left: 30px;
   margin-bottom: 100px !important;
 }
-.btnaddtocard{
+.btnaddtocard {
   height: 30px !important;
-  font-size:10px !important ;
+  font-size: 10px !important ;
 }
 
 .favdiv {
@@ -703,13 +548,12 @@ footer a:hover {
   flex-direction: row;
   justify-content: start !important;
   flex-wrap: wrap;
-  max-height: 400px; 
+  max-height: 400px;
   overflow-y: auto;
-  gap: 10px; 
+  gap: 10px;
 }
 
-
-h5.producttitlefav{
+h5.producttitlefav {
   font-size: 10px !important;
   font-weight: 500 !important;
 }
@@ -719,15 +563,14 @@ h5.producttitlefav:hover {
   overflow: visible;
   text-overflow: unset;
 }
-.toaststyle{
-  background-color:#c7b9a9 !important;
+.toaststyle {
+  background-color: #c7b9a9 !important;
 }
-.badgestyle{
+.badgestyle {
   width: 15px;
   height: 15px;
-  font-size:8px;
+  font-size: 8px;
   margin: auto;
-
 }
 .newprice {
   color: #cf9362;

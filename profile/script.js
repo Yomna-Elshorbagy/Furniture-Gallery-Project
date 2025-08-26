@@ -36,6 +36,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     ordersSection.classList.remove("d-none");
   });
+
+  // check if user logged in or not to access userData links
+  document.addEventListener("click", (e) => {
+
+    let link = e.target.closest("a.userData");
+    if (!link) return;
+    if (!loggedInUser) {
+      e.preventDefault();
+      Swal.fire({
+        title: "🔒 Login Required",
+        text: "You must be logged in to access this page.",
+        icon: "warning",
+        showConfirmButton: true,
+        confirmButtonText: "Go to Login",
+      }).then(() => {
+        window.location.href = "../Auth/log-in/login.html";
+      });
+    } else {
+      window.location.href = link.href;
+    }
+  });
+  //=====>  handel logged in and logged out
+  let loginBtn = document.getElementById("loginBtn");
+  let logoutBtn = document.getElementById("logoutBtn");
+  loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  if (loggedInUser) {
+    // show logout, hide login
+    loginBtn.classList.add("d-none");
+    logoutBtn.classList.remove("d-none");
+  } else {
+    // show login, hide logout
+    loginBtn.classList.remove("d-none");
+    logoutBtn.classList.add("d-none");
+  }
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("loggedInUser");
+    Swal.fire({
+      title: "👋 Logged out",
+      text: "You have been logged out successfully.",
+      icon: "success",
+      timer: 2000,
+      showConfirmButton: false,
+    }).then(() => {
+      window.location.href = "../Auth/log-in/login.html";
+    });
+  });
 });
 
 // === Validation needed ===
@@ -185,7 +232,9 @@ function updateCartBadge() {
 }
 
 function renderFavoriteModal() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+    wishlist: [],
+  };
 
   let favmodalbody = document.getElementById("favmodalbody");
   favmodalbody.innerHTML = "";
@@ -215,21 +264,24 @@ function renderFavoriteModal() {
       card.className = "cardstyle";
       card.innerHTML = `
         <div class="card product-card">
-          <img src="${product.image}" class="card-img-top" alt="${product.name
-        }">
+          <img src="${product.image}" class="card-img-top" alt="${
+        product.name
+      }">
           <div class="card-body text-center ">
             <div class="d-flex flex-column text-start mb-0">
               <h5 class=" text-truncate producttitlefav">${product.name}</h5>
               <h4 class="card-text">
                 <h4 class="newprice fw-bold text-danger">$${product.price}</h4>
-                ${product.oldPrice
-          ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
-          : ""
-        }
+                ${
+                  product.oldPrice
+                    ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
+                    : ""
+                }
               </h4>
             </div>
-            <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id
-        }">ADD TO CART</button>
+            <button class="btn btn-dark w-100 btnaddtocard" data-id="${
+              product.id
+            }">ADD TO CART</button>
           </div>
         </div>
       `;
@@ -239,9 +291,9 @@ function renderFavoriteModal() {
   }
 }
 document.addEventListener("click", function (e) {
-  let loggedInUser =JSON.parse(localStorage.getItem("loggedInUser"))||[];
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
   if (e.target.classList.contains("btnaddtocard")) {
-    let products =JSON.parse(localStorage.getItem("products"))
+    let products = JSON.parse(localStorage.getItem("products"));
     let productId = parseInt(e.target.getAttribute("data-id"));
 
     let quantity = 1;
@@ -257,7 +309,6 @@ document.addEventListener("click", function (e) {
       let productCopy = { ...productToAdd };
       productCopy.quantity = 1;
       loggedInUser.cart.push(productCopy);
-
     }
 
     localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
@@ -278,12 +329,13 @@ if (loggedInUser && loggedInUser.Email) {
 let favBadge = document.getElementById("favBadge");
 
 function updateFavBadge() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+    wishlist: [],
+  };
 
   favBadge.textContent =
     loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
 }
-
 
 updateCartBadge();
 renderFavoriteModal();

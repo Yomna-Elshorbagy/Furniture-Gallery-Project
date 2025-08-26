@@ -20,12 +20,35 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(`${key} already in localStorage`);
     }
   });
-  
+
+  let loginBtn = document.getElementById("loginBtn");
+  let logoutBtn = document.getElementById("logoutBtn");
+  loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  if (loggedInUser) {
+    // show logout, hide login
+    loginBtn.classList.add("d-none");
+    logoutBtn.classList.remove("d-none");
+  } else {
+    // show login, hide logout
+    loginBtn.classList.remove("d-none");
+    logoutBtn.classList.add("d-none");
+  }
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("loggedInUser");
+    Swal.fire({
+      title: "👋 Logged out",
+      text: "You have been logged out successfully.",
+      icon: "success",
+      timer: 2000,
+      showConfirmButton: false,
+    }).then(() => {
+      window.location.href = "../Auth/log-in/login.html";
+    });
+  });
   // renderFavoriteModal();
   updateCartBadge();
 });
-
-
 
 let products = JSON.parse(localStorage.getItem("products")) || [];
 
@@ -88,7 +111,7 @@ let allfavoritebtn = document.querySelectorAll(".favorite-btn");
 
 function renderFavoriteModal() {
   let favmodalbody = document.getElementById("favmodalbody");
-  let loggedInUser =getLoggedInUser();
+  let loggedInUser = getLoggedInUser();
 
   favmodalbody.innerHTML = "";
 
@@ -142,7 +165,6 @@ function renderFavoriteModal() {
     });
     favmodalbody.appendChild(favdiv);
   }
-
 }
 
 //go to cart
@@ -159,10 +181,9 @@ document.addEventListener("click", function (e) {
     let productToAdd = products.find((p) => p.id === productId);
 
     if (productToAdd && !loggedInUser.cart.some((p) => p.id === productId)) {
-       let productCopy = { ...productToAdd };
-    productCopy.quantity = 1;
-    loggedInUser.cart.push(productCopy);
-      
+      let productCopy = { ...productToAdd };
+      productCopy.quantity = 1;
+      loggedInUser.cart.push(productCopy);
     }
 
     saveUsers();
@@ -206,7 +227,7 @@ document.addEventListener("click", (e) => {
 let favBadge = document.getElementById("favBadge");
 
 function updateFavBadge() {
-  let loggedInUser=getLoggedInUser();
+  let loggedInUser = getLoggedInUser();
   favBadge.textContent =
     loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
 }

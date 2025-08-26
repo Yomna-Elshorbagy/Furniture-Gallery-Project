@@ -88,7 +88,6 @@ function showProductDetails(products) {
         <button class="btn btn-outline-secondary ms-2" id="increase">+</button>
       </div>
       <button class="btn btn-dark w-100 mb-2 mt-2 py-2 btnaddtocard" data-id="${product.id}">Add to Cart</button>
-      <button class="btn  hover-button w-100 mt-2 py-2">ADD TO WISHLIST</button>
       <button class="btn  hover-button w-100 mt-2 py-2">FIND IN STORES</button>
      <button class="btn hover-button w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#questionModal">  Ask A QUESTIONS</button>
      <button class="btn hover-button w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#deliveryModal"> GET DELIVERY ESTIMATE</button>

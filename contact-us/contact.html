@@ -1,438 +1,580 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="icon" href="images/Fav-Icon_96x.avif" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us</title>
-  <link rel="icon" href="images/Fav-Icon_96x.avif" type="image/x-icon" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="./style.css" />
-</head>
+  <body>
+    <header>
+      <div class="nav position-fixed w-100">
+        <nav class="navbar navbar-expand-lg bg-white" style="width: 100%">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="../home/home.html"
+              ><img
+                src="https://thefurnituregallery.com.au/cdn/shop/files/TFG_logo_200x.png?v=1655618786"
+                alt=""
+                class="w-75"
+            /></a>
 
-<body>
-
-  <header>
-    <div class="nav position-fixed w-100 ">
-      <nav class="navbar navbar-expand-lg bg-white" style="width: 100%">
-        <div class="container-fluid">
-          <a class=" navbar-brand " href="../home/home.html"><img
-              src="https://thefurnituregallery.com.au/cdn/shop/files/TFG_logo_200x.png?v=1655618786" alt=""
-              class="w-75" /></a>
-
-          <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link text-black " aria-current="page" href="../home/home.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-black " href="../products/products.html">Product</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-black" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-black active" href="../contact-us/contact.html">Contact US</a>
-              </li>
-            </ul>
-          </div>
-          <div class="logo d-none d-lg-block">
-            <!-- <button class="hover-button ms-2 px-3 py-2">
-              <a href="../findStore/find.html">Find a store</a>
-            </button> -->
-            <a href="# " class="text-decoration-none position-relative" data-bs-toggle="modal"
-              data-bs-target="#favModal">
-              <i class="fa-solid fa-heart text-black m-2">
-                <span
-                  class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
-                  id="favBadge">
-                  0
-                  <span class="visually-hidden">number of products in favorites</span>
-                </span>
-              </i>
-            </a>
-
-            <a href="../profile/profile.html" class="text-decoration-none">
-              <i class="fa-solid fa-user text-black m-2"></i>
-            </a>
-            <a href="../cart/cart.html" class="position-relative"><i class="fa-solid fa-cart-shopping">
-                <span
-                  class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
-                  id="cartbadge">
-                  0
-                  <span class="visually-hidden">number of products in card</span>
-                </span>
-              </i></a>
-
-            <!-- <a href="../Auth/log-in/login.html" id="loginBtn" class="btn btn-outline-success">login</a> -->
-            <button id="loginBtn" class="hover-button ms-2 px-3 py-2">
-              <a href="../Auth/log-in/login.html" id="loginBtn">login</a>
+            <button
+              class="navbar-toggler ms-auto"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- <button href="../log-in/login.html" id="logoutBtn" class="btn btn-outline-danger d-none">
-              Log out
-            </button> -->
-            <button href="../log-in/login.html" id="logoutBtn" class=" hover-button-main  d-none">
-              Log out
-            </button>
-          </div>
-        </div>
-      </nav>
-    </div>
+            <div
+              class="collapse navbar-collapse justify-content-center"
+              id="navbarNav"
+            >
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-black"
+                    aria-current="page"
+                    href="../home/home.html"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-black"
+                    href="../products/products.html"
+                    >Product</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-black" href="../about/about.html">About</a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-black active"
+                    href="../contact-us/contact.html"
+                    >Contact US</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-black" href="../findStore/find.html"
+                    >Find Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="logo d-none d-lg-block">
+              <a
+                href="# "
+                class="text-decoration-none position-relative userData"
+                data-bs-toggle="modal"
+                data-bs-target="#favModal"
+              >
+                <i class="fa-solid fa-heart text-black m-2">
+                  <span
+                    class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
+                    id="favBadge"
+                  >
+                    0
+                    <span class="visually-hidden"
+                      >number of products in favorites</span
+                    >
+                  </span>
+                </i>
+              </a>
 
-  </header>
+              <a href="../profile/profile.html" class="text-decoration-none userData">
+                <i class="fa-solid fa-user text-black m-2"></i>
+              </a>
+              <a href="../cart/cart.html" class="position-relative userData"
+                ><i class="fa-solid fa-cart-shopping">
+                  <span
+                    class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
+                    id="cartbadge"
+                  >
+                    0
+                    <span class="visually-hidden"
+                      >number of products in card</span
+                    >
+                  </span>
+                </i></a
+              >
+
+              <button
+                onclick="window.location.href='../Auth/log-in/login.html';"
+                class="hover-button ms-2 px-3 py-2"
+                id="loginBtn"
+              >
+                log in
+              </button>
+              <button
+                onclick="window.location.href='../Auth/log-in/login.html';"
+                class="hover-button ms-2 px-3 py-2 d-none"
+                id="logoutBtn"
+              >
+                log out
+              </button>
+              <button
+                href="../log-in/login.html"
+                id="logoutBtn"
+                class="hover-button-main d-none"
+              >
+                Log out
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
 
     <!---------------------- favorite modal ---------------------->
 
-      <div class="modal fade" id="favModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div
-              class="d-flex flex-row bg-black d-flex justify-content-end align-items-center gap-3"
-            >
-              <button class="btn bg-black text-white opacity-100 border-0">
-                <i class="bi bi-person-fill-add text-white"></i>
-                <span class="text-white" id="favoritelabel"
-                  >example@gmail.com</span
-                >
-              </button>
-              <button
-                type="button"
-                class="btn-close btn-close-white opacity-100 me-1"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+    <div class="modal fade" id="favModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div
+            class="d-flex flex-row bg-black d-flex justify-content-end align-items-center gap-3"
+          >
+            <button class="btn bg-black text-white opacity-100 border-0">
+              <i class="bi bi-person-fill-add text-white"></i>
+              <span class="text-white" id="favoritelabel"
+                >example@gmail.com</span
+              >
+            </button>
+            <button
+              type="button"
+              class="btn-close btn-close-white opacity-100 me-1"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="d-flex flex-row justify-content-between mt-3 mx-3">
+              <h5>Favorites</h5>
+              <i class="bi bi-three-dots-vertical"></i>
             </div>
-            <div class="modal-body text-center">
-              <div class="d-flex flex-row justify-content-between mt-3 mx-3">
-                <h5>Favorites</h5>
-                <i class="bi bi-three-dots-vertical"></i>
+            <hr />
+            <div id="favmodalbody"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../home/home.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+        </ol>
+      </nav>
+
+      <div id="alertPlaceholder"></div>
+
+      <!-- =======> Contact Section <=========== -->
+      <div class="contact-section">
+        <h2>Contact us</h2>
+        <p class="subtitle">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor
+        </p>
+
+        <form id="contactForm">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="firstName" class="form-label">First name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                placeholder="first name"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="lastName" class="form-label">Last name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                placeholder="last name"
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="name@example.com"
+                required
+              />
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Phone number</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="phone"
+                placeholder="+20 101 234 567 8"
+                type="tel"
+                name="phone"
+                pattern="^(010|011|012|015)[0-9]{8}$"
+                title="Please enter a valid Egyptian mobile number (e.g., 01012345678)"
+                required
+              />
+            </div>
+            <div class="col-12">
+              <label for="subject" class="form-label">Subject</label>
+              <input
+                type="text"
+                class="form-control"
+                id="subject"
+                placeholder="Your subject"
+              />
+            </div>
+            <div class="col-12">
+              <label for="message" class="form-label">Message</label>
+              <textarea
+                class="form-control"
+                id="message"
+                rows="4"
+                placeholder="Write your message here..."
+              ></textarea>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="terms"
+                  required
+                />
+                <label class="form-check-label" for="terms">
+                  I accept the terms
+                </label>
               </div>
-              <hr />
-              <div id="favmodalbody"></div>
+            </div>
+            <div class="col-12 mt-3">
+              <button type="submit" class="btn btn-custom">Submit</button>
             </div>
           </div>
-        </div>
-      </div>
-
-  <div class="container ">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb ">
-        <li class="breadcrumb-item"><a href="../home/home.html">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
-      </ol>
-    </nav>
-
-    <div id="alertPlaceholder"></div>
-
-    <!-- =======> Contact Section <=========== -->
-    <div class="contact-section ">
-      <h2>Contact us</h2>
-      <p class="subtitle">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor
-      </p>
-
-      <form id="contactForm">
-        <div class="row g-3">
-          <div class="col-md-6">
-            <label for="firstName" class="form-label">First name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="first name" />
-          </div>
-          <div class="col-md-6">
-            <label for="lastName" class="form-label">Last name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="last name" />
-          </div>
-          <div class="col-md-6">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="name@example.com" required />
-          </div>
-          <div class="col-md-6">
-            <label for="phone" class="form-label">Phone number</label>
-            <input type="tel" class="form-control" id="phone" placeholder="+20 101 234 567 8" type="tel" name="phone"
-              pattern="^(010|011|012|015)[0-9]{8}$"
-              title="Please enter a valid Egyptian mobile number (e.g., 01012345678)" required />
-          </div>
-          <div class="col-12">
-            <label for="subject" class="form-label">Subject</label>
-            <input type="text" class="form-control" id="subject" placeholder="Your subject" />
-          </div>
-          <div class="col-12">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" rows="4" placeholder="Write your message here..."></textarea>
-          </div>
-          <div class="col-12">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="terms" required />
-              <label class="form-check-label" for="terms">
-                I accept the terms
-              </label>
-            </div>
-          </div>
-          <div class="col-12 mt-3">
-            <button type="submit" class="btn btn-custom">Submit</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- ------------start social gallery section ------------------- -->
-  <section class="social-gallery mt-5 py-5 text-center">
-    <div class="container">
-      <div class="head-section text-center">
-        <h1 class="main">FOLLOW US ON SOCIAL</h1>
-      </div>
-      <div class="social-icons p-4">
-        <i class="fa-brands fa-facebook-f"></i>
-        <i class="fa-brands fa-instagram"></i>
-        <i class="fa-brands fa-pinterest-p"></i>
-        <i class="fa-brands fa-youtube"></i>
-        <i class="fa-brands fa-tiktok"></i>
-      </div>
-
-      <div class="row g-2">
-        <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
-          <div class="cards position-relative overflow-hidden rounded-2">
-            <img src="./images/1.jpg" class="img-fluid" alt="" />
-            <div class="overlay">
-              <span><i i class="fa-solid fa-heart"></i> 19</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
-          <div class="cards position-relative overflow-hidden rounded-2">
-            <img src="./images/2.jpg" class="img-fluid" alt="" />
-            <div class="overlay">
-              <span><i class="fa-solid fa-heart"></i> 33</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
-          <div class="cards position-relative overflow-hidden rounded-2">
-            <img src="./images/3.jpg" class="img-fluid" alt="" />
-            <div class="overlay">
-              <span><i class="fa-solid fa-heart"></i> 30</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
-          <div class="cards position-relative overflow-hidden rounded-2">
-            <img src="./images/4.jpg" class="img-fluid" alt="" />
-            <div class="overlay">
-              <span><i class="fa-solid fa-heart"></i> 10</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
-          <div class="cards position-relative overflow-hidden rounded-2">
-            <img src="./images/5.jpg" class="img-fluid" alt="" />
-            <div class="overlay">
-              <span><i class="fa-solid fa-heart"></i> 22</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
-          <div class="cards position-relative overflow-hidden rounded-2">
-            <img src="./images/6.jpg" class="img-fluid" alt="" />
-            <div class="overlay">
-              <span><i class="fa-solid fa-heart"></i> 18</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
-          <div class="cards position-relative overflow-hidden rounded-2">
-            <img src="./images/7.jpg" class="img-fluid" alt="" />
-            <div class="overlay">
-              <span><i class="fa-solid fa-heart"></i> 13</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
-          <div class="cards position-relative overflow-hidden rounded-2">
-            <img src="./images/8.jpg" class="img-fluid" alt="" />
-            <div class="overlay">
-              <span><i class="fa-solid fa-heart"></i> 18</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
-          <div class="cards position-relative overflow-hidden rounded-2">
-            <img src="./images/9.jpg" class="img-fluid" alt="" />
-            <div class="overlay">
-              <span><i class="fa-solid fa-heart"></i> 16</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
-          <div class="cards position-relative overflow-hidden rounded-2">
-            <img src="./images/10.jpg" class="img-fluid" alt="" />
-            <div class="overlay">
-              <span><i class="fa-solid fa-heart"></i> 26</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
-          <div class="cards position-relative overflow-hidden rounded-2">
-            <img src="./images/11.jpg" class="img-fluid" alt="" />
-            <div class="overlay">
-              <span><i class="fa-solid fa-heart"></i> 24</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
-          <div class="cards position-relative overflow-hidden rounded-2">
-            <img src="./images/12.jpg" class="img-fluid" alt="" />
-            <div class="overlay">
-              <span><i class="fa-solid fa-heart"></i> 17</span>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
-  </section>
 
-  <footer class="footer-down">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-2 col-6 mb-4">
-          <h6>Explore</h6>
-          <a href="#">Living</a><br />
-          <a href="#">Dining</a><br />
-          <a href="#">Bedroom</a><br />
-          <a href="#">Office</a><br />
-          <a href="#">Decor</a><br />
-          <a href="#">Blog</a>
+    <!-- ------------start social gallery section ------------------- -->
+    <section class="social-gallery mt-5 py-5 text-center">
+      <div class="container">
+        <div class="head-section text-center">
+          <h1 class="main">FOLLOW US ON SOCIAL</h1>
         </div>
-        <!-- Services -->
-        <div class="col-md-2 col-6 mb-4">
-          <h6>Services</h6>
-          <a href="#">About</a><br />
-          <a href="#">Find a Store</a><br />
-          <a href="#">Careers</a><br />
-          <a href="#">Furniture Stability Fact Sheet</a>
+        <div class="social-icons p-4">
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-pinterest-p"></i>
+          <i class="fa-brands fa-youtube"></i>
+          <i class="fa-brands fa-tiktok"></i>
         </div>
-        <!-- Support -->
-        <div class="col-md-3 col-6 mb-4">
-          <h6>Support</h6>
-          <a href="#">Warranty & Returns Policy</a><br />
-          <a href="#">Privacy Policy</a><br />
-          <a href="#">Terms & Conditions</a><br />
-          <a href="#">Shipping Policy</a>
-        </div>
-        <!-- Features -->
-        <div class="col-md-5 col-12">
-          <div class="row text-center">
-            <div class="col-4 feature-box">
-              <i class="bi bi-clock"></i>
-              <p>
-                <strong>Immediate Availability</strong><br /><small>On select products</small>
-              </p>
+
+        <div class="row g-2">
+          <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
+            <div class="cards position-relative overflow-hidden rounded-2">
+              <img src="./images/1.jpg" class="img-fluid" alt="" />
+              <div class="overlay">
+                <span><i i class="fa-solid fa-heart"></i> 19</span>
+              </div>
             </div>
-            <div class="col-4 feature-box">
-              <i class="bi bi-lamp"></i>
-              <p>
-                <strong>Complimentary Interior Design</strong><br /><small>When you shop in store</small>
-              </p>
+          </div>
+
+          <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
+            <div class="cards position-relative overflow-hidden rounded-2">
+              <img src="./images/2.jpg" class="img-fluid" alt="" />
+              <div class="overlay">
+                <span><i class="fa-solid fa-heart"></i> 33</span>
+              </div>
             </div>
-            <div class="col-4 feature-box">
-              <i class="bi bi-hand-index-thumb"></i>
-              <p>
-                <strong>White Glove Delivery</strong><br /><small>Within Perth metro areas</small>
-              </p>
+          </div>
+
+          <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
+            <div class="cards position-relative overflow-hidden rounded-2">
+              <img src="./images/3.jpg" class="img-fluid" alt="" />
+              <div class="overlay">
+                <span><i class="fa-solid fa-heart"></i> 30</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
+            <div class="cards position-relative overflow-hidden rounded-2">
+              <img src="./images/4.jpg" class="img-fluid" alt="" />
+              <div class="overlay">
+                <span><i class="fa-solid fa-heart"></i> 10</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
+            <div class="cards position-relative overflow-hidden rounded-2">
+              <img src="./images/5.jpg" class="img-fluid" alt="" />
+              <div class="overlay">
+                <span><i class="fa-solid fa-heart"></i> 22</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
+            <div class="cards position-relative overflow-hidden rounded-2">
+              <img src="./images/6.jpg" class="img-fluid" alt="" />
+              <div class="overlay">
+                <span><i class="fa-solid fa-heart"></i> 18</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
+            <div class="cards position-relative overflow-hidden rounded-2">
+              <img src="./images/7.jpg" class="img-fluid" alt="" />
+              <div class="overlay">
+                <span><i class="fa-solid fa-heart"></i> 13</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
+            <div class="cards position-relative overflow-hidden rounded-2">
+              <img src="./images/8.jpg" class="img-fluid" alt="" />
+              <div class="overlay">
+                <span><i class="fa-solid fa-heart"></i> 18</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
+            <div class="cards position-relative overflow-hidden rounded-2">
+              <img src="./images/9.jpg" class="img-fluid" alt="" />
+              <div class="overlay">
+                <span><i class="fa-solid fa-heart"></i> 16</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
+            <div class="cards position-relative overflow-hidden rounded-2">
+              <img src="./images/10.jpg" class="img-fluid" alt="" />
+              <div class="overlay">
+                <span><i class="fa-solid fa-heart"></i> 26</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
+            <div class="cards position-relative overflow-hidden rounded-2">
+              <img src="./images/11.jpg" class="img-fluid" alt="" />
+              <div class="overlay">
+                <span><i class="fa-solid fa-heart"></i> 24</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery col-md-3 col-sm-4 col-lg-2 text-center">
+            <div class="cards position-relative overflow-hidden rounded-2">
+              <img src="./images/12.jpg" class="img-fluid" alt="" />
+              <div class="overlay">
+                <span><i class="fa-solid fa-heart"></i> 17</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Social & App Links -->
-      <div class="text-center mt-1">
-        <div class="footer-icons">
-          <i class="bi bi-facebook"></i>
-          <i class="bi bi-instagram"></i>
-          <i class="bi bi-pinterest"></i>
-          <i class="bi bi-youtube"></i>
-          <i class="bi bi-tiktok"></i>
+    <footer class="footer-down">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 col-6 mb-4">
+            <h6>Explore</h6>
+            <a href="#">Living</a><br />
+            <a href="#">Dining</a><br />
+            <a href="#">Bedroom</a><br />
+            <a href="#">Office</a><br />
+            <a href="#">Decor</a><br />
+            <a href="#">Blog</a>
+          </div>
+          <!-- Services -->
+          <div class="col-md-2 col-6 mb-4">
+            <h6>Services</h6>
+            <a href="#">About</a><br />
+            <a href="#">Find a Store</a><br />
+            <a href="#">Careers</a><br />
+            <a href="#">Furniture Stability Fact Sheet</a>
+          </div>
+          <!-- Support -->
+          <div class="col-md-3 col-6 mb-4">
+            <h6>Support</h6>
+            <a href="#">Warranty & Returns Policy</a><br />
+            <a href="#">Privacy Policy</a><br />
+            <a href="#">Terms & Conditions</a><br />
+            <a href="#">Shipping Policy</a>
+          </div>
+          <!-- Features -->
+          <div class="col-md-5 col-12">
+            <div class="row text-center">
+              <div class="col-4 feature-box">
+                <i class="bi bi-clock"></i>
+                <p>
+                  <strong>Immediate Availability</strong><br /><small
+                    >On select products</small
+                  >
+                </p>
+              </div>
+              <div class="col-4 feature-box">
+                <i class="bi bi-lamp"></i>
+                <p>
+                  <strong>Complimentary Interior Design</strong><br /><small
+                    >When you shop in store</small
+                  >
+                </p>
+              </div>
+              <div class="col-4 feature-box">
+                <i class="bi bi-hand-index-thumb"></i>
+                <p>
+                  <strong>White Glove Delivery</strong><br /><small
+                    >Within Perth metro areas</small
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mt-3">
-          <img
-            src="https://thefurnituregallery.com.au/cdn/shop/files/thumb_Logo-Aplicacion-Android-Google-Play.png?v=1717398357"
-            height="40" class="imageCss" />
-          <img
-            src="https://thefurnituregallery.com.au/cdn/shop/files/thumb_toppng.com-android-app-store-app-store-and-android-icons-2145x1493-copy.png?v=1717398380"
-            height="40" class="imageCss" />
+
+        <!-- Social & App Links -->
+        <div class="text-center mt-1">
+          <div class="footer-icons">
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-instagram"></i>
+            <i class="bi bi-pinterest"></i>
+            <i class="bi bi-youtube"></i>
+            <i class="bi bi-tiktok"></i>
+          </div>
+          <div class="mt-3">
+            <img
+              src="https://thefurnituregallery.com.au/cdn/shop/files/thumb_Logo-Aplicacion-Android-Google-Play.png?v=1717398357"
+              height="40"
+              class="imageCss"
+            />
+            <img
+              src="https://thefurnituregallery.com.au/cdn/shop/files/thumb_toppng.com-android-app-store-app-store-and-android-icons-2145x1493-copy.png?v=1717398380"
+              height="40"
+              class="imageCss"
+            />
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom mt-4">
+          © THE FURNITURE GALLERY. ALL RIGHTS RESERVED. <br />
+          (08) 9444 1332 | enquiries@thefg.com.au | 415 Scarborough Beach Rd,
+          Osborne Park, WA, 6017
+        </div>
+
+        <div class="text-center footer-payments mt-3">
+          <ul
+            class="d-flex justify-content-center align-content-center list-unstyled gap-lg-5"
+          >
+            <li class="imageIcons">
+              <svg
+                viewBox="0 0 38 24"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                width="38"
+                height="20"
+                aria-labelledby="pi-master"
+              >
+                <title id="pi-master">Mastercard</title>
+                <path
+                  opacity=".07"
+                  d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"
+                ></path>
+                <path
+                  fill="#fff"
+                  d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"
+                ></path>
+                <circle fill="#EB001B" cx="15" cy="12" r="7"></circle>
+                <circle fill="#F79E1B" cx="23" cy="12" r="7"></circle>
+                <path
+                  fill="#FF5F00"
+                  d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"
+                ></path>
+              </svg>
+            </li>
+            <li class="imageIcons">
+              <svg
+                viewBox="0 0 38 24"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                width="38"
+                height="24"
+                aria-labelledby="pi-visa"
+              >
+                <title id="pi-visa">Visa</title>
+                <path
+                  opacity=".07"
+                  d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"
+                ></path>
+                <path
+                  fill="#fff"
+                  d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"
+                ></path>
+                <path
+                  d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z"
+                  fill="#142688"
+                ></path>
+              </svg>
+            </li>
+            <li class="imageIcons">
+              <img
+                style="height: 20px; vertical-align: middle; width: 38px"
+                src="https://cdn.shopify.com/s/files/1/0650/2190/3084/files/zip-footer.png?v=1673584958"
+              />
+            </li>
+
+            <li class="imageIcons">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+                height="35"
+                width="70"
+              />
+            </li>
+          </ul>
         </div>
       </div>
-
-      <!-- Footer Bottom -->
-      <div class="footer-bottom mt-4">
-        © THE FURNITURE GALLERY. ALL RIGHTS RESERVED. <br />
-        (08) 9444 1332 | enquiries@thefg.com.au | 415 Scarborough Beach Rd,
-        Osborne Park, WA, 6017
-      </div>
-
-      <div class="text-center footer-payments mt-3">
-        <ul class="d-flex justify-content-center align-content-center list-unstyled gap-lg-5">
-          <li class="imageIcons">
-            <svg viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img" width="38" height="20"
-              aria-labelledby="pi-master">
-              <title id="pi-master">Mastercard</title>
-              <path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
-              </path>
-              <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"></path>
-              <circle fill="#EB001B" cx="15" cy="12" r="7"></circle>
-              <circle fill="#F79E1B" cx="23" cy="12" r="7"></circle>
-              <path fill="#FF5F00"
-                d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"></path>
-            </svg>
-          </li>
-          <li class="imageIcons">
-            <svg viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img" width="38" height="24"
-              aria-labelledby="pi-visa">
-              <title id="pi-visa">Visa</title>
-              <path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
-              </path>
-              <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"></path>
-              <path
-                d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z"
-                fill="#142688"></path>
-            </svg>
-          </li>
-          <li class="imageIcons">
-            <img style="height: 20px; vertical-align: middle; width: 38px"
-              src="https://cdn.shopify.com/s/files/1/0650/2190/3084/files/zip-footer.png?v=1673584958" />
-          </li>
-
-          <li class="imageIcons">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" height="35" width="70" />
-          </li>
-        </ul>
-      </div>
-    </div>
-  </footer>
-  <!-- =======>  Bootstrap & sweetalert2 & js <=========== -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="./script.js"></script>
-</body>
-
+    </footer>
+    <!-- =======>  Bootstrap & sweetalert2 & js <=========== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./script.js"></script>
+  </body>
 </html>

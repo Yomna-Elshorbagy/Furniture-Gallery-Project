@@ -23,54 +23,6 @@
 
   <body>
     <main>
-      <!-- <div class="nav">
-      <nav class="navbar navbar-expand-lg navbar-dark" style="width: 100%">
-        <div class="container-fluid">
-          <a class="navbar-brand nav-logo" href="../home/home.html"><img
-              src="https://thefurnituregallery.com.au/cdn/shop/files/TFG_logo_200x@2x.png?v=1655618786" alt=""
-              class="w-75" /></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="../home/home.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../products/products.html">Product</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="../contact-us/contact.html">Contact US</a>
-              </li>
-            </ul>
-          </div>
-          <div class="logo d-none d-lg-block">
-            <button class="hover-button active">
-              <a href="../findStore/find.html">Find a store</a>
-            </button>
-            <a href="#"> <i class="fa-solid fa-heart"></i> </a>
-            <a href="#">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </a>
-            <a href="#">
-              <i class="fa-solid fa-user"></i>
-            </a>
-            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-            <a href="../Auth/log-in/login.html" id="loginBtn" class="btn btn-outline-success">login</a>
-            <button href="../log-in/login.html" id="logoutBtn" class="btn btn-outline-danger d-none">
-              Log out
-            </button>
-          </div>
-          <hr />
-        </div>
-      </nav>
-    </div> -->
-
       <header>
         <div class="nav position-fixed w-100">
           <nav class="navbar navbar-expand-lg bg-white" style="width: 100%">
@@ -114,21 +66,27 @@
                     >
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-black" href="#">About</a>
+                    <a class="nav-link text-black" href="../about/about.html"
+                      >About</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link text-black"
+                      href="../contact-us/contact.html"
+                      >Contact US</a
+                    >
                   </li>
                   <li class="nav-item">
                     <a
                       class="nav-link text-black active"
-                      href="../contact-us/contact.html"
-                      >Contact US</a
+                      href="../findStore/find.html"
+                      >Find Us</a
                     >
                   </li>
                 </ul>
               </div>
               <div class="logo d-none d-lg-block">
-                <!-- <button class="hover-button ms-2 px-3 py-2">
-              <a href="../findStore/find.html">Find a store</a>
-            </button> -->
                 <a
                   href="# "
                   class="text-decoration-none position-relative"
@@ -148,7 +106,7 @@
                   </i>
                 </a>
 
-                <a href="#" class="text-decoration-none">
+                <a href="../profile/profile.html" class="text-decoration-none userData">
                   <i class="fa-solid fa-user text-black m-2"></i>
                 </a>
                 <a href="../cart/cart.html" class="position-relative"
@@ -165,19 +123,19 @@
                   </i></a
                 >
 
-                <!-- <a href="../Auth/log-in/login.html" id="loginBtn" class="btn btn-outline-success">login</a> -->
-                <button class="hover-button ms-2 px-3 py-2" id="loginBtn">
-                  <a href="../Auth/log-in/login.html" id="loginBtn" class="hover-button ms-2 px-3 py-2">login</a>
-                </button>
-                <!-- <button href="../log-in/login.html" id="logoutBtn" class="btn btn-outline-danger d-none">
-              Log out
-            </button> -->
                 <button
-                  href="../log-in/login.html"
-                  id="logoutBtn"
-                  class="btn btn-outline-danger d-none"
+                  onclick="window.location.href='../Auth/log-in/login.html';"
+                  class="hover-button ms-2 px-3 py-2"
+                  id="loginBtn"
                 >
-                  Log out
+                  log in
+                </button>
+                <button
+                  onclick="window.location.href='../Auth/log-in/login.html';"
+                  class="hover-button ms-2 px-3 py-2 d-none"
+                  id="logoutBtn"
+                >
+                  log out
                 </button>
               </div>
             </div>
