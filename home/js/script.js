@@ -1,5 +1,5 @@
 const serverDataFiles = {
-  products: "../../server/data/products.json",
+  // products: "../../server/data/products.json",
   categories: "../../server/data/categories.json",
   orders: "../../server/data/orders.json",
   users: "../../server/data/users.json",
