@@ -520,3 +520,4 @@ function updateCartBadge() {
 // display
 updateFavBadge();
 renderFavoriteModal();
+updateCartBadge();
