@@ -45,7 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
   countProducts();
   countOrders();
   countTotalRevenues();
-  CountLowStock()
+  CountLowStock();
   const adminEmailEl = document.getElementById("adminEmail");
 
   if (adminEmailEl && loggedInUser?.Email) {
@@ -118,3 +118,11 @@ function CountLowStock() {
   let lengthData = filteredData.length;
   countLowStock.innerText = lengthData;
 }
+
+let profileAdmin = document.getElementById("profileAdmin");
+profileAdmin.addEventListener("click", () => {
+  document.body.classList.add("fade-out");
+  setTimeout(() => {
+    window.location.href = "./pages/profile/profile.html";
+  }, 500);
+});

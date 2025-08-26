@@ -122,3 +122,22 @@ table tbody tr:hover {
   background: linear-gradient(135deg, #2d6762, #0d9488) !important;
   color: #fff;
 }
+
+/* ****** admin location style ******* */
+#profileAdmin {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#profileAdmin:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  transition: opacity 0.5s ease;
+}
+
+body.fade-out {
+  opacity: 0;
+}
