@@ -115,6 +115,26 @@ button.hover-button::after {
   border: none;
   border-bottom: 2px solid #c7b9a9;
 }
+.filter{
+  width: 100%;
+}
+.filterPrice{
+  font-weight: 300;
+  margin-left: 10px;
+  color: #cf9362;
+}
+.filter > .hover-button{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.filterstyle{
+  font-size: 16px;
+  padding-left: 2px;
+  width:45%;
+  height: 35px;
+
+}
+
 
 /* -------------End header modal style ---------------- */
 
@@ -182,9 +202,9 @@ button.hover-button::after {
 
 .asideCategory {
   /* border-right: 1.5px solid #2125294d; */
-  position: fixed;
+  /* position: fixed;
   top: 400px;
-  left: 0px;
+  left: 0px; */
 }
 
 @media (max-width: 800px) {

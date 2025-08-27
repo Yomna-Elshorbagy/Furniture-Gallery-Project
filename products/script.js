@@ -180,15 +180,9 @@ input.addEventListener("keyup", (e) => {
 });
 
 //======> filter function by value of price
+
 let minValue = document.getElementById("minValue");
 let maxValue = document.getElementById("maxValue");
-
-minValue.addEventListener("blur", () => {
-  min = minValue.value;
-});
-maxValue.addEventListener("blur", () => {
-  max = maxValue.value;
-});
 
 function filterfun() {
   let productList = document.getElementById("product-list");
