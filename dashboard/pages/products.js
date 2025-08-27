@@ -8,7 +8,9 @@ export function initProductsPage() {
   let categoryInput = document.getElementById("pmCategory");
   let descInput = document.getElementById("pmDesc");
   let imageInput = document.getElementById("pmImage");
+  let pmSubImagesInput = document.getElementById("pmSubImagesInput");
   let imagePreview = document.getElementById("pmImagePreview");
+  let pmSubImagesPreview = document.getElementById("pmSubImagesPreview");
   let saveBtn = document.getElementById("pmSave");
 
   let prevBtn = document.getElementById("prevPage");
@@ -16,9 +18,28 @@ export function initProductsPage() {
   let pageInfo = document.getElementById("pageInfo");
 
   let products = JSON.parse(localStorage.getItem("products")) || [];
+  let searchededProducts = [...products];
+
   let editingId = null;
   let currentPage = 1;
   let pageSize = 6;
+
+  ////// search for product
+  document.getElementById("searchInput").addEventListener("input", (e) => {
+    let query = e.target.value.toLowerCase().trim();
+    if (query === "") {
+      searchededProducts = [...products];
+    } else {
+      searchededProducts = products.filter(
+        (product) =>
+          product.id.toString().toLowerCase().includes(query) ||
+          product.name.toLowerCase().includes(query) ||
+          product.category.toLowerCase().includes(query)
+      );
+    }
+    currentPage = 1;
+    renderProducts();
+  });
 
   // ---- >> render Products table << ----
   function renderProducts() {
@@ -26,7 +47,7 @@ export function initProductsPage() {
 
     let start = (currentPage - 1) * pageSize;
     let end = start + pageSize;
-    let currentProducts = products.slice(start, end);
+    let currentProducts = searchededProducts.slice(start, end);
 
     currentProducts.forEach((prod) => {
       let row = document.createElement("tr");
@@ -68,7 +89,7 @@ export function initProductsPage() {
 
   // ---->> Pagination <<----
   function renderPagination() {
-    let totalPages = Math.ceil(products.length / pageSize);
+    let totalPages = Math.ceil(searchededProducts.length / pageSize);
     pageInfo.textContent = `Page ${currentPage} of ${totalPages || 1}`;
 
     prevBtn.disabled = currentPage === 1;
@@ -83,7 +104,7 @@ export function initProductsPage() {
   });
 
   nextBtn.addEventListener("click", () => {
-    let totalPages = Math.ceil(products.length / pageSize);
+    let totalPages = Math.ceil(searchededProducts.length / pageSize);
     if (currentPage < totalPages) {
       currentPage++;
       renderProducts();
@@ -91,6 +112,7 @@ export function initProductsPage() {
   });
 
   // ---->> Add Product <<----
+  let tempSubImages = [];
   document.getElementById("addProductBtn")?.addEventListener("click", () => {
     editingId = null;
     modalTitle.textContent = "Add Product";
@@ -101,6 +123,8 @@ export function initProductsPage() {
     categoryInput.value = "";
     descInput.value = "";
     imageInput.value = "";
+    pmSubImagesInput.value = "";
+    tempSubImages = [];
     imagePreview.style.display = "none";
 
     let modal = new bootstrap.Modal(document.getElementById("productModal"));
@@ -120,6 +144,53 @@ export function initProductsPage() {
     }
   });
 
+  ////////// subimages
+
+function readSubImages(files) {
+  const readers = files.map((file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => resolve(e.target.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  });
+
+  return Promise.all(readers);
+}
+
+pmSubImagesInput.addEventListener("change", async () => {
+  const files = Array.from(pmSubImagesInput.files).slice(0, 4);
+  pmSubImagesPreview.innerHTML = "";
+  saveBtn.disabled = true; 
+
+  try {
+    tempSubImages = await readSubImages(files);
+
+    tempSubImages.forEach((imgUrl) => {
+      const img = document.createElement("img");
+      img.src = imgUrl;
+      img.style.width = "80px";
+      img.style.height = "80px";
+      img.style.objectFit = "cover";
+      img.classList.add("rounded", "border");
+      pmSubImagesPreview.appendChild(img);
+    });
+
+    saveBtn.disabled = false; 
+  } catch (error) {
+    console.error("Error reading sub images:", error);
+    Swal.fire({
+      icon: "error",
+      title: "Image Error",
+      text: "error in loading image ",
+    });
+  }
+});
+
+
+
+
   // ---->> Edit Product <<----
   function handleEditProduct(e) {
     editingId = parseInt(e.currentTarget.dataset.id);
@@ -135,6 +206,15 @@ export function initProductsPage() {
       descInput.value = prod.description;
       imagePreview.src = prod.image;
       imagePreview.style.display = "block";
+      pmSubImagesPreview.innerHTML = "";
+      tempSubImages = prod.subImages ? [...prod.subImages] : [];
+      tempSubImages.forEach((imgUrl) => {
+        let img = document.createElement("img");
+        img.src = imgUrl;
+        img.style.width = "80px";
+        img.style.margin = "5px";
+        pmSubImagesPreview.appendChild(img);
+      });
 
       let modal = new bootstrap.Modal(document.getElementById("productModal"));
       modal.show();
@@ -174,6 +254,7 @@ export function initProductsPage() {
               category,
               description: desc,
               image: imgUrl,
+              subImages:  tempSubImages,
             }
           : p
       );
@@ -191,9 +272,11 @@ export function initProductsPage() {
         category,
         description: desc,
         image: imgUrl || "../../server/data/products_img/default.jpg",
-        subImages: [imgUrl],
+        subImages:  tempSubImages,
       });
     }
+
+    console.log(tempSubImages);
 
     localStorage.setItem("products", JSON.stringify(products));
     renderProducts();
