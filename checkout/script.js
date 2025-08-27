@@ -28,6 +28,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("loggedInUserId");
+
     Swal.fire({
       title: "👋 Logged out",
       text: "You have been logged out successfully.",
@@ -378,6 +380,7 @@ placeOrderBtn.addEventListener("click", () => {
       name: item.name,
       price: item.price,
       quantity: item.quantity,
+      category: item.category,
     })),
     TotalItems: loggedInUser.cart.reduce((sum, item) => sum + item.quantity, 0),
     TotalPrice: loggedInUser.cart.reduce(

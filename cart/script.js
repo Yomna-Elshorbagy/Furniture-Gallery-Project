@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("loggedInUserId");
+
     Swal.fire({
       title: "👋 Logged out",
       text: "You have been logged out successfully.",
@@ -93,7 +95,9 @@ if (cartproducts.length === 0) {
     row.innerHTML = `
       <td>
         <div class="d-flex align-items-center">
-          <img src="${product.image}" alt="${product.name}" class="me-3" style="width:80px; height:80px; object-fit:cover;">
+          <img src="${product.image}" alt="${
+      product.name
+    }" class="me-3" style="width:80px; height:80px; object-fit:cover;">
           <div>
             <h6 class="mb-1 fw-light">${product.name}</h6>
             <p class="mb-0 text-muted">$${product.price}</p>
@@ -102,13 +106,23 @@ if (cartproducts.length === 0) {
       </td>
       <td class="text-center">
         <div class="d-flex justify-content-center align-items-center">
-          <button class="btn btn-sm btn-outline-secondary minus-btn" data-id="${product.id}">-</button>
-          <span class="mx-2 quantity" id="quantity-${product.id}">${product.quantity}</span>
-          <button class="btn btn-sm btn-outline-secondary plus-btn" data-id="${product.id}">+</button>
+          <button class="btn btn-sm btn-outline-secondary minus-btn" data-id="${
+            product.id
+          }">-</button>
+          <span class="mx-2 quantity" id="quantity-${product.id}">${
+      product.quantity
+    }</span>
+          <button class="btn btn-sm btn-outline-secondary plus-btn" data-id="${
+            product.id
+          }">+</button>
         </div>
-        <button class="btn btn-link text-muted p-0 remove-btn mt-3" data-id="${product.id}">REMOVE</button>
+        <button class="btn btn-link text-muted p-0 remove-btn mt-3" data-id="${
+          product.id
+        }">REMOVE</button>
       </td>
-      <td class="text-end" id="total-${product.id}">$${product.price * product.quantity}</td>
+      <td class="text-end" id="total-${product.id}">$${
+      product.price * product.quantity
+    }</td>
     `;
     tbody.appendChild(row);
   });
@@ -118,7 +132,7 @@ if (cartproducts.length === 0) {
     if (!btn) return;
 
     let id = parseInt(btn.dataset.id);
-    let product = loggedInUser.cart.find(p => p.id === id);
+    let product = loggedInUser.cart.find((p) => p.id === id);
     if (!product) return;
 
     let quantitySpan = document.getElementById(`quantity-${id}`);
@@ -128,7 +142,10 @@ if (cartproducts.length === 0) {
     if (btn.classList.contains("plus-btn")) quantity++;
     if (btn.classList.contains("minus-btn") && quantity > 1) quantity--;
 
-    if (btn.classList.contains("plus-btn") || btn.classList.contains("minus-btn")) {
+    if (
+      btn.classList.contains("plus-btn") ||
+      btn.classList.contains("minus-btn")
+    ) {
       quantitySpan.textContent = quantity;
       totalCell.textContent = `$${product.price * quantity}`;
       product.quantity = quantity;
@@ -138,7 +155,7 @@ if (cartproducts.length === 0) {
     }
 
     if (btn.classList.contains("remove-btn")) {
-      loggedInUser.cart = loggedInUser.cart.filter(p => p.id !== id);
+      loggedInUser.cart = loggedInUser.cart.filter((p) => p.id !== id);
       localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
       btn.closest("tr").remove();
       updateCartBadge();
@@ -165,7 +182,7 @@ if (cartproducts.length === 0) {
   updateGrandTotal();
 
   let checkoutdiv = document.createElement("div");
-  checkoutdiv.className = "d-flex flex-row justify-content-end"
+  checkoutdiv.className = "d-flex flex-row justify-content-end";
 
   let checkoutBtn = document.createElement("button");
   checkoutBtn.className = "btn checkoutbtn emptycartbtn my-3";
@@ -178,7 +195,6 @@ if (cartproducts.length === 0) {
   });
 }
 
-
 let favoriteLabel = document.getElementById("favoritelabel");
 if (loggedInUser && loggedInUser.Email) {
   favoriteLabel.textContent = loggedInUser.Email;
@@ -186,9 +202,10 @@ if (loggedInUser && loggedInUser.Email) {
   favoriteLabel.textContent = "example@gmail.com";
 }
 
-
 function renderFavoriteModal() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+    wishlist: [],
+  };
 
   let favmodalbody = document.getElementById("favmodalbody");
   favmodalbody.innerHTML = "";
@@ -218,21 +235,24 @@ function renderFavoriteModal() {
       card.className = "cardstyle";
       card.innerHTML = `
         <div class="card product-card">
-          <img src="${product.image}" class="card-img-top" alt="${product.name
-        }">
+          <img src="${product.image}" class="card-img-top" alt="${
+        product.name
+      }">
           <div class="card-body text-center ">
             <div class="d-flex flex-column text-start mb-0">
               <h5 class=" text-truncate producttitlefav">${product.name}</h5>
               <h4 class="card-text">
                 <h4 class="newprice fw-bold text-danger">$${product.price}</h4>
-                ${product.oldPrice
-          ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
-          : ""
-        }
+                ${
+                  product.oldPrice
+                    ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
+                    : ""
+                }
               </h4>
             </div>
-            <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id
-        }">ADD TO CART</button>
+            <button class="btn btn-dark w-100 btnaddtocard" data-id="${
+              product.id
+            }">ADD TO CART</button>
           </div>
         </div>
       `;
@@ -244,7 +264,7 @@ function renderFavoriteModal() {
 document.addEventListener("click", function (e) {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
   if (e.target.classList.contains("btnaddtocard")) {
-    let products = JSON.parse(localStorage.getItem("products"))
+    let products = JSON.parse(localStorage.getItem("products"));
     let productId = parseInt(e.target.getAttribute("data-id"));
 
     let quantity = 1;
@@ -260,7 +280,6 @@ document.addEventListener("click", function (e) {
       let productCopy = { ...productToAdd };
       productCopy.quantity = 1;
       loggedInUser.cart.push(productCopy);
-
     }
 
     localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
@@ -274,21 +293,21 @@ document.addEventListener("click", function (e) {
 let favBadge = document.getElementById("favBadge");
 
 function updateFavBadge() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+    wishlist: [],
+  };
 
   favBadge.textContent =
     loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
 }
 
-
 function updateCartBadge() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { cart: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+    cart: [],
+  };
 
   let cartBadge = document.getElementById("cartbadge");
   if (cartBadge) {
     cartBadge.textContent = loggedInUser.cart.length;
   }
 }
-
-
-
