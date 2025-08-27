@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("loggedInUserId");
+
     Swal.fire({
       title: "👋 Logged out",
       text: "You have been logged out successfully.",
@@ -80,14 +82,18 @@ function showProductDetails(products) {
         <span class="text-color fs-4 fw-bold">$${product.price}</span>
       </p>
       <p class="text-muted">${product.description}</p>
-      <p class="text-muted"> Reviews: <span class="text-secondary text-capitalize">${product.reviews}</span></p>
+      <p class="text-muted"> Reviews: <span class="text-secondary text-capitalize">${
+        product.reviews
+      }</span></p>
       <p><strong>In Stock:</strong> ${product.stock}</p>
         <div class="d-flex align-items-center mb-3">
         <button class="btn btn-outline-secondary me-2" id="decrease">-</button>
         <input type="text" id="quantity" value="1" class="form-control text-center" style="width:70px;" readonly>
         <button class="btn btn-outline-secondary ms-2" id="increase">+</button>
       </div>
-      <button class="btn btn-dark w-100 mb-2 mt-2 py-2 btnaddtocard" data-id="${product.id}">Add to Cart</button>
+      <button class="btn btn-dark w-100 mb-2 mt-2 py-2 btnaddtocard" data-id="${
+        product.id
+      }">Add to Cart</button>
       <button class="btn  hover-button w-100 mt-2 py-2">FIND IN STORES</button>
      <button class="btn hover-button w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#questionModal">  Ask A QUESTIONS</button>
      <button class="btn hover-button w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#deliveryModal"> GET DELIVERY ESTIMATE</button>
@@ -101,9 +107,15 @@ function showProductDetails(products) {
           <div id="collapseOne" class="accordion-collapse collapse">
             <div class="accordion-body">
              <div class="accordion-body">
-              <p><i class="fa-solid fa-arrows-left-right me-2"></i> <strong>Width:</strong> ${product.dimentions?.width || "N/A"}</p>
-              <p><i class="fa-solid fa-arrows-up-down me-2"></i> <strong>Height:</strong> ${product.dimentions?.height || "N/A"}</p>
-              <p><i class="fa-solid fa-up-right-and-down-left-from-center me-2"></i> <strong>Length:</strong> ${product.dimentions?.length}</p>
+              <p><i class="fa-solid fa-arrows-left-right me-2"></i> <strong>Width:</strong> ${
+                product.dimentions?.width || "N/A"
+              }</p>
+              <p><i class="fa-solid fa-arrows-up-down me-2"></i> <strong>Height:</strong> ${
+                product.dimentions?.height || "N/A"
+              }</p>
+              <p><i class="fa-solid fa-up-right-and-down-left-from-center me-2"></i> <strong>Length:</strong> ${
+                product.dimentions?.length
+              }</p>
             </div>
           </div>
         </div>
@@ -162,44 +174,39 @@ function showProductDetails(products) {
 
   // go to cart page
   document.addEventListener("click", function (e) {
-
     if (e.target.classList.contains("btnaddtocard")) {
       let productId = parseInt(e.target.getAttribute("data-id"));
       let quantityInput = document.getElementById("quantity"); // جيب قيمة input
-
 
       if (!loggedInUser.cart) {
         loggedInUser.cart = [];
       }
 
-      let productToAdd = products.find(p => p.id === productId);
+      let productToAdd = products.find((p) => p.id === productId);
 
-      if (productToAdd && !loggedInUser.cart.some(p => p.id === productId)) {
+      if (productToAdd && !loggedInUser.cart.some((p) => p.id === productId)) {
         loggedInUser.cart.push({
-          ...productToAdd,              // كل بيانات المنتج
-          quantity: Number(quantityInput.value)  // الكمية
+          ...productToAdd, // كل بيانات المنتج
+          quantity: Number(quantityInput.value), // الكمية
         });
       }
 
       localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
-
       window.location.href = "../cart/cart.html";
       console.log(loggedInUser.wishlist);
-
     }
   });
 
-
-
-
   // ------------------------------------------> related products-----------------------------------------------------
 }
-  // add fav badge
-  let favBadge = document.getElementById("favBadge");
+// add fav badge
+let favBadge = document.getElementById("favBadge");
 
 function updateFavBadge() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+    wishlist: [],
+  };
 
   favBadge.textContent =
     loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
@@ -207,7 +214,9 @@ function updateFavBadge() {
 
 // add cart badge
 function updateCartBadge() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))|| { cart: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+    cart: [],
+  };
 
   let cartBadge = document.getElementById("cartbadge");
   if (cartBadge) {
@@ -215,7 +224,9 @@ function updateCartBadge() {
   }
 }
 function renderFavoriteModal() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { wishlist: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+    wishlist: [],
+  };
 
   let favmodalbody = document.getElementById("favmodalbody");
   favmodalbody.innerHTML = "";
@@ -245,21 +256,24 @@ function renderFavoriteModal() {
       card.className = "cardstyle";
       card.innerHTML = `
         <div class="card product-card">
-          <img src="${product.image}" class="card-img-top" alt="${product.name
-        }">
+          <img src="${product.image}" class="card-img-top" alt="${
+        product.name
+      }">
           <div class="card-body text-center ">
             <div class="d-flex flex-column text-start mb-0">
               <h5 class=" text-truncate producttitlefav">${product.name}</h5>
               <h4 class="card-text">
                 <h4 class="newprice fw-bold text-danger">$${product.price}</h4>
-                ${product.oldPrice
-          ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
-          : ""
-        }
+                ${
+                  product.oldPrice
+                    ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
+                    : ""
+                }
               </h4>
             </div>
-            <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id
-        }">ADD TO CART</button>
+            <button class="btn btn-dark w-100 btnaddtocard" data-id="${
+              product.id
+            }">ADD TO CART</button>
           </div>
         </div>
       `;
@@ -275,7 +289,6 @@ if (loggedInUser && loggedInUser.Email) {
   favoriteLabel.textContent = "example@gmail.com";
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const products = JSON.parse(localStorage.getItem("products")) || [];
 
@@ -283,13 +296,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const currentId = parseInt(urlParams.get("id"));
 
-  const currentProduct = products.find(p => p.id === currentId);
+  const currentProduct = products.find((p) => p.id === currentId);
   if (!currentProduct) return;
 
   function getRelatedProducts() {
     // هات كل المنتجات اللي من نفس الكاتيجوري وغير الحالية
-    const sameCategory = products.filter(p =>
-      p.category === currentProduct.category && p.id !== currentId
+    const sameCategory = products.filter(
+      (p) => p.category === currentProduct.category && p.id !== currentId
     );
 
     // لو أقل من 4، هتعرض العدد الموجود
@@ -300,7 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("related-products");
     container.innerHTML = "";
 
-    related.forEach(product => {
+    related.forEach((product) => {
       const card = document.createElement("div");
       card.className = "related-card";
       card.innerHTML = `
@@ -318,12 +331,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
   const related = getRelatedProducts();
   renderRelatedProducts(related);
   updateCartBadge();
-  
+
   updateFavBadge();
   renderFavoriteModal();
-  
 });

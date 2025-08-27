@@ -28,6 +28,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("loggedInUserId");
+
     Swal.fire({
       title: "👋 Logged out",
       text: "You have been logged out successfully.",
