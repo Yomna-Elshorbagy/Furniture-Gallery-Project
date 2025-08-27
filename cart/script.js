@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "../Auth/log-in/login.html";
     });
   });
-    updateCartBadge();
-updateFavBadge();
-renderFavoriteModal();
+  updateCartBadge();
+  updateFavBadge();
+  renderFavoriteModal();
 });
 
 // cart badge
@@ -131,8 +131,8 @@ if (cartproducts.length === 0) {
     if (btn.classList.contains("plus-btn") || btn.classList.contains("minus-btn")) {
       quantitySpan.textContent = quantity;
       totalCell.textContent = `$${product.price * quantity}`;
-       product.quantity = quantity;
-         localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+      product.quantity = quantity;
+      localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
       updateGrandTotal();
     }
@@ -164,15 +164,21 @@ if (cartproducts.length === 0) {
   cartbody.appendChild(grandTotalDiv);
   updateGrandTotal();
 
-  let checkoutdiv =document.createElement("div");
-  checkoutdiv.className ="d-flex flex-row justify-content-end"
+  let checkoutdiv = document.createElement("div");
+  checkoutdiv.className = "d-flex flex-row justify-content-end"
 
   let checkoutBtn = document.createElement("button");
-  checkoutBtn.className="btn checkoutbtn emptycartbtn my-3";
-  checkoutBtn.textContent ="CHECKOUT ";
+  checkoutBtn.className = "btn checkoutbtn emptycartbtn my-3";
+  checkoutBtn.textContent = "CHECKOUT ";
   checkoutdiv.appendChild(checkoutBtn);
   cartbody.appendChild(checkoutdiv);
+  checkoutBtn.addEventListener("click", () => {
+    localStorage.setItem("checkoutItems", JSON.stringify(loggedInUser.cart));
+    window.location.href = "../checkout/checkout.html";
+  });
 }
+
+
 let favoriteLabel = document.getElementById("favoritelabel");
 if (loggedInUser && loggedInUser.Email) {
   favoriteLabel.textContent = loggedInUser.Email;
@@ -236,9 +242,9 @@ function renderFavoriteModal() {
   }
 }
 document.addEventListener("click", function (e) {
-  let loggedInUser =JSON.parse(localStorage.getItem("loggedInUser"))||[];
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
   if (e.target.classList.contains("btnaddtocard")) {
-    let products =JSON.parse(localStorage.getItem("products"))
+    let products = JSON.parse(localStorage.getItem("products"))
     let productId = parseInt(e.target.getAttribute("data-id"));
 
     let quantity = 1;
@@ -276,7 +282,7 @@ function updateFavBadge() {
 
 
 function updateCartBadge() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"))|| { cart: [] };
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || { cart: [] };
 
   let cartBadge = document.getElementById("cartbadge");
   if (cartBadge) {
