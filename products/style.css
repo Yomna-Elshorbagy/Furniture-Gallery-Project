@@ -129,10 +129,11 @@ button.hover-button::after {
 }
 .filterstyle{
   font-size: 16px;
-  padding-left: 2px;
+  padding-left: 5px;
   width:45%;
   height: 35px;
-
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 
@@ -200,12 +201,12 @@ button.hover-button::after {
   opacity: 1;
 }
 
-.asideCategory {
-  /* border-right: 1.5px solid #2125294d; */
-  /* position: fixed;
+/* .asideCategory {
+  border-right: 1.5px solid #2125294d; 
+   position: fixed;
   top: 400px;
-  left: 0px; */
-}
+  left: 0px; 
+} */
 
 @media (max-width: 800px) {
   .categorysec {
