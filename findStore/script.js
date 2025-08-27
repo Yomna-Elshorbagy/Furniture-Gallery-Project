@@ -164,3 +164,11 @@ function updateCartBadge() {
     cartBadge.textContent = loggedInUser.cart.length;
   }
 }
+
+let favoriteLabel = document.getElementById("favoritelabel");
+let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+if (loggedInUser && loggedInUser.Email) {
+  favoriteLabel.textContent = loggedInUser.Email;
+} else {
+  favoriteLabel.textContent = "example@gmail.com";
+}
