@@ -172,7 +172,6 @@ function showProductDetails(products) {
         loggedInUser.cart = [];
       }
 
-      // هات المنتج نفسه من الـ products
       let productToAdd = products.find(p => p.id === productId);
 
       if (productToAdd && !loggedInUser.cart.some(p => p.id === productId)) {

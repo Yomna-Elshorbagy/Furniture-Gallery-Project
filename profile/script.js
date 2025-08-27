@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <td>${order.Date}</td>
             <td>${order.Status}</td>
             <td>${order.TotalPrice}</td>
-            <td>${itemsList}</td>
+            <td>${order.TotalItems}</td>
           </tr>
         `;
         ordersTableBody.innerHTML += row;
@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // check if user logged in or not to access userData links
   document.addEventListener("click", (e) => {
-
     let link = e.target.closest("a.userData");
     if (!link) return;
     if (!loggedInUser) {
