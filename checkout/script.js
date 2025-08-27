@@ -38,6 +38,27 @@ window.addEventListener("DOMContentLoaded", () => {
       window.location.href = "../Auth/log-in/login.html";
     });
   });
+
+  // if user Not logged in redirect him to login page
+  document.addEventListener("click", (e) => {
+    let link = e.target.closest("a.userData");
+    if (!link) return;
+    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) {
+      e.preventDefault();
+      Swal.fire({
+        title: "🔒 Login Required",
+        text: "You must be logged in to access this page.",
+        icon: "warning",
+        showConfirmButton: true,
+        confirmButtonText: "Go to Login",
+      }).then(() => {
+        window.location.href = "../Auth/log-in/login.html";
+      });
+    } else {
+      window.location.href = link.href;
+    }
+  });
 });
 
 cardOption.addEventListener("change", () => {
@@ -233,9 +254,15 @@ function validateCVC() {
   return true;
 }
 
-document.getElementById("fullName").addEventListener("input", validateFullName);
-document.getElementById("phoneNumber").addEventListener("input", validatePhone);
-document.getElementById("e-mail").addEventListener("input", validateEmail);
+let fullName = document.getElementById("fullName");
+let phoneNumber = document.getElementById("phoneNumber");
+let email = document.getElementById("e-mail");
+let address = document.getElementById("address");
+
+fullName.addEventListener("input", validateFullName);
+phoneNumber.addEventListener("input", validatePhone);
+email.addEventListener("input", validateEmail);
+
 document.getElementById("address").addEventListener("input", validateAddress);
 document
   .querySelector("#cardPaymentSection input[placeholder='Name on Card']")
@@ -343,7 +370,9 @@ placeOrderBtn.addEventListener("click", () => {
   const newOrder = {
     ID: newId,
     userId: loggedInUser.ID,
-    UserName: loggedInUser.Name,
+    Phone: phoneNumber.value.trim(),
+    Email: email.value.trim,
+    UserName: fullName.value.trim(),
     products: loggedInUser.cart.map((item) => ({
       id: item.id,
       name: item.name,
