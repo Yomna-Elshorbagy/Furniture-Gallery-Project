@@ -152,7 +152,7 @@
         </nav>
       </div>
     </header>
-      <!---------------------- favorite modal ---------------------->
+    <!---------------------- favorite modal ---------------------->
 
     <div class="modal fade" id="favModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -201,7 +201,10 @@
           </div>
           <ul class="list-group mt-3">
             <li class="list-group-item" id="orderItem">
-              <a href="../checkout/checkout.html" class="text-decoration-none text-dark">
+              <a
+                href="../checkout/checkout.html"
+                class="text-decoration-none text-dark"
+              >
                 <i class="bi bi-box"></i> Orders
               </a>
             </li>
@@ -653,6 +656,16 @@
         </div>
       </div>
     </footer>
+    <script>
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".nav");
+        if (window.scrollY > 10) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
     <script>
       window.bcrypt = dcodeIO.bcrypt;

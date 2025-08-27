@@ -20,10 +20,10 @@ body {
   z-index: 1050;
   width: 100%;
   transition: all 0.3s ease-in-out;
-  /* background: transparent; */
-  /* border-bottom: 1px solid rgb(254, 254, 254); */
 }
-
+.nav.scrolled {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
 /* nav icon */
 .nav i {
   color: #111;
@@ -115,27 +115,26 @@ button.hover-button::after {
   border: none;
   border-bottom: 2px solid #c7b9a9;
 }
-.filter{
+.filter {
   width: 100%;
 }
-.filterPrice{
+.filterPrice {
   font-weight: 300;
   margin-left: 10px;
   color: #cf9362;
 }
-.filter > .hover-button{
+.filter > .hover-button {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.filterstyle{
+.filterstyle {
   font-size: 16px;
   padding-left: 5px;
-  width:45%;
+  width: 45%;
   height: 35px;
   border: 1px solid black;
   border-radius: 10px;
 }
-
 
 /* -------------End header modal style ---------------- */
 
@@ -355,73 +354,69 @@ button.hover-button::after {
   color: #c59d5f !important;
   border-color: #c59d5f !important;
 }
-.madal{
+.madal {
   font-family: var(--heading-font);
 }
-#favModal .modal-content{
-    border-radius: 0 !important;
-    
+#favModal .modal-content {
+  border-radius: 0 !important;
 }
-  .modal-dialog {
-  max-width: 70% !important; 
+.modal-dialog {
+  max-width: 70% !important;
 }
 
 .modal-content {
-  height: 550px !important; 
+  height: 550px !important;
 }
-.modal-header{
-    border-radius: 0 !important;
-    color: #ffffff !important;
-    font-family: var(--heading-font);
+.modal-header {
+  border-radius: 0 !important;
+  color: #ffffff !important;
+  font-family: var(--heading-font);
 }
-#favoritelabel{
-    font-size: 14px !important;
+#favoritelabel {
+  font-size: 14px !important;
 }
-.modal-body hr{
-    width: 95% !important;
-    margin: 20px auto !important;
-    text-align: start !important;
+.modal-body hr {
+  width: 95% !important;
+  margin: 20px auto !important;
+  text-align: start !important;
 }
-.modal-body h5{
-    font-weight: 400;
-    letter-spacing: 0 !important;
-    font-size: 18px !important;
-
+.modal-body h5 {
+  font-weight: 400;
+  letter-spacing: 0 !important;
+  font-size: 18px !important;
 }
-.nofavoritediv{
-    margin-top: 70px !important;
+.nofavoritediv {
+  margin-top: 70px !important;
 }
-.nofavoritediv h5{
-    margin-bottom: 30px !important;
-    font-size: 16px !important;
-    font-weight: 500 ;
+.nofavoritediv h5 {
+  margin-bottom: 30px !important;
+  font-size: 16px !important;
+  font-weight: 500;
 }
-.nofavoritediv p{
-    font-size: 12px !important;
+.nofavoritediv p {
+  font-size: 12px !important;
 }
-.nofavoritediv button{
-    background-color: #434655 !important;
-    color: white !important;
-    font-size: 12px !important; 
-    padding: 5px 20px !important;
-    font-weight: bold;
-    margin-top: 20px;
-
- 
+.nofavoritediv button {
+  background-color: #434655 !important;
+  color: white !important;
+  font-size: 12px !important;
+  padding: 5px 20px !important;
+  font-weight: bold;
+  margin-top: 20px;
 }
-.nofavoritediv button:hover{
-    opacity: 0.8 !important;
+.nofavoritediv button:hover {
+  opacity: 0.8 !important;
 }
-.cardstyle{
+.cardstyle {
   width: 150px;
   height: 200px;
   margin-right: 20px;
   margin-left: 30px;
   margin-bottom: 100px !important;
 }
-.btnaddtocard{
+.btnaddtocard {
   height: 30px !important;
-  font-size:10px !important ;
+  font-size: 10px !important ;
 }
 
 .favdiv {
@@ -429,13 +424,12 @@ button.hover-button::after {
   flex-direction: row;
   justify-content: start !important;
   flex-wrap: wrap;
-  max-height: 400px; 
+  max-height: 400px;
   overflow-y: auto;
-  gap: 10px; 
+  gap: 10px;
 }
 
-
-h5.producttitlefav{
+h5.producttitlefav {
   font-size: 10px !important;
   font-weight: 500 !important;
 }
@@ -445,15 +439,14 @@ h5.producttitlefav:hover {
   overflow: visible;
   text-overflow: unset;
 }
-.toaststyle{
-  background-color:#c7b9a9 !important;
+.toaststyle {
+  background-color: #c7b9a9 !important;
 }
-.badgestyle{
+.badgestyle {
   width: 15px;
   height: 15px;
-  font-size:8px;
+  font-size: 8px;
   margin: auto;
-
 }
 /****** pagination container ******* */
 .pagination {

@@ -13,65 +13,16 @@ body {
 }
 
 /* *************** Starting navbar styling ******************** */
-/* .nav {
-  position: fixed;
-  top: 0;
-  z-index: 2000;
-  width: 100%;
-  transition: all 0.3s ease-in-out;
-  padding: 0.5rem 0;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.nav .nav-link {
-  color: #111;
-  transition: color 0.3s ease;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin: 0 10px;
-}
-
-.nav .nav-link:hover {
-  color: #c59d5f;
-}
-.navbar .active {
-  color: #c59d5f !important;
-  border-color: #c59d5f !important;
-}
-.nav i {
-  color: #111;
-  margin: 10px;
-  font-size: 20px;
-}
-
-.nav a {
-  text-decoration: none;
-  color: #111;
-}
-
-.hover-button {
-  background-color: transparent;
-  border: 1px solid #111;
-  color: #111;
-  padding: 5px;
-  font-size: 15px;
-  letter-spacing: 2px;
-}
-.nav .nav-logo img {
-  width: 180px !important;
-  transform: scale(0.9); */
-/* } */
 
 .nav {
   font-weight: 500;
   z-index: 1050;
   width: 100%;
   transition: all 0.3s ease-in-out;
-  /* background: transparent; */
-  /* border-bottom: 1px solid rgb(254, 254, 254); */
 }
-
+.nav.scrolled {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
 /* nav icon */
 .nav i {
   color: #111;
@@ -164,13 +115,11 @@ button.hover-button::after {
   border-bottom: 2px solid #c7b9a9;
 }
 
-.badgestyle{
+.badgestyle {
   width: 15px;
   height: 15px;
-  font-size:8px;
+  font-size: 8px;
   margin: auto;
-
-
 }
 /* -------------favorite modal style ---------------- */
 
@@ -178,73 +127,69 @@ button.hover-button::after {
   color: #c59d5f !important;
   border-color: #c59d5f !important;
 }
-.madal{
+.madal {
   font-family: var(--heading-font);
 }
-#favModal .modal-content{
-    border-radius: 0 !important;
-    
+#favModal .modal-content {
+  border-radius: 0 !important;
 }
-  .modal-dialog {
-  max-width: 70% !important; 
+.modal-dialog {
+  max-width: 70% !important;
 }
 
 .modal-content {
-  height: 550px !important; 
+  height: 550px !important;
 }
-.modal-header{
-    border-radius: 0 !important;
-    color: #ffffff !important;
-    font-family: var(--heading-font);
+.modal-header {
+  border-radius: 0 !important;
+  color: #ffffff !important;
+  font-family: var(--heading-font);
 }
-#favoritelabel{
-    font-size: 14px !important;
+#favoritelabel {
+  font-size: 14px !important;
 }
-.modal-body hr{
-    width: 95% !important;
-    margin: 20px auto !important;
-    text-align: start !important;
+.modal-body hr {
+  width: 95% !important;
+  margin: 20px auto !important;
+  text-align: start !important;
 }
-.modal-body h5{
-    font-weight: 400;
-    letter-spacing: 0 !important;
-    font-size: 18px !important;
-
+.modal-body h5 {
+  font-weight: 400;
+  letter-spacing: 0 !important;
+  font-size: 18px !important;
 }
-.nofavoritediv{
-    margin-top: 70px !important;
+.nofavoritediv {
+  margin-top: 70px !important;
 }
-.nofavoritediv h5{
-    margin-bottom: 30px !important;
-    font-size: 16px !important;
-    font-weight: 500 ;
+.nofavoritediv h5 {
+  margin-bottom: 30px !important;
+  font-size: 16px !important;
+  font-weight: 500;
 }
-.nofavoritediv p{
-    font-size: 12px !important;
+.nofavoritediv p {
+  font-size: 12px !important;
 }
-.nofavoritediv button{
-    background-color: #434655 !important;
-    color: white !important;
-    font-size: 12px !important; 
-    padding: 5px 20px !important;
-    font-weight: bold;
-    margin-top: 20px;
-
- 
+.nofavoritediv button {
+  background-color: #434655 !important;
+  color: white !important;
+  font-size: 12px !important;
+  padding: 5px 20px !important;
+  font-weight: bold;
+  margin-top: 20px;
 }
-.nofavoritediv button:hover{
-    opacity: 0.8 !important;
+.nofavoritediv button:hover {
+  opacity: 0.8 !important;
 }
-.cardstyle{
+.cardstyle {
   width: 150px;
   height: 200px;
   margin-right: 20px;
   margin-left: 30px;
   margin-bottom: 100px !important;
 }
-.btnaddtocard{
+.btnaddtocard {
   height: 30px !important;
-  font-size:10px !important ;
+  font-size: 10px !important ;
 }
 
 .favdiv {
@@ -252,13 +197,12 @@ button.hover-button::after {
   flex-direction: row;
   justify-content: start !important;
   flex-wrap: wrap;
-  max-height: 400px; 
+  max-height: 400px;
   overflow-y: auto;
-  gap: 10px; 
+  gap: 10px;
 }
 
-
-h5.producttitlefav{
+h5.producttitlefav {
   font-size: 10px !important;
   font-weight: 500 !important;
 }
@@ -268,13 +212,13 @@ h5.producttitlefav:hover {
   overflow: visible;
   text-overflow: unset;
 }
-.toaststyle{
-  background-color:#c7b9a9 !important;
+.toaststyle {
+  background-color: #c7b9a9 !important;
 }
-.badgestyle{
+.badgestyle {
   width: 15px;
   height: 15px;
-  font-size:8px;
+  font-size: 8px;
   margin: auto;
 }
 /*---------------- header section------------ */
@@ -296,7 +240,6 @@ h5.producttitlefav:hover {
     center/cover;
   height: 400px;
   margin-top: 20px;
-
 }
 
 /* ****** client section ***** */

@@ -8,15 +8,20 @@
 }
 
 body {
-
   color: #333;
   line-height: 1.6;
-
-
 }
 
 /* *************** Starting navbar styling ******************** */
 /* nav icon */
+.nav {
+  z-index: 1000;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.nav.scrolled {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
 .nav i {
   color: #111;
   margin: 10px;
@@ -108,7 +113,6 @@ button.hover-button::after {
   border-bottom: 2px solid #c7b9a9;
 }
 
-
 /* ***************** Contact details ****************** */
 .breadcrumb {
   padding-top: 500px;
@@ -174,7 +178,6 @@ p.subtitle {
   background-color: #7a5026;
 }
 
-
 /* =====================> Container Styling ==================> */
 /* =========================> Container =========================> */
 
@@ -182,7 +185,7 @@ p.subtitle {
 .checkout-container {
   margin-top: 100px;
   padding: 50px;
-  background-color: #F6F1E9;
+  background-color: #f6f1e9;
   background: linear-gradient(to bottom, #f1eae0, #c7b9a9);
   border-radius: 30px;
   /* border: 2px solid #7c6b4f; */
@@ -192,7 +195,7 @@ p.subtitle {
 .checkout-title {
   font-size: 48px;
   font-weight: 800;
-  line-height: 50px ;
+  line-height: 50px;
   padding-bottom: 10px;
   letter-spacing: 4px;
   text-align: center;
@@ -233,7 +236,7 @@ textarea.form-control {
   border-radius: 15px;
 } */
 .order-summary {
-  max-height: 700px; 
+  max-height: 700px;
   overflow-y: auto;
   padding-right: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
@@ -246,7 +249,6 @@ textarea.form-control {
   font-weight: bold;
 }
 
-
 .quantity-remove {
   display: flex;
   gap: 10px;
@@ -257,15 +259,15 @@ textarea.form-control {
   font-weight: 500;
   padding: 12px;
   font-size: 22px;
-  font-weight:600 ;
-  background-color:#c7b9a9 ;
-  border-radius:20px ;
+  font-weight: 600;
+  background-color: #c7b9a9;
+  border-radius: 20px;
   border: none;
   color: rgb(54, 31, 6);
 }
-.pay-btn:hover{
-  background-color:#060606 ;
-  color:#ffffff ;
+.pay-btn:hover {
+  background-color: #060606;
+  color: #ffffff;
 }
 .text-color {
   color: #ddbc97;
@@ -431,7 +433,6 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
-
   .footer-payments img,
   .footer-payments svg {
     height: 22px;
@@ -555,7 +556,6 @@ h5.producttitlefav:hover {
   background-color: #c7b9a9 !important;
 }
 .badgestyle {
-
   width: 15px;
   height: 15px;
   font-size: 8px;
@@ -565,12 +565,11 @@ h5.producttitlefav:hover {
   color: #cf9362;
   font-size: 0.9rem;
 }
-#cartbadge{
-  font-family:"Raleway", sans-serif;
-
+#cartbadge {
+  font-family: "Raleway", sans-serif;
 }
-#favBadge{
-    font-family:"Raleway", sans-serif;  
+#favBadge {
+  font-family: "Raleway", sans-serif;
 }
 .old-price {
   text-decoration: line-through;

@@ -17,7 +17,9 @@ body {
   width: 100%;
   transition: all 0.3s ease-in-out;
 }
-
+.nav.scrolled {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
 /* nav icon */
 .nav i {
   color: #111;
