@@ -378,6 +378,7 @@ placeOrderBtn.addEventListener("click", () => {
       name: item.name,
       price: item.price,
       quantity: item.quantity,
+      category: item.category,
     })),
     TotalItems: loggedInUser.cart.reduce((sum, item) => sum + item.quantity, 0),
     TotalPrice: loggedInUser.cart.reduce(

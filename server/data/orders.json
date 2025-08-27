@@ -15,21 +15,51 @@
     "UserName": "ahmed Mohamed",
     "userId": "9",
     "TotalPrice": "120",
-    "Status": "Pending",
-    "Date": "3/223/2025, 9:29:14 AM",
+    "Status": "Completed",
+    "Date": "3/23/2025, 9:29:14 AM",
     "TotalItems": 2,
-    "products": [],
-    "Phone": "01011111111"
+    "Phone": "01011111111",
+    "products": [
+      {
+        "id": 4,
+        "name": "Blaire 3 Seater RHS Chaise Lounge - Mushroom",
+        "price": "2799",
+        "quantity": 4,
+        "category": "Outdoor"
+      },
+      {
+        "id": 40,
+        "name": "Lela Vase",
+        "price": "129",
+        "quantity": 2,
+        "category": "living"
+      }
+    ]
   },
   {
     "ID": 3,
     "UserName": "Michael Johnson",
     "userId": "10",
     "TotalPrice": "480",
-    "Status": "Shipped",
+    "Status": "Completed",
     "Date": "5/27/2025, 9:29:14 AM",
     "TotalItems": 6,
-    "products": [],
+    "products": [
+      {
+        "id": 4,
+        "name": "Blaire 3 Seater RHS Chaise Lounge - Mushroom",
+        "price": "2799",
+        "quantity": 4,
+        "category": "living"
+      },
+      {
+        "id": 40,
+        "name": "Lela Vase",
+        "price": "129",
+        "quantity": 2,
+        "category": "living"
+      }
+    ],
     "Phone": "01011111111"
   },
   {
