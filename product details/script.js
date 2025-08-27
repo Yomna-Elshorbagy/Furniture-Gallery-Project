@@ -172,12 +172,23 @@ function showProductDetails(products) {
     }
   });
 
-  // go to cart page
+  //====> go to cart page
   document.addEventListener("click", function (e) {
     if (e.target.classList.contains("btnaddtocard")) {
       let productId = parseInt(e.target.getAttribute("data-id"));
       let quantityInput = document.getElementById("quantity"); // جيب قيمة input
-
+      if (!loggedInUser) {
+        e.preventDefault();
+        Swal.fire({
+          title: "🔒 Login Required",
+          text: "You must be logged in to add products to your cart.",
+          icon: "warning",
+          confirmButtonText: "Go to Login",
+        }).then(() => {
+          window.location.href = "../Auth/log-in/login.html";
+        });
+        return;
+      }
       if (!loggedInUser.cart) {
         loggedInUser.cart = [];
       }
@@ -186,8 +197,8 @@ function showProductDetails(products) {
 
       if (productToAdd && !loggedInUser.cart.some((p) => p.id === productId)) {
         loggedInUser.cart.push({
-          ...productToAdd, // كل بيانات المنتج
-          quantity: Number(quantityInput.value), // الكمية
+          ...productToAdd, // all products displayed
+          quantity: Number(quantityInput.value), // quantity
         });
       }
 
@@ -200,7 +211,7 @@ function showProductDetails(products) {
 
   // ------------------------------------------> related products-----------------------------------------------------
 }
-// add fav badge
+// ===> add fav badge
 let favBadge = document.getElementById("favBadge");
 
 function updateFavBadge() {
@@ -212,7 +223,7 @@ function updateFavBadge() {
     loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
 }
 
-// add cart badge
+// ====> add cart badge
 function updateCartBadge() {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
     cart: [],
@@ -292,7 +303,7 @@ if (loggedInUser && loggedInUser.Email) {
 document.addEventListener("DOMContentLoaded", () => {
   const products = JSON.parse(localStorage.getItem("products")) || [];
 
-  // جلب ID المنتج الحالي من الرابط
+  // get this product from query params
   const urlParams = new URLSearchParams(window.location.search);
   const currentId = parseInt(urlParams.get("id"));
 
@@ -300,12 +311,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!currentProduct) return;
 
   function getRelatedProducts() {
-    // هات كل المنتجات اللي من نفس الكاتيجوري وغير الحالية
+    // get all products related to this category and save in anew array
     const sameCategory = products.filter(
       (p) => p.category === currentProduct.category && p.id !== currentId
     );
 
-    // لو أقل من 4، هتعرض العدد الموجود
+    // if less than display
     return sameCategory.sort(() => Math.random() - 0.5).slice(0, 4);
   }
 
