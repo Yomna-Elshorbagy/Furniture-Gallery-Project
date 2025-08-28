@@ -1,9 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+}
 
 /* pagination container */
 #pagination button {
-  border: 1px solid #398590;
+  border: 1px solid #c7b9a9;
   background-color: #fff;
-  color: #398590;
+  color: #c7b9a9;
   padding: 6px 12px;
   border-radius: 5px;
   cursor: pointer;
@@ -12,7 +20,7 @@
 }
 
 #pagination button:hover:not(:disabled) {
-  background-color: #398590;
+  background-color: #c7b9a9;
   color: #fff;
 }
 
@@ -22,42 +30,47 @@
 }
 
 #pagination button.active {
-  background-color: #398590;
+  background-color: #c7b9a9;
   color: #fff;
   font-weight: bold;
 }
 
 :root {
-  --main-gradient: linear-gradient(135deg, #0d9488, #2563eb);
+  --main-color: #c7b9a9;
+  --main-gradient: linear-gradient(135deg, #c7b9a9, #a89984);
   --card-bg: rgba(255, 255, 255, 0.7);
   --dark-bg: #0f172a;
 }
 
 body {
-  background: linear-gradient(120deg, #f9fafb, #e0f2fe);
+  background: linear-gradient(to top, #e9dbbc, #726443);
   min-height: 100vh;
-  color: #1f2937;
+  color: #ffffff;
   font-family: "Segoe UI", sans-serif;
   transition: all 0.3s ease;
 }
+
 body.dark {
-  background: var(--dark-bg);
+  background: linear-gradient(to top, #211f1f, #887d7d);;
   color: #e2e8f0;
 }
 
 .bg-panel {
-  background: #255267 !important;
+  background: linear-gradient(to top, #272626, #3c3333);
   backdrop-filter: blur(12px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.5);
 }
 
 .nav button {
   border: none !important;
-  background: transparent !important;
-  color: #cbd5e1 !important;
+  /* background: transparent !important; */
+  color: #ffffff !important;
   transition: 0.3s;
+  font-weight: 600;
+  line-height: 40px;
 }
+
 .nav button:hover {
   background: var(--main-gradient) !important;
   color: #fff !important;
@@ -65,29 +78,32 @@ body.dark {
 }
 
 .bg-card {
-  background: var(--card-bg) !important;
+  background: rgb(232, 218, 218);
   border-radius: 20px;
   backdrop-filter: blur(15px);
-  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1),
-    -8px -8px 20px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.6);
   transition: 0.4s;
 }
+
 table {
   border-collapse: separate;
   border-spacing: 0 10px;
 }
+
 table thead {
   position: sticky;
   top: 0;
   background: var(--main-gradient);
   color: white;
 }
+
 table tbody tr {
   background: #fff;
   transition: 0.3s;
 }
+
 table tbody tr:hover {
-  background: #dbeafe;
+  background: #f3f0eb;
   transform: scale(1.01);
 }
 
@@ -97,6 +113,7 @@ table tbody tr:hover {
   padding: 8px;
   transition: 0.3s;
 }
+
 .theme-toggle:hover {
   background: rgba(0, 0, 0, 0.1);
 }
@@ -105,18 +122,21 @@ table tbody tr:hover {
 .modal {
   z-index: 2000 !important;
 }
+
 .modal-backdrop {
   z-index: 1999 !important;
 }
+
 /* Prevent parent (like #mainContent) from clipping the modal */
 #mainContent {
   overflow: visible !important;
   position: static !important;
 }
-/* *** model header *** */
+
+/* *** modal header *** */
 .modal-header,
 .btn-color {
-  background: linear-gradient(135deg, #2d6762, #0d9488) !important;
+  background: linear-gradient(135deg, #a89984, #c7b9a9) !important;
   color: #fff;
 }
 
@@ -138,16 +158,17 @@ body {
 body.fade-out {
   opacity: 0;
 }
+
 .styleToast {
-  background-color: #9e8e76 !important;
-}
-.carddatabg .card  {
-background: linear-gradient(135deg, #398590, #56cfe1) !important;
-  color: #fff !important; 
-
+  background-color: #a89984 !important;
 }
 
-.productSearch{
+.carddatabg .card {
+  background: linear-gradient(135deg, #ffffff, #fffefc) !important;
+  color: #302009 !important;
+}
+
+.productSearch {
   width: 40% !important;
-  border: 2px solid #398590 !important;
+  border: 2px solid #c7b9a9 !important;
 }

@@ -183,19 +183,29 @@ input.addEventListener("keyup", (e) => {
 
 let minValue = document.getElementById("minValue");
 let maxValue = document.getElementById("maxValue");
-
+let minValueDesctop =document.getElementById("minValueDesctop");
+let maxValueDesctop = document.getElementById("maxValueDesctop");
 function filterfun() {
   let productList = document.getElementById("product-list");
   productList.innerHTML = "";
 
-  let minVal = minValue.value.trim();
-  let maxVal = maxValue.value.trim();
-  if (minVal === "" && maxVal === "") {
+  let minValMob = minValue.value.trim();
+  let maxValMob = maxValue.value.trim();
+  let minValDesk =minValueDesctop.value.trim();
+  let maxValDesk = maxValueDesctop.value.trim();
+  if (minValMob === "" && maxValMob === ""  && minValDesk === "" && maxValDesk === "") {
     products.forEach((pro) => drowProduct(pro, productList));
     return;
   }
-  minVal = +minVal || 0;
-  maxVal = +maxVal || Infinity;
+  minValMob = +minValMob || 0;
+  maxValMob = +maxValMob || Infinity;
+
+  minValDesk =+minValDesk ||0;
+  maxValDesk =+ maxValDesk || Infinity;
+
+let minVal = minValMob > 0 || maxValMob < Infinity ? minValMob : minValDesk;
+let maxVal = minValMob > 0 || maxValMob < Infinity ? maxValMob : maxValDesk;
+
   if (minVal > maxVal) {
     productList.innerHTML = `<p class="text-danger text-center"> minimum value is greater than maximum value</p>`;
     return;

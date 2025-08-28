@@ -23,19 +23,19 @@
     <div class="container-fluid">
       <div class="row min-vh-100">
         <aside class="col-md-3 col-lg-2 bg-panel p-3 d-flex flex-column">
-          <div class="fw-bold fs-5 mb-3 text-white">
-            <i class="fa-solid fa-couch" style="color: #0d9488"></i> Furniture
-            Gallery
+          <div class=" mb-3 text-white d-flex">
+            <img style="width: 30px; height: 30px; border-radius: 15px; " src="./images/Fav-Icon_96x.avif" alt="icon">
+           <h2 class="fw-medium fs-5 mx-2">Furniture Gallery</h2>  
           </div>
           <div
             class="p-3 rounded mb-3"
-            style="background: var(--main-gradient); color: #fff"
+            style="background: var(--main-gradient); color: #6e0202"
             id="profileAdmin"
           >
             <div id="adminName" class="fw-semibold">
               <i
                 class="fa-solid fa-user text-black m-2"
-                style="color: #0c514c !important"
+                style="color: #56421b !important"
               ></i
               >Admin
             </div>
@@ -65,23 +65,23 @@
 
         <main class="col-md-9 col-lg-10 p-4">
           <div class="d-flex align-items-center flex-wrap gap-3 mb-4">
-            <button class="btn btn-secondary">
+            <button class="btn btn-outline-dark">
               <i class="fa-solid fa-bars"></i>
             </button>
-            <h1 class="h3 m-0">Overview</h1>
+            <h1 class="h3 m-0 fw-bold fs-1 ">Overview</h1>
             <div class="ms-auto d-flex gap-2 align-items-center">
               <div>
                 <a href="../home/home.html"
-                  ><i class="fa-solid fa-house text-success"></i
+                  ><i class="fa-solid fa-house text-dark"></i
                 ></a>
               </div>
               <div class="theme-toggle" id="themeToggle">
                 <i class="fa-solid fa-moon"></i>
               </div>
-              <button class="btn btn-outline-dark" id="exportBtn">
+              <button class="btn btn-outline-dark fw-bold" id="exportBtn">
                 <i class="fa-solid fa-file-export"></i> Export JSON
               </button>
-              <label class="btn btn-outline-dark mb-0"
+              <label class="btn btn-outline-dark mb-0 fw-bold"
                 ><i class="fa-solid fa-file-import"></i> Import JSON<input
                   type="file"
                   hidden

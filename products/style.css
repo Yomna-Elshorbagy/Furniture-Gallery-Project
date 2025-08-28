@@ -118,11 +118,6 @@ button.hover-button::after {
 .filter {
   width: 100%;
 }
-.filterPrice {
-  font-weight: 300;
-  margin-left: 10px;
-  color: #cf9362;
-}
 .categoryStyle{
   font-weight: 300;
   margin-left: 10px;
@@ -134,13 +129,12 @@ button.hover-button::after {
 }
 .filterstyle {
   font-size: 16px;
+  margin-right: 10px;
+  width:140px !important;
   padding-left: 5px;
-  width: 50%;
   height: 35px;
   border: 1px solid black;
-  border-radius: 10px;
-  margin-right: 20px;
-  margin-left: 20px;
+  
 }
 
 
@@ -512,4 +506,48 @@ h5.producttitlefav:hover {
 #pagination button.next::after {
   content: "▶";
   margin-left: 4px;
+}
+.filterOffcanvas{
+  left: 0;
+  position: absolute;
+  background-color: #cf9362;
+  border-radius: 5px;
+  color: #ffffff;
+  margin-left: 20px !important;
+}
+.filterOffcanvas:hover{
+  background-color:#cf9362;
+}
+
+.filterPrice{
+  background-color: #cf9362;
+  color: #fff !important;
+  padding: 10px 40px;
+  border-radius: 10px;
+}
+.pricestyleoff{
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+
+  margin-top: 0 !important;
+}
+.filterBtn{
+  margin-left: 150px;
+  margin-top:10px !important;
+}
+#offcanvasExample {
+  width: 250px; 
+}
+
+.fitermob{
+  width: 90px !important;
+}
+.priceFilterLg{
+  width: 70px !important;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
