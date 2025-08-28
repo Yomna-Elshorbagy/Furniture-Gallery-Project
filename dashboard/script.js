@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
   //   return;
   // }
   // ===> 2. If logged in but not admin/seller redirect im to home
-  // if (loggedInUser.Role !== "admin" && loggedInUser.Role !== "seller") {
+  // if (loggedInUser.Role !== "admin") {
   //   window.location.href = "../home/home.html";
   // }
   Object.entries(serverDataFiles).forEach(([key, url]) => {
@@ -153,7 +153,7 @@ document.getElementById("exportBtn").addEventListener("click", () => {
   //===> 4- create a link element
   let link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = "furniture_data.json"; 
+  link.download = "furniture_data.json";
   link.click();
 
   //===> 5- cleanup

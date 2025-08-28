@@ -92,8 +92,10 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
         }
       },
     }).then(() => {
-      if (loggedInUser.Role === "admin" || loggedInUser.Role === "seller") {
+      if (loggedInUser.Role === "admin") {
         window.location.href = "../../dashboard/dashboard.html";
+      } else if (loggedInUser.Role === "seller") {
+        window.location.href = "../../seller dashboard/seller.html";
       } else {
         window.location.href = "../../home/home.html";
       }
