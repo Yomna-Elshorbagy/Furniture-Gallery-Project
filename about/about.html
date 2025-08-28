@@ -72,14 +72,17 @@
               ><i class="fa-solid fa-cart-shopping"></i
             ></a>
 
-                        <button class="hover-button ms-2 px-2 py-2">
+            <button class="hover-button ms-2 px-2 py-2">
               <a href="../Auth/log-in/login.html" id="loginBtn">login</a>
-
             </button>
             <!-- <button href="../log-in/login.html" id="logoutBtn" class="btn btn-outline-danger d-none">
               Log out
             </button> -->
-            <button href="../log-in/login.html" id="logoutBtn" class="btn btn-outline-danger d-none">
+            <button
+              href="../log-in/login.html"
+              id="logoutBtn"
+              class="btn btn-outline-danger d-none"
+            >
               Log out
             </button>
             <!-- <a
@@ -99,6 +102,132 @@
           <hr />
         </div>
       </nav>
+    </div>
+
+    <div class="container text-center mt-5 mb-5">
+      <p class="text-uppercase mb-3" style="letter-spacing: 3px">
+        stylish, modern, affordable
+      </p>
+      <h1 class="text-uppercase mb-5">
+        create your dream interior <br />
+        with FG
+      </h1>
+      <p class="mb-5">
+        Life is too short not to love where you live. Let us help you design a
+        space that is <br />
+        uniquely yours, to enjoy day after day.
+      </p>
+    </div>
+
+    <div class="img1"></div>
+
+    <section class="container my-5">
+      <div class="row p-5">
+        <div class="col-md-5">
+          <p class="text-uppercase ps-5" style="letter-spacing: 3px" ٍ>
+            LET THERE BE LIVING
+          </p>
+          <h3 class="text-uppercase mb-3">
+            hello & welcome to The <br />
+            Furniture Gallery
+          </h3>
+          <p class="text-muted mt-4">
+            We are a team of interior designers, stylists and <br />
+            professionals who share a passion for interiors and <br />
+            whose mission it is to offer WA the most inspiring <br />
+            furniture and decor shopping experience.
+          </p>
+
+          <button class="btn mt-5" id="storeBtn1">Find a Store</button>
+        </div>
+
+        <div class="col-md-7">
+          <img
+            src="images/15.jpg"
+            alt="furniture"
+            class="img-fluid mb-4 d-block mx-auto"
+          />
+
+          <p class="text-muted mt-5">
+            WA owned & operated, The Furniture Gallery is a family-owned company
+            Captivating lovers of interiors since opening in 2014, we are proud
+            to showcase a diverse collection of beautiful furniture and
+            exquisite homewares - many of which are exclusive to us - sourced
+            from local and international designers.<br /><br />
+            The Furniture Gallery showrooms are luxurious, state-of-the-art
+            spaces <br />
+            where clients can shop beautiful pieces in curated settings. You’ll
+            receive <br />
+            expert advice from our passionate interior stylists in store, who
+            can help <br />
+            convert your dream interior into reality.<br /><br />
+
+            Once you’ve found the perfect items for your home, we offer a white
+            glove delivery service, where our experienced logistics team unveil
+            and assemble the pieces, removing any packaging, allowing you to
+            enjoy your new furniture without delay.<br /><br />
+
+            Immerse yourself in one of our galleries throughout Perth to truly
+            appreciate The Furniture Gallery experience, or shop online with
+            us.<br /><br />
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container2">
+      <div class="position-relative text-center">
+        <img src="images/14.jpg" alt="Sofa" class="img3" />
+
+        <div class="content-box">
+          <p class="line text-muted">
+            "Your home is a sanctuary to escape from the <br />
+            outside world, a place to unwind and relax. <br />
+            Furnish it with pieces that express your <br />
+            lifestyle. Your space, your way."
+          </p>
+          <button class="btn btn-dark" id="storeBtn2">FIND A STORE</button>
+        </div>
+      </div>
+
+      <div class="content-text mt-5">
+        <h4 class="text-muted fw-bold bi-dash-lg fs-5">
+          INTERIOR DESIGN SERVICE
+        </h4>
+        <p class="px-3">
+          Enjoy expert advice from experienced stylists with a passion for
+          interiors.
+        </p>
+        <br />
+
+        <h4 class="text-muted fw-bold bi-dash-lg fs-5">
+          BROAD RANGE OF STYLES
+        </h4>
+        <p class="px-3">
+          Coastal Hamptons, Scandinavian Minimalism, Modern Luxe, French
+          Provincial.
+        </p>
+        <br />
+
+        <h4 class="text-muted fw-bold bi-dash-lg fs-5">
+          IMMEDIATE AVAILABILITY
+        </h4>
+        <p class="px-3">
+          No wait time on select products - ready to be delivered for you to
+          enjoy without delay.
+        </p>
+      </div>
+    </section>
+
+    <div class="image-container">
+      <img src="images/16.jpg" class="img img1" />
+      <img src="images/17.jpg" class="img img2" />
+      <div class="layer">
+        <p class="text-uppercase fs-3 fw-normal">
+          the furniture galleriy is currently sponsoring 30 children through
+          world vision.
+        </p>
+      </div>
     </div>
 
     <!-- ------------start social gallery section ------------------- -->
@@ -388,6 +517,23 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("storeBtn1")
+          .addEventListener("click", function () {
+            window.location.href = "../findstore/find.html";
+          });
+
+        document
+          .getElementById("storeBtn2")
+          .addEventListener("click", function () {
+            window.location.href = "../findstore/find.html";
+          });
+      });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./script.js"></script>
   </body>
