@@ -140,14 +140,29 @@ button.hover-button::after {
 @media (max-width: 767px) {
   .sub-images img {
     height: 70px;
-    margin-top: 0;
-    padding: 0;
     cursor: pointer;
     border: 2px solid transparent;
     border-radius: 6px;
     transition: transform 1s ease !important;
+    margin-top: 10px !important;
   }
+  .main-image img {
+  width: 100%;
+  height: 50%;
+  border-radius: 8px;
 }
+
+
+
+
+}
+
+
+
+
+
+
+
 .sub-images img:hover {
   transform: scale(1.05) !important;
 }
@@ -237,6 +252,7 @@ button.hover-button::after {
 .form-label {
   font-size: 0.8rem;
 }
+
 /* start feature */
 #features .features-wrapper {
   border: 1px solid #e0e0e0;
