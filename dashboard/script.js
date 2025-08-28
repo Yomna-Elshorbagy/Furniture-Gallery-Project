@@ -126,6 +126,29 @@ function CountLowStock() {
   countLowStock.innerText = lengthData;
 }
 
+export function showLowStockProducts() {
+  let allProducts = JSON.parse(localStorage.getItem("products")) || [];
+  let lowStockProducts = allProducts.filter((prod) => prod.stock < 10);
+
+  document.getElementById("mainContent").innerHTML = productsTemplate;
+  initProductsPage(lowStockProducts);
+  let addBtn = document.getElementById("addProductBtn");
+  if (addBtn) addBtn.style.display = "none";
+
+  let tableWrapper = document.querySelector("#mainContent h3");
+  if (tableWrapper) {
+    tableWrapper.insertAdjacentHTML(
+      "afterend",
+      `<div class="alert alert-warning my-2" role="alert">
+        ⚠️ Showing only <strong>Low Stock</strong> products (stock less than 10).
+      </div>`
+    );
+  }
+}
+document.getElementById("lowStock").addEventListener("click", () => {
+  showLowStockProducts();
+});
+
 let profileAdmin = document.getElementById("profileAdmin");
 profileAdmin.addEventListener("click", () => {
   document.body.classList.add("fade-out");

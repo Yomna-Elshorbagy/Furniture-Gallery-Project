@@ -14,7 +14,7 @@
     "ID": 2,
     "UserName": "ahmed Mohamed",
     "userId": "9",
-    "TotalPrice": "120",
+    "TotalPrice": "11454",
     "Status": "Completed",
     "Date": "3/23/2025, 9:29:14 AM",
     "TotalItems": 2,
@@ -42,7 +42,7 @@
     "ID": 3,
     "UserName": "Michael Johnson",
     "userId": "10",
-    "TotalPrice": "480",
+    "TotalPrice": "11454",
     "Status": "Completed",
     "Date": "5/27/2025, 9:29:14 AM",
     "TotalItems": 6,
@@ -70,12 +70,29 @@
     "ID": 4,
     "UserName": "Emily Davis",
     "userId": "10",
-    "TotalPrice": "95",
+    "TotalPrice": "26794",
     "Status": "Cancelled",
     "Date": "4/24/2025, 9:29:14 AM",
     "TotalItems": 4,
-    "products": [],
-    "Phone": "01011111111"
+    "Phone": "01011111111",
+    "products": [
+      {
+        "id": 2,
+        "name": "Florabelle 4 Seater Sofa - Vanilla",
+        "price": "4699",
+        "quantity": 4,
+        "category": "Outdoor",
+        "sellerId": 5
+      },
+      {
+        "id": 8,
+        "name": "Alina 3 Seater - Olive",
+        "price": "3999",
+        "quantity": 2,
+        "category": "living",
+        "sellerId": 5
+      }
+    ]
   },
   {
     "ID": 5,
@@ -136,11 +153,28 @@
     "ID": 10,
     "UserName": "Ava Martinez",
     "userId": "9",
-    "TotalPrice": "180",
+    "TotalPrice": "26794",
     "Status": "Pending",
     "Date": "8/23/2025, 9:29:14 AM",
     "TotalItems": 1,
-    "products": [],
+    "products": [
+      {
+        "id": 2,
+        "name": "Florabelle 4 Seater Sofa - Vanilla",
+        "price": "4699",
+        "quantity": 4,
+        "category": "Outdoor",
+        "sellerId": 5
+      },
+      {
+        "id": 8,
+        "name": "Alina 3 Seater - Olive",
+        "price": "3999",
+        "quantity": 2,
+        "category": "living",
+        "sellerId": 5
+      }
+    ],
     "Phone": "01011111111"
   },
   {

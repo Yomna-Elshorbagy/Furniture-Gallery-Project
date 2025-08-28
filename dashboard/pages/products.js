@@ -1,4 +1,4 @@
-export function initProductsPage() {
+export function initProductsPage(initialProducts = null) {
   let tableBody = document.getElementById("productsTable");
   let modalTitle = document.getElementById("productModalTitle");
   let nameInput = document.getElementById("pmTitle");
@@ -17,7 +17,7 @@ export function initProductsPage() {
   let nextBtn = document.getElementById("nextPage");
   let pageInfo = document.getElementById("pageInfo");
 
-  let products = JSON.parse(localStorage.getItem("products")) || [];
+   let products = initialProducts || JSON.parse(localStorage.getItem("products")) || [];
   let searchededProducts = [...products];
 
   let editingId = null;

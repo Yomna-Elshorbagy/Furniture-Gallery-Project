@@ -2,6 +2,8 @@ import { categoriesTemplate } from "./pages/categories/categoryTemplet.js";
 import { initCategoriesPage } from "./pages/categories/categry.js";
 import { initOrdersPage } from "./pages/orders/orders.js";
 import { ordersTemplate } from "./pages/orders/ordersTemplete.js";
+import { initOverviewPage } from "./pages/overview/overview.js";
+import { overviewTemplate } from "./pages/overview/overviewTemplete.js";
 import { initProductsPage } from "./pages/products/products.js";
 import { productsTemplate } from "./pages/products/productTemplete.js";
 
@@ -41,6 +43,8 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   countProducts();
   CountLowStock();
+  countOrders();
+  countTotalRevenues();
   const sellerEmailEl = document.getElementById("sellerEmail");
 
   if (sellerEmailEl && loggedInUser?.Email) {
@@ -73,6 +77,54 @@ document.getElementById("logOut").addEventListener("click", () => {
   localStorage.removeItem("loggedInUser");
   window.location.href = "../Auth/log-in/login.html";
 });
+document.getElementById("overview").addEventListener("click", () => {
+  document.getElementById("mainContent").innerHTML = overviewTemplate;
+  initOverviewPage();
+});
+// ====> function to count all orders for this seller
+function countOrders() {
+  let countElement = document.getElementById("ordersCount");
+  if (!countElement) return;
+
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+  if (loggedInUser?.Role?.toLowerCase() === "seller") {
+    orders = orders.filter(order =>
+      order.products.some(p => p.sellerId?.toString() === loggedInUser.ID.toString())
+    );
+  }
+
+  countElement.textContent = orders.length;
+}
+
+// ====> function to count all completed status orders for this seller
+function countTotalRevenues() {
+  let countElement = document.getElementById("totalRevenues");
+  if (!countElement) return;
+
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+  let total = 0;
+
+  if (loggedInUser?.Role?.toLowerCase() === "seller") {
+    let completedOrders = orders.filter(order => order.Status === "Completed");
+
+    completedOrders.forEach(order => {
+      order.products.forEach(p => {
+        if (p.sellerId?.toString() === loggedInUser.ID.toString()) {
+          total += Number(p.price) * Number(p.quantity);
+        }
+      });
+    });
+  } else {
+    total = 0;
+  }
+
+  countElement.textContent = `$${total}`;
+}
+
 
 // ====> function count products for this seller
 function countProducts() {
@@ -101,7 +153,7 @@ export function showLowStockProducts() {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
   let allProducts = JSON.parse(localStorage.getItem("products")) || [];
 
-  // Filter based on role
+  // filter based on role
   let sellerProducts =
     loggedInUser?.Role?.toLowerCase() === "seller"
       ? allProducts.filter(
@@ -109,18 +161,18 @@ export function showLowStockProducts() {
         )
       : allProducts;
 
-  // Low stock filter
+  // low stock filter
   let lowStockProducts = sellerProducts.filter((prod) => prod.stock < 10);
 
-  // Reuse the existing products page & pass filtered list
+  // reuse the existing products page & pass filtered list
   document.getElementById("mainContent").innerHTML = productsTemplate;
   initProductsPage(lowStockProducts);
 
-  // Hide add button (optional)
+  // hide add button
   let addBtn = document.getElementById("addProductBtn");
   if (addBtn) addBtn.style.display = "none";
 
-  // Show warning message
+  // show warning message
   let tableWrapper = document.querySelector("#mainContent h3");
   if (tableWrapper) {
     tableWrapper.insertAdjacentHTML(
