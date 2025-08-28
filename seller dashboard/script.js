@@ -1,3 +1,5 @@
+import { categoriesTemplate } from "./pages/categories/categoryTemplet.js";
+import { initCategoriesPage } from "./pages/categories/categry.js";
 import { initProductsPage } from "./pages/products/products.js";
 import { productsTemplate } from "./pages/products/productTemplete.js";
 
@@ -35,12 +37,16 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(`${key} already in localStorage`);
     }
   });
-  countProducts()
+  countProducts();
 });
 
 document.getElementById("products").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = productsTemplate;
   initProductsPage();
+});
+document.getElementById("categories").addEventListener("click", () => {
+  document.getElementById("mainContent").innerHTML = categoriesTemplate;
+  initCategoriesPage();
 });
 function countProducts() {
   let countElement = document.getElementById("productCount");
