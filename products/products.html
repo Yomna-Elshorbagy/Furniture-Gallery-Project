@@ -133,7 +133,8 @@
     <hr> -->
 
     <section class="SortSearchsec row-reverce">
-      <div class="d-flex flex-row-reverse align-items-center border opacity-75 mb-5">
+      <div class="d-flex flex-row-reverse align-items-center border opacity-75 mb-5 position-relative">
+
         <div class="p-2">
           <!-- =============Sort=============== -->
           <div class="dropdown col-2">
@@ -164,84 +165,105 @@
             </button>
           </div>
         </div>
+
+        <!-- filter -->
+
+        <a class="btn filterOffcanvas d-block d-sm-none" data-bs-toggle="offcanvas" href="#offcanvasExample"
+          role="button" aria-controls="offcanvasExample">
+          <i class="bi bi-filter"></i>
+          FILTER</a>
       </div>
     </section>
+<!-- filter in mobile  -->
+    <div class="offcanvas offcanvas-start pt-3 shadow-lg rounded-3" tabindex="-1" id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel">
 
-    <!-- category for mobile -->
-    <!-- <aside>
-        <div class="d-md-none mobileCategory">
-          <ul class="mb-4 list-group list-group-flush">
+      <!-- ===== Header ===== -->
+      <div class="offcanvas-header border-bottom">
+        <h4 class="fw-bold text-dark" id="offcanvasExampleLabel">Filter</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+
+      <!-- ===== Body ===== -->
+      <div class="offcanvas-body">
+
+        <!-- Price Filter -->
+        <div class="mb-4">
+          <h5 class="fw-semibold text-secondary">Price</h5>
+          <div class="d-flex align-items-center gap-2">
+            <input type="number" id="minValue" value="0" class="form-control fitermob" min="0" />
+            <span class="fw-bold">to</span>
+            <input type="number" id="maxValue" value="0" class="form-control fitermob" min="0" />
+          </div>
+          <button onclick="filterfun()" class="btn btn-dark w-100 mt-3">Apply Filter</button>
+        </div>
+        <hr>
+
+        <!-- Category Filter -->
+        <div class="mb-4">
+          <h5 class="fw-semibold text-secondary">Category</h5>
+          <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <button id="bedroom" onclick="openCategory('bedroom')">
-                bedroom
-              </button>
+              <button class="btn w-100 text-start" id="bedroom" onclick="openCategory('bedroom')">Bedroom</button>
             </li>
             <li class="list-group-item">
-              <button id="living" onclick="openCategory('living')">
-                living
-              </button>
+              <button class="btn w-100 text-start" id="living" onclick="openCategory('living')">Living</button>
             </li>
             <li class="list-group-item">
-              <button id="dining" onclick="openCategory('dining')">
-                dining
-              </button>
+              <button class="btn w-100 text-start" id="dining" onclick="openCategory('dining')">Dining</button>
             </li>
             <li class="list-group-item">
-              <button id="decor" onclick="openCategory('decor')">decor</button>
+              <button class="btn w-100 text-start" id="decor" onclick="openCategory('decor')">Decor</button>
             </li>
             <li class="list-group-item">
-              <button id="All" onclick="openCategory('')">All Product</button>
+              <button class="btn w-100 text-start" id="All" onclick="openCategory('')">All Products</button>
             </li>
           </ul>
         </div>
-      </aside> -->
-  
-   <section class="container-fluid row">
-      <div class="d-md-none my-3 text-center">
-        <button class="btn btn-dark w-100" type="button" data-bs-toggle="collapse" data-bs-target="#filterCollapse"
-          aria-expanded="false" aria-controls="filterCollapse">
-          ☰ Filter & Categories
-        </button>
+
       </div>
+    </div>
 
-      <div class="col-md-2 p-0 my-5 collapse d-md-block" id="filterCollapse">
-        <div class="filter">
-          <h4 class="text-start filterPrice">Filter</h4>
-          <input type="number" id="minValue" value="0" class="filterstyle" min="0" />
-          -
-          <input type="number" id="maxValue" value="0" class="filterstyle" min="0" /><br />
-
-          <button onclick="filterfun()" class="hover-button">Filter</button>
-          <hr />
+    <section class="container-fluid row">
+    <!-- filter & category -->
+      <div class="col-md-2 p-0 my-2 d-none d-md-block d-lg-block" id="filterCollapse">
+        <div class="filter p-3 border rounded shadow-sm bg-white">
+          <h4 class="text-start">Filter</h4>
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <input type="number" id="minValueDesctop" value="0" class="form-control priceFilterLg" min="0" />
+            <span>-</span>
+            <input type="number" id="maxValueDesctop" value="0" class="form-control priceFilterLg" min="0" />
+          </div>
+          <button onclick="filterfun()" class="btn btn-dark w-100">Apply Filter</button>
         </div>
-
-        <aside class="categorysec">
+        <hr>
+        <aside class="categorysec mt-3 p-3 border rounded shadow-sm bg-white">
           <div class="asideCategory">
-            <h4 class="categoryStyle text-start">Category </h4>
-            <div class="card" style="width: 100%">
+            <h4 class=" text-start">Category</h4>
+            <div class="card border-0">
               <ul class="mb-4 list-group list-group-flush">
-                <li class="list-group-item">
-                  <button id="bedroom" onclick="openCategory('bedroom')">BEDROOM</button>
+                <li class="list-group-item p-0 border-0">
+                  <button class="btn w-100 text-start" id="bedroom" onclick="openCategory('bedroom')">Bedroom</button>
                 </li>
-                <li class="list-group-item">
-                  <button id="living" onclick="openCategory('living')">LIVING</button>
+                <li class="list-group-item p-0 border-0">
+                  <button class="btn w-100 text-start" id="living" onclick="openCategory('living')">Living</button>
                 </li>
-                <li class="list-group-item">
-                  <button id="dining" onclick="openCategory('dining')">DINING</button>
+                <li class="list-group-item p-0 border-0">
+                  <button class="btn w-100 text-start" id="dining" onclick="openCategory('dining')">Dining</button>
                 </li>
-                <li class="list-group-item">
-                  <button id="decor" onclick="openCategory('decor')">DECOR</button>
+                <li class="list-group-item p-0 border-0">
+                  <button class="btn w-100 text-start" id="decor" onclick="openCategory('decor')">Decor</button>
                 </li>
-                <li class="list-group-item">
-                  <button id="All" onclick="openCategory('')">All Product</button>
+                <li class="list-group-item p-0 border-0">
+                  <button class="btn w-100 text-start" id="All" onclick="openCategory('')">All Products</button>
                 </li>
               </ul>
             </div>
           </div>
         </aside>
       </div>
-
-      <div class="my-5 col-md-10">
+<!-- products -->
+      <div class="my-2 col-md-10">
         <div class="row" id="product-list"></div>
         <div id="pagination" class="d-flex justify-content-center mt-4"></div>
       </div>
