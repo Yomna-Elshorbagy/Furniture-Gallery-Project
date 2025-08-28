@@ -61,7 +61,6 @@ body {
   transform: scale(0.9);
 }
 
-
 .nav {
   font-weight: 500;
   z-index: 1050;
@@ -69,7 +68,7 @@ body {
   transition: all 0.3s ease-in-out;
   /* background: transparent; */
   /* border-bottom: 1px solid rgb(254, 254, 254); */
-} 
+}
 
 /* for Find strore */
 button.hover-button {
@@ -181,6 +180,148 @@ button.hover-button::after {
 
 .cards:hover .overlay {
   opacity: 1;
+}
+
+.container p {
+  font-size: 20px;
+}
+
+.container h1 {
+  font-weight: 400;
+}
+.img1 {
+  background: url("images/13.jpg") no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  height: 450px;
+}
+.img2 {
+  height: 700px;
+  width: 650px;
+}
+.container h3 {
+  font-size: 30px;
+  font-weight: 400;
+}
+.btn {
+  background: #000;
+  color: #fff;
+  width: 230px;
+  height: 50px;
+  border-radius: 0;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+.btn:hover {
+  background-color: #fff;
+  color: #000;
+  border-color: black;
+}
+.container2 {
+  position: relative;
+  padding-bottom: 400px;
+}
+
+.content-box {
+  position: absolute;
+  bottom: -230px;
+  left: 145px;
+  padding-left: 50px;
+  background: #fff;
+  border-radius: 0px;
+  width: 550px;
+  height: 300px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+.img3 {
+  width: 85%;
+  height: 600px;
+}
+
+.line {
+  font-size: 20px;
+  padding-top: 30px;
+  text-align: left;
+}
+
+.btn {
+  margin-top: 30px;
+  margin-right: 300px;
+}
+
+.content-text {
+  position: absolute;
+  left: 800px;
+}
+.content-text p {
+  font-size: 17.5px;
+}
+
+.image-container {
+  width: 100%;
+  height: 1000px;
+  position: relative;
+  overflow: hidden;
+}
+
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.img1 {
+  animation-name: fade1;
+}
+
+.img2 {
+  animation-name: fade2;
+}
+
+@keyframes fade1 {
+  0%,
+  40% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade2 {
+  0%,
+  40% {
+    opacity: 0;
+  }
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  z-index: 2;
 }
 
 /* *************************** footer bottom ************************** */

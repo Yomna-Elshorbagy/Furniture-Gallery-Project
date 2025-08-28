@@ -1,4 +1,4 @@
-export function initProductsPage() {
+export function initProductsPage(filteredList = null) {
   let tableBody = document.getElementById("productsTable");
   let modalTitle = document.getElementById("productModalTitle");
   let nameInput = document.getElementById("pmTitle");
@@ -22,23 +22,30 @@ export function initProductsPage() {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
   let products = [];
 
-  // ======> Role based filtering <======
-  if (loggedInUser?.Role === "seller") {
+  if (filteredList) {
+    // if custom list passed → use it directly
+    products = filteredList;
+  } else if (loggedInUser?.Role === "seller") {
     products = allProducts.filter(
       (p) => p.sellerId?.toString() === loggedInUser.ID.toString()
     );
   } else {
+    products = [...allProducts];
+  }
+
+  // ======> Role based filtering <======
+  if (products.length === 0) {
     tableBody.innerHTML = `
-    <tr>
-      <td colspan="7" class="text-center py-4">
-        <div class="alert alert-info mb-0" role="alert" style="font-size:16px;">
-          🛒 You don’t have any products yet.  
-          <br>
-          <small class="text-muted">Click <strong>Add Product</strong> to start selling.</small>
-        </div>
-      </td>
-    </tr>
-  `;
+      <tr>
+        <td colspan="7" class="text-center py-4">
+          <div class="alert alert-info mb-0" role="alert" style="font-size:16px;">
+            🛒 You don’t have any products yet.  
+            <br>
+            <small class="text-muted">Click <strong>Add Product</strong> to start selling.</small>
+          </div>
+        </td>
+      </tr>
+    `;
     pageInfo.textContent = "Page 0 of 0";
     prevBtn.disabled = true;
     nextBtn.disabled = true;
@@ -46,13 +53,12 @@ export function initProductsPage() {
   }
 
   let searchededProducts = [...products];
-
   let editingId = null;
   let currentPage = 1;
   let pageSize = 6;
 
   //===> search for product
-  document.getElementById("searchInput").addEventListener("input", (e) => {
+  document.getElementById("searchInput")?.addEventListener("input", (e) => {
     let query = e.target.value.toLowerCase().trim();
     if (query === "") {
       searchededProducts = [...products];
