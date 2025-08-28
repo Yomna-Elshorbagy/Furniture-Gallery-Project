@@ -55,10 +55,6 @@ export const ordersTemplate = `
               <option value="Cancelled">Cancelled</option>
             </select>
           </div>
-          <div class="mb-3">
-            <label class="form-label">Date</label>
-            <input type="date" id="omDate" class="form-control" />
-          </div>
         </div>
         <div class="modal-footer">
           <button type="button" id="omSave" class="btn btn-color">Save</button>

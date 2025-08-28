@@ -1,5 +1,7 @@
 import { categoriesTemplate } from "./pages/categories/categoryTemplet.js";
 import { initCategoriesPage } from "./pages/categories/categry.js";
+import { initOrdersPage } from "./pages/orders/orders.js";
+import { ordersTemplate } from "./pages/orders/ordersTemplete.js";
 import { initProductsPage } from "./pages/products/products.js";
 import { productsTemplate } from "./pages/products/productTemplete.js";
 
@@ -60,6 +62,11 @@ document.getElementById("products").addEventListener("click", () => {
 document.getElementById("categories").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = categoriesTemplate;
   initCategoriesPage();
+});
+
+document.getElementById("orders").addEventListener("click", () => {
+  document.getElementById("mainContent").innerHTML = ordersTemplate;
+  initOrdersPage();
 });
 
 document.getElementById("logOut").addEventListener("click", () => {
@@ -124,9 +131,9 @@ export function showLowStockProducts() {
     );
   }
 }
-document.getElementById("lowStock").addEventListener("click", () => {
-  showLowStockProducts();
-});
+// document.getElementById("lowStock").addEventListener("click", () => {
+//   showLowStockProducts();
+// });
 
 // =====> function Export Seller's Products JSON
 document.getElementById("exportBtn").addEventListener("click", () => {

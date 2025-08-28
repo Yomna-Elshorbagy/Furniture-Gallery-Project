@@ -4,7 +4,6 @@ export function initOrdersPage() {
   const userInput = document.getElementById("omUser");
   const priceInput = document.getElementById("omPrice");
   const statusInput = document.getElementById("omStatus");
-  const dateInput = document.getElementById("omDate");
   const saveBtn = document.getElementById("omSave");
   const paginationContainer = document.getElementById("pagination");
 
@@ -123,7 +122,7 @@ export function initOrdersPage() {
       userInput.value = order.UserName;
       priceInput.value = order.TotalPrice;
       statusInput.value = order.Status;
-      dateInput.value = order.Date;
+      // dateInput.value = order.Date;
 
       const modal = new bootstrap.Modal(document.getElementById("orderModal"));
       modal.show();
@@ -135,9 +134,9 @@ export function initOrdersPage() {
     const user = userInput.value.trim();
     const price = priceInput.value.trim();
     const status = statusInput.value;
-    const date = dateInput.value;
+    // const date = dateInput.value;
 
-    if (!user || !price || !status || !date) {
+    if (!user || !price || !status ) {
       alert("Please fill in all fields");
       return;
     }
@@ -165,7 +164,7 @@ export function initOrdersPage() {
         UserName: user,
         TotalPrice: price,
         Status: status,
-        Date: date,
+        // Date: date,
       });
     }
 
