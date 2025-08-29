@@ -82,22 +82,36 @@ function showProductDetails(products) {
         <span class="text-color fs-4 fw-bold">$${product.price}</span>
       </p>
       <p class="text-muted">${product.description}</p>
-      <p class="text-muted"> Reviews: <span class="text-secondary text-capitalize">${
-        product.reviews
-      }</span></p>
+      <p class="text-muted"> Reviews: <span class="text-secondary text-capitalize">${product.reviews}</span></p>
       <p><strong>In Stock:</strong> ${product.stock}</p>
         <div class="d-flex align-items-center mb-3">
         <button class="btn btn-outline-secondary me-2" id="decrease">-</button>
         <input type="text" id="quantity" value="1" class="form-control text-center" style="width:70px;" readonly>
         <button class="btn btn-outline-secondary ms-2" id="increase">+</button>
       </div>
-      <button class="btn btn-dark w-100 mb-2 mt-2 py-2 btnaddtocard" data-id="${
-        product.id
-      }">Add to Cart</button>
+      <button class="btn btn-dark w-100 mb-2 mt-2 py-2 btnaddtocard" data-id="${product.id}">Add to Cart</button>
       <button class="btn  hover-button w-100 mt-2 py-2">FIND IN STORES</button>
      <button class="btn hover-button w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#questionModal">  Ask A QUESTIONS</button>
      <button class="btn hover-button w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#deliveryModal"> GET DELIVERY ESTIMATE</button>
-       <div class="accordion py-3" id="accordionExample">
+
+
+        <div class="social-icons mb-4 pt-2">
+        <span class="fw-bold  mb-2">Share:</span>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    `;
+
+  //====> get main image
+  document.getElementById("mainImage").innerHTML = `
+      <img src="${
+        product.image
+      }" id="currentImage" class="img-fluid shadow-sm" />
+             <div class="accordion py-3" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
@@ -120,21 +134,7 @@ function showProductDetails(products) {
           </div>
         </div>
       </div>
-
-        <div class="social-icons mb-4 pt-2">
-        <span class="fw-bold  mb-2">Share:</span>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-pinterest"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
-    `;
-
-  //====> get main image
-  document.getElementById("mainImage").innerHTML = `
-      <img src="${product.image}" id="currentImage" class="img-fluid shadow-sm" />
     `;
 
   // ====> get sub-images
