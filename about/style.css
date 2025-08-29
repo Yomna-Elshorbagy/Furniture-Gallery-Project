@@ -122,6 +122,124 @@ button.hover-button::after {
 .navbar .active {
   color: #c59d5f !important;
   border-color: #c59d5f !important;
+
+
+}
+
+/* -------------favorite modal style ---------------- */
+
+.navbar .active {
+  color: #c59d5f !important;
+  border-color: #c59d5f !important;
+}
+.modal{
+  font-family: var(--heading-font);
+}
+#favModal .modal-content{
+    border-radius: 0 !important;
+    
+}
+  .modal-dialog {
+  max-width: 70% !important; 
+}
+
+.modal-content {
+  height: 550px !important; 
+}
+.modal-header{
+    border-radius: 0 !important;
+    color: #ffffff !important;
+    font-family: var(--heading-font);
+}
+#favoritelabel{
+    font-size: 14px !important;
+}
+.modal-body hr{
+    width: 95% !important;
+    margin: 20px auto !important;
+    text-align: start !important;
+}
+.modal-body h5{
+    font-weight: 400;
+    letter-spacing: 0 !important;
+    font-size: 18px !important;
+
+}
+.nofavoritediv{
+    margin-top: 70px !important;
+}
+.nofavoritediv h5{
+    margin-bottom: 30px !important;
+    font-size: 16px !important;
+    font-weight: 500 ;
+}
+.nofavoritediv p{
+    font-size: 12px !important;
+}
+.nofavoritediv button{
+    background-color: #434655 !important;
+    color: white !important;
+    font-size: 12px !important; 
+    padding: 5px 20px !important;
+    font-weight: bold;
+    margin-top: 20px;
+
+ 
+}
+.nofavoritediv button:hover{
+    opacity: 0.8 !important;
+}
+.cardstyle{
+  width: 150px;
+  height: 200px;
+  margin-right: 20px;
+  margin-left: 30px;
+  margin-bottom: 100px !important;
+}
+.btnaddtocard{
+  height: 30px !important;
+  font-size:10px !important ;
+}
+
+.favdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: start !important;
+  flex-wrap: wrap;
+  max-height: 400px; 
+  overflow-y: auto;
+  gap: 10px; 
+}
+
+
+h5.producttitlefav{
+  font-size: 10px !important;
+  font-weight: 500 !important;
+}
+h5.producttitlefav:hover {
+  font-size: 10px !important;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+.toaststyle{
+  background-color:#c7b9a9 !important;
+}
+.badgestyle{
+  width: 15px;
+  height: 15px;
+  font-size:8px;
+  margin: auto;
+}
+.newprice {
+  color: #cf9362;
+  font-size: 0.9rem;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: gray;
+  font-size: 0.9rem;
 }
 
 /* ......................... start social-gallery.......................  */
@@ -202,7 +320,7 @@ button.hover-button::after {
   font-size: 30px;
   font-weight: 400;
 }
-.btn {
+/* .btn {
   background: #000;
   color: #fff;
   width: 230px;
@@ -211,7 +329,7 @@ button.hover-button::after {
   letter-spacing: 3px;
   text-transform: uppercase;
   font-size: 20px;
-}
+} */
 .btn:hover {
   background-color: #fff;
   color: #000;
@@ -244,10 +362,10 @@ button.hover-button::after {
   text-align: left;
 }
 
-.btn {
+/* .btn {
   margin-top: 30px;
   margin-right: 300px;
-}
+} */
 
 .content-text {
   position: absolute;
@@ -453,3 +571,4 @@ footer a:hover {
     width: 400px !important;
   }
 }
+

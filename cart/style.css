@@ -434,7 +434,6 @@ margin-top: 140px !important;
   margin: auto;
 }
 
-/* موبايل لحد 576px */
 @media (max-width: 576px) {
   .emptycarttitle {
     font-size: 16px;
@@ -448,12 +447,17 @@ margin-top: 140px !important;
 }
   .checkoutbtn {
     width: 90%;
-    margin: auto !important; /* يخلي زرار الـ checkout ياخد العرض كله */
+    margin: auto !important; 
   }
   .product-card {
-    margin-bottom: 15px; /* مسافة بين الكروت */
+    margin-bottom: 15px;
   }
   table td {
-    font-size: 14px; /* تصغير الخط في الجدول */
+    font-size: 14px;
   }
 }
+
+/* .removeFavBtn{
+  width: 25px;
+  height: 25px;
+} */
