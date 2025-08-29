@@ -19,7 +19,6 @@ body {
   z-index: 2000;
   width: 100%;
   transition: all 0.3s ease-in-out;
-  /* padding: 0.1rem 0; */
   background: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -28,15 +27,15 @@ body {
   color: #111;
   transition: color 0.3s ease;
   font-weight: 500;
-  margin: 0 10px;
+  /* margin: 0 5px; */
 }
-
+.nav .nav-item.active {
+  color: #c59d5f !important;
+}
 .nav .nav-link:hover {
   color: #c59d5f;
 }
-.active {
-  color: #c59d5f !important;
-}
+
 .nav i {
   color: #111;
   margin: 10px;

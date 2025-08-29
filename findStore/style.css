@@ -122,7 +122,6 @@ button.hover-button::after {
   margin: auto;
 }
 /* -------------favorite modal style ---------------- */
-
 .navbar .active {
   color: #c59d5f !important;
   border-color: #c59d5f !important;
@@ -221,6 +220,103 @@ h5.producttitlefav:hover {
   font-size: 8px;
   margin: auto;
 }
+
+/* ================= Responsive Styles ================= */
+/* general text scaling */
+h4,
+h5,
+p {
+  word-wrap: break-word;
+}
+
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+#favModal .modal-content {
+  border-radius: 12px;
+}
+
+#favModal .btn {
+  font-size: 0.9rem;
+}
+
+#favModal h5 {
+  font-size: 1.1rem;
+}
+
+.map1 .row {
+  flex-wrap: wrap;
+}
+
+.map1 h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* ================= Media Queries ================= */
+
+/* Mobile */
+@media (max-width: 576px) {
+  header .loc {
+    font-size: 1rem;
+  }
+
+  .map1 .row {
+    padding: 1rem !important;
+  }
+
+  .map1 p {
+    font-size: 0.9rem;
+  }
+
+  #favModal .d-flex {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  #favModal .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Tablet */
+@media (min-width: 577px) and (max-width: 992px) {
+  header .loc {
+    font-size: 1.3rem;
+  }
+
+  .map1 .row {
+    padding: 2rem !important;
+  }
+
+  .map1 h4 {
+    font-size: 1.1rem;
+  }
+
+  #favModal .btn {
+    font-size: 0.85rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 993px) {
+  .map1 .row {
+    padding: 3rem !important;
+  }
+
+  header .loc {
+    font-size: 1.5rem;
+  }
+
+  .map1 h4 {
+    font-size: 1.3rem;
+  }
+}
+
 /*---------------- header section------------ */
 .contact {
   color: #212129;
@@ -244,8 +340,8 @@ h5.producttitlefav:hover {
 
 /* ****** client section ***** */
 .carousel-indicators [data-bs-target] {
-  background-color: #e65f78;
-  border: 1px solid #e65f78;
+  background-color: #dab275;
+  border: 1px solid #c59d5f;
   border-radius: 10px;
   width: 15px;
   height: 10px;
@@ -255,10 +351,10 @@ h5.producttitlefav:hover {
   width: 20px;
 }
 .main-color {
-  color: #e65f78;
+  color: #dab275;
 }
 .hoverLink {
-  color: #9c8367 !important;
+  color: #957b5d !important;
 }
 .hoverLink:hover {
   color: #b9ac9d !important;

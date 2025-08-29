@@ -53,12 +53,17 @@
               <li class="nav-item">
                 <a class="nav-link" href="../products/products.html">Product</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="#">About</a>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">About</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="../contact-us/contact.html"
                   >Contact US</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-black" href="../findStore/find.html"
+                  >Find Us</a
                 >
               </li>
             </ul>
@@ -71,33 +76,21 @@
             <a href="#" class="userData"
               ><i class="fa-solid fa-cart-shopping"></i
             ></a>
-
-            <button class="hover-button ms-2 px-2 py-2">
-              <a href="../Auth/log-in/login.html" id="loginBtn">login</a>
-            </button>
-            <!-- <button href="../log-in/login.html" id="logoutBtn" class="btn btn-outline-danger d-none">
-              Log out
-            </button> -->
-            <button
-              href="../log-in/login.html"
-              id="logoutBtn"
-              class="btn btn-outline-danger d-none"
-            >
-              Log out
-            </button>
-            <!-- <a
-              href="../Auth/log-in/login.html"
-              id="loginBtn"
-              class="btn btn-outline-success"
-              >login</a
-            >
-            <button
-              href="../log-in/login.html"
-              id="logoutBtn"
-              class="btn btn-outline-danger d-none"
-            >
-              Log out
-            </button> -->
+    
+              <button
+                onclick="window.location.href='../Auth/log-in/login.html';"
+                class="hover-button ms-2 px-3 py-2"
+                id="loginBtn"
+              >
+                log in
+              </button>
+              <button
+                onclick="window.location.href='../Auth/log-in/login.html';"
+                class="hover-button ms-2 px-3 py-2 d-none"
+                id="logoutBtn"
+              >
+                log out
+              </button>
           </div>
           <hr />
         </div>
