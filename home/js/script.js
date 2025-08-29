@@ -120,6 +120,26 @@ if (user && user.Email) {
     });
     return;
   }
+  let clearBtn = document.getElementById("clearBtn");
+  clearBtn.addEventListener("click", () => {
+    user.wishlist = []; 
+    let products =JSON.parse(localStorage.getItem("products"))
+    localStorage.setItem("loggedInUser", JSON.stringify(user));  
+    renderFavoriteModal();
+    updateFavBadge();
+    setupFavoriteButtons(products);
+
+    document.querySelectorAll(".favorite-btn").forEach(btn => {
+    btn.classList.remove("active");
+    let icon = btn.querySelector("i");
+    if (icon) {
+      icon.classList.remove("bi-heart-fill");
+      icon.classList.add("bi-heart");
+    }
+  });
+    
+  });
+
 
   const favdiv = document.createElement("div");
   favdiv.className = "favdiv";
@@ -141,6 +161,7 @@ if (user && user.Email) {
   });
   favmodalbody.appendChild(favdiv);
 }
+
 
 document.addEventListener("click", e => {
   if (e.target.classList.contains("btnaddtocard")) {
