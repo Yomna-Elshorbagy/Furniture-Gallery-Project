@@ -114,7 +114,7 @@ if (cartproducts.length === 0) {
     }</span>
           <button class="btn btn-sm btn-outline-secondary plus-btn" data-id="${
             product.id
-          }">+</button>
+          }" onclick="increaseQuantity(${product.id},${product.stock})">+</button>
         </div>
         <button class="btn btn-link text-muted p-0 remove-btn mt-3" data-id="${
           product.id
@@ -126,6 +126,21 @@ if (cartproducts.length === 0) {
     `;
     tbody.appendChild(row);
   });
+
+
+  ////// check stock amount 
+
+
+  function increaseQuantity(productId,stock){
+    let quantitySpan = document.getElementById(`quantity-${productId}`);
+  let currentQuantity = parseInt(quantitySpan.textContent);
+
+  if (currentQuantity < stock) {
+    quantitySpan.textContent = currentQuantity + 1;
+  } else {
+    quantitySpan.textContent = stock-1;
+  }
+  }
 
   tbody.addEventListener("click", function (event) {
     let btn = event.target.closest("button");

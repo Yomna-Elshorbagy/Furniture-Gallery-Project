@@ -120,6 +120,26 @@ if (user && user.Email) {
     });
     return;
   }
+  let clearBtn = document.getElementById("clearBtn");
+  clearBtn.addEventListener("click", () => {
+    user.wishlist = []; 
+    let products =JSON.parse(localStorage.getItem("products"))
+    localStorage.setItem("loggedInUser", JSON.stringify(user));  
+    renderFavoriteModal();
+    updateFavBadge();
+    setupFavoriteButtons(products);
+
+    document.querySelectorAll(".favorite-btn").forEach(btn => {
+    btn.classList.remove("active");
+    let icon = btn.querySelector("i");
+    if (icon) {
+      icon.classList.remove("bi-heart-fill");
+      icon.classList.add("bi-heart");
+    }
+  });
+    
+  });
+
 
   const favdiv = document.createElement("div");
   favdiv.className = "favdiv";
@@ -128,11 +148,16 @@ if (user && user.Email) {
     card.className = "cardstyle";
     card.innerHTML = `
       <div class="card product-card">
+       <div class="position-relative">
         <img src="${product.image}" class="card-img-top" alt="${product.name}">
+        <button class="removeFavBtn btn btn-sm bg-white position-absolute top-0 end-0 m-2" data-id="${product.id}">
+            <i class="bi bi-x-lg"></i>
+          </button>
+       </div>
         <div class="card-body text-center">
           <h5 class="producttitlefav">${product.name}</h5>
           <h4 class="newprice fw-bold text-danger">$${product.price}</h4>
-          ${product.oldPrice ? `<h4 class="old-price text-secondary text-decoration-line-through">${product.oldPrice}</h4>` : ""}
+          ${product.oldPrice ? `<h4 class="old-price text-secondary text-decoration-line-through">$${product.oldPrice}</h4>` : ""}
           <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id}">ADD TO CART</button>
         </div>
       </div>
@@ -140,7 +165,28 @@ if (user && user.Email) {
     favdiv.appendChild(card);
   });
   favmodalbody.appendChild(favdiv);
+document.querySelectorAll(".removeFavBtn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = parseInt(btn.getAttribute("data-id"));
+      user.wishlist = user.wishlist.filter(p => p.id !== id);
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      updateFavBadge();
+      renderFavoriteModal();
+            let favBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
+      if (favBtn) {
+        favBtn.classList.remove("active");
+        let icon = favBtn.querySelector("i");
+        if (icon) {
+          icon.classList.remove("bi-heart-fill");
+          icon.classList.add("bi-heart");
+        }
+      }
+    });
+    });
+
+
 }
+
 
 document.addEventListener("click", e => {
   if (e.target.classList.contains("btnaddtocard")) {
