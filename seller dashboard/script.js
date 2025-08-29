@@ -22,9 +22,18 @@ window.addEventListener("DOMContentLoaded", () => {
     return;
   }
   // ===> 2. If logged in but not seller redirect im to home
-  if ( loggedInUser.Role !== "seller") {
+  if (loggedInUser.Role !== "seller") {
     window.location.href = "../home/home.html";
   }
+
+  document.getElementById("overview").addEventListener("click", () => {
+    document.getElementById("mainContent").innerHTML = overviewTemplate;
+    initOverviewPage();
+  });
+
+  document.getElementById("mainContent").innerHTML = overviewTemplate;
+  initOverviewPage();
+
   Object.entries(serverDataFiles).forEach(([key, url]) => {
     if (!localStorage.getItem(key)) {
       fetch(url)
@@ -40,6 +49,7 @@ window.addEventListener("DOMContentLoaded", () => {
       console.log(`${key} already in localStorage`);
     }
   });
+
   countProducts();
   CountLowStock();
   countOrders();
@@ -76,10 +86,6 @@ document.getElementById("logOut").addEventListener("click", () => {
   localStorage.removeItem("loggedInUser");
   window.location.href = "../Auth/log-in/login.html";
 });
-document.getElementById("overview").addEventListener("click", () => {
-  document.getElementById("mainContent").innerHTML = overviewTemplate;
-  initOverviewPage();
-});
 // ====> function to count all orders for this seller
 function countOrders() {
   let countElement = document.getElementById("ordersCount");
@@ -89,8 +95,10 @@ function countOrders() {
   let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
   if (loggedInUser?.Role?.toLowerCase() === "seller") {
-    orders = orders.filter(order =>
-      order.products.some(p => p.sellerId?.toString() === loggedInUser.ID.toString())
+    orders = orders.filter((order) =>
+      order.products.some(
+        (p) => p.sellerId?.toString() === loggedInUser.ID.toString()
+      )
     );
   }
 
@@ -108,10 +116,12 @@ function countTotalRevenues() {
   let total = 0;
 
   if (loggedInUser?.Role?.toLowerCase() === "seller") {
-    let completedOrders = orders.filter(order => order.Status === "Completed");
+    let completedOrders = orders.filter(
+      (order) => order.Status === "Completed"
+    );
 
-    completedOrders.forEach(order => {
-      order.products.forEach(p => {
+    completedOrders.forEach((order) => {
+      order.products.forEach((p) => {
         if (p.sellerId?.toString() === loggedInUser.ID.toString()) {
           total += Number(p.price) * Number(p.quantity);
         }
@@ -123,7 +133,6 @@ function countTotalRevenues() {
 
   countElement.textContent = `$${total}`;
 }
-
 
 // ====> function count products for this seller
 function countProducts() {

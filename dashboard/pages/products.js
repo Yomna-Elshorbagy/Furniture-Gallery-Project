@@ -112,6 +112,20 @@ export function initProductsPage(initialProducts = null) {
     }
   });
 
+  function populateCategories(selectedCategory = "") {
+    const categories = JSON.parse(localStorage.getItem("categories")) || [];
+    categoryInput.innerHTML = '<option value="">-- Select Category --</option>';
+
+    categories.forEach((cat) => {
+      const option = document.createElement("option");
+      option.value = cat.name;
+      option.textContent = cat.name;
+      if (cat.name.toLowerCase() === selectedCategory.toLowerCase()) {
+        option.selected = true;
+      }
+      categoryInput.appendChild(option);
+    });
+  }
   // ====>> Add Product <<====
   let tempSubImages = [];
   document.getElementById("addProductBtn")?.addEventListener("click", () => {
@@ -127,7 +141,7 @@ export function initProductsPage(initialProducts = null) {
     pmSubImagesInput.value = "";
     tempSubImages = [];
     imagePreview.style.display = "none";
-
+    populateCategories();
     let modal = new bootstrap.Modal(document.getElementById("productModal"));
     modal.show();
   });
@@ -199,7 +213,8 @@ export function initProductsPage(initialProducts = null) {
       priceInput.value = prod.price;
       OldPriceInput.value = prod.oldPrice ?? "";
       stockInput.value = prod.stock;
-      categoryInput.value = prod.category;
+      populateCategories(prod.category);
+      // categoryInput.value = prod.category;
       descInput.value = prod.description;
       imagePreview.src = prod.image;
       imagePreview.style.display = "block";
@@ -266,10 +281,10 @@ export function initProductsPage(initialProducts = null) {
         price,
         oldPrice,
         stock,
-        category,
+        category: categoryInput.value,
         description: desc,
         image: imgUrl || "../../server/data/products_img/default.jpg",
-        subImages: tempSubImages,
+        subImages: tempSubImages.length > 0 ? tempSubImages : [],
       });
     }
 
