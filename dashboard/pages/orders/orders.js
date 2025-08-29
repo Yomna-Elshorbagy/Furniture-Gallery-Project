@@ -6,6 +6,8 @@ export function initOrdersPage() {
   const statusInput = document.getElementById("omStatus");
   const saveBtn = document.getElementById("omSave");
   const paginationContainer = document.getElementById("pagination");
+  const searchIdInput = document.getElementById("orderSearchId");
+  const searchUserInput = document.getElementById("orderSearch");
 
   let orders = JSON.parse(localStorage.getItem("orders")) || [];
   let editingId = null;
@@ -23,6 +25,21 @@ export function initOrdersPage() {
         ? orders
         : orders.filter((order) => order.Status === selectedFilter);
 
+    // apply search order id
+    let searchId = searchIdInput.value.trim();
+    if (searchId) {
+      filteredOrders = filteredOrders.filter((order) =>
+        String(order.ID).includes(searchId)
+      );
+    }
+
+    // apply User search
+    let searchUser = searchUserInput.value.trim().toLowerCase();
+    if (searchUser) {
+      filteredOrders = filteredOrders.filter((order) =>
+        order.UserName.toLowerCase().includes(searchUser)
+      );
+    }
     // slice orders for pagination
     let start = (currentPage - 1) * pageSize;
     let end = start + pageSize;
@@ -62,7 +79,7 @@ export function initOrdersPage() {
     renderPagination(filteredOrders.length);
   }
 
-  // ---- Pagination ----
+  // ====> Pagination <=====
   function renderPagination(totalItems) {
     if (!paginationContainer) return;
     paginationContainer.innerHTML = "";
@@ -105,14 +122,32 @@ export function initOrdersPage() {
     };
     paginationContainer.appendChild(nextBtn);
   }
-
+  // =====> search Orders <====
+  searchIdInput.addEventListener("input", () => {
+    currentPage = 1;
+    renderOrders();
+  });
+  // =====> search order ID <====
+  searchUserInput.addEventListener("input", () => {
+    currentPage = 1;
+    renderOrders();
+  });
+  // =====> filter status <====
   statusFilter.addEventListener("change", () => {
     selectedFilter = statusFilter.value;
     currentPage = 1; // reset to first page
     renderOrders();
   });
 
-  // ---- edit order ----
+  // ====> validation  <====
+  function validateName(name) {
+    return /^[a-zA-Z ]{3,30}$/.test(name); // only letters & spaces, 3–30 chars
+  }
+
+  function validatePrice(price) {
+    return /^\d+(\.\d{1,2})?$/.test(price) && parseFloat(price) > 0; // positive number
+  }
+  // ====> edit order <====
   function handleEditOrder(e) {
     editingId = parseInt(e.currentTarget.dataset.id);
     const order = orders.find((o) => o.ID === editingId);
@@ -129,30 +164,30 @@ export function initOrdersPage() {
     }
   }
 
-  // ---- save order ----
+  // ====> save order <===
   saveBtn.addEventListener("click", () => {
     const user = userInput.value.trim();
     const price = priceInput.value.trim();
     const status = statusInput.value;
     // const date = dateInput.value;
 
-    if (!user || !price || !status ) {
+    if (!user || !price || !status) {
       alert("Please fill in all fields");
       return;
     }
 
     if (editingId) {
       // update existing
-      orders = orders.map((o) =>
-        o.ID === editingId
+      orders = orders.map((order) =>
+        order.ID === editingId
           ? {
-              ...o,
+              ...order,
               UserName: user,
               TotalPrice: price,
               Status: status,
               Date: date,
             }
-          : o
+          : order
       );
     } else {
       // add new
@@ -174,7 +209,7 @@ export function initOrdersPage() {
     bootstrap.Modal.getInstance(document.getElementById("orderModal")).hide();
   });
 
-  // ---- delete order  ----
+  // =====> delete order  <====
   function handleDeleteOrder(e) {
     const id = parseInt(e.currentTarget.dataset.id);
 

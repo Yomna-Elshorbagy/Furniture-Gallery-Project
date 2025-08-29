@@ -7,6 +7,9 @@
   font-family: "Raleway", sans-serif;
 }
 
+#lowStock {
+  cursor: pointer;
+}
 /* pagination container */
 #pagination button {
   border: 1px solid #c7b9a9;
@@ -43,7 +46,7 @@
 }
 
 body {
-  background: linear-gradient(to top, #e9dbbc, #726443);
+  background: linear-gradient(to top, #f1e4c8, #b9a473);
   min-height: 100vh;
   color: #ffffff;
   font-family: "Segoe UI", sans-serif;
@@ -51,7 +54,7 @@ body {
 }
 
 body.dark {
-  background: linear-gradient(to top, #211f1f, #887d7d);;
+  background: linear-gradient(to top, #211f1f, #887d7d);
   color: #e2e8f0;
 }
 

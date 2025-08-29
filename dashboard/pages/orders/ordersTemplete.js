@@ -1,11 +1,13 @@
 // ordersTemplate.js
 export const ordersTemplate = `
   <h3>Orders</h3>
+<!-- Filter, Order ID Search & User Search -->
+<div class="mb-3 d-flex align-items-center justify-content-between flex-wrap gap-3 orders-filters">
   
-    <!-- Filter Dropdown -->
-  <div class="mb-3">
-    <label class="form-label me-2 fw-bold">Filter by Status:</label>
-    <select id="statusFilter" class="form-select w-auto d-inline-block">
+  <!-- Filter Dropdown -->
+  <div class="filter-box d-flex align-items-center">
+    <label for="statusFilter" class="form-label fw-bold me-2 mb-0">Filter:</label>
+    <select id="statusFilter" class="form-select custom-select">
       <option value="All">All</option>
       <option value="Pending">Pending</option>
       <option value="Completed">Completed</option>
@@ -13,8 +15,37 @@ export const ordersTemplate = `
       <option value="Cancelled">Cancelled</option>
     </select>
   </div>
-  
-  <table class="table">
+
+  <!-- Search by Order ID -->
+  <div class="search-box d-flex align-items-center">
+    <div class="input-group">
+      <span class="input-group-text bg-light border-end-0"><i class="fa fa-hashtag"></i></span>
+      <input 
+        type="text" 
+        id="orderSearchId" 
+        class="form-control border-start-0 custom-input" 
+        placeholder="Search by Order ID..."
+      />
+    </div>
+  </div>
+
+  <!-- Search by User -->
+  <div class="search-box d-flex align-items-center">
+    <div class="input-group">
+      <span class="input-group-text bg-light border-end-0"><i class="fa fa-user"></i></span>
+      <input 
+        type="text" 
+        id="orderSearch" 
+        class="form-control border-start-0 custom-input" 
+        placeholder="Search by User..."
+      />
+    </div>
+  </div>
+</div>
+
+
+
+  <table class="table orders-table">
     <thead class="table-light">
       <tr>
         <th>ID</th>

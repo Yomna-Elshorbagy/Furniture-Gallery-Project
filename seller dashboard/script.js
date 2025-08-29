@@ -12,20 +12,19 @@ let serverDataFiles = {
   categories: "../server/data/categories.json",
   orders: "../server/data/orders.json",
   users: "../server/data/users.json",
-  ordersPerMonth: "../server/data/ordersPerMonth.json",
 };
 window.addEventListener("DOMContentLoaded", () => {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
   // ===> 1. If not logged in at all so login first
-  // if (!loggedInUser) {
-  //   window.location.href = "../Auth/log-in/login.html";
-  //   return;
-  // }
+  if (!loggedInUser) {
+    window.location.href = "../Auth/log-in/login.html";
+    return;
+  }
   // ===> 2. If logged in but not seller redirect im to home
-  // if ( loggedInUser.Role !== "seller") {
-  //   window.location.href = "../home/home.html";
-  // }
+  if ( loggedInUser.Role !== "seller") {
+    window.location.href = "../home/home.html";
+  }
   Object.entries(serverDataFiles).forEach(([key, url]) => {
     if (!localStorage.getItem(key)) {
       fetch(url)
@@ -183,9 +182,9 @@ export function showLowStockProducts() {
     );
   }
 }
-// document.getElementById("lowStock").addEventListener("click", () => {
-//   showLowStockProducts();
-// });
+document.getElementById("lowStock").addEventListener("click", () => {
+  showLowStockProducts();
+});
 
 // =====> function Export Seller's Products JSON
 document.getElementById("exportBtn").addEventListener("click", () => {

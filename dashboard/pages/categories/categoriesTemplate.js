@@ -1,7 +1,7 @@
 // categoriesTemplate.js
 export const categoriesTemplate = `
   <h3>Categories</h3>
-  <table class="table">
+  <table class="table orders-table">
     <thead class="table-light">
       <tr>
         <th>ID</th>

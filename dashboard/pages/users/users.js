@@ -5,7 +5,8 @@ export async function initUsersPage() {
   let currentPage = 1;
   let pageSize = 6;
   let paginationContainer = document.getElementById("pagination");
-
+  const searchIdInput = document.getElementById("userSearchId");
+  const searchUserInput = document.getElementById("userSearch");
   renderUsers();
 
   function renderUsers() {
@@ -13,6 +14,23 @@ export async function initUsersPage() {
     let end = start + pageSize;
     let currentUsers = filteredUsers.slice(start, end);
 
+    // apply search order id
+    let searchId = searchIdInput.value.trim();
+    if (searchId) {
+      currentUsers = currentUsers.filter((user) =>
+        String(user.ID).includes(searchId)
+      );
+    }
+
+    // apply User search
+    let searchUser = searchUserInput.value.trim().toLowerCase();
+    if (searchUser) {
+      currentUsers = currentUsers.filter(
+        (user) =>
+          user.Name.toLowerCase().includes(searchUser) ||
+          user.Email.toLowerCase().includes(searchUser)
+      );
+    }
     tableBody.innerHTML = "";
     currentUsers.forEach((user) => {
       let row = document.createElement("tr");
@@ -63,6 +81,17 @@ export async function initUsersPage() {
       };
       paginationContainer.appendChild(btn);
     }
+
+    // =====> search users <====
+    searchIdInput.addEventListener("input", () => {
+      currentPage = 1;
+      renderUsers();
+    });
+    // =====> search users ID <====
+    searchUserInput.addEventListener("input", () => {
+      currentPage = 1;
+      renderUsers();
+    });
 
     let nextBtn = document.createElement("button");
     nextBtn.textContent = "Next";

@@ -7,7 +7,7 @@ export const productsTemplate = `
       <i class="fa-solid fa-plus"></i> Add Product
     </button>
   </div>
-  <table class="table table-hover align-middle">
+  <table class="table table-hover align-middle orders-table">
     <thead class="table-light">
       <tr>
         <th>Image</th>

@@ -16,20 +16,19 @@ let serverDataFiles = {
   categories: "../server/data/categories.json",
   orders: "../server/data/orders.json",
   users: "../server/data/users.json",
-  ordersPerMonth: "../server/data/ordersPerMonth.json",
 };
 window.addEventListener("DOMContentLoaded", () => {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
   // ===> 1. If not logged in at all so login first
-  // if (!loggedInUser) {
-  //   window.location.href = "../Auth/log-in/login.html";
-  //   return;
-  // }
+  if (!loggedInUser) {
+    window.location.href = "../Auth/log-in/login.html";
+    return;
+  }
   // ===> 2. If logged in but not admin/seller redirect im to home
-  // if (loggedInUser.Role !== "admin") {
-  //   window.location.href = "../home/home.html";
-  // }
+  if (loggedInUser.Role !== "admin") {
+    window.location.href = "../home/home.html";
+  }
   Object.entries(serverDataFiles).forEach(([key, url]) => {
     if (!localStorage.getItem(key)) {
       fetch(url)

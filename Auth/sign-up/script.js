@@ -22,6 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (loggedInUser.Role === "admin") {
       document.getElementById("checkAdmin").style.display = "block";
       document.getElementById("checkSeller").style.display = "block";
+      document.getElementById("checkUser").style.display = "block";
     } else {
       document.getElementById("checkAdmin").style.display = "none";
       document.getElementById("checkSeller").style.display = "none";

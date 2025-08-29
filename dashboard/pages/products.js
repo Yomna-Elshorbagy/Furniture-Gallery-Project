@@ -17,14 +17,15 @@ export function initProductsPage(initialProducts = null) {
   let nextBtn = document.getElementById("nextPage");
   let pageInfo = document.getElementById("pageInfo");
 
-   let products = initialProducts || JSON.parse(localStorage.getItem("products")) || [];
+  let products =
+    initialProducts || JSON.parse(localStorage.getItem("products")) || [];
   let searchededProducts = [...products];
 
   let editingId = null;
   let currentPage = 1;
   let pageSize = 6;
 
-  ////// search for product
+  //===> search for product
   document.getElementById("searchInput").addEventListener("input", (e) => {
     let query = e.target.value.toLowerCase().trim();
     if (query === "") {
@@ -41,7 +42,7 @@ export function initProductsPage(initialProducts = null) {
     renderProducts();
   });
 
-  // ---- >> render Products table << ----
+  // ====>> render Products table <<====
   function renderProducts() {
     tableBody.innerHTML = "";
 
@@ -87,7 +88,7 @@ export function initProductsPage(initialProducts = null) {
     renderPagination();
   }
 
-  // ---->> Pagination <<----
+  // ====>> Pagination <<====
   function renderPagination() {
     let totalPages = Math.ceil(searchededProducts.length / pageSize);
     pageInfo.textContent = `Page ${currentPage} of ${totalPages || 1}`;
@@ -111,7 +112,7 @@ export function initProductsPage(initialProducts = null) {
     }
   });
 
-  // ---->> Add Product <<----
+  // ====>> Add Product <<====
   let tempSubImages = [];
   document.getElementById("addProductBtn")?.addEventListener("click", () => {
     editingId = null;
@@ -131,7 +132,7 @@ export function initProductsPage(initialProducts = null) {
     modal.show();
   });
 
-  // ---->> Image files data <<----
+  // ====>> Image files data <<====
   imageInput.addEventListener("change", () => {
     let file = imageInput.files[0];
     if (file) {
@@ -144,54 +145,50 @@ export function initProductsPage(initialProducts = null) {
     }
   });
 
-  ////////// subimages
-
-function readSubImages(files) {
-  const readers = files.map((file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = (e) => resolve(e.target.result);
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
+  // subImages
+  function readSubImages(files) {
+    const readers = files.map((file) => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
     });
+
+    return Promise.all(readers);
+  }
+
+  pmSubImagesInput.addEventListener("change", async () => {
+    const files = Array.from(pmSubImagesInput.files).slice(0, 4);
+    pmSubImagesPreview.innerHTML = "";
+    saveBtn.disabled = true;
+
+    try {
+      tempSubImages = await readSubImages(files);
+
+      tempSubImages.forEach((imgUrl) => {
+        const img = document.createElement("img");
+        img.src = imgUrl;
+        img.style.width = "80px";
+        img.style.height = "80px";
+        img.style.objectFit = "cover";
+        img.classList.add("rounded", "border");
+        pmSubImagesPreview.appendChild(img);
+      });
+
+      saveBtn.disabled = false;
+    } catch (error) {
+      console.error("Error reading sub images:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Image Error",
+        text: "error in loading image ",
+      });
+    }
   });
 
-  return Promise.all(readers);
-}
-
-pmSubImagesInput.addEventListener("change", async () => {
-  const files = Array.from(pmSubImagesInput.files).slice(0, 4);
-  pmSubImagesPreview.innerHTML = "";
-  saveBtn.disabled = true; 
-
-  try {
-    tempSubImages = await readSubImages(files);
-
-    tempSubImages.forEach((imgUrl) => {
-      const img = document.createElement("img");
-      img.src = imgUrl;
-      img.style.width = "80px";
-      img.style.height = "80px";
-      img.style.objectFit = "cover";
-      img.classList.add("rounded", "border");
-      pmSubImagesPreview.appendChild(img);
-    });
-
-    saveBtn.disabled = false; 
-  } catch (error) {
-    console.error("Error reading sub images:", error);
-    Swal.fire({
-      icon: "error",
-      title: "Image Error",
-      text: "error in loading image ",
-    });
-  }
-});
-
-
-
-
-  // ---->> Edit Product <<----
+  // =====>> Edit Product <<=====
   function handleEditProduct(e) {
     editingId = parseInt(e.currentTarget.dataset.id);
     let prod = products.find((p) => p.id === editingId);
@@ -221,7 +218,7 @@ pmSubImagesInput.addEventListener("change", async () => {
     }
   }
 
-  // ---- Save Product ----
+  // ====>> Save Product <<=====
   saveBtn.addEventListener("click", () => {
     let name = nameInput.value.trim();
     let price = priceInput.value.trim();
@@ -243,10 +240,10 @@ pmSubImagesInput.addEventListener("change", async () => {
 
     if (editingId) {
       // update existing
-      products = products.map((p) =>
-        p.id === editingId
+      products = products.map((prod) =>
+        prod.id === editingId
           ? {
-              ...p,
+              ...prod,
               name,
               price,
               oldPrice,
@@ -254,9 +251,9 @@ pmSubImagesInput.addEventListener("change", async () => {
               category,
               description: desc,
               image: imgUrl,
-              subImages:  tempSubImages,
+              subImages: tempSubImages,
             }
-          : p
+          : prod
       );
     } else {
       // add new
@@ -272,7 +269,7 @@ pmSubImagesInput.addEventListener("change", async () => {
         category,
         description: desc,
         image: imgUrl || "../../server/data/products_img/default.jpg",
-        subImages:  tempSubImages,
+        subImages: tempSubImages,
       });
     }
 
@@ -284,7 +281,7 @@ pmSubImagesInput.addEventListener("change", async () => {
     bootstrap.Modal.getInstance(document.getElementById("productModal")).hide();
   });
 
-  // ---- >> Delete Product << ----
+  // ====>> Delete Product <<====
   function handleDeleteProduct(e) {
     let id = Number(e.currentTarget.dataset.id);
 
