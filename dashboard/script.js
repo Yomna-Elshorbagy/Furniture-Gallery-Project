@@ -29,6 +29,15 @@ window.addEventListener("DOMContentLoaded", () => {
   if (loggedInUser.Role !== "admin") {
     window.location.href = "../home/home.html";
   }
+
+  document.getElementById("overview").addEventListener("click", () => {
+    document.getElementById("mainContent").innerHTML = overviewTemplate;
+    initOverviewPage();
+  });
+
+  document.getElementById("mainContent").innerHTML = overviewTemplate;
+  initOverviewPage();
+  
   Object.entries(serverDataFiles).forEach(([key, url]) => {
     if (!localStorage.getItem(key)) {
       fetch(url)
@@ -53,10 +62,6 @@ window.addEventListener("DOMContentLoaded", () => {
   if (adminEmailEl && loggedInUser?.Email) {
     adminEmailEl.textContent = loggedInUser.Email;
   }
-});
-document.getElementById("overview").addEventListener("click", () => {
-  document.getElementById("mainContent").innerHTML = overviewTemplate;
-  initOverviewPage();
 });
 document.getElementById("products").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = productsTemplate;

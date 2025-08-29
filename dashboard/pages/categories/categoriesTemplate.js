@@ -1,6 +1,36 @@
 // categoriesTemplate.js
 export const categoriesTemplate = `
   <h3>Categories</h3>
+
+  <div class="mb-3 d-flex align-items-center justify-content-between flex-wrap gap-3 orders-filters">
+
+  <!-- Search by user ID -->
+  <div class="search-box d-flex align-items-center">
+    <div class="input-group">
+      <span class="input-group-text bg-light border-end-0"><i class="fa fa-hashtag"></i></span>
+      <input 
+        type="text" 
+        id="catSearchId" 
+        class="form-control border-start-0 custom-input" 
+        placeholder="Search by category ID..."
+      />
+    </div>
+  </div>
+
+  <!-- Search by User name or email -->
+  <div class="search-box d-flex align-items-center">
+    <div class="input-group">
+      <span class="input-group-text bg-light border-end-0"><i class="fa fa-user"></i></span>
+      <input 
+        type="text" 
+        id="catSearch" 
+        class="form-control border-start-0 custom-input" 
+        placeholder="Search by Category name"
+      />
+    </div>
+  </div>
+</div>
+</div>
   <table class="table orders-table">
     <thead class="table-light">
       <tr>

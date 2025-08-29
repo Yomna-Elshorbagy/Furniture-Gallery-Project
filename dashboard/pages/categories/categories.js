@@ -4,6 +4,8 @@ export function initCategoriesPage() {
   const nameInput = document.getElementById("cmName");
   const descInput = document.getElementById("cmDesc");
   const saveBtn = document.getElementById("cmSave");
+  const searchIdInput = document.getElementById("catSearchId");
+  const searchUserInput = document.getElementById("catSearch");
 
   let categories = JSON.parse(localStorage.getItem("categories")) || [];
   let editingId = null; // to know if editing or adding
@@ -12,8 +14,25 @@ export function initCategoriesPage() {
 
   // ---- Render Categories ----
   function renderCategories() {
+    let allCategories = JSON.parse(localStorage.getItem("categories")) || [];
+
+    // apply search category id
+    let searchId = searchIdInput.value.trim();
+    if (searchId) {
+      allCategories = allCategories.filter((cat) =>
+        String(cat.id).includes(searchId)
+      );
+    }
+
+    // apply category search
+    let searchUser = searchUserInput.value.trim().toLowerCase();
+    if (searchUser) {
+      allCategories = allCategories.filter((cat) =>
+        cat.name.toLowerCase().includes(searchUser)
+      );
+    }
     tableBody.innerHTML = "";
-    categories.forEach((cat) => {
+    allCategories.forEach((cat) => {
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${cat.id}</td>
@@ -38,6 +57,8 @@ export function initCategoriesPage() {
     document.querySelectorAll(".del-cat").forEach((btn) => {
       btn.addEventListener("click", handleDeleteCategory);
     });
+    searchIdInput.addEventListener("input", renderCategories);
+    searchUserInput.addEventListener("input", renderCategories);
   }
 
   // ---- Open Modal for Add ----
