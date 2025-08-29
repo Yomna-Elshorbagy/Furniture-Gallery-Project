@@ -42,23 +42,31 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
   //=====>  handel logged in and logged out
-  let loginBtn = document.getElementById("loginBtn");
-  let logoutBtn = document.getElementById("logoutBtn");
-  loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  handleAuthButtons();
+  renderFavoriteModal();
+});
+function saveUsers(users, loggedInUser) {
+  localStorage.setItem("users", JSON.stringify(users));
+  localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+  localStorage.setItem("loggedInUserId", loggedInUser.ID);
+}
+
+function handleAuthButtons() {
+  const loginBtn = document.getElementById("loginBtn");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const loggedInUser = getLoggedInUser();
 
   if (loggedInUser) {
-    // show logout, hide login
     loginBtn.classList.add("d-none");
     logoutBtn.classList.remove("d-none");
   } else {
-    // show login, hide logout
     loginBtn.classList.remove("d-none");
     logoutBtn.classList.add("d-none");
   }
+
   logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("loggedInUser");
     localStorage.removeItem("loggedInUserId");
-
     Swal.fire({
       title: "👋 Logged out",
       text: "You have been logged out successfully.",
@@ -69,7 +77,7 @@ window.addEventListener("DOMContentLoaded", () => {
       window.location.href = "../Auth/log-in/login.html";
     });
   });
-});
+}
 
 let allProducts = [];
 let currentPage = 1;
@@ -344,77 +352,112 @@ function renderPagination() {
 // build favorite functionality
 
 //update padge in favorite
-let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
-  wishlist: [],
-};
+// let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
+//   wishlist: [],
+// };
+
+function getLoggedInUser() {
+  return JSON.parse(localStorage.getItem("loggedInUser"));
+}
+
 
 // draw favorite in model
 function renderFavoriteModal() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
-    wishlist: [],
-  };
-
-  let favmodalbody = document.getElementById("favmodalbody");
+  const favmodalbody = document.getElementById("favmodalbody");
+  const user = getLoggedInUser();
+  let favoriteLabel = document.getElementById("favoritelabel");
+if (user && user.Email) {
+  favoriteLabel.textContent = user.Email;
+} else {
+  favoriteLabel.textContent = "example@gmail.com";
+}
   favmodalbody.innerHTML = "";
 
-  if (loggedInUser.wishlist.length === 0) {
+  if (!user || !user.wishlist || user.wishlist.length === 0) {
     var nofav = document.createElement("div");
     nofav.className = "nofavoritediv";
-    nofav.innerHTML = `
-      <h5>Love It? Add to My Favorites</h5>
+    nofav.innerHTML = `<h5>Love It? Add to My Favorites</h5>
       <p>My Favorites allows you to keep track of all of your favorites and shopping activity whether <br> 
         you're on your computer, phone, or tablet. You won't have to waste time searching all over <br>
          again for that item you loved on your phone the other day - it's all here in one place!</p>
          <button class="continueShop">Continue Shopping</button>
     `;
     favmodalbody.appendChild(nofav);
-    let shopBtn = document.querySelector(".continueShop");
-    if (shopBtn) {
-      shopBtn.addEventListener("click", () => {
-        window.location.href = "../products/products.html";
-      });
-    }
-  } else {
-    let favdiv = document.createElement("div");
-    favdiv.className = "favdiv";
-    loggedInUser.wishlist.forEach((product) => {
-      let card = document.createElement("div");
-      card.className = "cardstyle";
-      card.innerHTML = `
-        <div class="card product-card">
-          <img src="${product.image}" class="card-img-top" alt="${
-        product.name
-      }">
-          <div class="card-body text-center ">
-            <div class="d-flex flex-column text-start mb-0">
-              <h5 class=" text-truncate producttitlefav">${product.name}</h5>
-              <h4 class="card-text">
-                <h4 class="newprice fw-bold text-danger">$${product.price}</h4>
-                ${
-                  product.oldPrice
-                    ? `<h4 class="old-price  text-secondary text-decoration-line-through">${product.oldPrice}</h4>`
-                    : ""
-                }
-              </h4>
-            </div>
-            <button class="btn btn-dark w-100 btnaddtocard" data-id="${
-              product.id
-            }">ADD TO CART</button>
-          </div>
-        </div>
-      `;
-      favdiv.appendChild(card);
+    document.querySelector(".continueShop").addEventListener("click", () => {
+      window.location.href = "../products/products.html";
     });
-    favmodalbody.appendChild(favdiv);
+    return;
   }
+  let clearBtn = document.getElementById("clearBtn");
+if (clearBtn) {
+  clearBtn.replaceWith(clearBtn.cloneNode(true)); 
+  clearBtn = document.getElementById("clearBtn");
+  clearBtn.addEventListener("click", () => {
+    let user = getLoggedInUser();
+    user.wishlist = [];
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    renderFavoriteModal();
+    updateFavBadge();
+    document.querySelectorAll(".favorite-btn").forEach(btn => {
+      btn.classList.remove("active");
+      let icon = btn.querySelector("i");
+      if (icon) {
+        icon.classList.remove("bi-heart-fill");
+        icon.classList.add("bi-heart");
+      }
+    });
+  });
 }
 
-let favoriteLabel = document.getElementById("favoritelabel");
-if (loggedInUser && loggedInUser.Email) {
-  favoriteLabel.textContent = loggedInUser.Email;
-} else {
-  favoriteLabel.textContent = "example@gmail.com";
+
+
+  const favdiv = document.createElement("div");
+  favdiv.className = "favdiv";
+  user.wishlist.forEach(product => {
+    const card = document.createElement("div");
+    card.className = "cardstyle";
+    card.innerHTML = `
+      <div class="card product-card">
+       <div class="position-relative">
+        <img src="${product.image}" class="card-img-top" alt="${product.name}">
+        <button class="removeFavBtn btn btn-sm bg-white position-absolute top-0 end-0 m-2" data-id="${product.id}">
+            <i class="bi bi-x-lg"></i>
+          </button>
+       </div>
+        <div class="card-body text-center">
+          <h5 class="producttitlefav">${product.name}</h5>
+          <h4 class="newprice fw-bold text-danger">$${product.price}</h4>
+          ${product.oldPrice ? `<h4 class="old-price text-secondary text-decoration-line-through">$${product.oldPrice}</h4>` : ""}
+          <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id}">ADD TO CART</button>
+        </div>
+      </div>
+    `;
+    favdiv.appendChild(card);
+  });
+  favmodalbody.appendChild(favdiv);
+document.querySelectorAll(".removeFavBtn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = parseInt(btn.getAttribute("data-id"));
+      user.wishlist = user.wishlist.filter(p => p.id !== id);
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      updateFavBadge();
+      renderFavoriteModal();
+            let favBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
+      if (favBtn) {
+        favBtn.classList.remove("active");
+        let icon = favBtn.querySelector("i");
+        if (icon) {
+          icon.classList.remove("bi-heart-fill");
+          icon.classList.add("bi-heart");
+        }
+      }
+    });
+  
+  });
+
+
 }
+
 
 // check if user logged in or not to access userData links
 document.addEventListener("click", (e) => {
@@ -441,6 +484,7 @@ document.addEventListener("click", (e) => {
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("btnaddtocard")) {
     let productId = parseInt(e.target.getAttribute("data-id"));
+    let loggedInUser = getLoggedInUser();
     let quantity = 1;
 
     if (!loggedInUser.cart) {
@@ -468,6 +512,7 @@ document.addEventListener("click", (e) => {
   let btn = e.target.closest(".favorite-btn");
   if (!btn) return;
   e.stopPropagation();
+  let loggedInUser =getLoggedInUser();
   let products = JSON.parse(localStorage.getItem("products")) || [];
   let id = parseInt(btn.getAttribute("data-id"));
   let product = products.find((p) => p.id === id);
@@ -511,21 +556,16 @@ document.addEventListener("click", (e) => {
   // Show toast
   toast.show();
 });
-let favBadge = document.getElementById("favBadge");
 function updateFavBadge() {
-  favBadge.textContent =
-    loggedInUser.wishlist.length > 0 ? loggedInUser.wishlist.length : 0;
+    const favBadge = document.getElementById("favBadge");
+  const user = getLoggedInUser();
+  favBadge.textContent = user?.wishlist?.length || 0;
 }
 
 function updateCartBadge() {
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
-    cart: [],
-  };
-
-  let cartBadge = document.getElementById("cartbadge");
-  if (cartBadge) {
-    cartBadge.textContent = loggedInUser.cart.length;
-  }
+const cartBadge = document.getElementById("cartbadge");
+  const user = getLoggedInUser();
+  cartBadge.textContent = user?.cart?.length || 0;
 }
 // display
 updateFavBadge();

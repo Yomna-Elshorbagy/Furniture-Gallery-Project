@@ -108,13 +108,15 @@ if (user && user.Email) {
   favmodalbody.innerHTML = "";
 
   if (!user || !user.wishlist || user.wishlist.length === 0) {
-    favmodalbody.innerHTML = `
-      <div class="nofavoritediv">
-        <h5>Love It? Add to My Favorites</h5>
-        <p>Track your favorite items across devices.</p>
-        <button class="continueShop">Continue Shopping</button>
-      </div>
+    var nofav = document.createElement("div");
+    nofav.className = "nofavoritediv";
+    nofav.innerHTML = `<h5>Love It? Add to My Favorites</h5>
+      <p>My Favorites allows you to keep track of all of your favorites and shopping activity whether <br> 
+        you're on your computer, phone, or tablet. You won't have to waste time searching all over <br>
+         again for that item you loved on your phone the other day - it's all here in one place!</p>
+         <button class="continueShop">Continue Shopping</button>
     `;
+    favmodalbody.appendChild(nofav);
     document.querySelector(".continueShop").addEventListener("click", () => {
       window.location.href = "../products/products.html";
     });
@@ -182,7 +184,8 @@ document.querySelectorAll(".removeFavBtn").forEach(btn => {
         }
       }
     });
-    });
+  
+  });
 
 
 }
