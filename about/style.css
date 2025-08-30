@@ -122,8 +122,6 @@ button.hover-button::after {
 .navbar .active {
   color: #c59d5f !important;
   border-color: #c59d5f !important;
-
-
 }
 
 /* -------------favorite modal style ---------------- */
@@ -132,73 +130,69 @@ button.hover-button::after {
   color: #c59d5f !important;
   border-color: #c59d5f !important;
 }
-.modal{
+.modal {
   font-family: var(--heading-font);
 }
-#favModal .modal-content{
-    border-radius: 0 !important;
-    
+#favModal .modal-content {
+  border-radius: 0 !important;
 }
-  .modal-dialog {
-  max-width: 70% !important; 
+.modal-dialog {
+  max-width: 70% !important;
 }
 
 .modal-content {
-  height: 550px !important; 
+  height: 550px !important;
 }
-.modal-header{
-    border-radius: 0 !important;
-    color: #ffffff !important;
-    font-family: var(--heading-font);
+.modal-header {
+  border-radius: 0 !important;
+  color: #ffffff !important;
+  font-family: var(--heading-font);
 }
-#favoritelabel{
-    font-size: 14px !important;
+#favoritelabel {
+  font-size: 14px !important;
 }
-.modal-body hr{
-    width: 95% !important;
-    margin: 20px auto !important;
-    text-align: start !important;
+.modal-body hr {
+  width: 95% !important;
+  margin: 20px auto !important;
+  text-align: start !important;
 }
-.modal-body h5{
-    font-weight: 400;
-    letter-spacing: 0 !important;
-    font-size: 18px !important;
-
+.modal-body h5 {
+  font-weight: 400;
+  letter-spacing: 0 !important;
+  font-size: 18px !important;
 }
-.nofavoritediv{
-    margin-top: 70px !important;
+.nofavoritediv {
+  margin-top: 70px !important;
 }
-.nofavoritediv h5{
-    margin-bottom: 30px !important;
-    font-size: 16px !important;
-    font-weight: 500 ;
+.nofavoritediv h5 {
+  margin-bottom: 30px !important;
+  font-size: 16px !important;
+  font-weight: 500;
 }
-.nofavoritediv p{
-    font-size: 12px !important;
+.nofavoritediv p {
+  font-size: 12px !important;
 }
-.nofavoritediv button{
-    background-color: #434655 !important;
-    color: white !important;
-    font-size: 12px !important; 
-    padding: 5px 20px !important;
-    font-weight: bold;
-    margin-top: 20px;
-
- 
+.nofavoritediv button {
+  background-color: #434655 !important;
+  color: white !important;
+  font-size: 12px !important;
+  padding: 5px 20px !important;
+  font-weight: bold;
+  margin-top: 20px;
 }
-.nofavoritediv button:hover{
-    opacity: 0.8 !important;
+.nofavoritediv button:hover {
+  opacity: 0.8 !important;
 }
-.cardstyle{
+.cardstyle {
   width: 150px;
   height: 200px;
   margin-right: 20px;
   margin-left: 30px;
   margin-bottom: 100px !important;
 }
-.btnaddtocard{
+.btnaddtocard {
   height: 30px !important;
-  font-size:10px !important ;
+  font-size: 10px !important ;
 }
 
 .favdiv {
@@ -206,13 +200,12 @@ button.hover-button::after {
   flex-direction: row;
   justify-content: start !important;
   flex-wrap: wrap;
-  max-height: 400px; 
+  max-height: 400px;
   overflow-y: auto;
-  gap: 10px; 
+  gap: 10px;
 }
 
-
-h5.producttitlefav{
+h5.producttitlefav {
   font-size: 10px !important;
   font-weight: 500 !important;
 }
@@ -222,13 +215,13 @@ h5.producttitlefav:hover {
   overflow: visible;
   text-overflow: unset;
 }
-.toaststyle{
-  background-color:#c7b9a9 !important;
+.toaststyle {
+  background-color: #c7b9a9 !important;
 }
-.badgestyle{
+.badgestyle {
   width: 15px;
   height: 15px;
-  font-size:8px;
+  font-size: 8px;
   margin: auto;
 }
 .newprice {
@@ -320,7 +313,8 @@ h5.producttitlefav:hover {
   font-size: 30px;
   font-weight: 400;
 }
-/* .btn {
+#aboutfurnature .btn,
+#about2 .btn {
   background: #000;
   color: #fff;
   width: 230px;
@@ -329,8 +323,10 @@ h5.producttitlefav:hover {
   letter-spacing: 3px;
   text-transform: uppercase;
   font-size: 20px;
-} */
-.btn:hover {
+}
+.btn:hover,
+#aboutfurnature .btn:hover,
+#about2 .btn:hover {
   background-color: #fff;
   color: #000;
   border-color: black;
@@ -362,10 +358,11 @@ h5.producttitlefav:hover {
   text-align: left;
 }
 
-/* .btn {
+#aboutfurnature .btn,
+#about2 .btn {
   margin-top: 30px;
   margin-right: 300px;
-} */
+}
 
 .content-text {
   position: absolute;
@@ -439,6 +436,127 @@ h5.producttitlefav:hover {
   font-size: 24px;
   font-weight: bold;
   z-index: 2;
+}
+
+@media (max-width: 1200px) {
+  .content-box {
+    position: static;
+    margin-top: 50px;
+    padding: 0 20px;
+  }
+
+  .content-text {
+    display: none;
+  }
+
+  .img2,
+  .img3 {
+    width: 100%;
+    height: auto;
+  }
+
+  .container2 {
+    padding-bottom: 200px;
+  }
+
+  .image-container {
+    width: 100%;
+    height: 500px !important;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 768px) {
+  .container h1 {
+    font-size: 24px;
+  }
+
+  .container h3 {
+    font-size: 22px;
+  }
+
+  .container p,
+  .line,
+  .content-text p {
+    font-size: 16px;
+  }
+
+  #aboutfurnature .btn,
+  #about2 .btn {
+    width: 100%;
+    margin-right: 0;
+    font-size: 18px;
+    height: 45px;
+  }
+
+  .container2 {
+    padding-bottom: 100px;
+  }
+
+  .image-container {
+    height: 600px;
+  }
+
+  .layer {
+    font-size: 18px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .row.p-5 {
+    padding: 20px !important;
+  }
+
+  .col-md-5,
+  .col-md-7 {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .content-text {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .image-container {
+    width: 100%;
+    height: 350px !important;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .content-box {
+    position: static;
+    margin-top: 50px;
+    padding: 0 20px;
+    margin-left: 60px;
+    width: 400px;
+    height: 350px;
+  }
 }
 
 /* *************************** footer bottom ************************** */
@@ -571,4 +689,3 @@ footer a:hover {
     width: 400px !important;
   }
 }
-
