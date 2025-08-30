@@ -56,7 +56,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-
 function getLoggedInUser() {
   return JSON.parse(localStorage.getItem("loggedInUser"));
 }
@@ -65,11 +64,11 @@ function renderFavoriteModal() {
   const favmodalbody = document.getElementById("favmodalbody");
   const user = getLoggedInUser();
   let favoriteLabel = document.getElementById("favoritelabel");
-if (user && user.Email) {
-  favoriteLabel.textContent = user.Email;
-} else {
-  favoriteLabel.textContent = "example@gmail.com";
-}
+  if (user && user.Email) {
+    favoriteLabel.textContent = user.Email;
+  } else {
+    favoriteLabel.textContent = "example@gmail.com";
+  }
   favmodalbody.innerHTML = "";
 
   if (!user || !user.wishlist || user.wishlist.length === 0) {
@@ -89,55 +88,61 @@ if (user && user.Email) {
   }
   let clearBtn = document.getElementById("clearBtn");
   clearBtn.addEventListener("click", () => {
-    user.wishlist = []; 
-    let products =JSON.parse(localStorage.getItem("products"))
-    localStorage.setItem("loggedInUser", JSON.stringify(user));  
+    user.wishlist = [];
+    let products = JSON.parse(localStorage.getItem("products"));
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
     renderFavoriteModal();
     updateFavBadge();
-    document.querySelectorAll(".favorite-btn").forEach(btn => {
-    btn.classList.remove("active");
-    let icon = btn.querySelector("i");
-    if (icon) {
-      icon.classList.remove("bi-heart-fill");
-      icon.classList.add("bi-heart");
-    }
+    document.querySelectorAll(".favorite-btn").forEach((btn) => {
+      btn.classList.remove("active");
+      let icon = btn.querySelector("i");
+      if (icon) {
+        icon.classList.remove("bi-heart-fill");
+        icon.classList.add("bi-heart");
+      }
+    });
   });
-    
-  });
-
 
   const favdiv = document.createElement("div");
   favdiv.className = "favdiv";
-  user.wishlist.forEach(product => {
+  user.wishlist.forEach((product) => {
     const card = document.createElement("div");
     card.className = "cardstyle";
     card.innerHTML = `
       <div class="card product-card">
        <div class="position-relative">
         <img src="${product.image}" class="card-img-top" alt="${product.name}">
-        <button class="removeFavBtn btn btn-sm bg-white position-absolute top-0 end-0 m-2" data-id="${product.id}">
+        <button class="removeFavBtn btn btn-sm bg-white position-absolute top-0 end-0 m-2" data-id="${
+          product.id
+        }">
             <i class="bi bi-x-lg"></i>
           </button>
        </div>
         <div class="card-body text-center">
           <h5 class="producttitlefav">${product.name}</h5>
           <h4 class="newprice fw-bold text-danger">$${product.price}</h4>
-          ${product.oldPrice ? `<h4 class="old-price text-secondary text-decoration-line-through">$${product.oldPrice}</h4>` : ""}
-          <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id}">ADD TO CART</button>
+          ${
+            product.oldPrice
+              ? `<h4 class="old-price text-secondary text-decoration-line-through">$${product.oldPrice}</h4>`
+              : ""
+          }
+          <button class="btn btn-dark w-100 btnaddtocard" data-id="${
+            product.id
+          }">ADD TO CART</button>
         </div>
       </div>
     `;
     favdiv.appendChild(card);
   });
   favmodalbody.appendChild(favdiv);
-document.querySelectorAll(".removeFavBtn").forEach(btn => {
+  document.querySelectorAll(".removeFavBtn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = parseInt(btn.getAttribute("data-id"));
-      user.wishlist = user.wishlist.filter(p => p.id !== id);
+      user.wishlist = user.wishlist.filter((p) => p.id !== id);
       localStorage.setItem("loggedInUser", JSON.stringify(user));
       updateFavBadge();
       renderFavoriteModal();
-            let favBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
+      let favBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
       if (favBtn) {
         favBtn.classList.remove("active");
         let icon = favBtn.querySelector("i");
@@ -147,10 +152,7 @@ document.querySelectorAll(".removeFavBtn").forEach(btn => {
         }
       }
     });
-  
   });
-
-
 }
 
 function saveUsers(users, loggedInUser) {
@@ -187,13 +189,11 @@ function handleAuthButtons() {
   });
 }
 
-
-
-document.addEventListener("click", e => {
+document.addEventListener("click", (e) => {
   if (e.target.classList.contains("btnaddtocard")) {
     const productId = parseInt(e.target.getAttribute("data-id"));
     const products = JSON.parse(localStorage.getItem("products")) || [];
-    const product = products.find(p => p.id === productId);
+    const product = products.find((p) => p.id === productId);
     const user = getLoggedInUser();
 
     if (!user) {
@@ -209,21 +209,52 @@ document.addEventListener("click", e => {
     }
 
     if (!user.cart) user.cart = [];
-    if (!user.cart.some(p => p.id === productId)) {
+
+    let existing = user.cart.find((p) => p.id === productId);
+
+    if (product.stock === 0) {
+      Swal.fire({
+        title: "❌ Out of Stock",
+        text: "This product is currently not available.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
+    if (existing) {
+      if (existing.quantity < product.stock) {
+        existing.quantity += 1;
+        Swal.fire({
+          title: "✅ Updated Cart",
+          text: `${product.name} quantity increased.`,
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          title: "⚠️ Stock Limit Reached",
+          text: "You cannot add more of this product.",
+          icon: "warning",
+          confirmButtonText: "OK",
+        });
+        return;
+      }
+    } else {
       user.cart.push({ ...product, quantity: 1 });
     }
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const index = users.findIndex(u => u.ID === user.ID);
+    const index = users.findIndex((u) => u.ID === user.ID);
     users[index] = user;
     saveUsers(users, user);
+
     updateCartBadge();
     updateFavBadge();
     window.location.href = "../cart/cart.html";
   }
 });
-
-
 
 function updateFavBadge() {
   const favBadge = document.getElementById("favBadge");
@@ -240,4 +271,3 @@ function updateCartBadge() {
 updateCartBadge();
 renderFavoriteModal();
 updateFavBadge();
-
