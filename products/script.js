@@ -495,9 +495,11 @@ document.addEventListener("click", function (e) {
     let loggedInUser = getLoggedInUser();
     let quantity = 1;
 
+
     if (!loggedInUser.cart) {
       loggedInUser.cart = [];
     }
+
 
     let productToAdd = products.find((p) => p.id === productId);
 
@@ -506,6 +508,17 @@ document.addEventListener("click", function (e) {
       productCopy.quantity = 1;
       loggedInUser.cart.push(productCopy);
     }
+
+    if (!productToAdd || Number(productToAdd.stock) <= 0) {
+      Swal.fire({
+        title: "Out of Stock ❌",
+        text: "This product is currently unavailable.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
 
     localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
     updateCartBadge();

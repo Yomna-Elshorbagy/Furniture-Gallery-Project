@@ -340,6 +340,17 @@ document.addEventListener("click", (e) => {
       return;
     }
 
+      if (!product || product.stock === 0) {
+      Swal.fire({
+        title: "Out of Stock ❌",
+        text: "This product is currently unavailable.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
+
     if (!user.cart) user.cart = [];
     if (!user.cart.some((p) => p.id === productId)) {
       user.cart.push({ ...product, quantity: 1 });
