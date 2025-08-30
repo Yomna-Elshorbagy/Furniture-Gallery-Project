@@ -129,7 +129,7 @@ document.addEventListener("click", (e) => {
       showConfirmButton: true,
       confirmButtonText: "Go to Login",
     }).then(() => {
-      window.location.href = "../Auth/log-in/login.html";
+      window.location.href = "../log-in/login.html";
     });
   } else {
     window.location.href = link.href;

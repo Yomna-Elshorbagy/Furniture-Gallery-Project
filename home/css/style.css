@@ -226,9 +226,7 @@ button.hover-button-main::after {
   background-color: white;
   z-index: -1;
   transform: scaleX(1);
-  /* مغطّي الزر بالكامل */
   transform-origin: left center;
-  /* نقطة البداية واحدة وثابتة */
   transition: transform 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
@@ -250,73 +248,69 @@ button.hover-button-main:hover::after {
   color: #c59d5f !important;
   border-color: #c59d5f !important;
 }
-.madal{
+.madal {
   font-family: var(--heading-font);
 }
-#favModal .modal-content{
-    border-radius: 0 !important;
-    
+#favModal .modal-content {
+  border-radius: 0 !important;
 }
-  .modal-dialog {
-  max-width: 70% !important; 
+.modal-dialog {
+  max-width: 70% !important;
 }
 
 .modal-content {
-  height: 550px !important; 
+  height: 550px !important;
 }
-.modal-header{
-    border-radius: 0 !important;
-    color: #ffffff !important;
-    font-family: var(--heading-font);
+.modal-header {
+  border-radius: 0 !important;
+  color: #ffffff !important;
+  font-family: var(--heading-font);
 }
-#favoritelabel{
-    font-size: 14px !important;
+#favoritelabel {
+  font-size: 14px !important;
 }
-.modal-body hr{
-    width: 95% !important;
-    margin: 20px auto !important;
-    text-align: start !important;
+.modal-body hr {
+  width: 95% !important;
+  margin: 20px auto !important;
+  text-align: start !important;
 }
-.modal-body h5{
-    font-weight: 400;
-    letter-spacing: 0 !important;
-    font-size: 18px !important;
-
+.modal-body h5 {
+  font-weight: 400;
+  letter-spacing: 0 !important;
+  font-size: 18px !important;
 }
-.nofavoritediv{
-    margin-top: 70px !important;
+.nofavoritediv {
+  margin-top: 70px !important;
 }
-.nofavoritediv h5{
-    margin-bottom: 30px !important;
-    font-size: 16px !important;
-    font-weight: 500 ;
+.nofavoritediv h5 {
+  margin-bottom: 30px !important;
+  font-size: 16px !important;
+  font-weight: 500;
 }
-.nofavoritediv p{
-    font-size: 12px !important;
+.nofavoritediv p {
+  font-size: 12px !important;
 }
-.nofavoritediv button{
-    background-color: #434655 !important;
-    color: white !important;
-    font-size: 12px !important; 
-    padding: 5px 20px !important;
-    font-weight: bold;
-    margin-top: 20px;
-
- 
+.nofavoritediv button {
+  background-color: #434655 !important;
+  color: white !important;
+  font-size: 12px !important;
+  padding: 5px 20px !important;
+  font-weight: bold;
+  margin-top: 20px;
 }
-.nofavoritediv button:hover{
-    opacity: 0.8 !important;
+.nofavoritediv button:hover {
+  opacity: 0.8 !important;
 }
-.cardstyle{
+.cardstyle {
   width: 150px;
   height: 200px;
   margin-right: 20px;
   margin-left: 30px;
   margin-bottom: 100px !important;
 }
-.btnaddtocard{
+.btnaddtocard {
   height: 30px !important;
-  font-size:10px !important ;
+  font-size: 10px !important ;
 }
 
 .favdiv {
@@ -324,13 +318,12 @@ button.hover-button-main:hover::after {
   flex-direction: row;
   justify-content: start !important;
   flex-wrap: wrap;
-  max-height: 400px; 
+  max-height: 400px;
   overflow-y: auto;
-  gap: 10px; 
+  gap: 10px;
 }
 
-
-h5.producttitlefav{
+h5.producttitlefav {
   font-size: 10px !important;
   font-weight: 500 !important;
 }
@@ -340,13 +333,13 @@ h5.producttitlefav:hover {
   overflow: visible;
   text-overflow: unset;
 }
-.toaststyle{
-  background-color:var(--primary-color)!important;
+.toaststyle {
+  background-color: var(--primary-color) !important;
 }
-.badgestyle{
+.badgestyle {
   width: 15px;
   height: 15px;
-  font-size:8px;
+  font-size: 8px;
   margin: auto;
 }
 
@@ -425,8 +418,6 @@ h5.producttitlefav:hover {
   margin-right: 0px !important;
 }
 
-
-
 .card:hover {
   cursor: pointer;
 }
@@ -456,8 +447,6 @@ h5.producttitlefav:hover {
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
-
-
 
 .card-body h6 {
   font-weight: 300;
@@ -830,123 +819,113 @@ footer a:hover {
 
 /* section catigores */
 
-
-
-    #sectionCategory {
-      background-color: white;
-       display: flex;
+#sectionCategory {
+  background-color: white;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-      min-height: 100vh;
-    }
-   #sectionCategory .intro-text h3 {
-  font-size: 35px;         
-  text-align: center;     
-  margin-bottom: 40px; 
-  font-weight: 400; 
-   text-transform: uppercase;
+  min-height: 100vh;
 }
- #sectionCategory .intro-text p{
-    font-size: 25px;
-  font-weight: 400; 
-  word-spacing: 3px; 
-color:#2F4F4F ;
+#sectionCategory .intro-text h3 {
+  font-size: 35px;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+#sectionCategory .intro-text p {
+  font-size: 25px;
+  font-weight: 400;
+  word-spacing: 3px;
+  color: #2f4f4f;
 }
 
-   #sectionCategory  .container {
-       display: flex;
-      gap: 40px;
-      position: relative;
-      margin-bottom: 30px ;
-       max-width: 1400px;      
-  margin-left: auto;       
-  margin-right: auto;       
+#sectionCategory .container {
+  display: flex;
+  gap: 40px;
+  position: relative;
+  margin-bottom: 30px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+#sectionCategory .section {
+  position: relative;
+  width: 700px;
+  height: 500px;
+  overflow: hidden;
+  object-fit: cover;
+  display: block;
+}
 
-} 
-
-   #sectionCategory  .section {
-       position: relative;
-      width: 700px;
-      height: 500px;
-      overflow: hidden; 
-       object-fit: cover;
-  display: block 
-  
-    } 
-
-#sectionCategory    .section a img {
-      
+#sectionCategory .section a img {
   width: 100%;
   height: 100%;
- object-fit: cover;
-filter: brightness(90%);
+  object-fit: cover;
+  filter: brightness(90%);
   transition: transform 5s ease;
-  display: block; 
+  display: block;
   flex: 1 1 300px;
-  border: 1px solid white;    
-    }
+  border: 1px solid white;
+}
 
-#sectionCategory    .section a:hover img {
-     
-      transform: perspective(500px) translateZ(50px);
-    
-    }
+#sectionCategory .section a:hover img {
+  transform: perspective(500px) translateZ(50px);
+}
 
- #sectionCategory .overlay {
+#sectionCategory .overlay {
   position: absolute;
-  bottom: 0; 
+  bottom: 0;
   left: 0;
   width: 100%;
   padding: 50px;
- 
+
   flex-direction: column;
-  justify-content: flex-end; 
+  justify-content: flex-end;
   color: white;
-
 }
 
- #sectionCategory .overlay > * {
-  max-width: 100%; 
- 
+#sectionCategory .overlay > * {
+  max-width: 100%;
 }
 
-   #sectionCategory .overlay p {
-      font-size: 25px;
-      margin-bottom: 10px;
-      padding: 20px;
-     }  
+#sectionCategory .overlay p {
+  font-size: 25px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
 
-   #sectionCategory .btn {
-      padding: 10px 20px;
-      border: 1px solid white; 
-      color: black;
-      cursor: pointer;
-      transition: all 0.3s ease;
-       background-color: white;
-       width: 80%;
-       height: 50px;
-       font-size: 20px;
-    }
+#sectionCategory .btn {
+  padding: 10px 20px;
+  border: 1px solid white;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: white;
+  width: 80%;
+  height: 50px;
+  font-size: 20px;
+}
 
 #sectionCategory .btn:hover {
-     background-color: transparent;
-      color: white;
-    }
-
-#sectionCategory .intro-text{
-        display: flex;
-        flex-direction: column; 
-        display: grid;
-  grid-template-columns: 1fr; 
-   margin-bottom: 90px; 
-   margin-top:70px ;
+  background-color: transparent;
+  color: white;
 }
 
- #sectionCategory .box {
+#sectionCategory .intro-text {
   display: flex;
-  justify-content: space-between; 
+  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 90px;
+  margin-top: 70px;
+}
+
+#sectionCategory .box {
+  display: flex;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 50px;
   width: 85%;
@@ -954,28 +933,27 @@ filter: brightness(90%);
   margin-bottom: 50px;
 }
 
- #sectionCategory .item img {
+#sectionCategory .item img {
   width: 750px;
   height: 450px;
-  display: block; 
+  display: block;
 }
- #sectionCategory .aside h3 {
-  padding-top: 30px;     
-  margin-bottom: 30px;   
+#sectionCategory .aside h3 {
+  padding-top: 30px;
+  margin-bottom: 30px;
   text-transform: uppercase;
   font-size: 30px;
   font-weight: 400;
-  word-spacing:2px ;
+  word-spacing: 2px;
 }
- #sectionCategory .aside p{
-    
-    font-size: 20px;
-    color:#2F4F4F ;
-    padding-bottom: 50px;
-    line-height: 1.7;
-    
+#sectionCategory .aside p {
+  font-size: 20px;
+  color: #2f4f4f;
+  padding-bottom: 50px;
+  line-height: 1.7;
 }
- #sectionCategory .aside button {
+#sectionCategory .aside button,
+.productsPage button {
   position: relative;
   border: 1px solid black;
   color: white;
@@ -992,10 +970,10 @@ filter: brightness(90%);
   overflow: hidden;
   z-index: 1;
   transition: color 0.4s ease;
-  
 }
 
- #sectionCategory .aside button::before {
+#sectionCategory .aside button::before,
+.productsPage button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -1005,10 +983,11 @@ filter: brightness(90%);
   background-color: black;
   z-index: -1;
   transition: transform 0.5s ease;
-  transform: translateX(0); 
+  transform: translateX(0);
 }
 
- #sectionCategory .aside button::after {
+#sectionCategory .aside button::after,
+.productsPage button::after {
   content: "";
   position: absolute;
   top: 0;
@@ -1021,30 +1000,29 @@ filter: brightness(90%);
   transform: translateX(0);
 }
 
-#sectionCategory .aside button:hover::before {
+#sectionCategory .aside button:hover::before,
+.productsPage button:hover::before {
   transform: translateX(100%);
 }
 
- #sectionCategory .aside button:hover::after {
+#sectionCategory .aside button:hover::after,
+.productsPage button:hover::after {
   transform: translateX(100%);
 }
 
-
- #sectionCategory .aside button:hover {
+#sectionCategory .aside button:hover,
+.productsPage button:hover {
   color: black;
 }
 
 @media (max-width: 1500px) {
-  
-  
-   #sectionCategory .intro-text p {
+  #sectionCategory .intro-text p {
     font-size: 18px;
     text-align: center;
   }
 
-  
   #sectionCategory .container {
-     flex-direction: row;
+    flex-direction: row;
     width: 90%;
   }
 
@@ -1056,12 +1034,12 @@ filter: brightness(90%);
   #sectionCategory .section a img {
     height: auto;
   }
-  
-   #sectionCategory .btn {
-     font-size: 70%; 
+
+  #sectionCategory .btn {
+    font-size: 70%;
     height: 40px;
     /* width: 90%; */
-   }
+  }
 
   #sectionCategory .box {
     flex-direction: column;
@@ -1069,7 +1047,7 @@ filter: brightness(90%);
     gap: 20px;
   }
 
-#sectionCategory .item img {
+  #sectionCategory .item img {
     width: 100%;
     height: auto;
   }
@@ -1080,15 +1058,12 @@ filter: brightness(90%);
 
   #sectionCategory .aside button {
     width: 100%;
-
   }
 }
 
-
-@media (max-width:1000px) {
-  
+@media (max-width: 1000px) {
   #sectionCategory .container {
-     flex-direction: column;
+    flex-direction: column;
     width: 90%;
   }
 
@@ -1108,20 +1083,20 @@ filter: brightness(90%);
     width: 90%;
   }
 
- #sectionCategory .aside h3 {
+  #sectionCategory .aside h3 {
     font-size: 22px;
   }
 
-#sectionCategory  .aside p {
+  #sectionCategory .aside p {
     font-size: 16px;
   }
 
-#sectionCategory  .aside button {
+  #sectionCategory .aside button {
     font-size: 16px;
     height: 40px;
   }
-  
-#sectionCategory  .box {
+
+  #sectionCategory .box {
     flex-direction: column;
     width: 90%;
     gap: 20px;

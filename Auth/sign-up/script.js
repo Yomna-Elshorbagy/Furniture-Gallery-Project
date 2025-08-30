@@ -1,9 +1,10 @@
 // ====== 1- User Class ========>
 class User {
-  constructor(_ID, _name, _email, _hashedPassword, _role = "user") {
+  constructor(_ID, _name, _email, _phone, _hashedPassword, _role = "user") {
     this.ID = _ID;
     this.Name = _name;
     this.Email = _email;
+    this.Phone = _phone;
     this.Password = _hashedPassword;
     this.Role = _role;
     this.cart = [];
@@ -39,6 +40,7 @@ const validateName = (name) =>
     name
   );
 const validatePassword = (password) => password.length >= 6;
+const validatePhone = (phone) => /^(010|011|012|015)[0-9]{8}$/.test(phone);
 
 // ======= 3- LocalStorage helpers =====>
 const getUsers = () => JSON.parse(localStorage.getItem("users")) || [];
@@ -53,6 +55,10 @@ const nameError = document.getElementById("nameError");
 const emailError = document.getElementById("emailError");
 const passwordError = document.getElementById("passwordError");
 const submitBtn = document.getElementById("submitBtn");
+const phoneInput = document.getElementById("tel");
+const confirmPasswordInput = document.getElementById("confirmPassword");
+const phoneError = document.getElementById("phoneError");
+const confirmPasswordError = document.getElementById("confirmPasswordError");
 
 // ======= 5- validation function =====>
 function checkFormValidity() {
@@ -63,34 +69,12 @@ function checkFormValidity() {
       (u) => u.Email.toLowerCase() === emailInput.value.trim().toLowerCase()
     );
   let passwordValid = validatePassword(passwordInput.value.trim());
+  let phoneValid = validatePhone(phoneInput.value.trim());
+  let confirmPasswordValid =
+    passwordInput.value.trim() === confirmPasswordInput.value.trim();
 
-  submitBtn.disabled = !(nameValid && emailValid && passwordValid);
+  submitBtn.disabled = !(nameValid && emailValid && passwordValid && phoneValid && confirmPasswordValid);
 }
-// ======= 6- Seed default admins to be read when open the page ========>
-// (async function seedAdmins() {
-//   let users = getUsers();
-//   if (users.length === 0) {
-//     let defaultAdmins = [
-//       {
-//         id: "1",
-//         name: "yomna",
-//         email: "yomna@gmail.com",
-//         password: "123yomna",
-//       },
-//       { id: "2", name: "omar", email: "omar@gmail.com", password: "123omar" },
-//     ];
-
-//     for (let adminData of defaultAdmins) {
-//       let hashed = bcrypt.hashSync(adminData.password, 10);
-
-//       users.push(
-//         new User(adminData.id, adminData.name, adminData.email, hashed, "admin")
-//       );
-//     }
-//     saveUsers(users);
-//   }
-// })();
-
 // ======= 7- validate errors =====>
 nameInput.addEventListener("input", () => {
   if (!validateName(nameInput.value.trim())) {
@@ -121,6 +105,17 @@ emailInput.addEventListener("input", () => {
   }
   checkFormValidity();
 });
+phoneInput.addEventListener("input", () => {
+  if (!validatePhone(phoneInput.value.trim())) {
+    phoneError.textContent =
+      "Phone must start with 010, 011, 012, or 015 and contain 11 digits.";
+    phoneError.style.display = "block";
+  } else {
+    phoneError.textContent = "";
+    phoneError.style.display = "none";
+  }
+  checkFormValidity();
+});
 
 passwordInput.addEventListener("input", () => {
   if (!validatePassword(passwordInput.value.trim())) {
@@ -129,6 +124,16 @@ passwordInput.addEventListener("input", () => {
   } else {
     passwordError.textContent = "";
     passwordError.style.display = "none";
+  }
+  checkFormValidity();
+});
+confirmPasswordInput.addEventListener("input", () => {
+  if (passwordInput.value.trim() !== confirmPasswordInput.value.trim()) {
+    confirmPasswordError.textContent = "Passwords do not match.";
+    confirmPasswordError.style.display = "block";
+  } else {
+    confirmPasswordError.textContent = "";
+    confirmPasswordError.style.display = "none";
   }
   checkFormValidity();
 });
@@ -142,11 +147,12 @@ document.getElementById("userForm").addEventListener("submit", (e) => {
   let password = passwordInput.value.trim();
   let hashedPassword = bcrypt.hashSync(password, 10);
   let role = document.querySelector('input[name="role"]:checked').value;
+  let phone = phoneInput.value.trim();
 
   let users = getUsers();
   let id = Date.now() + Math.floor(Math.random() * 1000);
 
-  let newUser = new User(id, name, email, hashedPassword, role);
+  let newUser = new User(id, name, email, phone, hashedPassword, role);
   users.push(newUser);
   saveUsers(users);
 
@@ -192,7 +198,7 @@ document.addEventListener("click", (e) => {
       showConfirmButton: true,
       confirmButtonText: "Go to Login",
     }).then(() => {
-      window.location.href = "../Auth/log-in/login.html";
+      window.location.href = "../log-in/login.html";
     });
   } else {
     window.location.href = link.href;

@@ -95,7 +95,54 @@ input:focus {
   border-color: #0e4984;
   box-shadow: 0 1px 6px rgba(30, 55, 80, 0.3);
 }
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* small space between buttons */
+  margin-top: 15px;
+}
 
+.buttons .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 45px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Submit button (keep your gradient) */
+#submitBtn {
+  background: linear-gradient(135deg, #000, #4f8ecd);
+  color: #fff;
+  border: none;
+}
+
+#submitBtn:hover {
+  background: linear-gradient(135deg, #416282, #000);
+  transform: translateY(-2px);
+}
+
+/* Google button — simple background */
+.google-btn {
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  color: #444;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.google-btn:hover {
+  background: #eaeaea;
+}
+/* 
 .buttons .btn {
   display: block;
   width: 140px;
@@ -109,7 +156,7 @@ input:focus {
   border-radius: 25px;
   margin: 10px auto;
   transition: background 0.3s, transform 0.2s;
-}
+} */
 
 .buttons .btn:hover {
   background: linear-gradient(135deg, #416282, #000);
@@ -191,61 +238,11 @@ input:focus {
 }
 
 /* *************** Starting navbar styling ******************** */
-/* .nav {
-  position: fixed;
-  top: 0;
-  z-index: 2000;
-  width: 100%;
-  transition: all 0.3s ease-in-out;
-  padding: 0.5rem 0;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.nav .nav-link {
-  color: #111;
-  transition: color 0.3s ease;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin: 0 10px;
-}
-
-.nav .nav-link:hover {
-  color: #c59d5f;
-}
-.active {
-  color: #c59d5f !important;
-}
-.nav i {
-  color: #111;
-  margin: 10px;
-  font-size: 20px;
-}
-
-.nav a {
-  text-decoration: none;
-  color: #111;
-}
-
-.hover-button {
-  background-color: transparent;
-  border: 1px solid #111;
-  color: #111;
-  padding: 5px;
-  font-size: 15px;
-  letter-spacing: 2px;
-}
-.nav .nav-logo img {
-  width: 180px !important;
-  transform: scale(0.9);
-} */
 .nav {
   font-weight: 500;
   z-index: 1050;
   width: 100%;
   transition: all 0.3s ease-in-out;
-  /* background: transparent; */
-  /* border-bottom: 1px solid rgb(254, 254, 254); */
 }
 
 /* nav icon */

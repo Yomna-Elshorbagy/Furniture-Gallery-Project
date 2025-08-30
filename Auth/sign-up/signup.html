@@ -38,7 +38,7 @@
       <div class="nav position-fixed w-100">
         <nav class="navbar navbar-expand-lg bg-white" style="width: 100%">
           <div class="container-fluid">
-            <a class="navbar-brand" href="../home/home.html"
+            <a class="navbar-brand" href="../../home/home.html"
               ><img
                 src="https://thefurnituregallery.com.au/cdn/shop/files/TFG_logo_200x.png?v=1655618786"
                 alt=""
@@ -65,24 +65,24 @@
                   <a
                     class="nav-link text-black"
                     aria-current="page"
-                    href="../home/home.html"
+                    href="../../home/home.html"
                     >Home</a
                   >
                 </li>
                 <li class="nav-item">
                   <a
                     class="nav-link text-black"
-                    href="../products/products.html"
+                    href="../../products/products.html"
                     >Product</a
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-black" href="#">About</a>
+                  <a class="nav-link text-black" href="../../about/about.html">About</a>
                 </li>
                 <li class="nav-item">
                   <a
                     class="nav-link text-black"
-                    href="../contact-us/contact.html"
+                    href="../../contact-us/contact.html"
                     >Contact US</a
                   >
                 </li>
@@ -96,7 +96,10 @@
               </ul>
             </div>
             <div class="logo d-none d-lg-block">
-              <a href="../../profile/profile.html" class="text-decoration-none userData">
+              <a
+                href="../../profile/profile.html"
+                class="text-decoration-none userData"
+              >
                 <i class="fa-solid fa-user text-black m-2"></i>
               </a>
             </div>
@@ -141,7 +144,7 @@
               required
               pattern="^(010|011|012|015)[0-9]{8}$"
             />
-            <span class="error" id="nameError" style="display: none"></span>
+            <span class="error" id="phoneError" style="display: none"></span>
 
             <label for="email">E-mail</label>
             <input
@@ -163,7 +166,20 @@
               required
             />
             <span class="error" id="passwordError" style="display: none"></span>
-
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              minlength="6"
+              placeholder="🔑"
+              required
+            />
+            <span
+              class="error"
+              id="confirmPasswordError"
+              style="display: none"
+            ></span>
             <!-- here is used to appeare and disappeare according to admin login -->
             <div style="display: none" id="checkUser">
               <input
@@ -175,12 +191,12 @@
               />
               <label for="roleUser">User</label>
             </div>
-              <div style="display: none" id="checkUser">
+            <div style="display: none" id="checkUser">
               <input type="radio" name="role" id="roleUser" value="user" />
               <label for="roleSeller">Seller</label>
             </div>
             <div style="display: none" id="checkSeller">
-              <input type="radio" name="role" id="roleSeller" value="seller" checked/>
+              <input type="radio" name="role" id="roleSeller" value="seller" />
               <label for="roleSeller">Seller</label>
             </div>
             <div style="display: none" id="checkAdmin">
@@ -196,6 +212,16 @@
                 disabled
               >
                 Submit
+              </button>
+              <button
+                type="button"
+                class="btn google-btn"
+                aria-label="Sign up with Google"
+              >
+                <img
+                  src="https://www.svgrepo.com/show/355037/google.svg"
+                  alt="Google"
+                />
               </button>
             </div>
             <div class="register">
