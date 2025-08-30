@@ -344,35 +344,21 @@ placeOrderBtn.addEventListener("click", () => {
   if (!isValid) return;
 
   // =====> 1- Check stock <===
-  const outOfStockItems = loggedInUser.cart.filter((item) => {
-    const product = allProducts.find((prod) => prod.id === item.id);
-    return product && product.stock < item.quantity;
-  });
-  if (outOfStockItems.length > 0) {
-    Swal.fire({
-      icon: "error",
-      title: "Out of Stock",
-      text: "Some products in your cart are out of stock.",
-      timer: 3000,
-      showConfirmButton: false,
-    });
-    return;
-  }
-  const zeroStockItems = loggedInUser.cart.filter((item) => {
-    const product = allProducts.find((prod) => prod.id === item.id);
-    return product && product.stock === 0;
-  });
+const invalidStockItems = loggedInUser.cart.filter((item) => {
+  const product = allProducts.find((prod) => prod.id === item.id);
+  return product && (product.stock === 0 || product.stock < item.quantity);
+});
 
-  if (zeroStockItems.length > 0) {
-    Swal.fire({
-      icon: "error",
-      title: "Out of Stock",
-      text: "Some products in your cart are completely out of stock.",
-      timer: 3000,
-      showConfirmButton: false,
-    });
-    return; // Stop the order
-  }
+if (invalidStockItems.length > 0) {
+  Swal.fire({
+    icon: "error",
+    title: "Stock Issue",
+    text: "Some products in your cart are out of stock or exceed available quantity.",
+    timer: 3000,
+    showConfirmButton: false,
+  });
+  return; // Stop the order
+}
 
   // =====> 2- Get all orders from localStorage & generate new id <=====
   let allOrders = JSON.parse(localStorage.getItem("orders")) || [];
