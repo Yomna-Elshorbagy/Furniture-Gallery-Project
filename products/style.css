@@ -216,14 +216,14 @@ button.hover-button::after {
   }
 }
 /* *** colors *** */
- /* start styling for color buttons filteration*/
+/* start styling for color buttons filteration*/
 #colorFilter {
   display: flex;
-  flex-wrap: nowrap;          
-  overflow-x: auto;           
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 0.5rem;
   padding: 0.5rem 0;
-  scrollbar-width: thin;       
+  scrollbar-width: thin;
   scrollbar-color: #888 #f1f1f1;
 }
 
@@ -231,7 +231,7 @@ button.hover-button::after {
   cursor: pointer;
   border: 2px solid #ddd;
   border-radius: 50%;
-  flex: 0 0 auto;             
+  flex: 0 0 auto;
   width: 35px;
   height: 35px;
   transition: transform 0.2s ease, border-color 0.2s ease;
@@ -245,7 +245,7 @@ button.hover-button::after {
 .color-btn.active {
   border: 2px solid #000;
 }
- /*end of color filtration sidebar*/
+/*end of color filtration sidebar*/
 
 .product-card img {
   width: 100%;
@@ -584,4 +584,106 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+/* *************************** footer bottom ************************** */
+footer {
+  background: #f9f9f6;
+  color: #333;
+  font-size: 15px;
+  padding: 50px 20px 20px;
+}
+
+footer h6 {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+footer a {
+  color: #666;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #000;
+}
+
+.footer-icons i {
+  font-size: 20px;
+  margin: 0 8px;
+  color: #111;
+  cursor: pointer;
+}
+
+.footer-icons i:hover {
+  color: #555;
+}
+
+.footer-bottom {
+  font-size: 13px;
+  color: #777;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer-payments img {
+  height: 30px;
+  margin: 5px;
+}
+
+.feature-box {
+  text-align: center;
+  padding: 10px;
+}
+
+.feature-box i {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.imageCss {
+  cursor: pointer;
+  transition: scale 0.5s ease;
+}
+
+.imageCss:hover {
+  scale: 1.1;
+}
+
+.feature-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.footer-apps img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-apps img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.footer-payments ul {
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-payments li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-payments img,
+.footer-payments svg {
+  height: 28px;
+  width: auto;
+  max-width: 100%;
 }

@@ -107,17 +107,6 @@ button.hover-button::after {
   transform: scale(0.9);
 }
 
-#categorySearch {
-  border: none;
-  border-bottom: 2px solid #c7b9a9;
-}
-
-.badgestyle {
-  width: 15px;
-  height: 15px;
-  font-size: 8px;
-  margin: auto;
-}
 /* *************** product details *************** */
 .sub-images .blockCont {
   overflow: hidden;
@@ -147,21 +136,11 @@ button.hover-button::after {
     margin-top: 10px !important;
   }
   .main-image img {
-  width: 100%;
-  height: 50%;
-  border-radius: 8px;
+    width: 100%;
+    height: 50%;
+    border-radius: 8px;
+  }
 }
-
-
-
-
-}
-
-
-
-
-
-
 
 .sub-images img:hover {
   transform: scale(1.05) !important;
@@ -231,33 +210,88 @@ button.hover-button::after {
   border: 1px solid gray;
   transition: transform 0.45s cubic-bezier(0.785, 0.135, 0.15, 0.86) !important;
 }
-
-.custom-margin {
+/* ************ styling of from from button ************** */
+#questionModal .custom-margin {
   margin-top: 150px;
 }
 
-.modal-body {
-  padding: 20px;
+#questionModal .modal-body,
+#deliveryModal .modal-body {
+  padding: 40px;
 }
 
-.modal-dialog {
+#questionModal .modal-dialog,
+#deliveryModal .modal-dialog {
   max-width: 600px;
   padding: 30px;
 }
 
-#questionModal .modal-dialog {
+#questionModal .modal-dialog,
+#deliveryModal .modal-dialog {
   margin-top: 100px;
 }
 
-.form-label {
+#questionModal .form-label {
   font-size: 0.8rem;
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+  #deliveryModal .modal-dialog,
+  #questionModal .modal-dialog {
+    max-width: 90%;
+    margin: 50px auto;
+  }
+
+  #deliveryModal .modal-body {
+    padding: 5px;
+  }
+  #questionModal .modal-body {
+    padding: 20px;
+  }
+
+  #questionModal .form-label {
+    font-size: 0.75rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  #deliveryModal .modal-dialog {
+    max-width: 100% !important;
+    margin: 0;
+    height: 70%;
+  }
+  #questionModal .modal-dialog {
+    max-width: 100% !important;
+    margin: 0;
+    height: 100%;
+  }
+
+  #deliveryModal .modal-content,
+  #questionModal .modal-content {
+    border-radius: 0;
+    height: 100%;
+  }
+
+  #deliveryModal .modal-body {
+    padding: 8px !important;
+  }
+  #questionModal .modal-body {
+    padding: 15px;
+  }
+
+  #questionModal h5,
+  #deliveryModal h5 {
+    font-size: 18px !important; 
+  }
 }
 
 /* start feature */
 #features .features-wrapper {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  padding: 40px 20px; /* باديج حوالين البوردر */
+  padding: 40px 20px;
   background: #fff;
   max-width: 1200px;
   margin: auto;
@@ -268,7 +302,7 @@ button.hover-button::after {
 }
 #features .feature-box i {
   font-size: 50px;
-  color: #d2a88a; /* نفس اللون في الصورة */
+  color: #d2a88a;
   margin-bottom: 15px;
   display: block;
 }
@@ -293,13 +327,14 @@ button.hover-button::after {
   align-items: left;
 }
 #features .feature-box ul li::before {
-  content: "▶"; /* السهم */
+  content: "▶";
   position: absolute;
   left: 0px;
   color: #d2a88a;
   font-size: 14px;
 }
 /*---------------------------------- END features----------------------- */
+
 /* *************************** start realeted section************************** */
 .related-section {
   margin-top: 40px;
@@ -350,6 +385,7 @@ button.hover-button::after {
 }
 
 /* *************************** end realeted section************************** */
+
 /* ......................... start social-gallery.......................  */
 .head-section .main {
   font-size: 1.875rem;
@@ -511,7 +547,6 @@ footer a:hover {
 }
 
 /* -------------favorite modal style ---------------- */
-
 .navbar .active {
   color: #c59d5f !important;
   border-color: #c59d5f !important;
@@ -522,11 +557,14 @@ footer a:hover {
 #favModal .modal-content {
   border-radius: 0 !important;
 }
-.modal-dialog {
+#favModal .modal-dialog {
   max-width: 70% !important;
 }
+#favModal .modal-content {
+  height: auto !important;
+}
 
-.modal-content {
+#favModal .modal-content {
   height: 550px !important;
 }
 .modal-header {
@@ -537,15 +575,15 @@ footer a:hover {
 #favoritelabel {
   font-size: 14px !important;
 }
-.modal-body hr {
+#favModal .modal-body hr {
   width: 95% !important;
   margin: 20px auto !important;
   text-align: start !important;
 }
-.modal-body h5 {
+#favModal .modal-body h5 {
   font-weight: 400;
   letter-spacing: 0 !important;
-  font-size: 18px !important;
+  font-size: 12px !important;
 }
 .nofavoritediv {
   margin-top: 70px !important;

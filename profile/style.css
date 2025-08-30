@@ -487,10 +487,8 @@ button.hover-button::after {
 
 button.hover-button-main {
   background-color: white;
-  /* أبيض في البداية */
   border: none;
   color: #000000;
-  /* خط أسود */
   padding: 10px 20px;
   text-transform: uppercase;
   font-size: 0.8em;
@@ -510,9 +508,7 @@ button.hover-button-main::after {
   background-color: white;
   z-index: -1;
   transform: scaleX(1);
-  /* مغطّي الزر بالكامل */
   transform-origin: left center;
-  /* نقطة البداية واحدة وثابتة */
   transition: transform 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
@@ -524,7 +520,6 @@ button.hover-button-main:hover {
 
 button.hover-button-main:hover::after {
   transform: scaleX(0);
-  /* الأبيض ينسحب بس */
   transform-origin: right center;
   transition: transform 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
@@ -560,14 +555,6 @@ button.hover-button-main:hover::after {
   max-width: 70% !important;
 }
 
-.modal-content {
-  height: 550px !important;
-}
-.modal-header {
-  border-radius: 0 !important;
-  color: #ffffff !important;
-  font-family: var(--heading-font);
-}
 #favoritelabel {
   font-size: 14px !important;
 }
