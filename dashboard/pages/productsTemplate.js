@@ -1,16 +1,79 @@
 export const productsTemplate = `
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Products</h3>
-    <input type="text" id="searchInput" placeholder="&#128269; Search For Product" class="form-control mb-3 productSearch">
-
     <button type="button" id="addProductBtn" class="btn btn-secondary btn-sm me-5 p-2">
       <i class="fa-solid fa-plus"></i> Add Product
     </button>
   </div>
+    <div class="container mb-3">
+  <div class="row g-3">
+    <!-- Category Filter -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <label for="categoryFilter" class="form-label fw-bold">Category:</label>
+      <select id="categoryFilter" class="form-select custom-select">
+        <option value="All">All</option>
+        <option value="Living">Living</option>
+        <option value="Dining">Dining</option>
+        <option value="Bedroom">Bedroom</option>
+        <option value="Outdoor">Outdoor</option>
+        <option value="Decor">Decor</option>
+      </select>
+    </div>
+
+    <!-- Search by ID -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <label for="searchById" class="form-label fw-bold">Product ID:</label>
+      <div class="input-group">
+        <span class="input-group-text bg-light border-end-0">
+          <i class="fa fa-hashtag"></i>
+        </span>
+        <input 
+          type="text" 
+          id="searchById" 
+          class="form-control border-start-0 custom-input" 
+          placeholder="Search by Product ID..."
+        />
+      </div>
+    </div>
+
+    <!-- Search by Name -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <label for="searchByName" class="form-label fw-bold">Product Name:</label>
+      <div class="input-group">
+        <span class="input-group-text bg-light border-end-0">
+          <i class="fa fa-tag"></i>
+        </span>
+        <input 
+          type="text" 
+          id="searchByName" 
+          class="form-control border-start-0 custom-input" 
+          placeholder="Search by Product Name..."
+        />
+      </div>
+    </div>
+
+    <!-- Search by Stock -->
+    <div class="col-12 col-md-6 col-lg-3">
+      <label for="searchByStock" class="form-label fw-bold">Stock:</label>
+      <div class="input-group">
+        <span class="input-group-text bg-light border-end-0">
+          <i class="fa fa-box"></i>
+        </span>
+        <input 
+          type="text" 
+          id="searchByStock" 
+          class="form-control border-start-0 custom-input" 
+          placeholder="Search by Stock..."
+        />
+      </div>
+    </div>
+  </div>
+</div>
   <table class="table table-hover align-middle orders-table">
     <thead class="table-light">
       <tr>
         <th>Image</th>
+        <th>ID</th>
         <th>Name</th>
         <th>Price ($)</th>
         <th>old price</th>

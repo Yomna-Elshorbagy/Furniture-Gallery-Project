@@ -251,3 +251,6 @@ background: linear-gradient(135deg, #398590, #56cfe1) !important;
     font-size: 13px;
   }
 }
+.badge.bg-danger {
+  background-color: #dc3545 !important;
+}

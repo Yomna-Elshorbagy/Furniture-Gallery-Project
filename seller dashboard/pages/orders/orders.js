@@ -37,13 +37,32 @@ export function initOrdersPage() {
     if (currentOrders.length === 0) {
       tableBody.innerHTML = `<tr><td colspan="6" class="text-center">No orders found</td></tr>`;
     }
+
     currentOrders.forEach((order) => {
+      let statusClass = "";
+      switch (order.Status.toLowerCase()) {
+        case "completed":
+          statusClass = "badge bg-success"; 
+          break;
+        case "pending":
+          statusClass = "badge bg-warning text-dark";
+          break;
+        case "canceled":
+          statusClass = "badge bg-danger"; 
+          break;
+        case "shipped":
+          statusClass = "badge bg-info text-dark"; 
+          break;
+        default:
+          statusClass = "badge bg-secondary"; 
+      }
+
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${order.ID}</td>
         <td>${order.UserName}</td>
         <td>${order.TotalPrice}</td>
-        <td>${order.Status}</td>
+        <td><span class="${statusClass}">${order.Status}</span></td>
         <td>${order.Date}</td>
         <td>
           <button class="btn btn-sm btn-warning me-2 edit-order" data-id="${order.ID}">

@@ -13,10 +13,19 @@ export function initProductsPage(filteredList = null) {
   let pmSubImagesPreview = document.getElementById("pmSubImagesPreview");
   let saveBtn = document.getElementById("pmSave");
 
+  let categoryFilter = document.getElementById("categoryFilter");
+  let searchById = document.getElementById("searchById");
+  let searchByName = document.getElementById("searchByName");
+  let searchByStock = document.getElementById("searchByStock");
+
   let prevBtn = document.getElementById("prevPage");
   let nextBtn = document.getElementById("nextPage");
   let pageInfo = document.getElementById("pageInfo");
 
+  [categoryFilter, searchById, searchByName, searchByStock].forEach((el) => {
+    el?.addEventListener("input", applyFilters);
+    el?.addEventListener("change", applyFilters);
+  });
   // ======> Load products <======
   let allProducts = JSON.parse(localStorage.getItem("products")) || [];
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -58,21 +67,40 @@ export function initProductsPage(filteredList = null) {
   let pageSize = 6;
 
   //===> search for product
-  document.getElementById("searchInput")?.addEventListener("input", (e) => {
-    let query = e.target.value.toLowerCase().trim();
-    if (query === "") {
-      searchededProducts = [...products];
-    } else {
-      searchededProducts = products.filter(
-        (product) =>
-          product.id.toString().toLowerCase().includes(query) ||
-          product.name.toLowerCase().includes(query) ||
-          product.category.toLowerCase().includes(query)
-      );
-    }
+  function applyFilters() {
+    let cat = categoryFilter?.value || "All";
+    let idQuery = searchById?.value.trim().toLowerCase();
+    let nameQuery = searchByName?.value.trim().toLowerCase();
+    let stockQuery = searchByStock?.value.trim().toLowerCase();
+
+    searchededProducts = products.filter((p) => {
+      let match = true;
+
+      // Category filter
+      if (cat !== "All" && p.category.toLowerCase() !== cat.toLowerCase()) {
+        match = false;
+      }
+      // ID filter
+      if (idQuery && !p.id.toString().toLowerCase().includes(idQuery)) {
+        match = false;
+      }
+      // Name filter
+      if (nameQuery && !p.name.toLowerCase().includes(nameQuery)) {
+        match = false;
+      }
+      // Stock filter
+      if (
+        stockQuery &&
+        !p.stock.toString().toLowerCase().includes(stockQuery)
+      ) {
+        match = false;
+      }
+      return match;
+    });
+
     currentPage = 1;
     renderProducts();
-  });
+  }
 
   // ====>> render Products table <<====
   function renderProducts() {
@@ -86,7 +114,8 @@ export function initProductsPage(filteredList = null) {
       let row = document.createElement("tr");
       row.innerHTML = `
         <td><img src="${prod.image}" alt="Product" 
-            style="height:50px;width:50px;object-fit:cover;border-radius:4px;"></td>
+            style="height:60px;width:70px;object-fit:cover;border-radius:4px;"></td>
+        <td>${prod.id}</td>
         <td>${prod.name}</td>
         <td>${prod.price}</td>
         <td>${prod.oldPrice ? prod.oldPrice : "—"}</td>
@@ -382,4 +411,5 @@ export function initProductsPage(filteredList = null) {
 
   // Initial render
   renderProducts();
+  applyFilters();
 }

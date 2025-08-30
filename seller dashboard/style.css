@@ -7,6 +7,14 @@
   font-family: "Raleway", sans-serif;
 }
 
+
+:root {
+  --main-color: #c7b9a9;
+  --main-gradient: linear-gradient(135deg, #c7b9a9, #a89984);
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --dark-bg: #0f172a;
+}
+
 #lowStock {
   cursor: pointer;
 }
@@ -38,12 +46,6 @@
   font-weight: bold;
 }
 
-:root {
-  --main-color: #c7b9a9;
-  --main-gradient: linear-gradient(135deg, #c7b9a9, #a89984);
-  --card-bg: rgba(255, 255, 255, 0.7);
-  --dark-bg: #0f172a;
-}
 
 body {
   background: linear-gradient(to top, #f1e4c8, #b9a473);
@@ -174,4 +176,7 @@ body.fade-out {
 .productSearch {
   width: 40% !important;
   border: 2px solid #c7b9a9 !important;
+}
+.badge.bg-danger {
+  background-color: #dc3545 !important;
 }
