@@ -21,7 +21,8 @@
       "Length": "278cm"
     },
     "sellerId": "4",
-    "sellerName": "omar Mohamed"
+    "sellerName": "omar Mohamed",
+    "color": { "name": "Gold Fusion", "hex": "#797B51" }
   },
   {
     "id": 2,
@@ -45,7 +46,8 @@
       "Length": "360cm"
     },
     "sellerId": "5",
-    "sellerName": "ahmed Mohamed"
+    "sellerName": "ahmed Mohamed",
+    "color": { "name": "Timberwolf", "hex": "#D8D5CF" }
   },
   {
     "id": 3,
@@ -69,7 +71,8 @@
       "Length": "360cm"
     },
     "sellerId": "4",
-    "sellerName": "omar Mohamed"
+    "sellerName": "omar Mohamed",
+    "color": { "name": "Gold Fusion", "hex": "#797B51" }
   },
   {
     "id": 4,
@@ -93,7 +96,8 @@
       "Length": "328cm"
     },
     "sellerId": "5",
-    "sellerName": "ahmed Mohamed"
+    "sellerName": "ahmed Mohamed",
+    "color": { "name": "Silver Pink", "hex": "#C2B0A2" }
   },
   {
     "id": 5,
@@ -117,7 +121,8 @@
       "Length": "426cm"
     },
     "sellerId": "6",
-    "sellerName": "asmaa Mohamed"
+    "sellerName": "asmaa Mohamed",
+    "color": { "name": "Silver Pink", "hex": "#C2B0A2" }
   },
   {
     "id": 6,
@@ -141,7 +146,8 @@
       "Length": "440cm"
     },
     "sellerId": "6",
-    "sellerName": "asmaa Mohamed"
+    "sellerName": "asmaa Mohamed",
+    "color": { "name": "Timberwolf", "hex": "#D8D5CF" }
   },
   {
     "id": 7,
@@ -165,7 +171,8 @@
       "Length": "160cm"
     },
     "sellerId": "6",
-    "sellerName": "asmaa Mohamed"
+    "sellerName": "asmaa Mohamed",
+    "color": { "name": "Timberwolf", "hex": "#D8D5CF" }
   },
   {
     "id": 8,
@@ -189,7 +196,8 @@
       "Length": "234cm"
     },
     "sellerId": "5",
-    "sellerName": "ahmed Mohamed"
+    "sellerName": "ahmed Mohamed",
+    "color": { "name": "Gold Fusion", "hex": "#797B51" }
   },
   {
     "id": 9,
@@ -213,7 +221,8 @@
       "Length": "160cm"
     },
     "sellerId": "5",
-    "sellerName": "ahmed Mohamed"
+    "sellerName": "ahmed Mohamed",
+    "color": { "name": "Gold Fusion", "hex": "#797B51" }
   },
   {
     "id": 10,
@@ -237,7 +246,8 @@
       "Length": "54cm"
     },
     "sellerId": "5",
-    "sellerName": "ahmed Mohamed"
+    "sellerName": "ahmed Mohamed",
+    "color": { "name": "Timberwolf", "hex": "#D8D5CF" }
   },
   {
     "id": 11,
@@ -261,7 +271,8 @@
       "Length": "46cm"
     },
     "sellerId": "7",
-    "sellerName": "doaa Mohamed"
+    "sellerName": "doaa Mohamed",
+    "color": { "name": "Silver Pink", "hex": "#C2B0A2" }
   },
   {
     "id": 12,
@@ -285,7 +296,8 @@
       "Length": "50cm"
     },
     "sellerId": "5",
-    "sellerName": "ahmed Mohamed"
+    "sellerName": "ahmed Mohamed",
+    "color": { "name": "Silver Pink", "hex": "#C2B0A2" }
   },
   {
     "id": 13,
@@ -309,7 +321,8 @@
       "Length": "75cm"
     },
     "sellerId": "7",
-    "sellerName": "doaa Mohamed"
+    "sellerName": "doaa Mohamed",
+    "color": { "name": "Timberwolf", "hex": "#D8D5CF" }
   },
   {
     "id": 14,
@@ -333,7 +346,8 @@
       "Length": "57cm"
     },
     "sellerId": "4",
-    "sellerName": "omar Mohamed"
+    "sellerName": "omar Mohamed",
+    "color": { "name": "Purple Navy", "hex": "#525B7A" }
   },
   {
     "id": 15,
@@ -357,7 +371,8 @@
       "Length": "240cm"
     },
     "sellerId": "4",
-    "sellerName": "omar Mohamed"
+    "sellerName": "omar Mohamed",
+    "color": { "name": "Silver Pink", "hex": "#C2B0A2" }
   },
   {
     "id": 16,
@@ -381,7 +396,8 @@
       "Length": "45cm"
     },
     "sellerId": "4",
-    "sellerName": "omar Mohamed"
+    "sellerName": "omar Mohamed",
+    "color": { "name": "Silver Pink", "hex": "#C2B0A2" }
   },
   {
     "id": 17,
@@ -405,7 +421,8 @@
       "Length": "200cm"
     },
     "sellerId": "4",
-    "sellerName": "omar Mohamed"
+    "sellerName": "omar Mohamed",
+    "color": { "name": "Raisin Black", "hex": "#232321" }
   },
   {
     "id": 18,
@@ -428,7 +445,8 @@
       "Length": "240cm"
     },
     "sellerId": "6",
-    "sellerName": "asmaa Mohamed"
+    "sellerName": "asmaa Mohamed",
+    "color": { "name": "Extreme White", "hex": "#FBFAF6" }
   },
   {
     "id": 19,
@@ -450,7 +468,8 @@
       "Length": "150cm"
     },
     "sellerId": "6",
-    "sellerName": "asmaa Mohamed"
+    "sellerName": "asmaa Mohamed",
+    "color": { "name": "Extreme White", "hex": "#FBFAF6" }
   },
   {
     "id": 41,
@@ -474,7 +493,8 @@
       "Length": "265cm"
     },
     "sellerId": "7",
-    "sellerName": "doaa Mohamed"
+    "sellerName": "doaa Mohamed",
+    "color": { "name": "Dark Gold", "hex": "#AB6431" }
   },
   {
     "id": 20,
@@ -497,7 +517,8 @@
       "Length": "234 cm"
     },
     "sellerId": "7",
-    "sellerName": "doaa Mohamed"
+    "sellerName": "doaa Mohamed",
+    "color": { "name": "Timberwolf", "hex": "#D8D5CF" }
   },
   {
     "id": 21,
@@ -520,7 +541,8 @@
       "Length": "Q: 222 cm - K: 222 cm"
     },
     "sellerId": "7",
-    "sellerName": "doaa Mohamed"
+    "sellerName": "doaa Mohamed",
+    "color": { "name": "Timberwolf", "hex": "#D8D5CF" }
   },
   {
     "id": 22,
@@ -543,7 +565,8 @@
       "Length": "153.5 cm"
     },
     "sellerId": "7",
-    "sellerName": "doaa Mohamed"
+    "sellerName": "doaa Mohamed",
+    "color": { "name": "Dark Gold", "hex": "#AB6431" }
   },
   {
     "id": 23,
@@ -566,7 +589,8 @@
       "Length": "128 cm"
     },
     "sellerId": "7",
-    "sellerName": "doaa Mohamed"
+    "sellerName": "doaa Mohamed",
+    "color": { "name": "Timberwolf", "hex": "#D8D5CF" }
   },
   {
     "id": 24,
@@ -589,7 +613,8 @@
       "Length": "203 cm"
     },
     "sellerId": "7",
-    "sellerName": "doaa Mohamed"
+    "sellerName": "doaa Mohamed",
+    "color": { "name": "Timberwolf", "hex": "#D8D5CF" }
   },
   {
     "id": 25,
@@ -610,7 +635,8 @@
       "Length": "Q: 205 cm - K: 205 cm"
     },
     "sellerId": "6",
-    "sellerName": "asmaa Mohamed"
+    "sellerName": "asmaa Mohamed",
+    "color": { "name": "Extreme White", "hex": "#FBFAF6" }
   },
   {
     "id": 26,
@@ -631,7 +657,8 @@
       "Length": "135cm"
     },
     "sellerId": "6",
-    "sellerName": "asmaa Mohamed"
+    "sellerName": "asmaa Mohamed",
+    "color": { "name": "Silver Pink", "hex": "#C2B0A2" }
   },
   {
     "id": 27,
@@ -655,7 +682,8 @@
       "Length": "k: 215 cm - Q: 219 cm"
     },
     "sellerId": "6",
-    "sellerName": "asmaa Mohamed"
+    "sellerName": "asmaa Mohamed",
+    "color": { "name": "Extreme White", "hex": "#FBFAF6" }
   },
   {
     "id": 28,
@@ -679,7 +707,8 @@
       "Length": "150 cm"
     },
     "sellerId": "4",
-    "sellerName": "omar Mohamed"
+    "sellerName": "omar Mohamed",
+    "color": { "name": "Raisin Black", "hex": "#232321" }
   },
   {
     "id": 29,
@@ -703,7 +732,8 @@
       "Length": "86 cm"
     },
     "sellerId": "4",
-    "sellerName": "omar Mohamed"
+    "sellerName": "omar Mohamed",
+    "color": { "name": "Extreme White", "hex": "#FBFAF6" }
   },
   {
     "id": 30,
@@ -726,7 +756,8 @@
       "Length": "330 cm"
     },
     "sellerId": "4",
-    "sellerName": "omar Mohamed"
+    "sellerName": "omar Mohamed",
+    "color": { "name": "Extreme White", "hex": "#FBFAF6" }
   },
   {
     "id": 31,
@@ -748,7 +779,8 @@
       "Length": "120 cm"
     },
     "sellerId": "6",
-    "sellerName": "asmaa Mohamed"
+    "sellerName": "asmaa Mohamed",
+    "color": { "name": "Gold Fusion", "hex": "#797B51" }
   },
   {
     "id": 32,
@@ -771,7 +803,8 @@
       "Length": "100 cm"
     },
     "sellerId": "6",
-    "sellerName": "asmaa Mohamed"
+    "sellerName": "asmaa Mohamed",
+    "color": { "name": "Dark Gold", "hex": "#AB6431" }
   },
   {
     "id": 33,
@@ -793,7 +826,8 @@
       "Length": "61 cm"
     },
     "sellerId": "6",
-    "sellerName": "asmaa Mohamed"
+    "sellerName": "asmaa Mohamed",
+    "color": { "name": "Desert Sand", "hex": "#DED1A0" }
   },
   {
     "id": 34,
@@ -814,7 +848,8 @@
       "Length": "75 cm"
     },
     "sellerId": "5",
-    "sellerName": "ahmed Mohamed"
+    "sellerName": "ahmed Mohamed",
+    "color": { "name": "Desert Sand", "hex": "#DED1A0" }
   },
   {
     "id": 35,
@@ -835,7 +870,8 @@
       "Length": "76 cm"
     },
     "sellerId": "5",
-    "sellerName": "ahmed Mohamed"
+    "sellerName": "ahmed Mohamed",
+    "color": { "name": "Purple Navy", "hex": "#525B7A" }
   },
   {
     "id": 36,
@@ -856,7 +892,8 @@
       "Length": "101 cm"
     },
     "sellerId": "5",
-    "sellerName": "ahmed Mohamed"
+    "sellerName": "ahmed Mohamed",
+    "color": { "name": "Desert Sand", "hex": "#DED1A0" }
   },
   {
     "id": 37,
@@ -880,7 +917,8 @@
       "Length": "330 cm"
     },
     "sellerId": "5",
-    "sellerName": "ahmed Mohamed"
+    "sellerName": "ahmed Mohamed",
+    "color": { "name": "Dark Gold", "hex": "#AB6431" }
   },
   {
     "id": 38,
@@ -904,7 +942,8 @@
       "Length": "290 cm"
     },
     "sellerId": "4",
-    "sellerName": "omar Mohamed"
+    "sellerName": "omar Mohamed",
+    "color": { "name": "Dark Gold", "hex": "#AB6431" }
   },
   {
     "id": 39,
@@ -926,7 +965,8 @@
       "Length": null
     },
     "sellerId": "4",
-    "sellerName": "omar Mohamed"
+    "sellerName": "omar Mohamed",
+    "color": { "name": "Dark Gold", "hex": "#AB6431" }
   },
   {
     "id": 40,
@@ -948,6 +988,7 @@
       "Length": null
     },
     "sellerId": "5",
-    "sellerName": "ahmed Mohamed"
+    "sellerName": "ahmed Mohamed",
+    "color": { "name": "Dark Gold", "hex": "#AB6431" }
   }
 ]

@@ -26,6 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
       allProducts = JSON.parse(storedProducts);
       displayProducts();
       renderPagination();
+      renderColorOptions();
     } else {
       fetch("../server/data/products.json")
         .then((res) => {
@@ -37,6 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
           allProducts = prod;
           displayProducts();
           renderPagination();
+          renderColorOptions();
         })
         .catch((error) => console.error("Error fetch JSON data: ", error));
     }
@@ -116,7 +118,7 @@ function drowProduct(product, productList) {
   };
   let isFavorite = loggedInUser.wishlist.some((p) => p.id === product.id);
   let card = document.createElement("div");
-  card.className = "col-6 col-md-3 mb-4";
+  card.className = "product-card-wrapper col-6 col-md-3 mb-4";
 
   card.innerHTML = `
         <div class="card product-card">
@@ -191,7 +193,7 @@ input.addEventListener("keyup", (e) => {
 
 let minValue = document.getElementById("minValue");
 let maxValue = document.getElementById("maxValue");
-let minValueDesctop =document.getElementById("minValueDesctop");
+let minValueDesctop = document.getElementById("minValueDesctop");
 let maxValueDesctop = document.getElementById("maxValueDesctop");
 function filterfun() {
   let productList = document.getElementById("product-list");
@@ -199,20 +201,25 @@ function filterfun() {
 
   let minValMob = minValue.value.trim();
   let maxValMob = maxValue.value.trim();
-  let minValDesk =minValueDesctop.value.trim();
+  let minValDesk = minValueDesctop.value.trim();
   let maxValDesk = maxValueDesctop.value.trim();
-  if (minValMob === "" && maxValMob === ""  && minValDesk === "" && maxValDesk === "") {
+  if (
+    minValMob === "" &&
+    maxValMob === "" &&
+    minValDesk === "" &&
+    maxValDesk === ""
+  ) {
     products.forEach((pro) => drowProduct(pro, productList));
     return;
   }
   minValMob = +minValMob || 0;
   maxValMob = +maxValMob || Infinity;
 
-  minValDesk =+minValDesk ||0;
-  maxValDesk =+ maxValDesk || Infinity;
+  minValDesk = +minValDesk || 0;
+  maxValDesk = +maxValDesk || Infinity;
 
-let minVal = minValMob > 0 || maxValMob < Infinity ? minValMob : minValDesk;
-let maxVal = minValMob > 0 || maxValMob < Infinity ? maxValMob : maxValDesk;
+  let minVal = minValMob > 0 || maxValMob < Infinity ? minValMob : minValDesk;
+  let maxVal = minValMob > 0 || maxValMob < Infinity ? maxValMob : maxValDesk;
 
   if (minVal > maxVal) {
     productList.innerHTML = `<p class="text-danger text-center"> minimum value is greater than maximum value</p>`;
@@ -360,17 +367,16 @@ function getLoggedInUser() {
   return JSON.parse(localStorage.getItem("loggedInUser"));
 }
 
-
 // draw favorite in model
 function renderFavoriteModal() {
   const favmodalbody = document.getElementById("favmodalbody");
   const user = getLoggedInUser();
   let favoriteLabel = document.getElementById("favoritelabel");
-if (user && user.Email) {
-  favoriteLabel.textContent = user.Email;
-} else {
-  favoriteLabel.textContent = "example@gmail.com";
-}
+  if (user && user.Email) {
+    favoriteLabel.textContent = user.Email;
+  } else {
+    favoriteLabel.textContent = "example@gmail.com";
+  }
   favmodalbody.innerHTML = "";
 
   if (!user || !user.wishlist || user.wishlist.length === 0) {
@@ -389,60 +395,66 @@ if (user && user.Email) {
     return;
   }
   let clearBtn = document.getElementById("clearBtn");
-if (clearBtn) {
-  clearBtn.replaceWith(clearBtn.cloneNode(true)); 
-  clearBtn = document.getElementById("clearBtn");
-  clearBtn.addEventListener("click", () => {
-    let user = getLoggedInUser();
-    user.wishlist = [];
-    localStorage.setItem("loggedInUser", JSON.stringify(user));
-    renderFavoriteModal();
-    updateFavBadge();
-    document.querySelectorAll(".favorite-btn").forEach(btn => {
-      btn.classList.remove("active");
-      let icon = btn.querySelector("i");
-      if (icon) {
-        icon.classList.remove("bi-heart-fill");
-        icon.classList.add("bi-heart");
-      }
+  if (clearBtn) {
+    clearBtn.replaceWith(clearBtn.cloneNode(true));
+    clearBtn = document.getElementById("clearBtn");
+    clearBtn.addEventListener("click", () => {
+      let user = getLoggedInUser();
+      user.wishlist = [];
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      renderFavoriteModal();
+      updateFavBadge();
+      document.querySelectorAll(".favorite-btn").forEach((btn) => {
+        btn.classList.remove("active");
+        let icon = btn.querySelector("i");
+        if (icon) {
+          icon.classList.remove("bi-heart-fill");
+          icon.classList.add("bi-heart");
+        }
+      });
     });
-  });
-}
-
-
+  }
 
   const favdiv = document.createElement("div");
   favdiv.className = "favdiv";
-  user.wishlist.forEach(product => {
+  user.wishlist.forEach((product) => {
     const card = document.createElement("div");
     card.className = "cardstyle";
     card.innerHTML = `
       <div class="card product-card">
        <div class="position-relative">
         <img src="${product.image}" class="card-img-top" alt="${product.name}">
-        <button class="removeFavBtn btn btn-sm bg-white position-absolute top-0 end-0 m-2" data-id="${product.id}">
+        <button class="removeFavBtn btn btn-sm bg-white position-absolute top-0 end-0 m-2" data-id="${
+          product.id
+        }">
             <i class="bi bi-x-lg"></i>
           </button>
        </div>
         <div class="card-body text-center">
           <h5 class="producttitlefav">${product.name}</h5>
           <h4 class="newprice fw-bold text-danger">$${product.price}</h4>
-          ${product.oldPrice ? `<h4 class="old-price text-secondary text-decoration-line-through">$${product.oldPrice}</h4>` : ""}
-          <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id}">ADD TO CART</button>
+          ${
+            product.oldPrice
+              ? `<h4 class="old-price text-secondary text-decoration-line-through">$${product.oldPrice}</h4>`
+              : ""
+          }
+          <button class="btn btn-dark w-100 btnaddtocard" data-id="${
+            product.id
+          }">ADD TO CART</button>
         </div>
       </div>
     `;
     favdiv.appendChild(card);
   });
   favmodalbody.appendChild(favdiv);
-document.querySelectorAll(".removeFavBtn").forEach(btn => {
+  document.querySelectorAll(".removeFavBtn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = parseInt(btn.getAttribute("data-id"));
-      user.wishlist = user.wishlist.filter(p => p.id !== id);
+      user.wishlist = user.wishlist.filter((p) => p.id !== id);
       localStorage.setItem("loggedInUser", JSON.stringify(user));
       updateFavBadge();
       renderFavoriteModal();
-            let favBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
+      let favBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
       if (favBtn) {
         favBtn.classList.remove("active");
         let icon = favBtn.querySelector("i");
@@ -452,12 +464,8 @@ document.querySelectorAll(".removeFavBtn").forEach(btn => {
         }
       }
     });
-  
   });
-
-
 }
-
 
 // check if user logged in or not to access userData links
 document.addEventListener("click", (e) => {
@@ -512,7 +520,7 @@ document.addEventListener("click", (e) => {
   let btn = e.target.closest(".favorite-btn");
   if (!btn) return;
   e.stopPropagation();
-  let loggedInUser =getLoggedInUser();
+  let loggedInUser = getLoggedInUser();
   let products = JSON.parse(localStorage.getItem("products")) || [];
   let id = parseInt(btn.getAttribute("data-id"));
   let product = products.find((p) => p.id === id);
@@ -556,17 +564,70 @@ document.addEventListener("click", (e) => {
   // Show toast
   toast.show();
 });
+
 function updateFavBadge() {
-    const favBadge = document.getElementById("favBadge");
+  const favBadge = document.getElementById("favBadge");
   const user = getLoggedInUser();
   favBadge.textContent = user?.wishlist?.length || 0;
 }
 
 function updateCartBadge() {
-const cartBadge = document.getElementById("cartbadge");
+  const cartBadge = document.getElementById("cartbadge");
   const user = getLoggedInUser();
   cartBadge.textContent = user?.cart?.length || 0;
 }
+function renderColorOptions() {
+  let colorContainers = document.querySelectorAll(".colorFilterContainer");
+  if (!colorContainers.length) return;
+
+  // Get unique colors from products
+  let uniqueColors = [
+    ...new Map(
+      allProducts
+        .filter((prod) => prod.color && prod.color.hex)
+        .map((prod) => [prod.color.hex, prod.color])
+    ).values(),
+  ];
+
+  colorContainers.forEach((colorContainer) => {
+    colorContainer.innerHTML = "";
+
+    uniqueColors.forEach((color) => {
+      let btn = document.createElement("button");
+      btn.className = "color-btn border rounded-circle";
+      btn.style.backgroundColor = color.hex;
+      btn.style.width = "30px";
+      btn.style.height = "30px";
+
+      btn.addEventListener("click", () => filterByColor(color.hex, btn));
+      colorContainer.appendChild(btn);
+    });
+  });
+}
+
+function filterByColor(colorHex, clickedBtn) {
+  let productList = document.getElementById("product-list");
+  productList.innerHTML = "";
+
+  document
+    .querySelectorAll(".color-btn")
+    .forEach((button) => button.classList.remove("active"));
+  clickedBtn.classList.add("active");
+
+  let filtered = allProducts.filter(
+    (prod) => prod.color && prod.color.hex === colorHex
+  );
+
+  if (filtered.length > 0) {
+    filtered.forEach((prod) => drowProduct(prod, productList));
+  } else {
+    productList.innerHTML = `<p class="text-muted text-center">No products found in this color</p>`;
+  }
+
+  let paginationContainer = document.getElementById("pagination");
+  if (paginationContainer) paginationContainer.innerHTML = "";
+}
+
 // display
 updateFavBadge();
 renderFavoriteModal();

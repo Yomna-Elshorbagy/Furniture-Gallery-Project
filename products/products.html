@@ -1,289 +1,502 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products page</title>
+    <link rel="icon" href="images/Fav-Icon_96x.avif" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Products page</title>
-  <link rel="icon" href="images/Fav-Icon_96x.avif" type="image/x-icon" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css" />
-</head>
+  <body>
+    <header>
+      <div class="nav position-fixed w-100">
+        <nav class="navbar navbar-expand-lg bg-white" style="width: 100%">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="../home/home.html"
+              ><img
+                src="https://thefurnituregallery.com.au/cdn/shop/files/TFG_logo_200x.png?v=1655618786"
+                alt=""
+                class="w-75"
+            /></a>
 
-<body>
-  <header>
-    <div class="nav position-fixed w-100">
-      <nav class="navbar navbar-expand-lg bg-white" style="width: 100%">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="../home/home.html"><img
-              src="https://thefurnituregallery.com.au/cdn/shop/files/TFG_logo_200x.png?v=1655618786" alt=""
-              class="w-75" /></a>
-
-          <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link text-black" aria-current="page" href="../home/home.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-black active" href="../products/products.html">Product</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-black" href="../about/about.html">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-black" href="../contact-us/contact.html">Contact US</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-black" href="../findStore/find.html">Find Us</a>
-              </li>
-            </ul>
-          </div>
-          <div class="logo d-none d-lg-block">
-            <a href="# " class="text-decoration-none position-relative userData" data-bs-toggle="modal"
-              data-bs-target="#favModal">
-              <i class="fa-solid fa-heart text-black m-2">
-                <span
-                  class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
-                  id="favBadge">
-                  0
-                  <span class="visually-hidden">number of products in favorites</span>
-                </span>
-              </i>
-            </a>
-
-            <a href="../profile/profile.html" class="text-decoration-none userData">
-              <i class="fa-solid fa-user text-black m-2"></i>
-            </a>
-            <a href="../cart/cart.html" class="position-relative userData"><i class="fa-solid fa-cart-shopping">
-                <span
-                  class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
-                  id="cartbadge">
-                  0
-                  <span class="visually-hidden">number of products in card</span>
-                </span>
-              </i></a>
-
-            <button onclick="window.location.href='../Auth/log-in/login.html';" class="hover-button ms-2 px-3 py-2"
-              id="loginBtn">
-              log in
+            <button
+              class="navbar-toggler ms-auto"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
             </button>
-            <button onclick="window.location.href='../Auth/log-in/login.html';"
-              class="hover-button ms-2 px-3 py-2 d-none" id="logoutBtn">
-              log out
+            <div
+              class="collapse navbar-collapse justify-content-center"
+              id="navbarNav"
+            >
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-black"
+                    aria-current="page"
+                    href="../home/home.html"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-black active"
+                    href="../products/products.html"
+                    >Product</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-black" href="../about/about.html"
+                    >About</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-black"
+                    href="../contact-us/contact.html"
+                    >Contact US</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-black" href="../findStore/find.html"
+                    >Find Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="logo d-none d-lg-block">
+              <a
+                href="# "
+                class="text-decoration-none position-relative userData"
+                data-bs-toggle="modal"
+                data-bs-target="#favModal"
+              >
+                <i class="fa-solid fa-heart text-black m-2">
+                  <span
+                    class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
+                    id="favBadge"
+                  >
+                    0
+                    <span class="visually-hidden"
+                      >number of products in favorites</span
+                    >
+                  </span>
+                </i>
+              </a>
+
+              <a
+                href="../profile/profile.html"
+                class="text-decoration-none userData"
+              >
+                <i class="fa-solid fa-user text-black m-2"></i>
+              </a>
+              <a href="../cart/cart.html" class="position-relative userData"
+                ><i class="fa-solid fa-cart-shopping">
+                  <span
+                    class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
+                    id="cartbadge"
+                  >
+                    0
+                    <span class="visually-hidden"
+                      >number of products in card</span
+                    >
+                  </span>
+                </i></a
+              >
+
+              <button
+                onclick="window.location.href='../Auth/log-in/login.html';"
+                class="hover-button ms-2 px-3 py-2"
+                id="loginBtn"
+              >
+                log in
+              </button>
+              <button
+                onclick="window.location.href='../Auth/log-in/login.html';"
+                class="hover-button ms-2 px-3 py-2 d-none"
+                id="logoutBtn"
+              >
+                log out
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!---------------------- favorite modal ---------------------->
+
+    <div class="modal fade" id="favModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div
+            class="d-flex flex-row bg-black d-flex justify-content-end align-items-center gap-3"
+          >
+            <button class="btn bg-black text-white opacity-100 border-0">
+              <i class="bi bi-person-fill-add text-white"></i>
+              <span class="text-white" id="favoritelabel"
+                >example@gmail.com</span
+              >
             </button>
+            <button
+              type="button"
+              class="btn-close btn-close-white opacity-100 me-1"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <!---------------------- favorite modal ---------------------->
-
-  <div class="modal fade" id="favModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="d-flex flex-row bg-black d-flex justify-content-end align-items-center gap-3">
-          <button class="btn bg-black text-white opacity-100 border-0">
-            <i class="bi bi-person-fill-add text-white"></i>
-            <span class="text-white" id="favoritelabel">example@gmail.com</span>
-          </button>
-          <button type="button" class="btn-close btn-close-white opacity-100 me-1" data-bs-dismiss="modal"
-            aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center">
-          <div class="d-flex flex-row justify-content-between mt-3 mx-3">
-            <h5>Favorites</h5>
-                <button class="bg-white border-0" id="clearBtn"><i class="bi bi-trash"></i></button>
+          <div class="modal-body text-center">
+            <div class="d-flex flex-row justify-content-between mt-3 mx-3">
+              <h5>Favorites</h5>
+              <button class="bg-white border-0" id="clearBtn">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+            <hr />
+            <div id="favmodalbody"></div>
           </div>
-          <hr />
-          <div id="favmodalbody"></div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Toast container -->
-  <div class="toast-container position-fixed top-0 start-0 p-3">
-    <div id="favToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive"
-      aria-atomic="true">
-      <div class="d-flex">
-        <div class="toast-body" id="favToastBody">Added to favorites!</div>
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    <!-- Toast container -->
+    <div class="toast-container position-fixed top-0 start-0 p-3">
+      <div
+        id="favToast"
+        class="toast align-items-center text-bg-success border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body" id="favToastBody">Added to favorites!</div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+          ></button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!----------------------  products padge ---------------------------->
-  <section class="d-flex flex-column px-3 px-md-0 text-center pt-5" id="homeproducts">
-    <h3 class="pt-5">BROWSE OUR FEATURED PRODUCTS</h3>
-    <h2>TRENDING PRODUCTS</h2>
-    <br />
-    <!-- <div style="display: block; " class=" text-end ">
-      <input type="text" name="search" id="categorySearch" class="d-none w-75 " placeholder=" Search in product">
-      <button class="border-0 bg-transparent float-end" onclick="opensearchfun()"><i
-          class="fa-solid fa-magnifying-glass text-black m-2 "></i></button>
-    </div>
-    <hr> -->
+    <!-- ============================= products padge ==========================-->
+    <section
+      class="d-flex flex-column px-3 px-md-0 text-center pt-5"
+      id="homeproducts"
+    >
+      <h3 class="pt-5">BROWSE OUR FEATURED PRODUCTS</h3>
+      <h2>TRENDING PRODUCTS</h2>
+      <br />
 
-    <section class="SortSearchsec row-reverce">
-      <div class="d-flex flex-row-reverse align-items-center border opacity-75 mb-5 position-relative">
-
-        <div class="p-2">
-          <!-- =============Sort=============== -->
-          <div class="dropdown col-2">
-            <button class="btn transparent dropdown-toggle" type="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              SORT
+      <section class="SortSearchsec row-reverce">
+        <div
+          class="d-flex align-items-center border opacity-75 mb-5 position-relative"
+        >
+          <!-- ===== grid toggle left ==== -->
+          <div class="view-toggle d-flex align-items-center me-auto">
+            <button id="grid4Btn" class="btn border-0 bg-transparent">
+              <i class="fa-solid fa-grip"></i>
             </button>
-            <ul class="dropdown-menu">
-              <li>
-                <button class="dropdown-item" id="sortbtnMintoMAx">
-                  Sort from min price to max price
-                </button>
-              </li>
-              <li>
-                <button class="dropdown-item" id="sortbtnMaxtoMin">
-                  Sort from min price to max price
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- ============search================ -->
-        <div class="p-1">
-          <div>
-            <input type="text" name="search" id="categorySearch" class="d-none w-25 ms-4" placeholder=" Search in product" />
-            <button class="border-0 bg-transparent border-end px-3" onclick="opensearchfun()">
-              <i class="fa-solid fa-magnifying-glass text-black"></i>
+            <button id="grid2Btn" class="btn border-0 bg-transparent">
+              <i class="fa-solid fa-grip-vertical"></i>
             </button>
           </div>
-        </div>
 
-        <!-- filter -->
-
-        <a class="btn filterOffcanvas d-block d-sm-none" data-bs-toggle="offcanvas" href="#offcanvasExample"
-          role="button" aria-controls="offcanvasExample">
-          <i class="bi bi-filter"></i>
+          <!-- ===== filter ===== -->
+          <a
+            class="btn filterOffcanvas d-block d-sm-none"
+            data-bs-toggle="offcanvas"
+            href="#offcanvasExample"
+            role="button"
+            aria-controls="offcanvasExample"
+          >
+            <i class="bi bi-filter"></i>
           </a>
-      </div>
-    </section>
-<!-- filter in mobile  -->
-    <div class="offcanvas offcanvas-start pt-3 shadow-lg rounded-3" tabindex="-1" id="offcanvasExample"
-      aria-labelledby="offcanvasExampleLabel">
 
-      <!-- ===== Header ===== -->
-      <div class="offcanvas-header border-bottom">
-        <h4 class="fw-bold text-dark" id="offcanvasExampleLabel">Filter</h4>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-
-      <!-- ===== Body ===== -->
-      <div class="offcanvas-body">
-
-        <!-- Price Filter -->
-        <div class="mb-4">
-          <h5 class="fw-semibold text-secondary">Price</h5>
-          <div class="d-flex align-items-center gap-2">
-            <input type="number" id="minValue" value="0" class="form-control fitermob" min="0" />
-            <span class="fw-bold">to</span>
-            <input type="number" id="maxValue" value="0" class="form-control fitermob" min="0" />
+          <!-- ===== search ===== -->
+          <div class="p-1">
+            <div>
+              <input
+                type="text"
+                name="search"
+                id="categorySearch"
+                class="d-none w-50 ms-4"
+                placeholder=" Search in product"
+              />
+              <button
+                class="border-0 bg-transparent border-end px-3"
+                onclick="opensearchfun()"
+              >
+                <i class="fa-solid fa-magnifying-glass text-black"></i>
+              </button>
+            </div>
           </div>
-          <button onclick="filterfun()" class="btn btn-dark w-100 mt-3">Apply Filter</button>
-        </div>
-        <hr>
 
-        <!-- Category Filter -->
-        <div class="mb-4">
-          <h5 class="fw-semibold text-secondary">Category</h5>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <button class="btn w-100 text-start" id="bedroom" onclick="openCategory('bedroom')">Bedroom</button>
-            </li>
-            <li class="list-group-item">
-              <button class="btn w-100 text-start" id="living" onclick="openCategory('living')">Living</button>
-            </li>
-            <li class="list-group-item">
-              <button class="btn w-100 text-start" id="dining" onclick="openCategory('dining')">Dining</button>
-            </li>
-            <li class="list-group-item">
-              <button class="btn w-100 text-start" id="decor" onclick="openCategory('decor')">Decor</button>
-            </li>
-            <li class="list-group-item">
-              <button class="btn w-100 text-start" id="All" onclick="openCategory('')">All Products</button>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-    <section class="container-fluid row">
-    <!-- filter & category -->
-      <div class="col-md-2 p-0 my-4 d-none d-md-block d-lg-block" id="filterCollapse">
-        <div class="filter p-3 border rounded shadow-sm bg-white">
-          <h4 class="text-start">Filter</h4>
-          <div class="d-flex align-items-center gap-2 mb-3">
-            <input type="number" id="minValueDesctop" value="0" class="form-control priceFilterLg" min="0" />
-            <span>-</span>
-            <input type="number" id="maxValueDesctop" value="0" class="form-control priceFilterLg" min="0" />
-          </div>
-          <button onclick="filterfun()" class="btn btn-dark w-100">Apply Filter</button>
-        </div>
-        <hr>
-        <aside class="categorysec mt-3 p-3 border rounded shadow-sm bg-white">
-          <div class="asideCategory">
-            <h4 class=" text-start">Category</h4>
-            <div class="card border-0">
-              <ul class="mb-4 list-group list-group-flush">
-                <li class="list-group-item p-0 border-0">
-                  <button class="btn w-100 text-start" id="bedroom" onclick="openCategory('bedroom')">Bedroom</button>
+          <!-- === sort ===-->
+          <div class="p-2">
+            <div class="dropdown col-2">
+              <button
+                class="btn transparent dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                SORT
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <button class="dropdown-item" id="sortbtnMintoMAx">
+                    Sort from min price to max price
+                  </button>
                 </li>
-                <li class="list-group-item p-0 border-0">
-                  <button class="btn w-100 text-start" id="living" onclick="openCategory('living')">Living</button>
-                </li>
-                <li class="list-group-item p-0 border-0">
-                  <button class="btn w-100 text-start" id="dining" onclick="openCategory('dining')">Dining</button>
-                </li>
-                <li class="list-group-item p-0 border-0">
-                  <button class="btn w-100 text-start" id="decor" onclick="openCategory('decor')">Decor</button>
-                </li>
-                <li class="list-group-item p-0 border-0">
-                  <button class="btn w-100 text-start" id="All" onclick="openCategory('')">All Products</button>
+                <li>
+                  <button class="dropdown-item" id="sortbtnMaxtoMin">
+                    Sort from max price to min price
+                  </button>
                 </li>
               </ul>
             </div>
           </div>
-        </aside>
+        </div>
+      </section>
+      <!-- =============== filter in mobile ============= -->
+      <div
+        class="offcanvas offcanvas-start pt-3 shadow-lg rounded-3"
+        tabindex="-1"
+        id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel"
+      >
+        <!-- ===== Header ===== -->
+        <div class="offcanvas-header border-bottom">
+          <h4 class="fw-bold text-dark" id="offcanvasExampleLabel">Filter</h4>
+          <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <!-- ===== Body ===== -->
+        <div class="offcanvas-body">
+          <!-- Price Filter -->
+          <div class="mb-4">
+            <h5 class="fw-semibold text-secondary">Price</h5>
+            <div class="d-flex align-items-center gap-2">
+              <input
+                type="number"
+                id="minValue"
+                value="0"
+                class="form-control fitermob"
+                min="0"
+              />
+              <span class="fw-bold">to</span>
+              <input
+                type="number"
+                id="maxValue"
+                value="0"
+                class="form-control fitermob"
+                min="0"
+              />
+            </div>
+            <button onclick="filterfun()" class="btn btn-dark w-100 mt-3">
+              Apply Filter
+            </button>
+          </div>
+          <hr />
+
+          <!-- Category Filter -->
+          <div class="mb-4">
+            <h5 class="fw-semibold text-secondary">Category</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <button
+                  class="btn w-100 text-start"
+                  id="bedroom"
+                  onclick="openCategory('bedroom')"
+                >
+                  Bedroom
+                </button>
+              </li>
+              <li class="list-group-item">
+                <button
+                  class="btn w-100 text-start"
+                  id="living"
+                  onclick="openCategory('living')"
+                >
+                  Living
+                </button>
+              </li>
+              <li class="list-group-item">
+                <button
+                  class="btn w-100 text-start"
+                  id="dining"
+                  onclick="openCategory('dining')"
+                >
+                  Dining
+                </button>
+              </li>
+              <li class="list-group-item">
+                <button
+                  class="btn w-100 text-start"
+                  id="decor"
+                  onclick="openCategory('decor')"
+                >
+                  Decor
+                </button>
+              </li>
+              <li class="list-group-item">
+                <button
+                  class="btn w-100 text-start"
+                  id="All"
+                  onclick="openCategory('')"
+                >
+                  All Products
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div id="colorFilter2" class="colorFilterContainer d-flex flex-wrap gap-2 m-2"></div>
+        </div>
       </div>
-<!-- products -->
-      <div class="my-4 col-md-10">
-        <div class="row" id="product-list"></div>
-        <div id="pagination" class="d-flex justify-content-center mt-4"></div>
-      </div>
+      <!-- ==================================== filter sidebar ============================== -->
+
+      <section class="container-fluid row">
+        <!-- ==== filter & category ==== -->
+        <div
+          class="col-md-2 p-0 my-4 d-none d-md-block d-lg-block"
+          id="filterCollapse"
+        >
+          <div class="filter p-3 border rounded shadow-sm bg-white m-2">
+            <h4 class="text-start">Filter</h4>
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <input
+                type="number"
+                id="minValueDesctop"
+                value="0"
+                class="form-control priceFilterLg"
+                min="0"
+              />
+              <span>-</span>
+              <input
+                type="number"
+                id="maxValueDesctop"
+                value="0"
+                class="form-control priceFilterLg"
+                min="0"
+              />
+            </div>
+            <button onclick="filterfun()" class="btn btn-dark w-100">
+              Apply Filter
+            </button>
+          </div>
+          <hr />
+          <aside
+            class="categorysec mt-3 p-3 border rounded shadow-sm bg-white mx-2"
+          >
+            <div class="asideCategory">
+              <h4 class="text-start">Category</h4>
+              <div class="card border-0">
+                <ul class="mb-4 list-group list-group-flush">
+                  <li class="list-group-item p-0 border-0">
+                    <button
+                      class="btn w-100 text-start"
+                      id="bedroom"
+                      onclick="openCategory('bedroom')"
+                    >
+                      Bedroom
+                    </button>
+                  </li>
+                  <li class="list-group-item p-0 border-0">
+                    <button
+                      class="btn w-100 text-start"
+                      id="living"
+                      onclick="openCategory('living')"
+                    >
+                      Living
+                    </button>
+                  </li>
+                  <li class="list-group-item p-0 border-0">
+                    <button
+                      class="btn w-100 text-start"
+                      id="dining"
+                      onclick="openCategory('dining')"
+                    >
+                      Dining
+                    </button>
+                  </li>
+                  <li class="list-group-item p-0 border-0">
+                    <button
+                      class="btn w-100 text-start"
+                      id="decor"
+                      onclick="openCategory('decor')"
+                    >
+                      Decor
+                    </button>
+                  </li>
+                  <li class="list-group-item p-0 border-0">
+                    <button
+                      class="btn w-100 text-start"
+                      id="All"
+                      onclick="openCategory('')"
+                    >
+                      All Products
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+          <!-- ==== filter by colors ====== -->
+          <div id="colorFilter" class="colorFilterContainer d-flex flex-wrap gap-2 m-2"></div>
+        </div>
+        <!-- products -->
+        <div class="my-4 col-md-10">
+          <div class="row" id="product-list"></div>
+          <div id="pagination" class="d-flex justify-content-center mt-4"></div>
+        </div>
+      </section>
     </section>
-
-  </section>
-  <!-- end of category for large screen -->
-  <script>
-    window.addEventListener("scroll", function () {
-      const navbar = document.querySelector(".nav");
-      if (window.scrollY > 10) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
-    });
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="./script.js"></script>
-</body>
-
+    <!-- end of category for large screen -->
+    <script>
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".nav");
+        if (window.scrollY > 10) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+      let productList = document.getElementById("product-list");
+      document.getElementById("grid4Btn").addEventListener("click", () => {
+        productList.classList.remove("grid-2");
+      });
+      document.getElementById("grid2Btn").addEventListener("click", () => {
+        productList.classList.add("grid-2");
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./script.js"></script>
+  </body>
 </html>
