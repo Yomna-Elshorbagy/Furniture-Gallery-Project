@@ -81,7 +81,7 @@ body.dark {
 }
 
 .bg-card {
-  background: rgb(232, 218, 218);
+  background: rgb(156, 146, 116);
   border-radius: 20px;
   backdrop-filter: blur(15px);
   box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.6);

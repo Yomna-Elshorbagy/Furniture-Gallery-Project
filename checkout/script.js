@@ -358,6 +358,22 @@ placeOrderBtn.addEventListener("click", () => {
     });
     return;
   }
+  const zeroStockItems = loggedInUser.cart.filter((item) => {
+    const product = allProducts.find((prod) => prod.id === item.id);
+    return product && product.stock === 0;
+  });
+
+  if (zeroStockItems.length > 0) {
+    Swal.fire({
+      icon: "error",
+      title: "Out of Stock",
+      text: "Some products in your cart are completely out of stock.",
+      timer: 3000,
+      showConfirmButton: false,
+    });
+    return; // Stop the order
+  }
+
   // =====> 2- Get all orders from localStorage & generate new id <=====
   let allOrders = JSON.parse(localStorage.getItem("orders")) || [];
   let ids = allOrders
@@ -373,7 +389,7 @@ placeOrderBtn.addEventListener("click", () => {
     ID: newId,
     userId: loggedInUser.ID,
     Phone: phoneNumber.value.trim(),
-    Email: email.value.trim,
+    Email: email.value.trim(),
     UserName: fullName.value.trim(),
     products: loggedInUser.cart.map((item) => ({
       id: item.id,
