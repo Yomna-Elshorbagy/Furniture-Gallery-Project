@@ -121,7 +121,7 @@ export const productsTemplate = `
         
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button id="pmSave" type="button" class="btn text-white" style="background-color:#0d9488;">
+          <button id="pmSave" type="button" class="btn text-white btn-color">
             <i class="fa-solid fa-floppy-disk"></i> Save Product
           </button>
         </div>

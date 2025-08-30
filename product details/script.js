@@ -204,42 +204,109 @@ function showProductDetails(products) {
   });
 
   //====> go to cart page
+  //   document.addEventListener("click", function (e) {
+  //     if (e.target.classList.contains("btnaddtocard")) {
+  //       let productId = parseInt(e.target.getAttribute("data-id"));
+  //       let quantityInput = document.getElementById("quantity");
+  //       if (!loggedInUser) {
+  //         e.preventDefault();
+  //         Swal.fire({
+  //           title: "🔒 Login Required",
+  //           text: "You must be logged in to add products to your cart.",
+  //           icon: "warning",
+  //           confirmButtonText: "Go to Login",
+  //         }).then(() => {
+  //           window.location.href = "../Auth/log-in/login.html";
+  //         });
+  //         return;
+  //       }
+  //       if (!loggedInUser.cart) {
+  //         loggedInUser.cart = [];
+  //       }
+
+  //       let productToAdd = products.find((p) => p.id === productId);
+
+  //       if (productToAdd && !loggedInUser.cart.some((p) => p.id === productId)) {
+  //         loggedInUser.cart.push({
+  //           ...productToAdd, // all products displayed
+  //           quantity: Number(quantityInput.value), // quantity
+  //         });
+  //       }
+
+  //       localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+
+  //       window.location.href = "../cart/cart.html";
+  //       console.log(loggedInUser.wishlist);
+  //     }
+  //   });
+
   document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("btnaddtocard")) {
-      let productId = parseInt(e.target.getAttribute("data-id"));
-      let quantityInput = document.getElementById("quantity"); // جيب قيمة input
-      if (!loggedInUser) {
-        e.preventDefault();
-        Swal.fire({
-          title: "🔒 Login Required",
-          text: "You must be logged in to add products to your cart.",
-          icon: "warning",
-          confirmButtonText: "Go to Login",
-        }).then(() => {
-          window.location.href = "../Auth/log-in/login.html";
-        });
-        return;
-      }
-      if (!loggedInUser.cart) {
-        loggedInUser.cart = [];
-      }
+    if (!e.target.classList.contains("btnaddtocard")) return;
 
-      let productToAdd = products.find((p) => p.id === productId);
+    e.preventDefault(); // stop any default action
 
-      if (productToAdd && !loggedInUser.cart.some((p) => p.id === productId)) {
-        loggedInUser.cart.push({
-          ...productToAdd, // all products displayed
-          quantity: Number(quantityInput.value), // quantity
-        });
-      }
+    const productId = parseInt(e.target.getAttribute("data-id"));
+    const quantityInput = document.getElementById("quantity");
+    const quantityToAdd = Number(quantityInput?.value) || 1;
 
-      localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+    const user = getLoggedInUser();
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const productToAdd = products.find((prod) => prod.id === productId);
 
-      window.location.href = "../cart/cart.html";
-      console.log(loggedInUser.wishlist);
+    if (!user) {
+      Swal.fire({
+        title: "🔒 Login Required",
+        text: "You must be logged in to add products to your cart.",
+        icon: "warning",
+        confirmButtonText: "Go to Login",
+      }).then(() => {
+        window.location.href = "../Auth/log-in/login.html";
+      });
+      return;
     }
+
+    if (!productToAdd) return;
+
+    if (productToAdd.stock === 0) {
+      Swal.fire({
+        title: "❌ Out of Stock",
+        text: "This product is currently not available.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
+    if (quantityToAdd > productToAdd.stock) {
+      Swal.fire({
+        title: "⚠️ Limited Stock",
+        text: `Only ${productToAdd.stock} items are available in stock.`,
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
+    if (!user.cart) user.cart = [];
+
+    let existing = user.cart.find((prod) => prod.id === productId);
+    if (existing) {
+      existing.quantity = quantityToAdd;
+    } else {
+      user.cart.push({ ...productToAdd, quantity: quantityToAdd });
+    }
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const index = users.findIndex((u) => u.ID === user.ID);
+    if (index !== -1) users[index] = user;
+
+    saveUsers(users, user);
+    updateCartBadge();
+    updateFavBadge();
+    window.location.href = "../cart/cart.html";
   });
 }
+
 // ========> related products
 document.addEventListener("DOMContentLoaded", () => {
   const products = JSON.parse(localStorage.getItem("products")) || [];
@@ -419,40 +486,6 @@ function handleAuthButtons() {
     });
   });
 }
-
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("btnaddtocard")) {
-    const productId = parseInt(e.target.getAttribute("data-id"));
-    const products = JSON.parse(localStorage.getItem("products")) || [];
-    const product = products.find((p) => p.id === productId);
-    const user = getLoggedInUser();
-
-    if (!user) {
-      Swal.fire({
-        title: "🔒 Login Required",
-        text: "You must be logged in to add items to your cart.",
-        icon: "warning",
-        confirmButtonText: "Go to Login",
-      }).then(() => {
-        window.location.href = "../Auth/log-in/login.html";
-      });
-      return;
-    }
-
-    if (!user.cart) user.cart = [];
-    if (!user.cart.some((p) => p.id === productId)) {
-      user.cart.push({ ...product, quantity: 1 });
-    }
-
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const index = users.findIndex((u) => u.ID === user.ID);
-    users[index] = user;
-    saveUsers(users, user);
-    updateCartBadge();
-    updateFavBadge();
-    window.location.href = "../cart/cart.html";
-  }
-});
 
 function updateFavBadge() {
   const favBadge = document.getElementById("favBadge");
