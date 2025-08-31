@@ -51,6 +51,8 @@ export const ordersTemplate = `
         <th>ID</th>
         <th>User</th>
         <th>Total Price</th>
+         <th>Order Products</th>
+        <th>Total Quantity </th>
         <th>Status</th>
         <th>Date</th>
         <th>Action</th>

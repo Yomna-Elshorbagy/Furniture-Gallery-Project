@@ -66,11 +66,21 @@ export function initOrdersPage() {
         default:
           statusClass = "badge bg-secondary";
       }
+      let productNames = order.products
+        .map((p) => `${p.name} (x${p.quantity})`)
+        .join("<br>");
+
+      let totalQuantity = order.products.reduce(
+        (sum, p) => sum + Number(p.quantity),
+        0
+      );
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${order.ID}</td>
         <td>${order.UserName}</td>
         <td>${order.TotalPrice}</td>
+        <td>${productNames}</td> <!-- All product names -->
+        <td>${totalQuantity}</td> <!-- Total quantity -->
         <td><span class="${statusClass}">${order.Status}</span></td>
         <td>${order.Date}</td>
         <td>

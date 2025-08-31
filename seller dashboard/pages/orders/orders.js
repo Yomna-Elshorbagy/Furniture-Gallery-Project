@@ -186,6 +186,7 @@ export function initOrdersPage() {
               TotalPrice: price,
               Status: status,
               //   Date: date,
+              products: order.products || [],
             }
           : order
       );
@@ -200,6 +201,7 @@ export function initOrdersPage() {
         TotalPrice: price,
         Status: status,
         // Date: date,
+        products: [],
       });
     }
 
