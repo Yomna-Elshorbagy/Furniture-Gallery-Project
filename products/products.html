@@ -1,668 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Products page</title>
-    <link rel="icon" href="images/Fav-Icon_96x.avif" type="image/x-icon" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
 
-  <body>
-    <header>
-      <div class="nav position-fixed w-100">
-        <nav class="navbar navbar-expand-lg bg-white" style="width: 100%">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="../home/home.html"
-              ><img
-                src="https://thefurnituregallery.com.au/cdn/shop/files/TFG_logo_200x.png?v=1655618786"
-                alt=""
-                class="w-75"
-            /></a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products page</title>
+  <link rel="icon" href="images/Fav-Icon_96x.avif" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
 
-            <button
-              class="navbar-toggler ms-auto"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div
-              class="collapse navbar-collapse justify-content-center"
-              id="navbarNav"
-            >
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a
-                    class="nav-link text-black"
-                    aria-current="page"
-                    href="../home/home.html"
-                    >Home</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link text-black active"
-                    href="../products/products.html"
-                    >Product</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-black" href="../about/about.html"
-                    >About</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link text-black"
-                    href="../contact-us/contact.html"
-                    >Contact US</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-black" href="../findStore/find.html"
-                    >Find Us</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="logo d-none d-lg-block">
-              <a
-                href="# "
-                class="text-decoration-none position-relative userData"
-                data-bs-toggle="modal"
-                data-bs-target="#favModal"
-              >
-                <i class="fa-solid fa-heart text-black m-2">
-                  <span
-                    class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
-                    id="favBadge"
-                  >
-                    0
-                    <span class="visually-hidden"
-                      >number of products in favorites</span
-                    >
-                  </span>
-                </i>
-              </a>
+<body>
+  <header>
+    <div class="nav position-fixed w-100">
+      <nav class="navbar navbar-expand-lg bg-white" style="width: 100%">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../home/home.html"><img
+              src="https://thefurnituregallery.com.au/cdn/shop/files/TFG_logo_200x.png?v=1655618786" alt=""
+              class="w-75" /></a>
 
-              <a
-                href="../profile/profile.html"
-                class="text-decoration-none userData"
-              >
-                <i class="fa-solid fa-user text-black m-2"></i>
-              </a>
-              <a href="../cart/cart.html" class="position-relative userData"
-                ><i class="fa-solid fa-cart-shopping">
-                  <span
-                    class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
-                    id="cartbadge"
-                  >
-                    0
-                    <span class="visually-hidden"
-                      >number of products in card</span
-                    >
-                  </span>
-                </i></a
-              >
-
-              <button
-                onclick="window.location.href='../Auth/log-in/login.html';"
-                class="hover-button ms-2 px-3 py-2"
-                id="loginBtn"
-              >
-                log in
-              </button>
-              <button
-                onclick="window.location.href='../Auth/log-in/login.html';"
-                class="hover-button ms-2 px-3 py-2 d-none"
-                id="logoutBtn"
-              >
-                log out
-              </button>
-            </div>
+          <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link text-black" aria-current="page" href="../home/home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-black active" href="../products/products.html">Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-black" href="../about/about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-black" href="../contact-us/contact.html">Contact US</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-black" href="../findStore/find.html">Find Us</a>
+              </li>
+            </ul>
           </div>
-        </nav>
-      </div>
-    </header>
+          <div class="logo d-none d-lg-block">
+            <a href="# " class="text-decoration-none position-relative userData" data-bs-toggle="modal"
+              data-bs-target="#favModal">
+              <i class="fa-solid fa-heart text-black m-2">
+                <span
+                  class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
+                  id="favBadge">
+                  0
+                  <span class="visually-hidden">number of products in favorites</span>
+                </span>
+              </i>
+            </a>
 
-    <!---------------------- favorite modal ---------------------->
+            <a href="../profile/profile.html" class="text-decoration-none userData">
+              <i class="fa-solid fa-user text-black m-2"></i>
+            </a>
+            <a href="../cart/cart.html" class="position-relative userData"><i class="fa-solid fa-cart-shopping">
+                <span
+                  class="position-absolute top-0 start-75 translate-middle badge rounded-circle bg-danger badgestyle"
+                  id="cartbadge">
+                  0
+                  <span class="visually-hidden">number of products in card</span>
+                </span>
+              </i></a>
 
-    <div class="modal fade" id="favModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div
-            class="d-flex flex-row bg-black d-flex justify-content-end align-items-center gap-3"
-          >
-            <button class="btn bg-black text-white opacity-100 border-0">
-              <i class="bi bi-person-fill-add text-white"></i>
-              <span class="text-white" id="favoritelabel"
-                >example@gmail.com</span
-              >
+            <button onclick="window.location.href='../Auth/log-in/login.html';" class="hover-button ms-2 px-3 py-2"
+              id="loginBtn">
+              log in
             </button>
-            <button
-              type="button"
-              class="btn-close btn-close-white opacity-100 me-1"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body text-center">
-            <div class="d-flex flex-row justify-content-between mt-3 mx-3">
-              <h5>Favorites</h5>
-              <button class="bg-white border-0" id="clearBtn">
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
-            <hr />
-            <div id="favmodalbody"></div>
+            <button onclick="window.location.href='../Auth/log-in/login.html';"
+              class="hover-button ms-2 px-3 py-2 d-none" id="logoutBtn">
+              log out
+            </button>
           </div>
         </div>
-      </div>
+      </nav>
     </div>
-    <!-- Toast container -->
-    <div class="toast-container position-fixed top-0 start-0 p-3">
-      <div
-        id="favToast"
-        class="toast align-items-center text-bg-success border-0"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-      >
-        <div class="d-flex">
-          <div class="toast-body" id="favToastBody">Added to favorites!</div>
-          <button
-            type="button"
-            class="btn-close btn-close-white me-2 m-auto"
-            data-bs-dismiss="toast"
-          ></button>
+  </header>
+
+  <!---------------------- favorite modal ---------------------->
+
+  <div class="modal fade" id="favModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="d-flex flex-row bg-black d-flex justify-content-end align-items-center gap-3">
+          <button class="btn bg-black text-white opacity-100 border-0">
+            <i class="bi bi-person-fill-add text-white"></i>
+            <span class="text-white" id="favoritelabel">example@gmail.com</span>
+          </button>
+          <button type="button" class="btn-close btn-close-white opacity-100 me-1" data-bs-dismiss="modal"
+            aria-label="Close"></button>
         </div>
-      </div>
-    </div>
-
-    <!-- ============================= products padge ==========================-->
-    <section
-      class="d-flex flex-column px-3 px-md-0 text-center pt-5"
-      id="homeproducts"
-    >
-      <h3 class="pt-5">BROWSE OUR FEATURED PRODUCTS</h3>
-      <h2>TRENDING PRODUCTS</h2>
-      <br />
-
-      <section class="SortSearchsec row-reverce">
-        <div
-          class="d-flex align-items-center border opacity-75 mb-5 position-relative"
-        >
-          <!-- ===== grid toggle left ==== -->
-          <div class="view-toggle d-flex align-items-center me-auto">
-            <button id="grid4Btn" class="btn border-0 bg-transparent">
-              <i class="fa-solid fa-grip"></i>
-            </button>
-            <button id="grid2Btn" class="btn border-0 bg-transparent">
-              <i class="fa-solid fa-grip-vertical"></i>
-            </button>
-          </div>
-
-          <!-- ===== filter ===== -->
-          <a
-            class="btn filterOffcanvas d-block d-sm-none"
-            data-bs-toggle="offcanvas"
-            href="#offcanvasExample"
-            role="button"
-            aria-controls="offcanvasExample"
-          >
-            <i class="bi bi-filter"></i>
-          </a>
-
-          <!-- ===== search ===== -->
-          <div class="p-1">
-            <div>
-              <input
-                type="text"
-                name="search"
-                id="categorySearch"
-                class="d-none w-50 ms-4"
-                placeholder=" Search in product"
-              />
-              <button
-                class="border-0 bg-transparent border-end px-3"
-                onclick="opensearchfun()"
-              >
-                <i class="fa-solid fa-magnifying-glass text-black"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- === sort ===-->
-          <div class="p-2">
-            <div class="dropdown col-2">
-              <button
-                class="btn transparent dropdown-toggle"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                SORT
-              </button>
-              <ul class="dropdown-menu">
-                <li>
-                  <button class="dropdown-item" id="sortbtnMintoMAx">
-                    Sort from min price to max price
-                  </button>
-                </li>
-                <li>
-                  <button class="dropdown-item" id="sortbtnMaxtoMin">
-                    Sort from max price to min price
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- =============== filter in mobile ============= -->
-      <div
-        class="offcanvas offcanvas-start pt-3 shadow-lg rounded-3"
-        tabindex="-1"
-        id="offcanvasExample"
-        aria-labelledby="offcanvasExampleLabel"
-      >
-        <!-- ===== Header ===== -->
-        <div class="offcanvas-header border-bottom">
-          <h4 class="fw-bold text-dark" id="offcanvasExampleLabel">Filter</h4>
-          <button
-            type="button"
-            class="btn-close text-reset"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
-        </div>
-
-        <!-- ===== Body ===== -->
-        <div class="offcanvas-body">
-          <!-- Price Filter -->
-          <div class="mb-4">
-            <h5 class="fw-semibold text-secondary">Price</h5>
-            <div class="d-flex align-items-center gap-2">
-              <input
-                type="number"
-                id="minValue"
-                value="0"
-                class="form-control fitermob"
-                min="0"
-              />
-              <span class="fw-bold">to</span>
-              <input
-                type="number"
-                id="maxValue"
-                value="0"
-                class="form-control fitermob"
-                min="0"
-              />
-            </div>
-            <button onclick="filterfun()" class="btn btn-dark w-100 mt-3">
-              Apply Filter
+        <div class="modal-body text-center">
+          <div class="d-flex flex-row justify-content-between mt-3 mx-3">
+            <h5>Favorites</h5>
+            <button class="bg-white border-0" id="clearBtn">
+              <i class="bi bi-trash"></i>
             </button>
           </div>
           <hr />
+          <div id="favmodalbody"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Toast container -->
+  <div class="toast-container position-fixed top-0 start-0 p-3">
+    <div id="favToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="favToastBody">Added to favorites!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
 
-          <!-- Category Filter -->
-          <div class="mb-4">
-            <h5 class="fw-semibold text-secondary">Category</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <button
-                  class="btn w-100 text-start"
-                  id="bedroom"
-                  onclick="openCategory('bedroom')"
-                >
-                  Bedroom
+  <!-- ============================= products padge ==========================-->
+  <section class="d-flex flex-column px-3 px-md-0 text-center pt-5" id="homeproducts">
+    <h3 class="pt-5">BROWSE OUR FEATURED PRODUCTS</h3>
+    <h2>TRENDING PRODUCTS</h2>
+    <br />
+
+    <section class="SortSearchsec row-reverce">
+      <div class="d-flex align-items-center border opacity-75 mb-5 position-relative">
+        <!-- ===== grid toggle left ==== -->
+        <div class="view-toggle d-flex align-items-center me-auto">
+          <button id="grid4Btn" class="btn border-0 bg-transparent">
+            <i class="fa-solid fa-grip"></i>
+          </button>
+          <button id="grid2Btn" class="btn border-0 bg-transparent">
+            <i class="fa-solid fa-grip-vertical"></i>
+          </button>
+        </div>
+
+        <!-- ===== filter ===== -->
+        <a class="btn filterOffcanvas d-block d-sm-none" data-bs-toggle="offcanvas" href="#offcanvasExample"
+          role="button" aria-controls="offcanvasExample">
+          <i class="bi bi-filter"></i>
+        </a>
+
+        <!-- ===== search ===== -->
+        <div class="p-1">
+          <div>
+            <input type="text" name="search" id="categorySearch" class="d-none w-50 ms-4"
+              placeholder=" Search in product" />
+            <button class="border-0 bg-transparent border-end px-3" onclick="opensearchfun()">
+              <i class="fa-solid fa-magnifying-glass text-black"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- === sort ===-->
+        <div class="p-2">
+          <div class="dropdown col-2">
+            <button class="btn transparent dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              SORT
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <button class="dropdown-item" id="sortbtnMintoMAx">
+                  Sort from min price to max price
                 </button>
               </li>
-              <li class="list-group-item">
-                <button
-                  class="btn w-100 text-start"
-                  id="living"
-                  onclick="openCategory('living')"
-                >
-                  Living
-                </button>
-              </li>
-              <li class="list-group-item">
-                <button
-                  class="btn w-100 text-start"
-                  id="dining"
-                  onclick="openCategory('dining')"
-                >
-                  Dining
-                </button>
-              </li>
-              <li class="list-group-item">
-                <button
-                  class="btn w-100 text-start"
-                  id="decor"
-                  onclick="openCategory('decor')"
-                >
-                  Decor
-                </button>
-              </li>
-              <li class="list-group-item">
-                <button
-                  class="btn w-100 text-start"
-                  id="All"
-                  onclick="openCategory('')"
-                >
-                  All Products
+              <li>
+                <button class="dropdown-item" id="sortbtnMaxtoMin">
+                  Sort from max price to min price
                 </button>
               </li>
             </ul>
           </div>
-          <div id="colorFilter2" class="colorFilterContainer d-flex flex-wrap gap-2 m-2"></div>
         </div>
       </div>
-      <!-- ==================================== filter sidebar ============================== -->
-
-      <section class="container-fluid row">
-        <!-- ==== filter & category ==== -->
-        <div
-          class="col-md-2 p-0 my-4 d-none d-md-block d-lg-block"
-          id="filterCollapse"
-        >
-          <div class="filter p-3 border rounded shadow-sm bg-white m-2">
-            <h4 class="text-start">Filter</h4>
-            <div class="d-flex align-items-center gap-2 mb-3">
-              <input
-                type="number"
-                id="minValueDesctop"
-                value="0"
-                class="form-control priceFilterLg"
-                min="0"
-              />
-              <span>-</span>
-              <input
-                type="number"
-                id="maxValueDesctop"
-                value="0"
-                class="form-control priceFilterLg"
-                min="0"
-              />
-            </div>
-            <button onclick="filterfun()" class="btn btn-dark w-100">
-              Apply Filter
-            </button>
-          </div>
-          <hr />
-          <aside
-            class="categorysec mt-3 p-3 border rounded shadow-sm bg-white mx-2"
-          >
-            <div class="asideCategory">
-              <h4 class="text-start">Category</h4>
-              <div class="card border-0">
-                <ul class="mb-4 list-group list-group-flush">
-                  <li class="list-group-item p-0 border-0">
-                    <button
-                      class="btn w-100 text-start"
-                      id="bedroom"
-                      onclick="openCategory('bedroom')"
-                    >
-                      Bedroom
-                    </button>
-                  </li>
-                  <li class="list-group-item p-0 border-0">
-                    <button
-                      class="btn w-100 text-start"
-                      id="living"
-                      onclick="openCategory('living')"
-                    >
-                      Living
-                    </button>
-                  </li>
-                  <li class="list-group-item p-0 border-0">
-                    <button
-                      class="btn w-100 text-start"
-                      id="dining"
-                      onclick="openCategory('dining')"
-                    >
-                      Dining
-                    </button>
-                  </li>
-                  <li class="list-group-item p-0 border-0">
-                    <button
-                      class="btn w-100 text-start"
-                      id="decor"
-                      onclick="openCategory('decor')"
-                    >
-                      Decor
-                    </button>
-                  </li>
-                  <li class="list-group-item p-0 border-0">
-                    <button
-                      class="btn w-100 text-start"
-                      id="All"
-                      onclick="openCategory('')"
-                    >
-                      All Products
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </aside>
-          <!-- ==== filter by colors ====== -->
-          <div id="colorFilter" class="colorFilterContainer d-flex flex-wrap gap-2 m-2"></div>
-        </div>
-        <!-- products -->
-        <div class="my-4 col-md-10">
-          <div class="row" id="product-list"></div>
-          <div id="pagination" class="d-flex justify-content-center mt-4"></div>
-        </div>
-      </section>
     </section>
-    <!-- end of category for large screen -->
+    <!-- =============== filter in mobile ============= -->
+    <div class="offcanvas offcanvas-start pt-3 shadow-lg rounded-3" tabindex="-1" id="offcanvasExample"
+      aria-labelledby="offcanvasExampleLabel">
+      <!-- ===== Header ===== -->
+      <div class="offcanvas-header border-bottom">
+        <h4 class="fw-bold text-dark" id="offcanvasExampleLabel">Filter</h4>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
 
-
-
-
-      <footer class="footer-down">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2 col-6 mb-4">
-            <h6>Explore</h6>
-            <a href="#">Living</a><br />
-            <a href="#">Dining</a><br />
-            <a href="#">Bedroom</a><br />
-            <a href="#">Office</a><br />
-            <a href="#">Decor</a><br />
-            <a href="#">Blog</a>
+      <!-- ===== Body ===== -->
+      <div class="offcanvas-body">
+        <!-- Price Filter -->
+        <div class="mb-4">
+          <h5 class="fw-semibold text-secondary">Price</h5>
+          <div class="d-flex align-items-center gap-2">
+            <input type="number" id="minValue" value="0" class="form-control fitermob" min="0" />
+            <span class="fw-bold">to</span>
+            <input type="number" id="maxValue" value="0" class="form-control fitermob" min="0" />
           </div>
-          <!-- Services -->
-          <div class="col-md-2 col-6 mb-4">
-            <h6>Services</h6>
-            <a href="#">About</a><br />
-            <a href="#">Find a Store</a><br />
-            <a href="#">Careers</a><br />
-            <a href="#">Furniture Stability Fact Sheet</a>
-          </div>
-          <!-- Support -->
-          <div class="col-md-3 col-6 mb-4">
-            <h6>Support</h6>
-            <a href="#">Warranty & Returns Policy</a><br />
-            <a href="#">Privacy Policy</a><br />
-            <a href="#">Terms & Conditions</a><br />
-            <a href="#">Shipping Policy</a>
-          </div>
-          <!-- Features -->
-          <div class="col-md-5 col-12">
-            <div class="row text-center">
-              <div class="col-4 feature-box">
-                <i class="bi bi-clock"></i>
-                <p>
-                  <strong>Immediate Availability</strong><br /><small
-                    >On select products</small
-                  >
-                </p>
-              </div>
-              <div class="col-4 feature-box">
-                <i class="bi bi-lamp"></i>
-                <p>
-                  <strong>Complimentary Interior Design</strong><br /><small
-                    >When you shop in store</small
-                  >
-                </p>
-              </div>
-              <div class="col-4 feature-box">
-                <i class="bi bi-hand-index-thumb"></i>
-                <p>
-                  <strong>White Glove Delivery</strong><br /><small
-                    >Within Perth metro areas</small
-                  >
-                </p>
-              </div>
-            </div>
-          </div>
+          <button onclick="filterfun()" class="btn btn-dark w-100 mt-3">
+            Apply Filter
+          </button>
         </div>
+        <hr />
 
-        <!-- Social & App Links -->
-        <div class="text-center mt-1">
-          <div class="footer-icons">
-            <i class="bi bi-facebook"></i>
-            <i class="bi bi-instagram"></i>
-            <i class="bi bi-pinterest"></i>
-            <i class="bi bi-youtube"></i>
-            <i class="bi bi-tiktok"></i>
-          </div>
-          <div class="mt-3">
-            <img
-              src="https://thefurnituregallery.com.au/cdn/shop/files/thumb_Logo-Aplicacion-Android-Google-Play.png?v=1717398357"
-              height="40"
-              class="imageCss"
-            />
-            <img
-              src="https://thefurnituregallery.com.au/cdn/shop/files/thumb_toppng.com-android-app-store-app-store-and-android-icons-2145x1493-copy.png?v=1717398380"
-              height="40"
-              class="imageCss"
-            />
-          </div>
-        </div>
-
-        <!-- Footer Bottom -->
-        <div class="footer-bottom mt-4">
-          © THE FURNITURE GALLERY. ALL RIGHTS RESERVED. <br />
-          (08) 9444 1332 | enquiries@thefg.com.au | 415 Scarborough Beach Rd,
-          Osborne Park, WA, 6017
-        </div>
-
-        <div class="text-center footer-payments mt-3">
-          <ul
-            class="d-flex justify-content-center align-content-center list-unstyled gap-lg-5"
-          >
-            <li class="imageIcons">
-              <svg
-                viewBox="0 0 38 24"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                width="38"
-                height="20"
-                aria-labelledby="pi-master"
-              >
-                <title id="pi-master">Mastercard</title>
-                <path
-                  opacity=".07"
-                  d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"
-                ></path>
-                <path
-                  fill="#fff"
-                  d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"
-                ></path>
-                <circle fill="#EB001B" cx="15" cy="12" r="7"></circle>
-                <circle fill="#F79E1B" cx="23" cy="12" r="7"></circle>
-                <path
-                  fill="#FF5F00"
-                  d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"
-                ></path>
-              </svg>
+        <!-- Category Filter -->
+        <div class="mb-4">
+          <h5 class="fw-semibold text-secondary">Category</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <button class="btn w-100 text-start" id="bedroom" onclick="openCategory('bedroom')">
+                Bedroom
+              </button>
             </li>
-            <li class="imageIcons">
-              <svg
-                viewBox="0 0 38 24"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                width="38"
-                height="24"
-                aria-labelledby="pi-visa"
-              >
-                <title id="pi-visa">Visa</title>
-                <path
-                  opacity=".07"
-                  d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"
-                ></path>
-                <path
-                  fill="#fff"
-                  d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"
-                ></path>
-                <path
-                  d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z"
-                  fill="#142688"
-                ></path>
-              </svg>
+            <li class="list-group-item">
+              <button class="btn w-100 text-start" id="living" onclick="openCategory('living')">
+                Living
+              </button>
             </li>
-            <li class="imageIcons">
-              <img
-                style="height: 20px; vertical-align: middle; width: 38px"
-                src="https://cdn.shopify.com/s/files/1/0650/2190/3084/files/zip-footer.png?v=1673584958"
-              />
+            <li class="list-group-item">
+              <button class="btn w-100 text-start" id="dining" onclick="openCategory('dining')">
+                Dining
+              </button>
             </li>
-
-            <li class="imageIcons">
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
-                height="35"
-                width="70"
-              />
+            <li class="list-group-item">
+              <button class="btn w-100 text-start" id="decor" onclick="openCategory('decor')">
+                Decor
+              </button>
+            </li>
+            <li class="list-group-item">
+              <button class="btn w-100 text-start" id="All" onclick="openCategory('')">
+                All Products
+              </button>
             </li>
           </ul>
         </div>
+        <div id="colorFilter2" class="colorFilterContainer d-flex flex-wrap gap-2 m-2"></div>
       </div>
-    </footer>
+    </div>
+    <!-- ==================================== filter sidebar ============================== -->
 
-    <script>
-      window.addEventListener("scroll", function () {
-        const navbar = document.querySelector(".nav");
-        if (window.scrollY > 10) {
-          navbar.classList.add("scrolled");
-        } else {
-          navbar.classList.remove("scrolled");
-        }
-      });
-      let productList = document.getElementById("product-list");
-      document.getElementById("grid4Btn").addEventListener("click", () => {
-        productList.classList.remove("grid-2");
-      });
-      document.getElementById("grid2Btn").addEventListener("click", () => {
-        productList.classList.add("grid-2");
-      });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./script.js"></script>
-  </body>
+    <section class="container-fluid row">
+      <!-- ==== filter & category ==== -->
+      <div class="col-md-2 p-0 mt-4 d-none d-md-block d-lg-block" id="filterCollapse">
+        <div class="filter p-3 border rounded shadow-sm bg-white m-2">
+          <h4 class="text-start">Filter</h4>
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <input type="number" id="minValueDesctop" value="0" class="form-control priceFilterLg" min="0" />
+            <span>-</span>
+            <input type="number" id="maxValueDesctop" value="0" class="form-control priceFilterLg" min="0" />
+          </div>
+          <button onclick="filterfun()" class="btn btn-dark w-100">
+            Apply Filter
+          </button>
+        </div>
+        <hr />
+        <aside class="categorysec mt-2 p-3 border rounded shadow-sm bg-white mx-2">
+          <div class="asideCategory">
+            <h4 class="text-start">Category</h4>
+            <div class="card border-0">
+              <ul class="mb-4 list-group list-group-flush">
+                <li class="list-group-item p-0 border-0">
+                  <button class="btn w-100 text-start" id="bedroom" onclick="openCategory('bedroom')">
+                    Bedroom
+                  </button>
+                </li>
+                <li class="list-group-item p-0 border-0">
+                  <button class="btn w-100 text-start" id="living" onclick="openCategory('living')">
+                    Living
+                  </button>
+                </li>
+                <li class="list-group-item p-0 border-0">
+                  <button class="btn w-100 text-start" id="dining" onclick="openCategory('dining')">
+                    Dining
+                  </button>
+                </li>
+                <li class="list-group-item p-0 border-0">
+                  <button class="btn w-100 text-start" id="decor" onclick="openCategory('decor')">
+                    Decor
+                  </button>
+                </li>
+                <li class="list-group-item p-0 border-0">
+                  <button class="btn w-100 text-start" id="All" onclick="openCategory('')">
+                    All Products
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+        <!-- ==== filter by colors ====== -->
+
+        <aside class="colorsec mt-4 p-3 border rounded shadow-sm bg-white mx-2">
+  <h4 class="text-start">Color</h4>
+  <div id="colorFilter" class="colorFilterContainer d-flex flex-wrap gap-2 mt-2">
+    </div>
+</aside>
+      
+      </div>
+      <!-- products -->
+      <div class="my-4 col-md-10">
+        <div class="row" id="product-list"></div>
+        <div id="pagination" class="d-flex justify-content-center mt-4"></div>
+      </div>
+    </section>
+  </section>
+  <!-- end of category for large screen -->
+
+
+
+
+  <footer class="footer-down">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 col-6 mb-4">
+          <h6>Explore</h6>
+          <a href="#">Living</a><br />
+          <a href="#">Dining</a><br />
+          <a href="#">Bedroom</a><br />
+          <a href="#">Office</a><br />
+          <a href="#">Decor</a><br />
+          <a href="#">Blog</a>
+        </div>
+        <!-- Services -->
+        <div class="col-md-2 col-6 mb-4">
+          <h6>Services</h6>
+          <a href="#">About</a><br />
+          <a href="#">Find a Store</a><br />
+          <a href="#">Careers</a><br />
+          <a href="#">Furniture Stability Fact Sheet</a>
+        </div>
+        <!-- Support -->
+        <div class="col-md-3 col-6 mb-4">
+          <h6>Support</h6>
+          <a href="#">Warranty & Returns Policy</a><br />
+          <a href="#">Privacy Policy</a><br />
+          <a href="#">Terms & Conditions</a><br />
+          <a href="#">Shipping Policy</a>
+        </div>
+        <!-- Features -->
+        <div class="col-md-5 col-12">
+          <div class="row text-center">
+            <div class="col-4 feature-box">
+              <i class="bi bi-clock"></i>
+              <p>
+                <strong>Immediate Availability</strong><br /><small>On select products</small>
+              </p>
+            </div>
+            <div class="col-4 feature-box">
+              <i class="bi bi-lamp"></i>
+              <p>
+                <strong>Complimentary Interior Design</strong><br /><small>When you shop in store</small>
+              </p>
+            </div>
+            <div class="col-4 feature-box">
+              <i class="bi bi-hand-index-thumb"></i>
+              <p>
+                <strong>White Glove Delivery</strong><br /><small>Within Perth metro areas</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social & App Links -->
+      <div class="text-center mt-1">
+        <div class="footer-icons">
+          <i class="bi bi-facebook"></i>
+          <i class="bi bi-instagram"></i>
+          <i class="bi bi-pinterest"></i>
+          <i class="bi bi-youtube"></i>
+          <i class="bi bi-tiktok"></i>
+        </div>
+        <div class="mt-3">
+          <img
+            src="https://thefurnituregallery.com.au/cdn/shop/files/thumb_Logo-Aplicacion-Android-Google-Play.png?v=1717398357"
+            height="40" class="imageCss" />
+          <img
+            src="https://thefurnituregallery.com.au/cdn/shop/files/thumb_toppng.com-android-app-store-app-store-and-android-icons-2145x1493-copy.png?v=1717398380"
+            height="40" class="imageCss" />
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom mt-4">
+        © THE FURNITURE GALLERY. ALL RIGHTS RESERVED. <br />
+        (08) 9444 1332 | enquiries@thefg.com.au | 415 Scarborough Beach Rd,
+        Osborne Park, WA, 6017
+      </div>
+
+      <div class="text-center footer-payments mt-3">
+        <ul class="d-flex justify-content-center align-content-center list-unstyled gap-lg-5">
+          <li class="imageIcons">
+            <svg viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img" width="38" height="20"
+              aria-labelledby="pi-master">
+              <title id="pi-master">Mastercard</title>
+              <path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
+              </path>
+              <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"></path>
+              <circle fill="#EB001B" cx="15" cy="12" r="7"></circle>
+              <circle fill="#F79E1B" cx="23" cy="12" r="7"></circle>
+              <path fill="#FF5F00"
+                d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"></path>
+            </svg>
+          </li>
+          <li class="imageIcons">
+            <svg viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" role="img" width="38" height="24"
+              aria-labelledby="pi-visa">
+              <title id="pi-visa">Visa</title>
+              <path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z">
+              </path>
+              <path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"></path>
+              <path
+                d="M28.3 10.1H28c-.4 1-.7 1.5-1 3h1.9c-.3-1.5-.3-2.2-.6-3zm2.9 5.9h-1.7c-.1 0-.1 0-.2-.1l-.2-.9-.1-.2h-2.4c-.1 0-.2 0-.2.2l-.3.9c0 .1-.1.1-.1.1h-2.1l.2-.5L27 8.7c0-.5.3-.7.8-.7h1.5c.1 0 .2 0 .2.2l1.4 6.5c.1.4.2.7.2 1.1.1.1.1.1.1.2zm-13.4-.3l.4-1.8c.1 0 .2.1.2.1.7.3 1.4.5 2.1.4.2 0 .5-.1.7-.2.5-.2.5-.7.1-1.1-.2-.2-.5-.3-.8-.5-.4-.2-.8-.4-1.1-.7-1.2-1-.8-2.4-.1-3.1.6-.4.9-.8 1.7-.8 1.2 0 2.5 0 3.1.2h.1c-.1.6-.2 1.1-.4 1.7-.5-.2-1-.4-1.5-.4-.3 0-.6 0-.9.1-.2 0-.3.1-.4.2-.2.2-.2.5 0 .7l.5.4c.4.2.8.4 1.1.6.5.3 1 .8 1.1 1.4.2.9-.1 1.7-.9 2.3-.5.4-.7.6-1.4.6-1.4 0-2.5.1-3.4-.2-.1.2-.1.2-.2.1zm-3.5.3c.1-.7.1-.7.2-1 .5-2.2 1-4.5 1.4-6.7.1-.2.1-.3.3-.3H18c-.2 1.2-.4 2.1-.7 3.2-.3 1.5-.6 3-1 4.5 0 .2-.1.2-.3.2M5 8.2c0-.1.2-.2.3-.2h3.4c.5 0 .9.3 1 .8l.9 4.4c0 .1 0 .1.1.2 0-.1.1-.1.1-.1l2.1-5.1c-.1-.1 0-.2.1-.2h2.1c0 .1 0 .1-.1.2l-3.1 7.3c-.1.2-.1.3-.2.4-.1.1-.3 0-.5 0H9.7c-.1 0-.2 0-.2-.2L7.9 9.5c-.2-.2-.5-.5-.9-.6-.6-.3-1.7-.5-1.9-.5L5 8.2z"
+                fill="#142688"></path>
+            </svg>
+          </li>
+          <li class="imageIcons">
+            <img style="height: 20px; vertical-align: middle; width: 38px"
+              src="https://cdn.shopify.com/s/files/1/0650/2190/3084/files/zip-footer.png?v=1673584958" />
+          </li>
+
+          <li class="imageIcons">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" height="35" width="70" />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener("scroll", function () {
+      const navbar = document.querySelector(".nav");
+      if (window.scrollY > 10) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+    let productList = document.getElementById("product-list");
+    document.getElementById("grid4Btn").addEventListener("click", () => {
+      productList.classList.remove("grid-2");
+    });
+    document.getElementById("grid2Btn").addEventListener("click", () => {
+      productList.classList.add("grid-2");
+    });
+    const categoryBtns = document.querySelectorAll(".categorysec button");
+
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./script.js"></script>
+</body>
+
 </html>

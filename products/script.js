@@ -46,7 +46,41 @@ window.addEventListener("DOMContentLoaded", () => {
   //=====>  handel logged in and logged out
   handleAuthButtons();
   renderFavoriteModal();
+   const categoryBtns = document.querySelectorAll(
+    ".categorysec button, #offcanvasExample .list-group-item button"
+  );
+
+  if (!categoryBtns || categoryBtns.length === 0) return;
+
+  categoryBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      categoryBtns.forEach((b) => b.classList.remove("active"));
+      this.classList.add("active");
+    });
+  });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const category = urlParams.get("category");
+
+  if (category) {
+    const matches = document.querySelectorAll(
+      `.categorysec button[id="${category}"], #offcanvasExample .list-group-item button[id="${category}"], .categorysec button[data-cat="${category}"], #offcanvasExample button[data-cat="${category}"]`
+    );
+    if (matches.length) {
+      matches.forEach((category) => category.classList.add("active"));
+    }
+  } else {
+    const allMatches = document.querySelectorAll(
+      `.categorysec button[id="All"], #offcanvasExample .list-group-item button[id="All"], .categorysec button[data-cat="All"], #offcanvasExample button[data-cat="All"]`
+    );
+    if (allMatches.length) {
+      allMatches.forEach((category) => category.classList.add("active"));
+    }
+  }
+
+  console.log("Category buttons count:", categoryBtns.length, "URL category:", category);
 });
+
 function saveUsers(users, loggedInUser) {
   localStorage.setItem("users", JSON.stringify(users));
   localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
@@ -495,11 +529,9 @@ document.addEventListener("click", function (e) {
     let loggedInUser = getLoggedInUser();
     let quantity = 1;
 
-
     if (!loggedInUser.cart) {
       loggedInUser.cart = [];
     }
-
 
     let productToAdd = products.find((p) => p.id === productId);
 
@@ -518,7 +550,6 @@ document.addEventListener("click", function (e) {
       });
       return;
     }
-
 
     localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
     updateCartBadge();
