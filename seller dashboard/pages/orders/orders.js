@@ -42,26 +42,36 @@ export function initOrdersPage() {
       let statusClass = "";
       switch (order.Status.toLowerCase()) {
         case "completed":
-          statusClass = "badge bg-success"; 
+          statusClass = "badge bg-success";
           break;
         case "pending":
           statusClass = "badge bg-warning text-dark";
           break;
-        case "canceled":
-          statusClass = "badge bg-danger"; 
+        case "cancelled":
+          statusClass = "badge bg-danger";
           break;
         case "shipped":
-          statusClass = "badge bg-info text-dark"; 
+          statusClass = "badge bg-info text-dark";
           break;
         default:
-          statusClass = "badge bg-secondary"; 
+          statusClass = "badge bg-secondary";
       }
+      let productNames = order.products
+        .map((p) => `${p.name} (x${p.quantity})`)
+        .join("<br>");
+
+      let totalQuantity = order.products.reduce(
+        (sum, p) => sum + Number(p.quantity),
+        0
+      );
 
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${order.ID}</td>
         <td>${order.UserName}</td>
         <td>${order.TotalPrice}</td>
+           <td>${productNames}</td> <!-- All product names -->
+        <td>${totalQuantity}</td> <!-- Total quantity -->
         <td><span class="${statusClass}">${order.Status}</span></td>
         <td>${order.Date}</td>
         <td>
