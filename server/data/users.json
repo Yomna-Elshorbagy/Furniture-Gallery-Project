@@ -5,6 +5,7 @@
     "Email": "yomna@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "admin",
+    "Phone": "011111111111",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -15,6 +16,7 @@
     "Email": "anan@example.com",
     "Password": "$2a$10$E0aCIYxGDBKwU9vfN/K5jey47I0fHvir3T37CG1nxBnNTitWnWohC",
     "Role": "admin",
+    "Phone": "01234567891",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -25,6 +27,7 @@
     "Email": "eman@example.com",
     "Password": "$2a$10$A4mxxOoIiEMQMaw7aH4mNuE7nSvGe39ijjWMQbysUnWZCtbsBJNnu",
     "Role": "admin",
+    "Phone": "011111111111",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -35,6 +38,7 @@
     "Email": "khaled2@gmail.com",
     "Password": "$2a$10$4MQSYjdKgS1f08JvbuiFguU8CwBn9Z0if2rfR6SuLDyqDCYOoZuJi",
     "Role": "admin",
+    "Phone": "01234567891",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -45,6 +49,7 @@
     "Email": "abdelhamed@gmail.com",
     "Password": "$2a$10$N/IeW9oPSkXojqXDbMfeC.16JzQIVJeVJ.N0idhjxPC30oUp2XI/u",
     "Role": "admin",
+    "Phone": "01234333821",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -55,6 +60,7 @@
     "Email": "omar@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "seller",
+    "Phone": "011113331111",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -65,6 +71,7 @@
     "Email": "ahmed@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "seller",
+    "Phone": "011112221111",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -75,6 +82,7 @@
     "Email": "asmaa@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "seller",
+    "Phone": "011112233111",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -85,6 +93,7 @@
     "Email": "doaa@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "seller",
+    "Phone": "011111111111",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -95,6 +104,7 @@
     "Email": "omnia@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "user",
+    "Phone": "011112222111",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -105,6 +115,7 @@
     "Email": "sohila@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "user",
+    "Phone": "011113451111",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -115,6 +126,7 @@
     "Email": "rahma@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "user",
+    "Phone": "011111345111",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -125,6 +137,7 @@
     "Email": "aya@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "user",
+    "Phone": "011111567811",
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -135,6 +148,7 @@
     "Email": "amira@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "user",
+    "Phone": "011111111111",
     "cart": [],
     "wishlist": [],
     "orderHistory": []

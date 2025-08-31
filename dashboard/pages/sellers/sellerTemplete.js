@@ -36,6 +36,7 @@ export const SellersTemplate = `
         <th>ID</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Phone</th>
         <th>Role</th>
         <th>Action</th>
       </tr>
@@ -62,6 +63,10 @@ export const SellersTemplate = `
             <div class="mb-3">
               <label class="form-label">Email</label>
               <input type="email" id="editSellerEmail" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone</label>
+              <input type="text" id="editSellerPhone" class="form-control" required />
             </div>
             <div class="mb-3">
               <label class="form-label">Role</label>

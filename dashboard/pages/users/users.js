@@ -38,6 +38,7 @@ export async function initUsersPage() {
         <td>${user.ID}</td>
         <td>${user.Name}</td>
         <td>${user.Email}</td>
+        <td>${user.Phone}</td>
         <td>${user.Role}</td>
         <td>
           <button class="btn btn-sm btn-warning me-2 edit-user" data-id="${user.ID}">
@@ -113,21 +114,29 @@ export async function initUsersPage() {
       document.getElementById("editUserId").value = user.ID;
       document.getElementById("editUserName").value = user.Name;
       document.getElementById("editUserEmail").value = user.Email;
+      document.getElementById("editUserPhone").value = user.Phone;
       document.getElementById("editUserRole").value = user.Role.toLowerCase();
 
       new bootstrap.Modal(document.getElementById("editUserModal")).show();
     }
   }
-
+  //apply style on js to remove layer because of positioning
+  let userModal = document.getElementById("editUserModal");
+  userModal.addEventListener("show.bs.modal", () => {
+    document.body.appendChild(userModal);
+  });
   document.getElementById("editUserForm").addEventListener("submit", (e) => {
     e.preventDefault();
     let id = document.getElementById("editUserId").value;
     let name = document.getElementById("editUserName").value;
     let email = document.getElementById("editUserEmail").value;
+    let phone = document.getElementById("editUserPhone").value;
     let role = document.getElementById("editUserRole").value;
 
     users = users.map((user) =>
-      user.ID == id ? { ...user, Name: name, Email: email, Role: role } : user
+      user.ID == id
+        ? { ...user, Name: name, Email: email, Phone: phone, Role: role }
+        : user
     );
 
     localStorage.setItem("users", JSON.stringify(users));

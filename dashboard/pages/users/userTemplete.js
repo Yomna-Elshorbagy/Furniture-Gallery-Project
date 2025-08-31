@@ -35,6 +35,7 @@ export const UsersTemplate = `
         <th>ID</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Phone</th>
         <th>Role</th>
         <th>Action</th>
       </tr>
@@ -63,6 +64,10 @@ export const UsersTemplate = `
             <div class="mb-3">
               <label for="editUserEmail" class="form-label">Email</label>
               <input type="email" id="editUserEmail" class="form-control" required />
+            </div>
+               <div class="mb-3">
+              <label class="form-label">Phone</label>
+              <input type="text" id="editUserPhone" class="form-control" required />
             </div>
 
             <div class="mb-3">

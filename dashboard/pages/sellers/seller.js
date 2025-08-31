@@ -37,6 +37,7 @@ export async function initSellerPage() {
         <td>${user.ID}</td>
         <td>${user.Name}</td>
         <td>${user.Email}</td>
+        <td>${user.Phone}</td>
         <td>${user.Role}</td>
         <td>
           <button class="btn btn-sm btn-warning me-2 edit-user" data-id="${user.ID}">
@@ -111,6 +112,7 @@ export async function initSellerPage() {
       document.getElementById("editSellerId").value = user.ID;
       document.getElementById("editSellerName").value = user.Name;
       document.getElementById("editSellerEmail").value = user.Email;
+      document.getElementById("editSellerPhone").value = user.Phone;
       document.getElementById("editSellerRole").value = user.Role;
 
       new bootstrap.Modal(document.getElementById("editSellerModal")).show();
@@ -126,10 +128,11 @@ export async function initSellerPage() {
     let id = document.getElementById("editSellerId").value;
     let name = document.getElementById("editSellerName").value;
     let email = document.getElementById("editSellerEmail").value;
+    let phone = document.getElementById("editSellerPhone").value;
     let role = document.getElementById("editSellerRole").value;
 
     users = users.map((user) =>
-      user.ID == id ? { ...user, Name: name, Email: email, Role: role } : user
+      user.ID == id ? { ...user, Name: name, Email: email, Phone: phone, Role: role } : user
     );
 
     localStorage.setItem("users", JSON.stringify(users));
