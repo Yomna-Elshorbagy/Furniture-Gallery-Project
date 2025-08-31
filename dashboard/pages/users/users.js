@@ -47,8 +47,15 @@ export async function initUsersPage() {
           <button class="btn btn-sm btn-danger del-user" data-id="${user.ID}">
             <i class="fa-solid fa-trash"></i>
           </button>
+          <button class="btn btn-sm btn-secondary me-2 soft-del-user" data-id="${user.ID}">
+            <i class="fa-solid fa-ban"></i>
+          </button>
+
         </td>
       `;
+      if (user.isDeleted) {
+        row.style.display = "none";
+      }
       tableBody.appendChild(row);
     });
     attachEventListeners();
@@ -168,6 +175,46 @@ export async function initUsersPage() {
               (user) => user.Role?.toLowerCase() === "user"
             );
             renderUsers();
+          }
+        });
+      })
+    );
+    // SOFT delete (fixed: persist with localStorage.setItem)
+    document.querySelectorAll(".soft-del-user").forEach((btn) =>
+      btn.addEventListener("click", function () {
+        let id = this.dataset.id;
+
+        Swal.fire({
+          title: "Deactivate User?",
+          text: "This will deactivate the user but not delete their data.",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Yes, deactivate",
+          cancelButtonText: "Cancel",
+          confirmButtonColor: "#6c757d",
+          cancelButtonColor: "#d33",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            users = users.map((user) =>
+              String(user.ID) === id ? { ...user, isDeleted: true } : user
+            );
+
+            // ✅ persist changes (was saveUsers(users) before)
+            localStorage.setItem("users", JSON.stringify(users));
+
+            // refresh filtered list and UI
+            filteredUsers = users.filter(
+              (u) => u.Role?.toLowerCase() === "user" && !u.isDeleted
+            );
+            renderUsers();
+
+            Swal.fire({
+              title: "Deactivated!",
+              text: "The user has been deactivated successfully.",
+              icon: "success",
+              timer: 2000,
+              showConfirmButton: false,
+            });
           }
         });
       })

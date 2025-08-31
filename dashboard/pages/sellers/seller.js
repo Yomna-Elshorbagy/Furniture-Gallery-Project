@@ -1,7 +1,9 @@
 export async function initSellerPage() {
   let tableBody = document.getElementById("sellersTable");
   let users = JSON.parse(localStorage.getItem("users")) || [];
-  let filteredUsers = users.filter((u) => u.Role === "seller");
+  let filteredUsers = users.filter(
+    (user) => user.Role === "seller" && !user.isDeleted
+  );
   let currentPage = 1;
   let pageSize = 6;
   let paginationContainer = document.getElementById("pagination");
@@ -18,7 +20,9 @@ export async function initSellerPage() {
     // apply search order id
     let searchId = searchIdInput.value.trim();
     if (searchId) {
-      currentUsers = currentUsers.filter((user) => String(user.ID).includes(searchId));
+      currentUsers = currentUsers.filter((user) =>
+        String(user.ID).includes(searchId)
+      );
     }
 
     // apply User search
@@ -46,8 +50,14 @@ export async function initSellerPage() {
           <button class="btn btn-sm btn-danger del-user" data-id="${user.ID}">
             <i class="fa-solid fa-trash"></i>
           </button>
+          <button class="btn btn-sm btn-secondary me-2 soft-del-user" data-id="${user.ID}">
+            <i class="fa-solid fa-ban"></i>
+          </button>
         </td>
       `;
+      if (user.isDeleted) {
+        row.style.display = "none";
+      }
       tableBody.appendChild(row);
     });
     attachEventListeners();
@@ -132,7 +142,9 @@ export async function initSellerPage() {
     let role = document.getElementById("editSellerRole").value;
 
     users = users.map((user) =>
-      user.ID == id ? { ...user, Name: name, Email: email, Phone: phone, Role: role } : user
+      user.ID == id
+        ? { ...user, Name: name, Email: email, Phone: phone, Role: role }
+        : user
     );
 
     localStorage.setItem("users", JSON.stringify(users));
@@ -162,6 +174,47 @@ export async function initSellerPage() {
             localStorage.setItem("users", JSON.stringify(users));
             filteredUsers = users.filter((user) => user.Role === "seller");
             renderUsers();
+          }
+        });
+      })
+    );
+    // sOFT delete
+    document.querySelectorAll(".soft-del-user").forEach((btn) =>
+      btn.addEventListener("click", function () {
+        let id = this.dataset.id;
+
+        Swal.fire({
+          title: "Deactivate User?",
+          text: "This will deactivate the user but not delete their data.",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Yes, deactivate",
+          cancelButtonText: "Cancel",
+          confirmButtonColor: "#6c757d",
+          cancelButtonColor: "#d33",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            users = users.map((user) =>
+              String(user.ID) === id ? { ...user, isDeleted: true } : user
+            );
+
+            // persist changes
+            localStorage.setItem("users", JSON.stringify(users));
+
+            // filter sellers only
+            filteredUsers = users.filter(
+              (u) => u.Role?.toLowerCase() === "seller" && !u.isDeleted
+            );
+
+            renderUsers();
+
+            Swal.fire({
+              title: "Deactivated!",
+              text: "The seller has been deactivated successfully.",
+              icon: "success",
+              timer: 2000,
+              showConfirmButton: false,
+            });
           }
         });
       })

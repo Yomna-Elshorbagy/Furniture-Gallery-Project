@@ -10,6 +10,7 @@ class User {
     this.cart = [];
     this.wishlist = [];
     this.orderHistory = [];
+    this.isDeleted = false;
     if (this.Role === "admin" || this.Role === "seller") {
       this.cart = [];
       this.orderHistory = [];
@@ -73,7 +74,13 @@ function checkFormValidity() {
   let confirmPasswordValid =
     passwordInput.value.trim() === confirmPasswordInput.value.trim();
 
-  submitBtn.disabled = !(nameValid && emailValid && passwordValid && phoneValid && confirmPasswordValid);
+  submitBtn.disabled = !(
+    nameValid &&
+    emailValid &&
+    passwordValid &&
+    phoneValid &&
+    confirmPasswordValid
+  );
 }
 // ======= 7- validate errors =====>
 nameInput.addEventListener("input", () => {
