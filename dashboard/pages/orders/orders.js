@@ -57,7 +57,7 @@ export function initOrdersPage() {
         case "pending":
           statusClass = "badge bg-warning text-dark";
           break;
-        case "canceled":
+        case "cancelled":
           statusClass = "badge bg-danger";
           break;
         case "shipped":
