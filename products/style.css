@@ -193,11 +193,17 @@ button.hover-button::after {
 }
 
 /* ===== Category Section ===== */
+.categorysec h4{
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: .0625rem;
+}
 .categorysec button {
   background: transparent;
   border: none;
   padding: 12px;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #555;
   text-align: left;
   width: 100%;
@@ -209,13 +215,14 @@ button.hover-button::after {
 .categorysec button:hover {
   background-color: #f2f2f2;
   color: #000;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .categorysec button.active {
-  background-color: #f2f2f2;
+  background-color: #f2eded;
   color: #000 !important;
-  font-weight: 600;
+  font-weight: 800;
+  font-size: 1.2rem;
 }
 
 /* ===== Color Filter ===== */
