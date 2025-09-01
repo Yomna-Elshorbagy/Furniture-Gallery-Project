@@ -570,6 +570,18 @@ document.addEventListener("click", (e) => {
   let product = products.find((p) => p.id === id);
   let icon = btn.querySelector("i");
   if (!product) return;
+  if (!loggedInUser) {
+        Swal.fire({
+          title: "🔒 Login Required",
+          text: "You must be logged in to add favorites.",
+          icon: "warning",
+          confirmButtonText: "Go to Login",
+        }).then(() => {
+          window.location.href = "../Auth/log-in/login.html";
+        });
+        return;
+      }
+
 
   let toastEl = document.getElementById("favToast");
   let toastBody = document.getElementById("favToastBody");
