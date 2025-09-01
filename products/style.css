@@ -468,6 +468,7 @@ hr {
   font-weight: 300;
 }
 
+
 .newprice {
   color: #cf9362;
   font-size: 0.9rem;
@@ -537,6 +538,8 @@ hr {
   color: black;
   z-index: 2;
 }
+
+
 
 .favorite-btn.active {
   color: red;
