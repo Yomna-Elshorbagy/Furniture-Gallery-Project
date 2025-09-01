@@ -86,22 +86,34 @@ function renderProducts() {
       product.name
     }">
         </div>
-        <div class="card-body text-center">
-          <h6 class="card-title text-truncate">${product.name}</h6>
-          <div class="card-text mb-2">
-            <span class="newprice fw-bold">$${product.price}</span>
-            ${
-              product.oldPrice
-                ? `<span class="old-price text-secondary text-decoration-line-through">${product.oldPrice}</span>`
-                : ""
-            }
-          </div>
-        </div>
+      <div class="card-body">
+  <h6 class="card-title text-start">${product.name}</h6>
+
+  <div class="d-flex justify-content-between align-items-center">
+    <span>
+      <span class="newprice ms-1">$${product.price}</span>
+      ${
+        product.oldPrice
+          ? `<span class="old-price ms-2 text-secondary">$${product.oldPrice}</span>`
+          : ""
+      }
+    </span>
+    
+    <button class="btn btn-sm add-to-cart-btn" data-id="${product.id}">
+      <i class="bi bi-cart-fill fs-5"></i>
+    </button>
+  </div>
+</div>
+
       </div>
     `;
-    card.addEventListener("click", () => {
-      window.location.href = `/product%20details/proDetails.html?id=${product.id}`;
-    });
+   card.addEventListener("click", (e) => {
+  if (e.target.closest(".favorite-btn") || e.target.closest(".add-to-cart-btn")) {
+    return;
+  }
+  window.location.href = `/product%20details/proDetails.html?id=${product.id}`;
+});
+
     productList.appendChild(card);
   });
 
@@ -248,6 +260,59 @@ document.addEventListener("click", (e) => {
     window.location.href = "../cart/cart.html";
   }
 });
+
+// handle add to cart  in products
+document.addEventListener("click", (e) => {
+  let btn = e.target.closest(".add-to-cart-btn");
+  if (!btn) return;
+  e.stopPropagation();
+
+  let loggedInUser = getLoggedInUser();
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+  let id = parseInt(btn.getAttribute("data-id"));
+  let product = products.find((p) => p.id === id);
+
+  if (!product) return;
+
+  if (!loggedInUser) {
+    Swal.fire({
+      title: "🔒 Login Required",
+      text: "You must be logged in to add to Cart.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Login",
+      cancelButtonText: "Stay Here",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "../Auth/log-in/login.html";
+      }
+    });
+    return;
+  }
+
+  if (!loggedInUser.cart) {
+    loggedInUser.cart = [];
+  }
+
+  let existing = loggedInUser.cart.find((p) => p.id === id);
+  let toastEl = document.getElementById("carttoast");
+  let toastBody = document.getElementById("cartToastBody");
+  let toast = new bootstrap.Toast(toastEl);
+  if (!existing) {
+    loggedInUser.cart.push({ ...product, quantity: 1 });
+    toastBody.innerHTML = `<p class="text-black text-center">${product.name} has been added to Cart!</p>`;
+    toastEl.className =
+      "opacity-100 toast align-items-center border-0 toaststyle";
+  } else {
+    toastBody.innerHTML = `<p class="text-white text-center">${product.name} has been already in Cart!</p>`;
+    toastEl.className =
+      "opacity-100 toast align-items-center border-0 bg-danger";
+  }
+  toast.show();
+  localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+  updateCartBadge();
+});
+
 
 function setupFavoriteButtons(products) {
   const buttons = document.querySelectorAll(".favorite-btn");

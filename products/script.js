@@ -178,7 +178,7 @@ function drowProduct(product, productList) {
 
   <div class="d-flex justify-content-between align-items-center">
     <span>
-      <span class="newprice ms-3">$${product.price}</span>
+      <span class="newprice ms-1">$${product.price}</span>
       ${
         product.oldPrice
           ? `<span class="old-price ms-2 text-secondary">$${product.oldPrice}</span>`
