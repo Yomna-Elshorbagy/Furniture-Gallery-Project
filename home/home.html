@@ -194,7 +194,12 @@
                 />
                 <div class="carousel-caption">
                   <h5>the new dreamscape</h5>
-                  <button class="hover-button-main">SHOP BEDS</button>
+                  <button
+                    class="hover-button-main shop-btn"
+                    data-category="bedroom"
+                  >
+                    SHOP BEDS
+                  </button>
                 </div>
               </div>
               <div class="carousel-item">
@@ -205,7 +210,12 @@
                 />
                 <div class="carousel-caption">
                   <h5>From meets function</h5>
-                  <button class="hover-button-main">SHOP NEW ARRIVAL</button>
+                  <button
+                    class="hover-button-main shop-btn"
+                    data-category="decor"
+                  >
+                    SHOP NEW ARRIVAL
+                  </button>
                 </div>
               </div>
               <div class="carousel-item">
@@ -216,7 +226,12 @@
                 />
                 <div class="carousel-caption">
                   <h5>savour the space</h5>
-                  <button class="hover-button-main">SHOP DINNER</button>
+                  <button
+                    class="hover-button-main shop-btn"
+                    data-category="dining"
+                  >
+                    SHOP DINNER
+                  </button>
                 </div>
               </div>
               <div class="carousel-item">
@@ -227,7 +242,12 @@
                 />
                 <div class="carousel-caption">
                   <h5>find your comfort</h5>
-                  <button class="hover-button-main">SHOP LOUNGES</button>
+                  <button
+                    class="hover-button-main shop-btn"
+                    data-category="living"
+                  >
+                    SHOP LOUNGES
+                  </button>
                 </div>
               </div>
             </div>
@@ -841,6 +861,28 @@
         .addEventListener("click", function () {
           window.location.href = "../products/products.html";
         });
+
+      document.querySelectorAll(".shop-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          let category = btn.getAttribute("data-category");
+          window.location.href = `../products/products.html?category=${category}`;
+        });
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get("category");
+
+        if (category) {
+          filterProductsByCategory(category);
+        }
+      });
+
+      function filterProductsByCategory(category) {
+        let filtered = products.filter(
+          (p) => p.category.toLowerCase() === category.toLowerCase()
+        );
+        renderProducts(filtered);
+      }
     </script>
 
     <!-- ==================== script for BS & sweet alerts ===================== -->
