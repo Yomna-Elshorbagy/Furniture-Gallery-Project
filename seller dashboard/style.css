@@ -180,3 +180,26 @@ body.fade-out {
 .badge.bg-danger {
   background-color: #dc3545 !important;
 }
+
+/******** collapsed sidebar ********/
+#sidebar.collapsed {
+  width: 70px !important; 
+  min-width: 70px;
+}
+
+#sidebar.collapsed .sidebar-text {
+  display: none; 
+}
+
+#sidebar.collapsed .sidebar-header {
+  justify-content: center;
+}
+
+#sidebar.collapsed img {
+  margin: 0 auto;
+}
+
+#sidebar.collapsed ~ main {
+  flex: 1;
+  max-width: calc(100% - 70px);
+}

@@ -27,60 +27,68 @@
   <body>
     <div class="container-fluid">
       <div class="row min-vh-100">
-        <aside class="col-md-3 col-lg-2 bg-panel p-3 d-flex flex-column">
+        <aside class="col-md-3 col-lg-2 bg-panel p-3 d-flex flex-column" id="sidebar">
           <div class="mb-3 text-white d-flex">
             <img
               style="width: 30px; height: 30px; border-radius: 15px"
               src="./images/Fav-Icon_96x.avif"
               alt="icon"
             />
-            <h2 class="fw-medium fs-5 mx-2">Furniture Gallery</h2>
+            <h2 class="fw-medium fs-5 mx-2 sidebar-text">Furniture Gallery</h2>
           </div>
           <div
             class="p-3 rounded mb-3"
             style="background: var(--main-gradient); color: #fff"
             id="profileAdmin"
           >
-            <div id="adminName" class="fw-semibold">
+            <div id="adminName" class="fw-semibold sidebar-text">
               <i
                 class="fa-solid fa-user text-black m-2"
                 style="color: #0c514c !important"
               ></i
               >Admin
             </div>
-            <small id="adminEmail">admin@gmail.com</small>
+            <small id="adminEmail" class="sidebar-text">admin@gmail.com</small>
           </div>
           <div class="nav flex-column gap-2">
             <button class="btn text-start py-3" id="overview">
-              <i class="fa-solid fa-chart-line"></i> Overview
+              <i class="fa-solid fa-chart-line"></i>
+              <span class="sidebar-text">Overview</span>
             </button>
             <button class="btn text-start py-3" id="products">
-              <i class="fa-solid fa-chair"></i> Products
+              <i class="fa-solid fa-chair"></i>
+              <span class="sidebar-text">Products</span>
             </button>
             <button class="btn text-start py-3" id="categories">
-              <i class="fa-solid fa-layer-group"></i> Categories
+              <i class="fa-solid fa-layer-group"></i>
+              <span class="sidebar-text">Categories</span>
             </button>
             <button class="btn text-start py-3" id="orders">
-              <i class="fa-solid fa-receipt"></i> Orders
+              <i class="fa-solid fa-receipt"></i>
+              <span class="sidebar-text">Orders</span>
             </button>
             <button class="btn text-start py-3" id="users">
-              <i class="fa-solid fa-user-group"></i> Users
+              <i class="fa-solid fa-user-group"></i>
+              <span class="sidebar-text">Users</span>
             </button>
             <button class="btn text-start py-3" id="sellers">
-              <i class="fa-solid fa-user-group"></i> Sellers
+              <i class="fa-solid fa-user-group"></i>
+              <span class="sidebar-text">Sellers</span>
             </button>
             <button class="btn text-start py-3">
-              <i class="fa-solid fa-gear"></i> Settings
+              <i class="fa-solid fa-gear"></i>
+              <span class="sidebar-text">Settings</span>
             </button>
             <button class="btn btn-danger text-start mt-auto py-3" id="logOut">
-              <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <span class="sidebar-text">Logout</span>
             </button>
           </div>
         </aside>
 
         <main class="col-md-9 col-lg-10 p-4">
           <div class="d-flex align-items-center flex-wrap gap-3 mb-4">
-            <button class="btn btn-secondary">
+            <button class="btn btn-secondary" id="sidebarToggle">
               <i class="fa-solid fa-bars"></i>
             </button>
             <h1 class="h3 m-0">Overview</h1>
@@ -152,6 +160,12 @@
         toggle.innerHTML = document.body.classList.contains("dark")
           ? '<i class="fa-solid fa-sun"></i>'
           : '<i class="fa-solid fa-moon"></i>';
+      });
+      const sidebar = document.getElementById("sidebar");
+      const overviewBtn = document.getElementById("sidebarToggle");
+
+      overviewBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("collapsed");
       });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
