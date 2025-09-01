@@ -4,7 +4,7 @@ export const categoriesTemplate = `
 
   <div class="mb-3 d-flex align-items-center justify-content-between flex-wrap gap-3 orders-filters">
 
-  <!-- Search by user ID -->
+  <!-- Search by category ID -->
   <div class="search-box d-flex align-items-center">
     <div class="input-group">
       <span class="input-group-text bg-light border-end-0"><i class="fa fa-hashtag"></i></span>
@@ -17,7 +17,7 @@ export const categoriesTemplate = `
     </div>
   </div>
 
-  <!-- Search by User name or email -->
+  <!-- Search by category name  -->
   <div class="search-box d-flex align-items-center">
     <div class="input-group">
       <span class="input-group-text bg-light border-end-0"><i class="fa fa-user"></i></span>
@@ -55,10 +55,12 @@ export const categoriesTemplate = `
         <div class="mb-3">
           <label class="form-label">Name</label>
           <input type="text" id="cmName" class="form-control" />
+          <div id="nameFeedback" class="invalid-feedback"></div>
         </div>
         <div class="mb-3">
           <label class="form-label">Description</label>
           <textarea id="cmDesc" class="form-control"></textarea>
+          <div id="categoryFeedback" class="invalid-feedback"></div>
         </div>
       </div>
       <div class="modal-footer">

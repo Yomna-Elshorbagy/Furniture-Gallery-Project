@@ -22,13 +22,13 @@ cancelBtn.addEventListener("click", () => {
 });
 
 // ====> Validation needed ===
-const validateEmail = (email) =>
+let validateEmail = (email) =>
   /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(email);
-const validateName = (name) =>
-  /^(?=(?:.*[A-Za-zÀ-ÖØ-öø-ÿ]){2,})[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/.test(
-    name
-  );
-const validatePassword = (password) => password.length >= 6;
+let validateName = (name) =>
+  /^[A-Za-zÀ-ÖØ-öø-ÿ]{3,}(?: [A-Za-zÀ-ÖØ-öø-ÿ]+)*$/.test(name);
+let validatePhone = (phone) => /^(010|011|012|015)[0-9]{8}$/.test(phone);
+let validatePassword = (password) => password.length >= 6;
+
 const getUsers = () => JSON.parse(localStorage.getItem("users")) || [];
 const saveUsers = (users) =>
   localStorage.setItem("users", JSON.stringify(users));
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ====> smoothly switch from admin dashboard
   document.body.classList.add("fade-in");
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  // document.getElementById("phone").value = loggedInUser.Phone;
+  document.getElementById("phone").value = loggedInUser.Phone;
   document.getElementById("fullName").value = loggedInUser.Name;
   document.getElementById("email").value = loggedInUser.Email;
   document.getElementById("password").value = "";
@@ -50,9 +50,10 @@ document.getElementById("editButton").addEventListener("click", (e) => {
 
   let fullName = document.getElementById("fullName").value.trim();
   let email = document.getElementById("email").value.trim();
+  let phone = document.getElementById("phone").value.trim();
   let newPassword = document.getElementById("password").value.trim();
 
-  if (!fullName && !email && !newPassword) {
+  if (!fullName && !email && !newPassword && !phone) {
     let toastEl = document.getElementById("ToastNoUpdate");
     toastEl.classList.add("bg-danger");
     let toast = new bootstrap.Toast(toastEl, { delay: 3000 });
@@ -84,6 +85,18 @@ document.getElementById("editButton").addEventListener("click", (e) => {
     }
   });
 
+  document.getElementById("phone").addEventListener("input", () => {
+    let val = document.getElementById("phone").value.trim();
+    if (!validatePhone(val) && val !== "") {
+      document.getElementById("phoneFeedback").textContent =
+        "Phone must start with 010, 011, 012, or 015 and be 11 digits.";
+      document.getElementById("phone").classList.add("is-invalid");
+    } else {
+      document.getElementById("phone").classList.remove("is-invalid");
+      document.getElementById("phoneFeedback").textContent = "";
+    }
+  });
+
   document.getElementById("password").addEventListener("input", () => {
     let password = document.getElementById("password").value.trim();
     if (password !== "" && !validatePassword(password)) {
@@ -104,6 +117,7 @@ document.getElementById("editButton").addEventListener("click", (e) => {
   if (email) {
     updatedAdmin.Email = email;
   }
+  if (phone) updatedAdmin.Phone = phone;
   if (newPassword) {
     updatedAdmin.Password = bcrypt.hashSync(newPassword, 10);
   }
@@ -118,7 +132,7 @@ document.getElementById("editButton").addEventListener("click", (e) => {
   localStorage.setItem("loggedInUser", JSON.stringify(updatedAdmin));
 
   //====> Clear errors
-  ["fullName", "email", "password"].forEach((id) => {
+  ["fullName", "email", "phone", "password"].forEach((id) => {
     document.getElementById(id).classList.remove("is-invalid");
   });
 

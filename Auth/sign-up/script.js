@@ -37,9 +37,8 @@ window.addEventListener("DOMContentLoaded", () => {
 const validateEmail = (email) =>
   /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(email);
 const validateName = (name) =>
-  /^(?=(?:.*[A-Za-zÀ-ÖØ-öø-ÿ]){3,})[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/.test(
-    name
-  );
+  /^[A-Za-zÀ-ÖØ-öø-ÿ]{3,}(?: [A-Za-zÀ-ÖØ-öø-ÿ]+)*$/.test(name);
+
 const validatePassword = (password) => password.length >= 6;
 const validatePhone = (phone) => /^(010|011|012|015)[0-9]{8}$/.test(phone);
 
