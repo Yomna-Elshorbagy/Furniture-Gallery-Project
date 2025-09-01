@@ -8,36 +8,115 @@ document.addEventListener("DOMContentLoaded", () => {
   orderItem.addEventListener("click", (e) => {
     e.preventDefault();
     ordersTableBody.innerHTML = "";
+
     let userOrders = orders.filter((order) => order.userId == loggedInUser.ID);
+    userOrders.sort((a, b) => new Date(b.Date) - new Date(a.Date));
 
     if (userOrders.length === 0) {
       ordersTableBody.innerHTML = `
-        <tr>
-          <td colspan="5" class="text-center">No orders found</td>
-        </tr>
-      `;
+      <tr>
+        <td colspan="6" class="text-center">No orders found</td>
+      </tr>
+    `;
     } else {
       userOrders.forEach((order) => {
-        let itemsList = Array.isArray(order.items)
-          ? order.items.map((item) => `${item.name} (x${item.qty})`).join(", ")
-          : "No items";
+        //===> 1- Show products with quantity
+        let itemsList = Array.isArray(order.products)
+          ? order.products
+              .map((prod) => `${prod.name} (x${prod.quantity})`)
+              .join("<br>")
+          : "No products";
+
+        // ===> 2- normalize status
+        let status = order.Status?.toLowerCase();
+        let deleteBtn = "";
+        // ==> handel background for each status
+        let statusClass = "";
+        switch (order.Status.toLowerCase()) {
+          case "completed":
+            statusClass = "badge bg-success";
+            break;
+          case "pending":
+            statusClass = "badge bg-warning text-dark";
+            break;
+          case "cancelled":
+            statusClass = "badge bg-danger";
+            break;
+          case "shipped":
+            statusClass = "badge bg-info text-dark";
+            break;
+          default:
+            statusClass = "badge bg-secondary";
+        }
+        // ==> 3- Show delete button, but disable if not pending
+        deleteBtn = `
+        <button class="btn btn-sm btn-danger cancel-order"
+                data-id="${order.ID}"
+                ${status !== "pending" ? "disabled" : ""}>
+          <i class="bi bi-x-circle"></i>
+        </button>
+      `;
 
         let row = `
-          <tr>
-            <td>${order.ID}</td>
-            <td>${order.Date}</td>
-            <td>${order.Status}</td>
-            <td>${order.TotalPrice}</td>
-            <td>${order.TotalItems}</td>
-          </tr>
-        `;
+        <tr>
+          <td>${order.ID}</td>
+          <td>${order.Date}</td>
+          <td><span class="${statusClass}">${order.Status}</span></td>
+          <td>${order.TotalPrice}</td>
+          <td>${order.TotalItems}</td>
+          <td>${itemsList}</td>
+          <td>${deleteBtn}</td>
+        </tr>
+      `;
         ordersTableBody.innerHTML += row;
       });
+
+      // ===> 4- attach delete handler
+      document.querySelectorAll(".cancel-order").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (btn.disabled) return; // do nothing if disabled
+
+          let orderId = btn.getAttribute("data-id");
+
+          Swal.fire({
+            title: "Are you sure?",
+            text: "Do you really want to cancel this order?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, cancel it",
+            cancelButtonText: "No, keep it",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // ===> 5- Find order and update status
+              let orderIndex = orders.findIndex(
+                (order) =>
+                  order.ID == orderId && order.userId == loggedInUser.ID
+              );
+              if (orderIndex !== -1) {
+                orders[orderIndex].Status = "Cancelled";
+                localStorage.setItem("orders", JSON.stringify(orders));
+              }
+
+              Swal.fire({
+                title: "Cancelled",
+                text: "Your order has been cancelled successfully.",
+                icon: "success",
+                timer: 2000,
+                showConfirmButton: false,
+              });
+
+              // refresh orders instantly
+              orderItem.click();
+            }
+          });
+        });
+      });
     }
+
     ordersSection.classList.remove("d-none");
   });
 
-  // check if user logged in or not to access userData links
+  // ===> check if user logged in or not to access userData links
   document.addEventListener("click", (e) => {
     let link = e.target.closest("a.userData");
     if (!link) return;
@@ -60,13 +139,11 @@ document.addEventListener("DOMContentLoaded", () => {
   handleAuthButtons();
 });
 
-// === Validation needed ===
+// ===> Validation needed <===
 const validateEmail = (email) =>
   /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/.test(email);
-const validateName = (name) =>
-  /^(?=(?:.*[A-Za-zÀ-ÖØ-öø-ÿ]){2,})[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[ '-][A-Za-zÀ-ÖØ-öø-ÿ]+)*$/.test(
-    name
-  );
+const validateName = (name) => /^[A-Za-zÀ-ÖØ-öø-ÿ]{3,}$/.test(name);
+
 const validatePassword = (password) => password.length >= 6;
 
 const getUsers = () => JSON.parse(localStorage.getItem("users")) || [];
@@ -100,6 +177,12 @@ document.getElementById("editButton").addEventListener("click", () => {
   let email = document.getElementById("email").value.trim();
   let newPassword = document.getElementById("password").value.trim();
 
+  ["firstName", "lastName", "email", "password"].forEach((id) => {
+    document.getElementById(id).classList.remove("is-invalid");
+    let feedbackEl = document.getElementById(id + "Feedback");
+    if (feedbackEl) feedbackEl.textContent = "";
+  });
+
   if (!firstName && !lastName && !email && !newPassword) {
     let toastEl = document.getElementById("ToastNoUpdate");
     toastEl.classList.add("bg-danger");
@@ -126,7 +209,7 @@ document.getElementById("editButton").addEventListener("click", () => {
     document.getElementById("email").classList.add("is-invalid");
     return;
   }
-  // 2- ===> prevent duplicate email
+  // 3- ===> prevent duplicate email
   if (
     email &&
     email.toLowerCase() !== loggedInUser.Email.toLowerCase() &&
@@ -157,25 +240,25 @@ document.getElementById("editButton").addEventListener("click", () => {
     updatedUser.Password = bcrypt.hashSync(newPassword, 10);
   }
 
-  // === Update users array ===
+  // 4- === Update users array ===
   let idx = users.findIndex((u) => u.ID === loggedInUser.ID);
   if (idx !== -1) {
     users[idx] = updatedUser;
     saveUsers(users);
   }
 
-  // === Save back loggedInUser ===
+  // 5- === Save back loggedInUser ===
   localStorage.setItem("loggedInUser", JSON.stringify(updatedUser));
 
   document.getElementById("userName").textContent = updatedUser.Name;
   document.getElementById("userEmail").textContent = updatedUser.Email;
 
-  //====> Clear errors
+  // 6- ====> Clear errors
   ["firstName", "lastName", "email", "password"].forEach((id) => {
     document.getElementById(id).classList.remove("is-invalid");
   });
 
-  //====> Show Toast
+  // 7- ====> Show Toast
   let toastEl = document.getElementById("ToastProfile");
   toastEl.classList.add("styleToast");
   let toast = new bootstrap.Toast(toastEl, { delay: 3000 });
@@ -346,7 +429,7 @@ document.addEventListener("click", (e) => {
 
     let existing = user.cart.find((p) => p.id === productId);
 
-    // 🔴 Check stock
+    // Check stock
     if (product.stock === 0) {
       Swal.fire({
         title: "❌ Out of Stock",

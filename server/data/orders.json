@@ -286,5 +286,134 @@
     "TotalItems": 1,
     "products": [],
     "Phone": "01011111111"
+  },
+
+  {
+    "ID": 21,
+    "userId": "1",
+    "Phone": "0111111111",
+    "Email": "dubosi@mailinator.com",
+    "UserName": "Raya Sweet",
+    "Date": "8/30/2025, 10:36:03 PM",
+    "Status": "Pending",
+    "TotalItems": 12,
+    "TotalPrice": 56388,
+    "products": [
+      {
+        "id": 2,
+        "name": "Florabelle 4 Seater Sofa - Vanilla",
+        "price": "4699",
+        "quantity": 2,
+        "category": "living"
+      },
+      {
+        "id": 3,
+        "name": "Florabelle 4 Seater Sofa - Vanilla",
+        "price": "4699",
+        "quantity": 10,
+        "category": "living"
+      }
+    ]
+  },
+  {
+    "ID": 22,
+    "userId": "1",
+    "Phone": "0111111111",
+    "Email": "yomna@mailinator.com",
+    "UserName": "Althea Rosales",
+    "Date": "8/30/2025, 10:36:52 PM",
+    "Status": "Pending",
+    "TotalItems": 5,
+    "TotalPrice": 23495,
+    "products": [
+      {
+        "id": 23,
+        "name": "Florabelle 4 Seater Sofa - Vanilla",
+        "price": "4699",
+        "quantity": 5,
+        "category": "living"
+      }
+    ]
+  },
+  {
+    "ID": 24,
+    "userId": "1",
+    "Phone": "0111111111",
+    "Email": "yomna@mailinator.com",
+    "UserName": "Cheryl Nichols",
+    "Date": "8/30/2025, 10:37:43 PM",
+    "Status": "Pending",
+    "TotalItems": 1,
+    "TotalPrice": 4699,
+    "products": [
+      {
+        "id": 2,
+        "name": "Florabelle 4 Seater Sofa - Vanilla",
+        "price": "4699",
+        "quantity": 1,
+        "category": "living"
+      }
+    ]
+  },
+  {
+    "ID": 25,
+    "userId": "1",
+    "Phone": "0111111111",
+    "Email": "yomna@mailinator.com",
+    "UserName": "yomna Whitney",
+    "Date": "8/30/2025, 11:55:31 PM",
+    "Status": "Shipped",
+    "TotalItems": 43,
+    "TotalPrice": "199486",
+    "products": [
+      {
+        "id": 4,
+        "name": "Blaire 3 Seater RHS Chaise Lounge - Mushroom",
+        "price": "2799",
+        "quantity": 2
+      },
+      {
+        "id": 6,
+        "name": "Cloud - Family Suite",
+        "price": "6995",
+        "quantity": 10,
+        "category": "living",
+        "sellerId": "6"
+      },
+      {
+        "id": 1,
+        "name": "Valletta 3 Seater with Chaise - Mystique Heritage",
+        "price": 3998,
+        "quantity": 31
+      }
+    ]
+  },
+  {
+    "ID": 26,
+    "userId": "1",
+    "Phone": "01016470636",
+    "Email": "yomna@mailinator.com",
+    "UserName": "yomna",
+    "Date": "8/31/2025, 5:49:33 PM",
+    "Status": "Completed",
+    "TotalItems": 2,
+    "TotalPrice": "4498",
+    "products": [
+      {
+        "id": 18,
+        "name": "Sienna Dining Table",
+        "price": "2499",
+        "quantity": 1,
+        "category": "dining",
+        "sellerId": "6"
+      },
+      {
+        "id": 7,
+        "name": "Maya Couples Chair - Optical",
+        "price": "1999",
+        "quantity": 1,
+        "category": "living"
+      }
+    ]
   }
 ]
