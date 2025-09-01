@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
   //=====>  handel logged in and logged out
   handleAuthButtons();
   renderFavoriteModal();
-   const categoryBtns = document.querySelectorAll(
+  const categoryBtns = document.querySelectorAll(
     ".categorysec button, #offcanvasExample .list-group-item button"
   );
 
@@ -78,7 +78,12 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  console.log("Category buttons count:", categoryBtns.length, "URL category:", category);
+  console.log(
+    "Category buttons count:",
+    categoryBtns.length,
+    "URL category:",
+    category
+  );
 });
 
 function saveUsers(users, loggedInUser) {
@@ -571,17 +576,20 @@ document.addEventListener("click", (e) => {
   let icon = btn.querySelector("i");
   if (!product) return;
   if (!loggedInUser) {
-        Swal.fire({
-          title: "🔒 Login Required",
-          text: "You must be logged in to add favorites.",
-          icon: "warning",
-          confirmButtonText: "Go to Login",
-        }).then(() => {
-          window.location.href = "../Auth/log-in/login.html";
-        });
-        return;
-      }
-
+    Swal.fire({
+      title: "🔒 Login Required",
+      text: "You must be logged in to add favorites.",
+      icon: "warning",
+      showCancelButton: true, 
+      confirmButtonText: "Login", 
+      cancelButtonText: "Stay Here",
+    }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = "../Auth/log-in/login.html";
+    }
+  });
+    return;
+  }
 
   let toastEl = document.getElementById("favToast");
   let toastBody = document.getElementById("favToastBody");
