@@ -304,14 +304,16 @@
         "name": "Florabelle 4 Seater Sofa - Vanilla",
         "price": "4699",
         "quantity": 2,
-        "category": "living"
+        "category": "living",
+        "sellerId": 5
       },
       {
         "id": 3,
         "name": "Florabelle 4 Seater Sofa - Vanilla",
         "price": "4699",
         "quantity": 10,
-        "category": "living"
+        "category": "living",
+        "sellerId": 4
       }
     ]
   },
@@ -331,7 +333,8 @@
         "name": "Florabelle 4 Seater Sofa - Vanilla",
         "price": "4699",
         "quantity": 5,
-        "category": "living"
+        "category": "living",
+        "sellerId": 7
       }
     ]
   },
@@ -351,7 +354,8 @@
         "name": "Florabelle 4 Seater Sofa - Vanilla",
         "price": "4699",
         "quantity": 1,
-        "category": "living"
+        "category": "living",
+        "sellerId": 5
       }
     ]
   },
@@ -370,7 +374,9 @@
         "id": 4,
         "name": "Blaire 3 Seater RHS Chaise Lounge - Mushroom",
         "price": "2799",
-        "quantity": 2
+        "quantity": 2,
+        "category": "living",
+        "sellerId": 5
       },
       {
         "id": 6,
@@ -378,13 +384,15 @@
         "price": "6995",
         "quantity": 10,
         "category": "living",
-        "sellerId": "6"
+        "sellerId": 6
       },
       {
         "id": 1,
         "name": "Valletta 3 Seater with Chaise - Mystique Heritage",
         "price": 3998,
-        "quantity": 31
+        "quantity": 31,
+        "category": "living",
+        "sellerId": 4
       }
     ]
   },
@@ -405,14 +413,15 @@
         "price": "2499",
         "quantity": 1,
         "category": "dining",
-        "sellerId": "6"
+        "sellerId": 6
       },
       {
         "id": 7,
         "name": "Maya Couples Chair - Optical",
         "price": "1999",
         "quantity": 1,
-        "category": "living"
+        "category": "living",
+        "sellerId": 6
       }
     ]
   }

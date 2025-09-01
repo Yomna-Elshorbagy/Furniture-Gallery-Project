@@ -148,8 +148,6 @@
 //     });
 // }
 
-
-
 export function initOverviewPage() {
   // =============== Orders Data ===============
   let orders = JSON.parse(localStorage.getItem("orders")) || [];
@@ -310,7 +308,7 @@ export function initOverviewPage() {
 
   completedOrders.forEach((order) => {
     order.products.forEach((item) => {
-      let category = item.category; 
+      let category = item.category;
       let revenue = Number(item.price) * Number(item.quantity);
       revenueByCategory[category] =
         (revenueByCategory[category] || 0) + revenue;
@@ -353,4 +351,124 @@ export function initOverviewPage() {
       },
     },
   });
+
+  // ===============> Chart 5: Active vs Inactive Users <===============
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let activeUsers = users.filter((user) => !user.isDeleted).length;
+  let inactiveUsers = users.filter((user) => user.isDeleted).length;
+
+  new Chart("ActiveUsersChart", {
+    type: "doughnut",
+    data: {
+      labels: ["Active Users", "Inactive Users"],
+      datasets: [
+        {
+          data: [activeUsers, inactiveUsers],
+          backgroundColor: ["#A5C9CA", "#FAD4D4"],
+          borderColor: "#fff",
+          borderWidth: 2,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: "👤 Active vs Inactive Users",
+          color: "#333",
+          font: { size: 18 },
+        },
+        legend: {
+          position: "bottom",
+        },
+      },
+    },
+  });
+
+  // ===== Top Selling Products =====
+  let productSales = {};
+  completedOrders.forEach((order) => {
+    order.products.forEach((item) => {
+      productSales[item.name] = (productSales[item.name] || 0) + item.quantity;
+    });
+  });
+
+  let topProducts = Object.entries(productSales)
+    .sort((a, b) => b[1] - a[1]) // sort by sales
+    .slice(0, 5); // top 5
+
+  new Chart("TopProductsChart", {
+    type: "bar",
+    data: {
+      labels: topProducts.map((p) => p[0]),
+      datasets: [
+        {
+          label: "Units Sold",
+          data: topProducts.map((p) => p[1]),
+          backgroundColor: "#5A8DEE",
+        },
+      ],
+    },
+    options: {
+      indexAxis: "y",
+      plugins: {
+        title: {
+          display: true,
+          text: "🏆 Top-Selling Products",
+        },
+      },
+    },
+  });
+
+
+  // ===== Seller Performance =====
+// Build a lookup map of sellerId → sellerName
+let sellerMap = {};
+products.forEach(prod => {
+  sellerMap[prod.sellerId] = prod.sellerName;
+});
+
+// ===== Seller Performance =====
+let sellerRevenue = {};
+
+completedOrders.forEach(order => {
+  order.products.forEach(item => {
+    sellerRevenue[item.sellerId] =
+      (sellerRevenue[item.sellerId] || 0) + (item.price * item.quantity);
+  });
+});
+
+// Convert to array and sort by revenue
+let topSellers = Object.entries(sellerRevenue)
+  .sort((a, b) => b[1] - a[1]);
+
+// ===== Chart.js =====
+new Chart("SellerPerformanceChart", {
+  type: "bar",
+  data: {
+    labels: topSellers.map(sell => sellerMap[sell[0]] || sell[0]), // show sellerName
+    datasets: [{
+      label: "Revenue ($)",
+      data: topSellers.map(sell => sell[1]),
+      backgroundColor: "#FF9800"
+    }]
+  },
+  options: {
+    plugins: {
+      title: {
+        display: true,
+        text: "💼 Seller Performance Ranking"
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
 }
+
+
