@@ -320,6 +320,13 @@ document.addEventListener("click", (e) => {
   let toastEl = document.getElementById("carttoast");
   let toastBody = document.getElementById("cartToastBody");
   let toast = new bootstrap.Toast(toastEl);
+  if (product.stock <= 0) {
+    toastBody.innerHTML = `<p class="text-white text-center">${product.name} is out of stock!</p>`;
+    toastEl.className =
+      "opacity-100 toast align-items-center border-0 bg-danger";
+    toast.show();
+    return;
+  }
   if (!existing) {
     loggedInUser.cart.push({ ...product, quantity: 1 });
     toastBody.innerHTML = `<p class="text-black text-center">${product.name} has been added to Cart!</p>`;

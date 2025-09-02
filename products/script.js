@@ -589,6 +589,18 @@ document.addEventListener("click", (e) => {
   let product = products.find((p) => p.id === id);
 
   if (!product) return;
+ let toastEl = document.getElementById("carttoast");
+    let toastBody = document.getElementById("cartToastBody");
+    let toast = new bootstrap.Toast(toastEl);
+  if (product.stock <= 0) {
+    toastBody.innerHTML = `<p class="text-white text-center">${product.name} is out of stock!</p>`;
+    toastEl.className =
+      "opacity-100 toast align-items-center border-0 bg-danger";
+    toast.show();
+    return;
+  }
+
+
 
   if (!loggedInUser) {
     Swal.fire({
@@ -609,11 +621,6 @@ document.addEventListener("click", (e) => {
   if (!loggedInUser.cart) {
     loggedInUser.cart = [];
   }
-
-  let existing = loggedInUser.cart.find((p) => p.id === id);
-  let toastEl = document.getElementById("carttoast");
-  let toastBody = document.getElementById("cartToastBody");
-  let toast = new bootstrap.Toast(toastEl);
   if (!existing) {
     loggedInUser.cart.push({ ...product, quantity: 1 });
     toastBody.innerHTML = `<p class="text-black text-center">${product.name} has been added to Cart!</p>`;
