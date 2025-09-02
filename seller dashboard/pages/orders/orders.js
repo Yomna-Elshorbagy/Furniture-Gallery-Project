@@ -15,7 +15,7 @@ export function initOrdersPage() {
   const pageSize = 6;
   let allOrders = JSON.parse(localStorage.getItem("orders")) || [];
   let orders = allOrders.filter((order) =>
-    order.products.some((prod) => prod.sellerId === sellerId)
+    order.products.some((prod) => Number(prod.sellerId) === sellerId)
   );
   let selectedFilter = "All";
 
@@ -56,11 +56,27 @@ export function initOrdersPage() {
         default:
           statusClass = "badge bg-secondary";
       }
-      let productNames = order.products
+      //==> here to get all products on order
+
+      // let productNames = order.products
+      //   .map((p) => `${p.name} (x${p.quantity})`)
+      //   .join("<br>");
+
+      // let totalQuantity = order.products.reduce(
+      //   (sum, p) => sum + Number(p.quantity),
+      //   0
+      // );
+
+      //==> only products that belong to this seller
+      let sellerProducts = order.products.filter(
+        (p) => Number(p.sellerId) === sellerId
+      );
+
+      let productNames = sellerProducts
         .map((p) => `${p.name} (x${p.quantity})`)
         .join("<br>");
 
-      let totalQuantity = order.products.reduce(
+      let totalQuantity = sellerProducts.reduce(
         (sum, p) => sum + Number(p.quantity),
         0
       );

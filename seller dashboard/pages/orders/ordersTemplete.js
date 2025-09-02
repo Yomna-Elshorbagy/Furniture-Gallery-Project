@@ -13,8 +13,8 @@ export const ordersTemplate = `
       <option value="Cancelled">Cancelled</option>
     </select>
   </div>
-  
-  <table class="table">
+ <div class="table-responsive">
+  <table class="table p-2">
     <thead class="table-light">
       <tr>
         <th>ID</th>
@@ -29,6 +29,7 @@ export const ordersTemplate = `
     </thead>
     <tbody id="ordersTable"></tbody>
   </table>
+  </div>
 <div id="pagination" class="mt-3 d-flex justify-content-center align-items-center gap-1"></div>
 
   <!-- Order Modal -->

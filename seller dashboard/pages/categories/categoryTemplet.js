@@ -14,7 +14,7 @@ export const categoriesTemplate = `
       </select>
     </div>
   </div>
-
+  <div class="table-responsive">
   <table class="table table-hover align-middle shadow-sm">
     <thead class="table-light">
       <tr>
@@ -29,4 +29,5 @@ export const categoriesTemplate = `
       </tr>
     </tbody>
   </table>
+  </div>
 `;
