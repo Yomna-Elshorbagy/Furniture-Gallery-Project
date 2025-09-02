@@ -34,6 +34,18 @@ function addContactDetails() {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    const user = getLoggedInUser();
+    if (!user) {
+      Swal.fire({
+        title: "🔒 Login Required",
+        text: "You must be logged in to send a message.",
+        icon: "warning",
+        confirmButtonText: "Go to Login",
+      }).then(() => {
+        window.location.href = "../Auth/log-in/login.html";
+      });
+      return;
+    }
     let contactData = {
       firstName: document.getElementById("firstName").value.trim(),
       lastName: document.getElementById("lastName").value.trim(),
