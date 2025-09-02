@@ -3,6 +3,7 @@ const serverDataFiles = {
   categories: "../../server/data/categories.json",
   orders: "../../server/data/orders.json",
   users: "../../server/data/users.json",
+  contactMessages:"../../server/data/contactMessages.json"
 };
 // =====> on load run functions <=====
 window.addEventListener("DOMContentLoaded", () => {

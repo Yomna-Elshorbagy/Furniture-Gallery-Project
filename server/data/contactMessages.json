@@ -1,0 +1,102 @@
+[
+  {
+    "firstName": "Leli",
+    "lastName": "Stanley Meko",
+    "email": "leli.meko@mailinator.com",
+    "phone": "01111111111",
+    "subject": "Esse minima ut aute",
+    "message": "Duis recusandae accusamus aut illum.",
+    "terms": true,
+    "date": "2025-08-30T06:51:14.312Z"
+  },
+  {
+    "firstName": "Ahmed",
+    "lastName": "Hassan",
+    "email": "ahmed.hassan@mailinator.com",
+    "phone": "01022223333",
+    "subject": "Order delay",
+    "message": "Hello, I want to ask about the delay in my order.",
+    "terms": true,
+    "date": "2025-08-28T14:22:40.512Z"
+  },
+  {
+    "firstName": "Sara",
+    "lastName": "Ali",
+    "email": "sara.ali@mailinator.com",
+    "phone": "01233334444",
+    "subject": "Product inquiry",
+    "message": "Can you provide more details about the sofa material?",
+    "terms": true,
+    "date": "2025-08-29T09:10:11.112Z"
+  },
+  {
+    "firstName": "Omar",
+    "lastName": "Khaled",
+    "email": "omar.khaled@mailinator.com",
+    "phone": "01055556666",
+    "subject": "Payment issue",
+    "message": "I tried to pay but the transaction failed twice.",
+    "terms": true,
+    "date": "2025-08-27T18:30:44.900Z"
+  },
+  {
+    "firstName": "Mona",
+    "lastName": "Fathy",
+    "email": "mona.fathy@mailinator.com",
+    "phone": "01166667777",
+    "subject": "Return policy",
+    "message": "What is the return policy for furniture items?",
+    "terms": true,
+    "date": "2025-08-25T13:14:32.142Z"
+  },
+  {
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@mailinator.com",
+    "phone": "01577778888",
+    "subject": "Bulk order",
+    "message": "I want to order 10 chairs, can I get a discount?",
+    "terms": true,
+    "date": "2025-08-26T10:05:20.812Z"
+  },
+  {
+    "firstName": "Emily",
+    "lastName": "Brown",
+    "email": "emily.brown@mailinator.com",
+    "phone": "01299990000",
+    "subject": "Warranty",
+    "message": "Do you provide warranty on tables?",
+    "terms": true,
+    "date": "2025-08-24T07:40:55.345Z"
+  },
+  {
+    "firstName": "Karim",
+    "lastName": "Mostafa",
+    "email": "karim.mostafa@mailinator.com",
+    "phone": "01044445555",
+    "subject": "Delivery area",
+    "message": "Do you deliver to Alexandria?",
+    "terms": true,
+    "date": "2025-08-23T19:11:27.678Z"
+  },
+  {
+    "firstName": "Fatma",
+    "lastName": "Mahmoud",
+    "email": "fatma.mahmoud@mailinator.com",
+    "phone": "01122221111",
+    "subject": "Damaged item",
+    "message": "I received a damaged item, please assist.",
+    "terms": true,
+    "date": "2025-08-21T16:59:10.100Z"
+  },
+  {
+    "firstName": "David",
+    "lastName": "Wilson",
+    "email": "david.wilson@mailinator.com",
+    "phone": "01533332222",
+    "subject": "Assembly service",
+    "message": "Do you provide assembly service for beds?",
+    "terms": true,
+    "date": "2025-08-20T08:25:03.200Z"
+  }
+]

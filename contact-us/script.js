@@ -1,5 +1,20 @@
 document.addEventListener("DOMContentLoaded", addContactDetails);
-
+const serverDataFiles = {
+  products: "../../server/data/products.json",
+  categories: "../../server/data/categories.json",
+  orders: "../../server/data/orders.json",
+  users: "../../server/data/users.json",
+  contactMessages: "../../server/data/contactMessages.json",
+};
+// =====> on load run functions <=====
+Object.entries(serverDataFiles).forEach(([key, url]) => {
+  if (!localStorage.getItem(key)) {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => localStorage.setItem(key, JSON.stringify(data)))
+      .catch((err) => console.error(`Error loading ${key}:`, err));
+  }
+});
 let form = document.getElementById("contactForm");
 let alertPlaceholder = document.getElementById("alertPlaceholder");
 
