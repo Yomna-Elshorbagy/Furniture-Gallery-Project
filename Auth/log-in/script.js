@@ -135,3 +135,60 @@ document.addEventListener("click", (e) => {
     window.location.href = link.href;
   }
 });
+
+// ===== GOOGLE SIGN-IN HANDLER =====
+const googleBtn = document.querySelector(".google-btn");
+
+if (googleBtn) {
+  googleBtn.addEventListener("click", () => {
+    google.accounts.id.initialize({
+      client_id:
+        "700704531343-a9a4dtrmun32cn8g9vaq0geckdlrdhf9.apps.googleusercontent.com",
+      callback: handleGoogleLoginResponse,
+    });
+
+    google.accounts.id.prompt();
+  });
+}
+function handleGoogleLoginResponse(response) {
+  // decode JWT
+  const data = JSON.parse(atob(response.credential.split(".")[1]));
+  console.log("Google user:", data);
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let existingUser = users.find(
+    (u) => u.Email.toLowerCase() === data.email.toLowerCase()
+  );
+
+  let loggedInUser;
+  if (!existingUser) {
+    // if user never signed up manually, create a new one
+    let id = Date.now() + Math.floor(Math.random() * 1000);
+    loggedInUser = new User(
+      id,
+      data.name,
+      data.email,
+      data.sub, // save Google ID as phone
+      "google-auth", // fake password but not needed
+      "user"
+    );
+    users.push(loggedInUser);
+    localStorage.setItem("users", JSON.stringify(users));
+  } else {
+    loggedInUser = existingUser;
+  }
+
+  // Save session
+  localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+  localStorage.setItem("loggedInUserId", loggedInUser.ID);
+
+  Swal.fire({
+    title: `✅ Welcome ${data.name}!`,
+    text: "You have logged in with Google.",
+    icon: "success",
+    timer: 2000,
+    showConfirmButton: false,
+  }).then(() => {
+    window.location.href = "../../home/home.html";
+  });
+}

@@ -107,7 +107,7 @@ input:focus {
   box-shadow: 0 1px 6px rgba(30, 55, 80, 0.3);
 }
 
-.loginFormData .btn {
+ .loginFormData .btn {
   display: block;
   width: 145px;
   height: 45px;
@@ -120,6 +120,41 @@ input:focus {
   border-radius: 25px;
   margin: 10px auto;
   transition: background 0.3s, transform 0.2s;
+} 
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 145px;
+  height: 45px;
+  font-size: 16px;
+  font-weight: 500;
+  background: #ffffff;
+  border: 2px solid #ccc;
+  color: #444;
+  border-radius: 25px;
+  margin: 10px auto;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.google-btn img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.google-btn:hover {
+  background: #f5f5f5;
+  transform: translateY(-2px);
+}
+.buttons .btn:hover {
+  background: linear-gradient(135deg, #416282, #000);
+  transform: translateY(-2px);
+}
+.buttons .btn2:hover {
+  background: linear-gradient(135deg, #a5b0bc, #ccc2c2);
+  transform: translateY(-2px);
 }
 
 .btn:hover {

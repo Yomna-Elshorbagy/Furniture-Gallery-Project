@@ -116,7 +116,7 @@
         <div class="img-section animate__animated animate__fadeInLeft">
           <img src="./images/2.jpg" alt="Image" />
         </div>
-        <div class="form-section  animate__animated animate__fadeInRight">
+        <div class="form-section animate__animated animate__fadeInRight">
           <h2>Log In</h2>
           <form id="loginForm">
             <div class="input-group">
@@ -154,8 +154,19 @@
                 type="submit"
                 aria-label="Submit"
                 id="submitBtn"
+                disabled
               >
                 Login
+              </button>
+              <button
+                type="button"
+                class="google-btn btn2"
+                aria-label="Sign in with Google"
+              >
+                <img
+                  src="https://www.svgrepo.com/show/355037/google.svg"
+                  alt="Google"
+                />
               </button>
             </div>
             <div class="register">
@@ -464,6 +475,7 @@
     <script>
       window.bcrypt = dcodeIO.bcrypt;
     </script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="./script.js"></script>
   </body>
 </html>
