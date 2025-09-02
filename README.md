@@ -21,60 +21,60 @@ Furniture-Gallery-Project/
 │       ├── signup.html
 │       ├── style.css
 │       └── script.js
-│── about/                  # About page
-├── ├── images              
-│   ├── about.html
+│── home/                  # Home page
+├── ├── images
+│   ├── home.html
+│   ├── style.css
+│   └── script.js
+│── products/              # Products listing page
+├── ├── images
+│   ├── products.html
 │   ├── style.css
 │   └── script.js
 │── cart/                  # Shopping cart
-├── ├── images              
+├── ├── images
 │   ├── cart.html
 │   ├── style.css
 │   └── script.js
 │── checkout/              # Checkout page
-├── ├── images              
+├── ├── images
 │   ├── checkout.html
 │   ├── style.css
 │   └── script.js
 │── contact-us/            # Contact page
-├── ├── images              
+├── ├── images
 │   ├── contact.html
 │   ├── style.css
 │   └── script.js
 │── dashboard/             # Admin dashboard
-├── ├── images 
+├── ├── images
 ├── ├── pages              # contain folder for each targeted element with its functionality
 │   ├── dashboard.html
 │   ├── style.css
 │   └── script.js
 │── seller dashboard/      # Seller dashboard
-├── ├── images      
+├── ├── images
 ├── ├── pages              # contain folder for each targeted element with its functionality
 │   ├── seller.html
 │   ├── style.css
 │   └── script.js
 │── findStore/             # Store locations and client reviews
-├── ├── images              
+├── ├── images
 │   ├── findStore.html
 │   ├── style.css
 │   └── script.js
-│── home/                  # Home page
-├── ├── images              
-│   ├── home.html
+│── about/                  # About page
+├── ├── images
+│   ├── about.html
 │   ├── style.css
 │   └── script.js
 │── product details/       # Product details page
-├── ├── images              
+├── ├── images
 │   ├── productDetails.html
 │   ├── style.css
 │   └── script.js
-│── products/              # Products listing page
-├── ├── images              
-│   ├── products.html
-│   ├── style.css
-│   └── script.js
 │── profile/               # User profile page
-├── ├── images              
+├── ├── images
 │   ├── profile.html
 │   ├── style.css
 │   └── script.js
@@ -91,59 +91,66 @@ Furniture-Gallery-Project/
 ## 🚀 Features
 
 ### 👤 Authentication
+
 - User **Signup** & **Signin**
 - Validation & error handling
 - Bcrypted password for security
+- oAuth Google Log in for secure Authentication
 
 ### 👤 Authorization
+
 - Each user has role (admin - seller - user)
 - Admin Have full access and controles for all project
 - Seller have limited access only for his products and orders
 - user have access for the shopping project
 
 ### 🏠 User Features
-- Browse products with categories  
-- Add/remove products from **Cart**  
-- **Checkout** with order summary  
-- View & update **Profile**  
+
+- Browse products with categories
+- Add/remove products from **Cart**
+- **Checkout** with order summary
+- View & update **Profile**
 
 ### 🛍️ Seller Features
-- **Seller Dashboard** to manage products  
-- Add, edit, or delete product listings and orders status 
-- Analytics & reporting (orders, users, products) of his orders only 
+
+- **Seller Dashboard** to manage products
+- Add, edit, or delete product listings and orders status
+- Analytics & reporting (orders, users, products) of his orders only
 
 ### ⚙️ Admin Features
-- **Admin Dashboard** for managing users, sellers, and products  
-- Analytics & reporting (orders, users, products) for all site 
+
+- **Admin Dashboard** for managing users, sellers, and products
+- Analytics & reporting (orders, users, products) for all site
 
 ### 📌 Additional Pages
-- **About Us** – Info about the company  
-- **Contact Us** – Send queries or feedback  
-- **Find Store** – Locate nearby branches  
-- **Product Details** – Detailed product view  
+
+- **About Us** – Info about the company
+- **Contact Us** – Send queries or feedback
+- **Find Store** – Locate nearby branches
+- **Product Details** – Detailed product view
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: HTML5, CSS3, JavaScript  
-- **Styling**: Bootstrap, Animation CSS  
-- **Alerts & Popups**: SweetAlert2 , Padges , toaster 
-- **Deployment**: [Vercel](https://furnature-gallery-project.vercel.app/home/home.html)  
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Styling**: Bootstrap, Animation CSS
+- **Alerts & Popups**: SweetAlert2 , Padges , toaster
+- **Deployment**: [Vercel](https://furnature-gallery-project.vercel.app/home/home.html)
 
 ---
 
 ## 📦 Installation & Setup
 
-1. Clone the repository  
+1. Clone the repository
    ```bash
    git clone https://github.com/Yomna-Elshorbagy/Furniture-Gallery-Project.git
    ```
-2. Open the project folder  
+2. Open the project folder
    ```bash
    cd Furniture-Gallery-Project
    ```
-3. Open `index.html` in your browser (or use Live Server in VSCode)  
+3. Open `index.html` in your browser (or use Live Server in VSCode)
 
 ---
 
@@ -155,12 +162,11 @@ Furniture-Gallery-Project/
 
 ## 👨‍💻 Contributors
 
-- Designed & Developed by **Team Furniture Gallery**  
-- Special thanks to contributors for Frontend designs and functionality improvements  
+- Designed & Developed by **Team Furniture Gallery**
+- Special thanks to contributors for Frontend designs and functionality improvements
 
 ---
 
 ## 📜 License
 
 This project is licensed under the **Our Team** – feel free to use and modify it.
- 

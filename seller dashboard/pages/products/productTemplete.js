@@ -1,7 +1,7 @@
 export const productsTemplate = `
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Products</h3>
-    <button type="button" id="addProductBtn" class="btn btn-secondary btn-sm me-5 p-2">
+    <button type="button" id="addProductBtn" class="btn btn-secondary btn-sm me-5 p-2 btn-add">
       <i class="fa-solid fa-plus"></i> Add Product
     </button>
   </div>
@@ -69,8 +69,8 @@ export const productsTemplate = `
     </div>
   </div>
 </div>
-
-  <table class="table table-hover align-middle">
+ <div class="table-responsive">
+  <table class="table table-hover align-middle p-2">
     <thead class="table-light">
       <tr>
         <th>Image</th>
@@ -85,10 +85,11 @@ export const productsTemplate = `
     </thead>
     <tbody id="productsTable"></tbody>
   </table>
+  </div>
   <div class="d-flex justify-content-between mt-3">
-    <button id="prevPage" class="btn btn-outline-secondary btn-sm">Previous</button>
+    <button id="prevPage" class="btn btn-outline-secondary btn-sm btn-color2">Previous</button>
     <span id="pageInfo" class="align-self-center">Page 1</span>
-    <button id="nextPage" class="btn btn-outline-secondary btn-sm">Next</button>
+    <button id="nextPage" class="btn btn-outline-secondary btn-sm btn-color2">Next</button>
   </div>
 
   <!-- Product Modal -->

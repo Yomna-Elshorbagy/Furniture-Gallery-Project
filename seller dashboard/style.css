@@ -203,3 +203,15 @@ body.fade-out {
   flex: 1;
   max-width: calc(100% - 70px);
 }
+.btn-add{
+    background-color: #91805d;
+  border-color: #B0A18E;
+}
+.btn-add:hover{
+  background-color: #7f6f57;
+  border-color: #a29586;
+}
+.btn-color2:hover{
+  background-color: #a29586;
+  border-color: #c7b9a9;
+}

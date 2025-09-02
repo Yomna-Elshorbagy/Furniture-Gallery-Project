@@ -7,7 +7,7 @@
 
 body {
   font-family: "Raleway", sans-serif;
-  background-color: #fcfcfc;
+  background-color: #edecec;
   /* background: linear-gradient(100deg, #cec6bb, #f5f5f3); */
   height: 100vh;
   /* padding-top: 110px; */
@@ -149,7 +149,7 @@ input:focus {
   transform: translateY(-2px);
 }
 .buttons .btn:hover {
-  background: linear-gradient(135deg, #416282, #000);
+  background: linear-gradient(135deg, #848b92, #a1907d);
   transform: translateY(-2px);
 }
 .buttons .btn2:hover {
