@@ -155,47 +155,52 @@ function drowProduct(product, productList) {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
     wishlist: [],
   };
-  let isFavorite = loggedInUser.wishlist.some((p) => p.id === product.id);
+  let isFavorite = loggedInUser.wishlist?.some((p) => p.id === product.id);
   let card = document.createElement("div");
-  card.className = "product-card-wrapper col-6 col-md-3 mb-4";
+  card.className = "col-6 col-md-3 mb-4";
 
   card.innerHTML = `
-        <div class="card product-card">
-            <div class="image-scale">
-                 <button class="favorite-btn ${
-                   isFavorite ? "active" : ""
-                 }" data-id="${product.id}">
-       <i class="bi ${isFavorite ? "bi-heart-fill" : "bi-heart"}"></i>
-      </button>
-      
-      </button>
-                <img src="${product.image}" class="card-img-top" alt="${
-    product.name
+    <div class="card product-card h-100 shadow-sm">
+      <div class="image-scale position-relative  image-prod">
+        <button class="favorite-btn ${isFavorite ? "active" : ""}" data-id="${
+    product.id
   }">
-            </div>
-            <div class="card-body">
-  <h6 class="card-title text-start">${product.name}</h6>
-
-  <div class="d-flex justify-content-between align-items-center">
-    <span>
-      <span class="newprice ms-1">$${product.price}</span>
-      ${
-        product.oldPrice
-          ? `<span class="old-price ms-2 text-secondary">$${product.oldPrice}</span>`
-          : ""
-      }
-    </span>
-    
-    <button class="btn btn-sm add-to-cart-btn" data-id="${product.id}">
-      <i class="bi bi-cart-fill fs-5"></i>
-    </button>
-  </div>
-</div>
-
+          <i class="bi ${isFavorite ? "bi-heart-fill" : "bi-heart"}"></i>
+        </button>
+        <img src="${product.image}" class="card-img-top" alt="${product.name}">
+      </div>
+      <div class="card-body d-flex flex-column">
+        <h6 class="card-title fw-semibold text-start">${product.name}</h6>
+        <div class="mb-2 small text-muted text-start">Reviews ${
+          product.reviews || ""
+        }</div>
+        <div class="d-flex align-items-center mb-2">
+          <span class="me-2 small text-muted">Color:</span>
+          <span class="color-dot" style="background:${
+            product.color?.hex || "#ccc"
+          }"></span>
+          <span class="ms-2 small">${product.color?.name || ""}</span>
         </div>
-    `;
+        <div class="d-flex justify-content-between align-items-center mt-auto">
+          <span>
+            <span class="newprice fw-bold">$${product.price}</span>
+            ${
+              product.oldPrice
+                ? `<span class="old-price ms-2 text-secondary">$${product.oldPrice}</span>`
+                : ""
+            }
+          </span>
+          <button class="btn btn-sm add-to-cart-btn rounded-circle" data-id="${
+            product.id
+          }">
+            <i class="bi bi-cart-fill fs-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+`;
 
-  card.querySelector(".product-card").addEventListener("click", (e) => {
+  card.querySelector(".image-prod").addEventListener("click", (e) => {
     if (
       !e.target.closest(".favorite-btn") &&
       !e.target.closest(".add-to-cart-btn")
@@ -409,12 +414,6 @@ function renderPagination() {
 }
 
 // build favorite functionality
-
-//update padge in favorite
-// let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
-//   wishlist: [],
-// };
-
 function getLoggedInUser() {
   return JSON.parse(localStorage.getItem("loggedInUser"));
 }
@@ -589,9 +588,9 @@ document.addEventListener("click", (e) => {
   let product = products.find((p) => p.id === id);
 
   if (!product) return;
- let toastEl = document.getElementById("carttoast");
-    let toastBody = document.getElementById("cartToastBody");
-    let toast = new bootstrap.Toast(toastEl);
+  let toastEl = document.getElementById("carttoast");
+  let toastBody = document.getElementById("cartToastBody");
+  let toast = new bootstrap.Toast(toastEl);
   if (product.stock <= 0) {
     toastBody.innerHTML = `<p class="text-white text-center">${product.name} is out of stock!</p>`;
     toastEl.className =
@@ -599,8 +598,6 @@ document.addEventListener("click", (e) => {
     toast.show();
     return;
   }
-
-
 
   if (!loggedInUser) {
     Swal.fire({
@@ -621,6 +618,8 @@ document.addEventListener("click", (e) => {
   if (!loggedInUser.cart) {
     loggedInUser.cart = [];
   }
+
+  let existing = loggedInUser.cart.find((p) => p.id === id);
   if (!existing) {
     loggedInUser.cart.push({ ...product, quantity: 1 });
     toastBody.innerHTML = `<p class="text-black text-center">${product.name} has been added to Cart!</p>`;

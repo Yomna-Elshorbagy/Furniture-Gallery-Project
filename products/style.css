@@ -144,7 +144,8 @@ button.hover-button::after {
   border-right: 1px solid #eee;
 }
 
-.filter, .categorysec {
+.filter,
+.categorysec {
   border-radius: 12px;
   padding: 18px;
   background-color: #fff;
@@ -152,12 +153,14 @@ button.hover-button::after {
   transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-.filter:hover, .categorysec:hover {
-  box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
+.filter:hover,
+.categorysec:hover {
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
 
-.filter h4, .categorysec h4 {
+.filter h4,
+.categorysec h4 {
   font-size: 1.1rem;
   font-weight: 700;
   color: #111;
@@ -193,10 +196,10 @@ button.hover-button::after {
 }
 
 /* ===== Category Section ===== */
-.categorysec h4{
+.categorysec h4 {
   font-size: 1.3rem;
   font-weight: 800;
-  letter-spacing: .0625rem;
+  letter-spacing: 0.0625rem;
 }
 .categorysec button {
   background: transparent;
@@ -265,7 +268,7 @@ button.hover-button::after {
 }
 
 .colorsec:hover {
-  box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .colorsec h4 {
@@ -297,14 +300,12 @@ button.hover-button::after {
   box-shadow: 0px 0px 0px 2px #999 inset;
 }
 
-
 /* ===== Divider Styling ===== */
 hr {
   margin: 25px 0;
   border: none;
   border-top: 1px dashed #ddd;
 }
-
 
 /* -------------End header modal style ---------------- */
 
@@ -468,7 +469,6 @@ hr {
   font-weight: 300;
 }
 
-
 .newprice {
   color: #cf9362;
   font-size: 0.9rem;
@@ -538,8 +538,6 @@ hr {
   color: black;
   z-index: 2;
 }
-
-
 
 .favorite-btn.active {
   color: red;
@@ -859,4 +857,82 @@ footer a:hover {
   height: 28px;
   width: auto;
   max-width: 100%;
+}
+
+/* ************** Card products *************** */
+.product-card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.image-scale {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.image-scale img {
+  transition: transform 0.3s ease;
+}
+
+.image-scale:hover img {
+  transform: scale(1.05);
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: #fff;
+  border-radius: 50%;
+  padding: 6px 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.favorite-btn.active i {
+  color: #e63946;
+}
+
+.color-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #aaa;
+}
+
+.newprice {
+  color: #c7b9a9;
+  font-size: 1rem;
+}
+
+.old-price {
+  text-decoration: line-through;
+  font-size: 0.85rem;
+}
+
+.add-to-cart-btn {
+  background: #c7b9a9;
+  color: #fff;
+  transition: background 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+  background: #c2ad96;
+}
+.favorite-btn:hover i {
+  color: rgb(207, 101, 101) !important;
+  transition: color 0.3s ease;
 }
