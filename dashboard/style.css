@@ -277,7 +277,25 @@ background: linear-gradient(135deg, #398590, #56cfe1) !important;
   flex: 1;
   max-width: calc(100% - 70px);
 }
-/* force horizontal scrolling on small screens for tables*/
+/* **** in email**** */
+.reply-btn {
+  background: linear-gradient(135deg, #4fabb9, #398590);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.reply-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* force horizontal scrolling on small screens for all tables*/
 .table-responsive {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; 

@@ -10,6 +10,8 @@ import { initSellerPage } from "./pages/sellers/seller.js";
 import { SellersTemplate } from "./pages/sellers/sellerTemplete.js";
 import { overviewTemplate } from "./pages/overview/overviewTemplate.js";
 import { initOverviewPage } from "./pages/overview/overview.js";
+import { emailsTemplate } from "./pages/emails/emailsTemplete.js";
+import { initEmailsPage } from "./pages/emails/emails.js";
 
 let serverDataFiles = {
   products: "../server/data/products.json",
@@ -86,6 +88,10 @@ document.getElementById("orders").addEventListener("click", () => {
 document.getElementById("sellers").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = SellersTemplate;
   initSellerPage();
+});
+document.getElementById("emails").addEventListener("click", () => {
+  document.getElementById("mainContent").innerHTML = emailsTemplate;
+  initEmailsPage();
 });
 document.getElementById("logOut").addEventListener("click", () => {
   localStorage.removeItem("loggedInUser");
