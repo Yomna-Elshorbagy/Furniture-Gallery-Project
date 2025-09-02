@@ -11,7 +11,7 @@ export const UsersTemplate = `
         type="text" 
         id="userSearchId" 
         class="form-control border-start-0 custom-input" 
-        placeholder="Search by User ID..."
+        placeholder="🔎 Search by User ID..."
       />
     </div>
   </div>
@@ -24,11 +24,12 @@ export const UsersTemplate = `
         type="text" 
         id="userSearch" 
         class="form-control border-start-0 custom-input" 
-        placeholder="Search by Name or Email..."
+        placeholder="🔎 Search by Name or Email..."
       />
     </div>
   </div>
 </div>
+  <div class="table-responsive">
   <table class="table orders-table">
     <thead class="table-light">
       <tr>
@@ -84,6 +85,7 @@ export const UsersTemplate = `
         </div>
       </div>
     </div>
+  </div>
   </div>
 `;
 

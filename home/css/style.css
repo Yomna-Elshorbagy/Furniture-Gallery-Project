@@ -34,7 +34,6 @@ body {
 }
 
 header {
-  /* z-index: 1; */
   height: 100vh;
   overflow: hidden;
 }
@@ -52,7 +51,6 @@ header {
   font-size: 20px;
 }
 .bg-header {
-  /* z-index: -1; */
   position: absolute;
   top: 0px;
   width: 100%;
@@ -60,16 +58,13 @@ header {
 }
 
 .bg-header img {
-  /* width: 100vw; */
   height: 100vh;
   object-fit: cover;
   filter: brightness(90%);
-  /* يخلي الصورة أهدأ */
   transition: transform 0.8s ease-in-out;
 }
 
 .carousel-item img {
-  /* filter: brightness(70%) contrast(110%) saturate(90%); */
   filter: brightness(110%);
 }
 
@@ -80,9 +75,6 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  /* background: rgba(0,0,0,0.4);  */
-  /* أسود شفاف */
-  /* background-image: linear-gradient(to bottom, rgba(79, 79, 79, 0.9) 10%, rgba(184, 172, 162, 0)); */
   background-image: linear-gradient(
     to top,
     rgba(4, 4, 4, 0.15),
@@ -203,10 +195,8 @@ button.hover-button::after {
 
 button.hover-button-main {
   background-color: white;
-  /* أبيض في البداية */
   border: none;
   color: #000000;
-  /* خط أسود */
   padding: 10px 20px;
   text-transform: uppercase;
   font-size: 0.8em;
@@ -238,7 +228,6 @@ button.hover-button-main:hover {
 
 button.hover-button-main:hover::after {
   transform: scaleX(0);
-  /* الأبيض ينسحب بس */
   transform-origin: right center;
   transition: transform 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
@@ -504,7 +493,7 @@ h5.producttitlefav:hover {
   transform: scale(1.1);
 }
 
-/* *************************** footer bottom ************************** */
+/* *********************** footer bottom ********************** */
 footer {
   background: #f9f9f6;
   color: #333;
@@ -606,7 +595,7 @@ footer a:hover {
   max-width: 100%;
 }
 
-/* ***************************  Fixed Icons ************************** */
+/* *****************  Fixed Icons ***************** */
 .scroll-top {
   position: fixed;
   bottom: 20px;
@@ -648,7 +637,6 @@ footer a:hover {
   scale: 1.3;
 }
 
-/* ?============== Fixed Icons ================= */
 .fixed-icons .setting-icon {
   position: fixed;
   top: 40%;
@@ -670,7 +658,7 @@ footer a:hover {
   border-radius: 10px;
 }
 
-/* ......................... start social-gallery.......................  */
+/* ***************** start social-gallery *****************  */
 .head-section .main {
   font-size: 1.875rem;
   font-weight: 500;
@@ -727,7 +715,8 @@ footer a:hover {
   opacity: 1;
 }
 
-/* ...........................end social-gallery........................  */
+/* *************** end social-gallery ***************** */
+
 /* ***************  footer-top ***************** */
 .form-control {
   margin-bottom: 15px;
@@ -817,7 +806,7 @@ footer a:hover {
   }
 }
 
-/* section catigores */
+/* *************** section categories **************** */
 
 #sectionCategory {
   background-color: white;
@@ -1101,4 +1090,81 @@ footer a:hover {
     width: 90%;
     gap: 20px;
   }
+}
+
+/* ************** Card products *************** */
+.product-card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.image-scale {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.image-scale img {
+  transition: transform 0.3s ease;
+}
+
+.image-scale:hover img {
+  transform: scale(1.05);
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: #fff;
+  border-radius: 50%;
+  padding: 6px 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.favorite-btn.active i {
+  color: #e63946;
+}
+
+.color-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #aaa;
+}
+
+.newprice {
+  color: #C7B9A9;
+  font-size: 1rem;
+}
+
+.old-price {
+  text-decoration: line-through;
+  font-size: 0.85rem;
+}
+
+.add-to-cart-btn {
+  background: #C7B9A9;
+  color: #fff;
+  transition: background 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+  background: #c2ad96;
+}
+.favorite-btn:hover i {
+  color: rgb(207, 101, 101) !important;
+  transition: color 0.3s ease;
 }

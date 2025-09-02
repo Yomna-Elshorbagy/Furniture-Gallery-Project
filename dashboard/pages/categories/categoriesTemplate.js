@@ -12,7 +12,7 @@ export const categoriesTemplate = `
         type="text" 
         id="catSearchId" 
         class="form-control border-start-0 custom-input" 
-        placeholder="Search by category ID..."
+        placeholder="🔎 Search by category ID..."
       />
     </div>
   </div>
@@ -20,17 +20,18 @@ export const categoriesTemplate = `
   <!-- Search by category name  -->
   <div class="search-box d-flex align-items-center">
     <div class="input-group">
-      <span class="input-group-text bg-light border-end-0"><i class="fa fa-user"></i></span>
+      <span class="input-group-text bg-light border-end-10"><i class="fa fa-user"></i></span>
       <input 
         type="text" 
         id="catSearch" 
         class="form-control border-start-0 custom-input" 
-        placeholder="Search by Category name"
+        placeholder="🔎 Search by name"
       />
     </div>
   </div>
 </div>
 </div>
+  <div class="table-responsive">
   <table class="table orders-table">
     <thead class="table-light">
       <tr>
@@ -68,5 +69,6 @@ export const categoriesTemplate = `
       </div>
     </div>
   </div>
+</div>
 </div>
 `;

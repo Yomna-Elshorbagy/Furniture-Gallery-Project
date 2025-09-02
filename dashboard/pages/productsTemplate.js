@@ -31,7 +31,7 @@ export const productsTemplate = `
           type="text" 
           id="searchById" 
           class="form-control border-start-0 custom-input" 
-          placeholder="Search by Product ID..."
+          placeholder="🔎 Search by Product ID ..."
         />
       </div>
     </div>
@@ -47,7 +47,7 @@ export const productsTemplate = `
           type="text" 
           id="searchByName" 
           class="form-control border-start-0 custom-input" 
-          placeholder="Search by Product Name..."
+          placeholder="🔎 Search by Product Name..."
         />
       </div>
     </div>
@@ -63,7 +63,7 @@ export const productsTemplate = `
           type="text" 
           id="searchByStock" 
           class="form-control border-start-0 custom-input" 
-          placeholder="Search by Stock..."
+          placeholder="🔎 Search by Stock..."
         />
       </div>
     </div>

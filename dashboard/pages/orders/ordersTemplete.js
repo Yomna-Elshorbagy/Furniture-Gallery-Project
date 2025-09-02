@@ -24,7 +24,7 @@ export const ordersTemplate = `
         type="text" 
         id="orderSearchId" 
         class="form-control border-start-0 custom-input" 
-        placeholder="Search by Order ID..."
+        placeholder="🔎 Search by Order ID..."
       />
     </div>
   </div>
@@ -37,14 +37,14 @@ export const ordersTemplate = `
         type="text" 
         id="orderSearch" 
         class="form-control border-start-0 custom-input" 
-        placeholder="Search by User..."
+        placeholder="🔎 Search by User..."
       />
     </div>
   </div>
 </div>
 
 
-
+  <div class="table-responsive">
   <table class="table orders-table">
     <thead class="table-light">
       <tr>
@@ -94,5 +94,6 @@ export const ordersTemplate = `
         </div>
       </div>
     </div>
+  </div>
   </div>
 `;

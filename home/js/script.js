@@ -15,12 +15,24 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  let params = new URLSearchParams(window.location.search);
+  let category = params.get("category");
+
+  if (category) {
+    filterProductsByCategory(category);
+  }
   handleAuthButtons();
   renderProducts();
   renderFavoriteModal();
   updateCartBadge();
   updateFavBadge();
 });
+function filterProductsByCategory(category) {
+  let filtered = products.filter(
+    (p) => p.category.toLowerCase() === category.toLowerCase()
+  );
+  renderProducts(filtered);
+}
 // =====> get all users <=====
 function getLoggedInUser() {
   return JSON.parse(localStorage.getItem("loggedInUser"));
@@ -31,9 +43,11 @@ function saveUsers(users, loggedInUser) {
   localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
   localStorage.setItem("loggedInUserId", loggedInUser.ID);
 }
-// =====> redirect category cards to  <=====
+// =====> redirect category cards to products of filtered category <=====
 function goToCategory(categoryName) {
-  window.location.href = `../products/products.html?category=${encodeURIComponent(categoryName)}`;
+  window.location.href = `../products/products.html?category=${encodeURIComponent(
+    categoryName
+  )}`;
 }
 // =====> auth controls  <=====
 function handleAuthButtons() {
@@ -64,55 +78,61 @@ function handleAuthButtons() {
   });
 }
 // =====> render favorite icon padge and cart padge for loggedIn user <=====
+// ===> 1- render products
 function renderProducts() {
   const products = JSON.parse(localStorage.getItem("products")) || [];
   const productList = document.getElementById("product-list");
   const user = getLoggedInUser() || { wishlist: [] };
 
   const homeproducts = products.slice(0, 8);
+
   homeproducts.forEach((product) => {
     const isFavorite = user.wishlist?.some((p) => p.id === product.id);
     const card = document.createElement("div");
     card.className = "col-6 col-md-3 mb-4";
+
     card.innerHTML = `
-      <div class="card product-card homecardproduct">
-        <div class="image-scale">
-          <button class="favorite-btn ${isFavorite ? "active" : ""}" data-id="${
-      product.id
-    }">
+      <div class="card product-card homecardproduct h-100 shadow-sm">
+        <div class="image-scale position-relative">
+          <button class="favorite-btn ${isFavorite ? "active" : ""}" data-id="${product.id}">
             <i class="bi ${isFavorite ? "bi-heart-fill" : "bi-heart"}"></i>
           </button>
-          <img src="${product.image}" class="card-img-top" alt="${
-      product.name
-    }">
+          <img src="${product.image}" class="card-img-top" alt="${product.name}">
         </div>
-      <div class="card-body">
-  <h6 class="card-title text-start">${product.name}</h6>
+        
+        <div class="card-body d-flex flex-column">
+          <h6 class="card-title text-start fw-semibold">${product.name}</h6>
+          
+          <div class="mb-2 text-warning small text-start"><span class="text-muted">Reviews</span> ${product.reviews || ""}</div>
 
-  <div class="d-flex justify-content-between align-items-center">
-    <span>
-      <span class="newprice ms-1">$${product.price}</span>
-      ${
-        product.oldPrice
-          ? `<span class="old-price ms-2 text-secondary">$${product.oldPrice}</span>`
-          : ""
-      }
-    </span>
-    
-    <button class="btn btn-sm add-to-cart-btn" data-id="${product.id}">
-      <i class="bi bi-cart-fill fs-5"></i>
-    </button>
-  </div>
-</div>
-
+          <div class="d-flex align-items-center mb-2">
+            <span class="me-2 small text-muted">Color:</span>
+            <span class="color-dot" style="background:${product.color?.hex || "#ccc"}"></span>
+            <span class="ms-2 small">${product.color?.name || ""}</span>
+          </div>         
+          <div class="d-flex justify-content-between align-items-center mt-auto">
+            <span>
+              <span class="newprice fw-bold">$${product.price}</span>
+              ${product.oldPrice ? `<span class="old-price ms-2 text-secondary">$${product.oldPrice}</span>` : ""}
+            </span>
+            <button class="btn btn-sm add-to-cart-btn rounded-circle" data-id="${product.id}">
+              <i class="bi bi-cart-fill fs-5"></i>
+            </button>
+          </div>
+        </div>
       </div>
     `;
-   card.addEventListener("click", (e) => {
-  if (e.target.closest(".favorite-btn") || e.target.closest(".add-to-cart-btn")) {
-    return;
-  }
-  window.location.href = `/product%20details/proDetails.html?id=${product.id}`;
-});
+
+    // Click redirect to details page
+    card.addEventListener("click", (e) => {
+      if (
+        e.target.closest(".favorite-btn") ||
+        e.target.closest(".add-to-cart-btn")
+      ) {
+        return;
+      }
+      window.location.href = `/product%20details/proDetails.html?id=${product.id}`;
+    });
 
     productList.appendChild(card);
   });
@@ -120,6 +140,8 @@ function renderProducts() {
   setupFavoriteButtons(products);
 }
 
+
+// ===> 2- render favorite model
 function renderFavoriteModal() {
   const favmodalbody = document.getElementById("favmodalbody");
   const user = getLoggedInUser();
@@ -216,7 +238,7 @@ function renderFavoriteModal() {
     });
   });
 }
-
+//===> 3- add to cart
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("btnaddtocard")) {
     const productId = parseInt(e.target.getAttribute("data-id"));
@@ -236,7 +258,7 @@ document.addEventListener("click", (e) => {
       return;
     }
 
-     if (!product || product.stock === 0) {
+    if (!product || product.stock === 0) {
       Swal.fire({
         title: "Out of Stock ❌",
         text: "This product is currently unavailable.",
@@ -261,7 +283,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// handle add to cart  in products
+// ===> 4- handle add to cart  in products
 document.addEventListener("click", (e) => {
   let btn = e.target.closest(".add-to-cart-btn");
   if (!btn) return;
@@ -313,7 +335,7 @@ document.addEventListener("click", (e) => {
   updateCartBadge();
 });
 
-
+// ===> 5- action on button favorite
 function setupFavoriteButtons(products) {
   const buttons = document.querySelectorAll(".favorite-btn");
   const user = getLoggedInUser();
@@ -368,13 +390,12 @@ function setupFavoriteButtons(products) {
     });
   });
 }
-
+// ===> 5- update padges in navbar
 function updateFavBadge() {
   const favBadge = document.getElementById("favBadge");
   const user = getLoggedInUser();
   favBadge.textContent = user?.wishlist?.length || 0;
 }
-
 function updateCartBadge() {
   const cartBadge = document.getElementById("cartbadge");
   const user = getLoggedInUser();

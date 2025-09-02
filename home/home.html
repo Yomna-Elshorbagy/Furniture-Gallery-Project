@@ -453,7 +453,7 @@
         <div
           class="productsPage d-flex justify-content-center align-items-center"
         >
-          <button class="w-50 text-center" id="continueShopping">
+          <button class="w-25 text-center" id="continueShopping">
             Continue Shopping
           </button>
         </div>
@@ -878,21 +878,7 @@
           window.location.href = `../products/products.html?category=${category}`;
         });
       });
-      document.addEventListener("DOMContentLoaded", () => {
-        const params = new URLSearchParams(window.location.search);
-        const category = params.get("category");
 
-        if (category) {
-          filterProductsByCategory(category);
-        }
-      });
-
-      function filterProductsByCategory(category) {
-        let filtered = products.filter(
-          (p) => p.category.toLowerCase() === category.toLowerCase()
-        );
-        renderProducts(filtered);
-      }
     </script>
 
     <!-- ==================== script for BS & sweet alerts ===================== -->
