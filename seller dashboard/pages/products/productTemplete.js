@@ -80,6 +80,7 @@ export const productsTemplate = `
         <th>old price</th>
         <th>Stock</th>
         <th>Category</th>
+        <th>Status</th>
         <th>Actions</th>
       </tr>
     </thead>

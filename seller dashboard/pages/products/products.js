@@ -26,21 +26,33 @@ export function initProductsPage(filteredList = null) {
     el?.addEventListener("input", applyFilters);
     el?.addEventListener("change", applyFilters);
   });
+
   // ======> Load products <======
   let allProducts = JSON.parse(localStorage.getItem("products")) || [];
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
   let products = [];
 
-  if (filteredList) {
-    // if custom list passed → use it directly
-    products = filteredList;
-  } else if (loggedInUser?.Role === "seller") {
-    products = allProducts.filter(
-      (p) => p.sellerId?.toString() === loggedInUser.ID.toString()
-    );
-  } else {
-    products = [...allProducts];
+  // === Helper function for role-based filtering ===
+  function getProductsByRole(allProducts, loggedInUser, filteredList = null) {
+    if (filteredList) {
+      return filteredList;
+    } else if (loggedInUser?.Role === "seller") {
+      // Seller sees all their products (pending + accepted)
+      return allProducts.filter(
+        (p) => p.sellerId?.toString() === loggedInUser.ID.toString()
+      );
+    } else if (loggedInUser?.Role === "admin") {
+      // Admin sees everything
+      return [...allProducts];
+    } else {
+      // Customer sees ONLY accepted
+      return allProducts.filter(
+        (p) => (p.status || "").toLowerCase() === "accepted"
+      );
+    }
   }
+  // Initial load
+  products = getProductsByRole(allProducts, loggedInUser, filteredList);
 
   // ======> Role based filtering <======
   if (products.length === 0) {
@@ -121,6 +133,7 @@ export function initProductsPage(filteredList = null) {
         <td>${prod.oldPrice ? prod.oldPrice : "—"}</td>
         <td>${prod.stock}</td>
         <td>${prod.category}</td>
+        <td>${prod.status}</td>
         <td>
           <button class="btn btn-sm btn-warning me-2 edit-product" data-id="${
             prod.id
@@ -132,6 +145,11 @@ export function initProductsPage(filteredList = null) {
           }">
             <i class="fa-solid fa-trash"></i>
           </button>
+             <button class="btn btn-sm btn-secondary me-2 soft-del-product" data-id="${
+               prod.id
+             }">
+          <i class="fa-solid fa-ban"></i>
+        </button>
         </td>
       `;
       tableBody.appendChild(row);
@@ -144,6 +162,45 @@ export function initProductsPage(filteredList = null) {
     document.querySelectorAll(".del-product").forEach((btn) => {
       btn.addEventListener("click", handleDeleteProduct);
     });
+
+    document.querySelectorAll(".soft-del-product").forEach((btn) =>
+      btn.addEventListener("click", function () {
+        let id = this.dataset.id;
+
+        Swal.fire({
+          title: "Soft deleted Product?",
+          text: "This will Soft deleted the product but not permanently delete it.",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Yes, Soft deleted",
+          cancelButtonText: "Cancel",
+          confirmButtonColor: "#6c757d",
+          cancelButtonColor: "#d33",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // mark product as soft deleted
+            products = products.map((prod) =>
+              String(prod.id) === id ? { ...prod, isDeleted: true } : prod
+            );
+
+            // save updated products
+            localStorage.setItem("products", JSON.stringify(products));
+
+            // refresh filtered list
+            searchededProducts = products.filter((p) => !p.isDeleted);
+            renderProducts();
+
+            Swal.fire({
+              title: "Soft deleted!",
+              text: "The product has been deleted successfully.",
+              icon: "success",
+              timer: 2000,
+              showConfirmButton: false,
+            });
+          }
+        });
+      })
+    );
 
     renderPagination();
   }
@@ -186,6 +243,7 @@ export function initProductsPage(filteredList = null) {
       categoryInput.appendChild(option);
     });
   }
+
   // =======================>> Add Product <<=====================
   let tempSubImages = [];
   document.getElementById("addProductBtn")?.addEventListener("click", () => {
@@ -274,7 +332,6 @@ export function initProductsPage(filteredList = null) {
       OldPriceInput.value = prod.oldPrice ?? "";
       stockInput.value = prod.stock;
       populateCategories(prod.category);
-      // categoryInput.value = prod.category;
       descInput.value = prod.description;
       imagePreview.src = prod.image;
       imagePreview.style.display = "block";
@@ -330,6 +387,12 @@ export function initProductsPage(filteredList = null) {
             }
           : p
       );
+      Swal.fire({
+        icon: "success",
+        title: "Product Updated",
+        text: "Your product changes have been saved.",
+        confirmButtonText: "OK",
+      });
     } else {
       // add new
       let newId = allProducts.length
@@ -347,25 +410,26 @@ export function initProductsPage(filteredList = null) {
         subImages: tempSubImages,
         sellerId: loggedInUser?.ID || null,
         sellerName: loggedInUser?.Name || "Unknown",
+        status: "pending", // always pending when first added
+      });
+      Swal.fire({
+        icon: "info",
+        title: "Product Submitted",
+        text: "Your product is waiting for admin approval.",
+        confirmButtonText: "OK",
       });
     }
 
     // persist all products
     localStorage.setItem("products", JSON.stringify(allProducts));
 
-    // refresh current seller/admin view
-    if (loggedInUser?.Role === "seller") {
-      products = allProducts.filter(
-        (p) => p.sellerId?.toString() === loggedInUser.ID.toString()
-      );
-    } else {
-      products = [...allProducts];
-    }
-
+    // refresh current seller/admin/customer view
+    products = getProductsByRole(allProducts, loggedInUser);
     searchededProducts = [...products];
     renderProducts();
 
     bootstrap.Modal.getInstance(document.getElementById("productModal")).hide();
+    return;
   });
 
   // ====>> Delete Product <<====
@@ -385,13 +449,7 @@ export function initProductsPage(filteredList = null) {
         allProducts = allProducts.filter((p) => p.id !== id);
         localStorage.setItem("products", JSON.stringify(allProducts));
 
-        if (loggedInUser?.Role === "seller") {
-          products = allProducts.filter(
-            (p) => p.sellerId?.toString() === loggedInUser.ID.toString()
-          );
-        } else {
-          products = [...allProducts];
-        }
+        products = getProductsByRole(allProducts, loggedInUser);
 
         let totalPages = Math.ceil(products.length / pageSize);
         if (currentPage > totalPages) currentPage = totalPages || 1;
@@ -410,6 +468,6 @@ export function initProductsPage(filteredList = null) {
   });
 
   // Initial render
-  renderProducts();
   applyFilters();
+  renderProducts();
 }

@@ -1,3 +1,26 @@
+window.addEventListener("DOMContentLoaded", () => {
+  // if user Not logged in redirect him to login page
+  document.addEventListener("click", (e) => {
+    let link = e.target.closest("a.userData");
+    if (!link) return;
+    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!loggedInUser) {
+      e.preventDefault();
+      Swal.fire({
+        title: "🔒 Login Required",
+        text: "You must be logged in to access this page.",
+        icon: "warning",
+        showConfirmButton: true,
+        confirmButtonText: "Go to Login",
+      }).then(() => {
+        window.location.href = "../Auth/log-in/login.html";
+      });
+    } else {
+      window.location.href = link.href;
+    }
+  });
+});
+
 let signedIn;
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -114,27 +137,6 @@ function validateSignIn(email, password) {
       bcrypt.compareSync(password, user.Password)
   );
 }
-
-// if user Not logged in redirect him to login page
-document.addEventListener("click", (e) => {
-  let link = e.target.closest("a.userData");
-  if (!link) return;
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  if (!loggedInUser) {
-    e.preventDefault();
-    Swal.fire({
-      title: "🔒 Login Required",
-      text: "You must be logged in to access this page.",
-      icon: "warning",
-      showConfirmButton: true,
-      confirmButtonText: "Go to Login",
-    }).then(() => {
-      window.location.href = "../log-in/login.html";
-    });
-  } else {
-    window.location.href = link.href;
-  }
-});
 
 // ===== GOOGLE SIGN-IN HANDLER =====
 const googleBtn = document.querySelector(".google-btn");

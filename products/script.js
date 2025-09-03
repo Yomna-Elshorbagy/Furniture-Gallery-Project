@@ -309,7 +309,6 @@ sortbtnMintoMAx.addEventListener("click", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const category = urlParams.get("category");
 
-  // لو مفيش category اعرض الكل
   if (!category) {
     AllproductSorted = products.slice();
     AllproductSorted.sort((a, b) => a.price - b.price);

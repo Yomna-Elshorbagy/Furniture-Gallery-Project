@@ -79,7 +79,9 @@ export const productsTemplate = `
         <th>old price</th>
         <th>Stock</th>
         <th>Category</th>
+        <th>Status</th>
         <th>Actions</th>
+        <th>Requests</th>
       </tr>
     </thead>
     <tbody id="productsTable"></tbody>
