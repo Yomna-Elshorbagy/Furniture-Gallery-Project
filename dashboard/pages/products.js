@@ -205,7 +205,7 @@ export function initProductsPage(initialProducts = null) {
 
             Swal.fire({
               title: "Soft Deleted!",
-              text: "The product has been Deleted successfully.",
+              text: "The product has been Soft Deleted successfully.",
               icon: "success",
               timer: 2000,
               showConfirmButton: false,
@@ -364,69 +364,77 @@ export function initProductsPage(initialProducts = null) {
   }
 
   // ====>> Save Product <<=====
-  saveBtn.addEventListener("click", () => {
-    let name = nameInput.value.trim();
-    let price = priceInput.value.trim();
-    let oldPrice = OldPriceInput.value.trim();
-    let stock = stockInput.value.trim();
-    let category = categoryInput.value;
-    let desc = descInput.value.trim();
-    let imgUrl = imagePreview.src;
+// ====>> Save Product <<=====
+saveBtn.addEventListener("click", () => {
+  let name = nameInput.value.trim();
+  let price = priceInput.value.trim();
+  let oldPrice = OldPriceInput.value.trim();
+  let stock = stockInput.value.trim();
+  let category = categoryInput.value;
+  let desc = descInput.value.trim();
+  let imgUrl = imagePreview.src;
 
-    if (!name || !price || !stock) {
-      Swal.fire({
-        icon: "warning",
-        title: "Missing Fields",
-        text: "Please fill in all required fields",
-        confirmButtonText: "OK",
-      });
-      return;
-    }
+  if (!name || !price || !stock) {
+    Swal.fire({
+      icon: "warning",
+      title: "Missing Fields",
+      text: "Please fill in all required fields",
+      confirmButtonText: "OK",
+    });
+    return;
+  }
 
-    if (editingId) {
-      // update existing
-      products = products.map((prod) =>
-        prod.id === editingId
-          ? {
-              ...prod,
-              name,
-              price,
-              oldPrice,
-              stock,
-              category,
-              description: desc,
-              image: imgUrl,
-              subImages: tempSubImages,
-            }
-          : prod
-      );
-    } else {
-      // add new
-      let newId = products.length
-        ? Math.max(...products.map((p) => p.id)) + 1
-        : 1;
-      products.push({
-        id: newId,
-        name,
-        price,
-        oldPrice,
-        stock,
-        category: categoryInput.value,
-        description: desc,
-        image: imgUrl || "../../server/data/products_img/default.jpg",
-        subImages: tempSubImages.length > 0 ? tempSubImages : [],
-        status: "accepted",
-      });
-    }
+  if (editingId) {
+    // update existing product
+    products = products.map((prod) =>
+      prod.id === editingId
+        ? {
+            ...prod,
+            name,
+            price,
+            oldPrice: oldPrice || "",
+            stock,
+            category,
+            description: desc || "",
+            image: imgUrl || "../../server/data/products_img/default.jpg",
+            subImages: tempSubImages.length > 0 ? tempSubImages : [],
+          }
+        : prod
+    );
+  } else {
+    // create new product with safe defaults
+    let newId = products.length
+      ? Math.max(...products.map((p) => p.id)) + 1
+      : 1;
 
-    console.log(tempSubImages);
+    let newProduct = {
+      id: newId,
+      name,
+      price,
+      oldPrice: oldPrice || "",
+      category: category || "",
+      reviews: "", 
+      stock: stock || 0,
+      description: desc || "",
+      image: imgUrl || "../../server/data/products_img/default.jpg",
+      subImages: tempSubImages.length > 0 ? tempSubImages : [],
+      dimentions: { width: "", height: "", Length: "" }, 
+      sellerId: "", 
+      sellerName: "",
+      color: { name: "", hex: "" }, 
+      status: "accepted",
+      isDeleted: false,
+    };
 
-    localStorage.setItem("products", JSON.stringify(products));
-    searchededProducts = [...products];
-    renderProducts();
+    products.push(newProduct);
+  }
 
-    bootstrap.Modal.getInstance(document.getElementById("productModal")).hide();
-  });
+  localStorage.setItem("products", JSON.stringify(products));
+  searchededProducts = [...products];
+  applyFilters();
+
+  bootstrap.Modal.getInstance(document.getElementById("productModal")).hide();
+});
 
   // ====>> Delete Product <<====
   function handleDeleteProduct(e) {

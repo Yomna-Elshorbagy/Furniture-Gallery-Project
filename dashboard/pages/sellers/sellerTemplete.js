@@ -82,5 +82,55 @@ export const SellersTemplate = `
       </div>
     </div>
   </div>
+
+
+  <!-- View User Modal -->
+<div class="modal fade" id="viewUserModal" tabindex="-1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content shadow-lg border-0 rounded-3">
+      <div class="modal-header bg-info text-white">
+        <h5 class="modal-title"><i class="fa fa-user-circle"></i> User Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- User Info -->
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title mb-3">👤 Basic Information</h5>
+            <p><b>ID:</b> <span id="viewUserId"></span></p>
+            <p><b>Name:</b> <span id="viewUserName"></span></p>
+            <p><b>Email:</b> <span id="viewUserEmail"></span></p>
+            <p><b>Phone:</b> <span id="viewUserPhone"></span></p>
+            <p><b>Role:</b> <span id="viewUserRole"></span></p>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs" id="userTabs" role="tablist">
+          <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#cartTab">🛒 Cart</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#ordersTab">📦 Orders</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#wishlistTab">❤️ Wishlist</button></li>
+        </ul>
+
+        <!-- Tabs Content -->
+        <div class="tab-content mt-3">
+          <div class="tab-pane fade show active" id="cartTab">
+            <ul id="viewUserCart" class="list-group"></ul>
+          </div>
+          <div class="tab-pane fade" id="ordersTab">
+            <ul id="viewUserOrders" class="list-group"></ul>
+          </div>
+          <div class="tab-pane fade" id="wishlistTab">
+            <ul id="viewUserWishlist" class="list-group"></ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
   </div>
 `;

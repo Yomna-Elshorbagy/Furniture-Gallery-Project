@@ -33,6 +33,16 @@ function saveUsers(users, loggedInUser) {
   localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
   localStorage.setItem("loggedInUserId", loggedInUser.ID);
 }
+function updateUserData(user) {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let idx = users.findIndex((u) => u.ID === user.ID);
+  if (idx !== -1) {
+    users[idx] = user;
+  } else {
+    users.push(user);
+  }
+  saveUsers(users, user);
+}
 
 function handleAuthButtons() {
   const loginBtn = document.getElementById("loginBtn");
@@ -92,7 +102,7 @@ function renderFavoriteModal() {
   clearBtn.addEventListener("click", () => {
     user.wishlist = [];
     let products = JSON.parse(localStorage.getItem("products"));
-    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    updateUserData(user);
     renderFavoriteModal();
     updateFavBadge();
     setupFavoriteButtons(products);
@@ -143,9 +153,9 @@ function renderFavoriteModal() {
     btn.addEventListener("click", () => {
       const id = parseInt(btn.getAttribute("data-id"));
       user.wishlist = user.wishlist.filter((p) => p.id !== id);
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
-      updateFavBadge();
+      updateUserData(user);
       renderFavoriteModal();
+      updateFavBadge();
       let favBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
       if (favBtn) {
         favBtn.classList.remove("active");

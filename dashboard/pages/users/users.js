@@ -41,6 +41,9 @@ export async function initUsersPage() {
         <td>${user.Phone}</td>
         <td>${user.Role}</td>
         <td>
+          <button class="btn btn-sm btn-info me-2 view-user" data-id="${user.ID}">
+            <i class="fa-solid fa-eye"></i>
+          </button>
           <button class="btn btn-sm btn-warning me-2 edit-user" data-id="${user.ID}">
             <i class="fa-solid fa-pen"></i>
           </button>
@@ -220,4 +223,95 @@ export async function initUsersPage() {
       })
     );
   }
+
+  let viewuserModal = document.getElementById("viewUserModal");
+  viewuserModal.addEventListener("show.bs.modal", () => {
+    document.body.appendChild(viewuserModal);
+  });
+
+  document.querySelectorAll(".view-user").forEach((btn) =>
+    btn.addEventListener("click", function () {
+      let id = this.dataset.id;
+      let user = users.find((u) => String(u.ID) === id);
+
+      if (user) {
+        // Fill basic info
+        document.getElementById("viewUserId").textContent = user.ID;
+        document.getElementById("viewUserName").textContent = user.Name;
+        document.getElementById("viewUserEmail").textContent = user.Email;
+        document.getElementById("viewUserPhone").textContent = user.Phone;
+        document.getElementById("viewUserRole").textContent = user.Role;
+
+        // ===== Orders =====
+        let allOrders = JSON.parse(localStorage.getItem("orders")) || [];
+        let userOrders = allOrders.filter(
+          (o) => String(o.userId) === String(user.ID)
+        );
+
+        let ordersList = document.getElementById("viewUserOrders");
+        ordersList.innerHTML = userOrders.length
+          ? userOrders
+              .map(
+                (o) => `
+              <li class="list-group-item">
+                <b>Order #${o.ID}</b> - ${o.Status} <br>
+                Items: ${o.TotalItems} | Total: $${o.TotalPrice} <br>
+                Date: ${o.Date}
+                <ul class="mt-2">
+                  ${o.products
+                    .map(
+                      (p) => `<li>${p.name} (x${p.quantity}) - $${p.price}</li>`
+                    )
+                    .join("")}
+                </ul>
+              </li>
+            `
+              )
+              .join("")
+          : "<li class='list-group-item text-muted'>No orders yet</li>";
+
+        // ===== Cart =====
+        let allCarts = JSON.parse(localStorage.getItem("carts")) || [];
+        let userCart = allCarts.find(
+          (c) => String(c.userId) === String(user.ID)
+        );
+
+        // ===== Cart (from user.cart) =====
+        let cartList = document.getElementById("viewUserCart");
+        cartList.innerHTML = user.cart?.length
+          ? user.cart
+              .map(
+                (item) => `
+        <li class="list-group-item d-flex align-items-center">
+          <img src="${item.image}" width="50" class="me-3 rounded">
+          <div>
+            <b>${item.name}</b> <br>
+            Quantity: ${item.quantity ?? 1} <br>
+            Price: $${item.price}
+          </div>
+        </li>
+      `
+              )
+              .join("")
+          : "<li class='list-group-item text-muted'>Empty cart</li>";
+
+        // ===== Wishlist (from user.wishlist) =====
+        let wishlistList = document.getElementById("viewUserWishlist");
+        wishlistList.innerHTML = user.wishlist?.length
+          ? user.wishlist
+              .map(
+                (w) =>
+                  `<li class="list-group-item">
+                  <img src="${w.image}" width="40" class="me-2 rounded">
+                  ${w.name} - $${w.price}
+                </li>`
+              )
+              .join("")
+          : "<li class='list-group-item text-muted'>Empty wishlist</li>";
+
+        // Show modal
+        new bootstrap.Modal(document.getElementById("viewUserModal")).show();
+      }
+    })
+  );
 }

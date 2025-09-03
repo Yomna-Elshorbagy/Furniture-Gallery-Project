@@ -36,6 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
   renderFavoriteModal();
 });
 
+function updateUserData(user) {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let idx = users.findIndex((u) => u.ID === user.ID);
+  if (idx !== -1) {
+    users[idx] = user;
+  } else {
+    users.push(user);
+  }
+  saveUsers(users, user);
+}
+
 /* ---------------- CART SECTION ---------------- */
 
 let cartbody = document.getElementById("cartbody");
@@ -49,7 +60,7 @@ if (cartbody) {
     noproductsdiv.innerHTML = `
       <h4 class="text-uppercase fw-light emptycarttitle">Your cart is empty</h4>
       <button class="emptycartbtn">Shop our products</button>`;
-   
+
     cartbody.appendChild(noproductsdiv);
     let shopBtn = document.querySelector(".emptycartbtn");
     if (shopBtn) {
@@ -57,8 +68,6 @@ if (cartbody) {
         window.location.href = "../products/products.html";
       });
     }
-    
-    
   } else {
     let carttitle = document.createElement("h4");
     carttitle.className = "emptycarttitle";
@@ -93,7 +102,9 @@ if (cartbody) {
       row.innerHTML = `
         <td>
           <div class="d-flex align-items-center">
-            <img src="${product.image}" alt="${product.name}" class="me-3" style="width:80px; height:80px; object-fit:cover;">
+            <img src="${product.image}" alt="${
+        product.name
+      }" class="me-3" style="width:80px; height:80px; object-fit:cover;">
             <div>
               <h6 class="mb-1 fw-light">${product.name}</h6>
               <p class="mb-0 text-muted">$${product.price}</p>
@@ -102,13 +113,23 @@ if (cartbody) {
         </td>
         <td class="text-center">
           <div class="d-flex justify-content-center align-items-center">
-            <button class="btn btn-sm btn-outline-secondary minus-btn" data-id="${product.id}">-</button>
-            <span class="mx-2 quantity" id="quantity-${product.id}">${product.quantity}</span>
-            <button class="btn btn-sm btn-outline-secondary plus-btn" data-id="${product.id}">+</button>
+            <button class="btn btn-sm btn-outline-secondary minus-btn" data-id="${
+              product.id
+            }">-</button>
+            <span class="mx-2 quantity" id="quantity-${product.id}">${
+        product.quantity
+      }</span>
+            <button class="btn btn-sm btn-outline-secondary plus-btn" data-id="${
+              product.id
+            }">+</button>
           </div>
-          <button class="btn btn-link text-muted p-0 remove-btn mt-3" data-id="${product.id}">REMOVE</button>
+          <button class="btn btn-link text-muted p-0 remove-btn mt-3" data-id="${
+            product.id
+          }">REMOVE</button>
         </td>
-        <td class="text-end" id="total-${product.id}">$${product.price * product.quantity}</td>
+        <td class="text-end" id="total-${product.id}">$${
+        product.price * product.quantity
+      }</td>
       `;
       tbody.appendChild(row);
     });
@@ -125,24 +146,27 @@ if (cartbody) {
       let totalCell = document.getElementById(`total-${id}`);
       let quantity = parseInt(quantitySpan.textContent);
 
-      if (btn.classList.contains("plus-btn") && quantity < (product.stock)) {
+      if (btn.classList.contains("plus-btn") && quantity < product.stock) {
         quantity++;
       }
       if (btn.classList.contains("minus-btn") && quantity > 1) {
         quantity--;
       }
 
-      if (btn.classList.contains("plus-btn") || btn.classList.contains("minus-btn")) {
+      if (
+        btn.classList.contains("plus-btn") ||
+        btn.classList.contains("minus-btn")
+      ) {
         quantitySpan.textContent = quantity;
         totalCell.textContent = `$${product.price * quantity}`;
         product.quantity = quantity;
-        localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+        updateUserData(loggedInUser);
         updateGrandTotal();
       }
 
       if (btn.classList.contains("remove-btn")) {
         loggedInUser.cart = loggedInUser.cart.filter((p) => p.id !== id);
-        localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+        updateUserData(loggedInUser);
         btn.closest("tr").remove();
         updateCartBadge();
 
@@ -152,12 +176,12 @@ if (cartbody) {
               <h4 class="text-uppercase fw-light emptycarttitle">Your cart is empty</h4>
               <button class="emptycartbtn">Shop our products</button>
             </div>`;
-            let shopBtn = document.querySelector(".emptycartbtn");
-    if (shopBtn) {
-      shopBtn.addEventListener("click", () => {
-        window.location.href = "../products/products.html";
-      });
-    }
+          let shopBtn = document.querySelector(".emptycartbtn");
+          if (shopBtn) {
+            shopBtn.addEventListener("click", () => {
+              window.location.href = "../products/products.html";
+            });
+          }
         } else {
           updateGrandTotal();
         }
@@ -249,7 +273,7 @@ function renderFavoriteModal() {
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
       user.wishlist = [];
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      updateUserData(user);
       renderFavoriteModal();
       updateFavBadge();
       document.querySelectorAll(".favorite-btn").forEach((btn) => {
@@ -271,8 +295,12 @@ function renderFavoriteModal() {
     card.innerHTML = `
       <div class="card product-card">
         <div class="position-relative">
-          <img src="${product.image}" class="card-img-top" alt="${product.name}">
-          <button class=" removeFavBtn btn btn-sm bg-white position-absolute top-0 end-0 m-2" data-id="${product.id}">
+          <img src="${product.image}" class="card-img-top" alt="${
+      product.name
+    }">
+          <button class=" removeFavBtn btn btn-sm bg-white position-absolute top-0 end-0 m-2" data-id="${
+            product.id
+          }">
             <i class="bi bi-x-lg"></i>
           </button>
         </div>
@@ -284,7 +312,9 @@ function renderFavoriteModal() {
               ? `<h4 class="old-price text-secondary text-decoration-line-through">$${product.oldPrice}</h4>`
               : ""
           }
-          <button class="btn btn-dark w-100 btnaddtocard" data-id="${product.id}">ADD TO CART</button>
+          <button class="btn btn-dark w-100 btnaddtocard" data-id="${
+            product.id
+          }">ADD TO CART</button>
         </div>
       </div>
     `;
@@ -296,7 +326,7 @@ function renderFavoriteModal() {
     btn.addEventListener("click", () => {
       const id = parseInt(btn.getAttribute("data-id"));
       user.wishlist = user.wishlist.filter((p) => p.id !== id);
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      updateUserData(user);
       updateFavBadge();
       renderFavoriteModal();
 
@@ -340,7 +370,7 @@ document.addEventListener("click", (e) => {
       return;
     }
 
-      if (!product || product.stock === 0) {
+    if (!product || product.stock === 0) {
       Swal.fire({
         title: "Out of Stock ❌",
         text: "This product is currently unavailable.",
@@ -349,7 +379,6 @@ document.addEventListener("click", (e) => {
       });
       return;
     }
-
 
     if (!user.cart) user.cart = [];
     if (!user.cart.some((p) => p.id === productId)) {

@@ -351,6 +351,7 @@ export function initProductsPage(filteredList = null) {
   }
 
   // =====> Save Product <======
+  // =====> Save Product <======
   saveBtn.addEventListener("click", () => {
     let name = nameInput.value.trim();
     let price = priceInput.value.trim();
@@ -378,15 +379,24 @@ export function initProductsPage(filteredList = null) {
               ...p,
               name,
               price,
-              oldPrice,
-              stock,
-              category,
-              description: desc,
-              image: imgUrl,
-              subImages: tempSubImages,
+              oldPrice: oldPrice || "",
+              stock: stock || 0,
+              category: category || "",
+              description: desc || "",
+              image: imgUrl || "../../server/data/products_img/default.jpg",
+              subImages: tempSubImages.length > 0 ? tempSubImages : [],
+              // ensure defaults are preserved if missing
+              reviews: p.reviews || "",
+              dimentions: p.dimentions || { width: "", height: "", Length: "" },
+              sellerId: p.sellerId || (loggedInUser?.ID ?? ""),
+              sellerName: p.sellerName || (loggedInUser?.Name ?? "Unknown"),
+              color: p.color || { name: "", hex: "" },
+              status: p.status || "pending",
+              isDeleted: p.isDeleted ?? false,
             }
           : p
       );
+
       Swal.fire({
         icon: "success",
         title: "Product Updated",
@@ -398,20 +408,27 @@ export function initProductsPage(filteredList = null) {
       let newId = allProducts.length
         ? Math.max(...allProducts.map((p) => p.id)) + 1
         : 1;
+
       allProducts.push({
         id: newId,
         name,
         price,
-        oldPrice,
-        stock,
-        category,
-        description: desc,
+        oldPrice: oldPrice || "",
+        stock: stock || 0,
+        category: category || "",
+        description: desc || "",
         image: imgUrl || "../../server/data/products_img/default.jpg",
-        subImages: tempSubImages,
-        sellerId: loggedInUser?.ID || null,
+        subImages: tempSubImages.length > 0 ? tempSubImages : [],
+        // === safe defaults for new product ===
+        reviews: "",
+        dimentions: { width: "", height: "", Length: "" },
+        sellerId: loggedInUser?.ID || "",
         sellerName: loggedInUser?.Name || "Unknown",
-        status: "pending", // always pending when first added
+        color: { name: "", hex: "" },
+        status: "pending", 
+        isDeleted: false,
       });
+
       Swal.fire({
         icon: "info",
         title: "Product Submitted",
@@ -429,7 +446,6 @@ export function initProductsPage(filteredList = null) {
     renderProducts();
 
     bootstrap.Modal.getInstance(document.getElementById("productModal")).hide();
-    return;
   });
 
   // ====>> Delete Product <<====

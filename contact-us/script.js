@@ -208,7 +208,7 @@ function renderFavoriteModal() {
   clearBtn.addEventListener("click", () => {
     user.wishlist = [];
     let products = JSON.parse(localStorage.getItem("products"));
-    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    updateUserData(user);
     renderFavoriteModal();
     updateFavBadge();
     document.querySelectorAll(".favorite-btn").forEach((btn) => {
@@ -257,9 +257,10 @@ function renderFavoriteModal() {
     btn.addEventListener("click", () => {
       const id = parseInt(btn.getAttribute("data-id"));
       user.wishlist = user.wishlist.filter((p) => p.id !== id);
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
-      updateFavBadge();
+      updateUserData(user);
       renderFavoriteModal();
+      updateFavBadge();
+
       let favBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
       if (favBtn) {
         favBtn.classList.remove("active");
@@ -278,33 +279,15 @@ function saveUsers(users, loggedInUser) {
   localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
   localStorage.setItem("loggedInUserId", loggedInUser.ID);
 }
-
-function handleAuthButtons() {
-  const loginBtn = document.getElementById("loginBtn");
-  const logoutBtn = document.getElementById("logoutBtn");
-  const loggedInUser = getLoggedInUser();
-
-  if (loggedInUser) {
-    loginBtn.classList.add("d-none");
-    logoutBtn.classList.remove("d-none");
+function updateUserData(user) {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let idx = users.findIndex((u) => u.ID === user.ID);
+  if (idx !== -1) {
+    users[idx] = user;
   } else {
-    loginBtn.classList.remove("d-none");
-    logoutBtn.classList.add("d-none");
+    users.push(user);
   }
-
-  logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("loggedInUser");
-    localStorage.removeItem("loggedInUserId");
-    Swal.fire({
-      title: "👋 Logged out",
-      text: "You have been logged out successfully.",
-      icon: "success",
-      timer: 2000,
-      showConfirmButton: false,
-    }).then(() => {
-      window.location.href = "../Auth/log-in/login.html";
-    });
-  });
+  saveUsers(users, user);
 }
 
 document.addEventListener("click", function (e) {

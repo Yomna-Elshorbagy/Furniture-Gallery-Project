@@ -3,7 +3,7 @@ const serverDataFiles = {
   categories: "../../server/data/categories.json",
   orders: "../../server/data/orders.json",
   users: "../../server/data/users.json",
-  contactMessages:"../../server/data/contactMessages.json"
+  contactMessages: "../../server/data/contactMessages.json",
 };
 // =====> on load run functions <=====
 window.addEventListener("DOMContentLoaded", () => {
@@ -44,6 +44,18 @@ function saveUsers(users, loggedInUser) {
   localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
   localStorage.setItem("loggedInUserId", loggedInUser.ID);
 }
+
+function updateUserData(updatedUser) {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let idx = users.findIndex((u) => u.ID === updatedUser.ID);
+  if (idx !== -1) {
+    users[idx] = updatedUser;
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+  localStorage.setItem("loggedInUser", JSON.stringify(updatedUser));
+  localStorage.setItem("loggedInUserId", updatedUser.ID);
+}
+
 // =====> redirect category cards to products of filtered category <=====
 function goToCategory(categoryName) {
   window.location.href = `../products/products.html?category=${encodeURIComponent(
@@ -78,6 +90,7 @@ function handleAuthButtons() {
     });
   });
 }
+
 // =====> render favorite icon padge and cart padge for loggedIn user <=====
 // ===> 1- render products
 function renderProducts() {
@@ -95,28 +108,42 @@ function renderProducts() {
     card.innerHTML = `
       <div class="card product-card homecardproduct h-100 shadow-sm">
         <div class="image-scale position-relative">
-          <button class="favorite-btn ${isFavorite ? "active" : ""}" data-id="${product.id}">
+          <button class="favorite-btn ${isFavorite ? "active" : ""}" data-id="${
+      product.id
+    }">
             <i class="bi ${isFavorite ? "bi-heart-fill" : "bi-heart"}"></i>
           </button>
-          <img src="${product.image}" class="card-img-top" alt="${product.name}">
+          <img src="${product.image}" class="card-img-top image-prod" alt="${
+      product.name
+    }">
         </div>
         
         <div class="card-body d-flex flex-column">
           <h6 class="card-title text-start fw-semibold">${product.name}</h6>
           
-          <div class="mb-2 text-warning small text-start"><span class="text-muted">Reviews</span> ${product.reviews || ""}</div>
+          <div class="mb-2 text-warning small text-start"><span class="text-muted">Reviews</span> ${
+            product.reviews || ""
+          }</div>
 
           <div class="d-flex align-items-center mb-2">
             <span class="me-2 small text-muted">Color:</span>
-            <span class="color-dot" style="background:${product.color?.hex || "#ccc"}"></span>
+            <span class="color-dot" style="background:${
+              product.color?.hex || "#ccc"
+            }"></span>
             <span class="ms-2 small">${product.color?.name || ""}</span>
           </div>         
           <div class="d-flex justify-content-between align-items-center mt-auto">
             <span>
               <span class="newprice fw-bold">$${product.price}</span>
-              ${product.oldPrice ? `<span class="old-price ms-2 text-secondary">$${product.oldPrice}</span>` : ""}
+              ${
+                product.oldPrice
+                  ? `<span class="old-price ms-2 text-secondary">$${product.oldPrice}</span>`
+                  : ""
+              }
             </span>
-            <button class="btn btn-sm add-to-cart-btn rounded-circle" data-id="${product.id}">
+            <button class="btn btn-sm add-to-cart-btn rounded-circle" data-id="${
+              product.id
+            }">
               <i class="bi bi-cart-fill fs-5"></i>
             </button>
           </div>
@@ -125,7 +152,7 @@ function renderProducts() {
     `;
 
     // Click redirect to details page
-    card.addEventListener("click", (e) => {
+    card.querySelector(".image-prod").addEventListener("click", (e) => {
       if (
         e.target.closest(".favorite-btn") ||
         e.target.closest(".add-to-cart-btn")
@@ -140,7 +167,6 @@ function renderProducts() {
 
   setupFavoriteButtons(products);
 }
-
 
 // ===> 2- render favorite model
 function renderFavoriteModal() {
@@ -173,7 +199,7 @@ function renderFavoriteModal() {
   clearBtn.addEventListener("click", () => {
     user.wishlist = [];
     let products = JSON.parse(localStorage.getItem("products"));
-    localStorage.setItem("loggedInUser", JSON.stringify(user));
+    updateUserData(user);
     renderFavoriteModal();
     updateFavBadge();
     setupFavoriteButtons(products);
@@ -224,7 +250,7 @@ function renderFavoriteModal() {
     btn.addEventListener("click", () => {
       const id = parseInt(btn.getAttribute("data-id"));
       user.wishlist = user.wishlist.filter((p) => p.id !== id);
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      updateUserData(user);
       updateFavBadge();
       renderFavoriteModal();
       let favBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
@@ -339,7 +365,7 @@ document.addEventListener("click", (e) => {
       "opacity-100 toast align-items-center border-0 bg-danger";
   }
   toast.show();
-  localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+  updateUserData(loggedInUser);
   updateCartBadge();
 });
 
@@ -358,11 +384,15 @@ function setupFavoriteButtons(products) {
       if (!user) {
         Swal.fire({
           title: "🔒 Login Required",
-          text: "You must be logged in to add favorites.",
+          text: "You must be logged in to add to Cart.",
           icon: "warning",
-          confirmButtonText: "Go to Login",
-        }).then(() => {
-          window.location.href = "../Auth/log-in/login.html";
+          showCancelButton: true,
+          confirmButtonText: "Login",
+          cancelButtonText: "Stay Here",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = "../Auth/log-in/login.html";
+          }
         });
         return;
       }

@@ -1,5 +1,5 @@
 const serverDataFiles = {
-  // products: "../../server/data/products.json",
+  products: "../../server/data/products.json",
   categories: "../../server/data/categories.json",
   orders: "../../server/data/orders.json",
   users: "../../server/data/users.json",
@@ -44,8 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
   //=====>  handel logged in and logged out
-  handleAuthButtons();
-  renderFavoriteModal();
+
   const categoryBtns = document.querySelectorAll(
     ".categorysec button, #offcanvasExample .list-group-item button"
   );
@@ -78,18 +77,32 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  console.log(
-    "Category buttons count:",
-    categoryBtns.length,
-    "URL category:",
-    category
-  );
+  handleAuthButtons();
+  renderFavoriteModal();
+  displayProducts();
+  updateCartBadge();
+  updateFavBadge();
 });
+
+function getLoggedInUser() {
+  return JSON.parse(localStorage.getItem("loggedInUser"));
+}
 
 function saveUsers(users, loggedInUser) {
   localStorage.setItem("users", JSON.stringify(users));
   localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
   localStorage.setItem("loggedInUserId", loggedInUser.ID);
+}
+
+function updateUserData(updatedUser) {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let idx = users.findIndex((u) => u.ID === updatedUser.ID);
+  if (idx !== -1) {
+    users[idx] = updatedUser; // تحديث نسخة اليوزر
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+  localStorage.setItem("loggedInUser", JSON.stringify(updatedUser));
+  localStorage.setItem("loggedInUserId", updatedUser.ID);
 }
 
 function handleAuthButtons() {
@@ -157,8 +170,7 @@ function drowProduct(product, productList) {
   };
   let isFavorite = loggedInUser.wishlist?.some((p) => p.id === product.id);
   let card = document.createElement("div");
-  card.className = "col-6 col-md-3 mb-4";
-
+  card.className = "product-card-wrapper col-6 col-md-3 mb-4";
   card.innerHTML = `
     <div class="card product-card h-100 shadow-sm">
       <div class="image-scale position-relative  image-prod">
@@ -309,6 +321,7 @@ sortbtnMintoMAx.addEventListener("click", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const category = urlParams.get("category");
 
+  // لو مفيش category اعرض الكل
   if (!category) {
     AllproductSorted = products.slice();
     AllproductSorted.sort((a, b) => a.price - b.price);
@@ -413,9 +426,6 @@ function renderPagination() {
 }
 
 // build favorite functionality
-function getLoggedInUser() {
-  return JSON.parse(localStorage.getItem("loggedInUser"));
-}
 
 // draw favorite in model
 function renderFavoriteModal() {
@@ -451,7 +461,7 @@ function renderFavoriteModal() {
     clearBtn.addEventListener("click", () => {
       let user = getLoggedInUser();
       user.wishlist = [];
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      updateUserData(user);
       renderFavoriteModal();
       updateFavBadge();
       document.querySelectorAll(".favorite-btn").forEach((btn) => {
@@ -501,7 +511,7 @@ function renderFavoriteModal() {
     btn.addEventListener("click", () => {
       const id = parseInt(btn.getAttribute("data-id"));
       user.wishlist = user.wishlist.filter((p) => p.id !== id);
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      updateUserData(user);
       updateFavBadge();
       renderFavoriteModal();
       let favBtn = document.querySelector(`.favorite-btn[data-id="${id}"]`);
@@ -567,7 +577,8 @@ document.addEventListener("click", function (e) {
       return;
     }
 
-    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+    updateUserData(loggedInUser);
+
     updateCartBadge();
 
     window.location.href = "../cart/cart.html";
@@ -630,7 +641,7 @@ document.addEventListener("click", (e) => {
       "opacity-100 toast align-items-center border-0 bg-danger";
   }
   toast.show();
-  localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+  updateUserData(loggedInUser);
   updateCartBadge();
 });
 
@@ -688,7 +699,7 @@ document.addEventListener("click", (e) => {
   }
 
   // Update localStorage
-  localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+  updateUserData(loggedInUser);
 
   // Update the modal content
   renderFavoriteModal();
