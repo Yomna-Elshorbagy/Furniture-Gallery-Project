@@ -1,9 +1,14 @@
 export const productsTemplate = `
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Products</h3>
-    <button type="button" id="addProductBtn" class="btn btn-secondary btn-sm me-5 p-2">
+  <div>  
+    <button type="button" id="requestsBtn" class="btn btn-light btn-sm me-2">
+      <i class="fa-solid fa-clipboard-list"></i> Requests
+    </button>
+      <button type="button" id="addProductBtn" class="btn btn-secondary btn-sm me-5 p-2">
       <i class="fa-solid fa-plus"></i> Add Product
     </button>
+    </div>
   </div>
     <div class="container mb-3">
   <div class="row g-3">
@@ -81,11 +86,30 @@ export const productsTemplate = `
         <th>Category</th>
         <th>Status</th>
         <th>Actions</th>
-        <th>Requests</th>
       </tr>
     </thead>
     <tbody id="productsTable"></tbody>
   </table>
+    <!-- Requests Table -->
+  <div id="requestsContainer" class="d-none mt-5">
+  <h5 class="mt-5">Product Requests</h5>
+  <table class="table table-hover align-middle requests-table">
+    <thead class="table-light">
+      <tr>
+        <th>Image</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price ($)</th>
+        <th>Stock</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Requests</th>
+      </tr>
+    </thead>
+    <tbody id="requestsTable"></tbody>
+  </table>
+</div>
+
   <div class="d-flex justify-content-between mt-3">
     <button id="prevPage" class="btn btn-outline-secondary btn-sm">Previous</button>
     <span id="pageInfo" class="align-self-center">Page 1</span>

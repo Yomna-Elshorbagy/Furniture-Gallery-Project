@@ -133,8 +133,17 @@ export function initProductsPage(filteredList = null) {
         <td>${prod.oldPrice ? prod.oldPrice : "—"}</td>
         <td>${prod.stock}</td>
         <td>${prod.category}</td>
-        <td>${prod.status}</td>
         <td>
+          <span class="badge bg-${
+            prod.status === "accepted"
+              ? "success"
+              : prod.status === "rejected"
+              ? "danger"
+              : "secondary"
+          }">
+            ${prod.status}
+          </span>
+      </td>        <td>
           <button class="btn btn-sm btn-warning me-2 edit-product" data-id="${
             prod.id
           }">
@@ -387,7 +396,11 @@ export function initProductsPage(filteredList = null) {
               subImages: tempSubImages.length > 0 ? tempSubImages : [],
               // ensure defaults are preserved if missing
               reviews: p.reviews || "NOT NOW",
-              dimentions: p.dimentions || { width: "0", height: "0", Length: "0" },
+              dimentions: p.dimentions || {
+                width: "0",
+                height: "0",
+                Length: "0",
+              },
               sellerId: p.sellerId || (loggedInUser?.ID ?? ""),
               sellerName: p.sellerName || (loggedInUser?.Name ?? "Unknown"),
               color: p.color || { name: "", hex: "" },
@@ -425,7 +438,7 @@ export function initProductsPage(filteredList = null) {
         sellerId: loggedInUser?.ID || "",
         sellerName: loggedInUser?.Name || "Unknown",
         color: { name: "", hex: "" },
-        status: "pending", 
+        status: "pending",
         isDeleted: false,
       });
 
