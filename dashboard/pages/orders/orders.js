@@ -87,10 +87,10 @@ export function initOrdersPage() {
         <td><span class="${statusClass}">${order.Status}</span></td>
         <td>${order.Date}</td>
         <td>
-          <button class="btn btn-sm btn-warning me-2 edit-order" data-id="${order.ID}">
+          <button class="btn btn-sm btn-warning me-2 edit-order edit-btn" data-id="${order.ID}">
             <i class="fa-solid fa-pen"></i>
           </button>
-          <button class="btn btn-sm btn-danger del-order" data-id="${order.ID}">
+          <button class="btn btn-sm btn-danger del-order delete-btn" data-id="${order.ID}">
             <i class="fa-solid fa-trash"></i>
           </button>
         </td>

@@ -309,3 +309,39 @@ background: linear-gradient(135deg, #398590, #56cfe1) !important;
   }
 }
 
+/* action buttons */
+.edit-btn {
+  background-color: #3098af !important;
+  color: #fff;
+}
+.edit-btn:hover {
+  background-color: #136476 !important;
+  color: #fff;
+}
+
+.delete-btn {
+  background-color: #e74c3c !important;
+  border: none !important;
+  color: #fff !important;
+}
+.delete-btn:hover {
+  background-color: #c0392b !important;
+}
+
+.soft-del-btn{
+  background-color: #8f999a !important;
+  border: none !important;
+  color: #fff !important;
+}
+.soft-del-btn:hover {
+  background-color: #636e72 !important;
+}
+
+.view-btn{
+  background-color: #4caf50 !important;
+  color: #fff !important;
+}
+.view-btn:hover {
+  background-color: #307733 !important;
+  color: #fff !important;
+}

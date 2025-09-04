@@ -44,16 +44,16 @@ export async function initSellerPage() {
         <td>${user.Phone}</td>
         <td>${user.Role}</td>
         <td>
-          <button class="btn btn-sm btn-info me-2 view-user" data-id="${user.ID}">
+          <button class="btn btn-sm btn-info me-2 view-user view-btn" data-id="${user.ID}">
             <i class="fa-solid fa-eye"></i>
           </button>
-          <button class="btn btn-sm btn-warning me-2 edit-user" data-id="${user.ID}">
+          <button class="btn btn-sm btn-warning me-2 edit-user edit-btn" data-id="${user.ID}">
             <i class="fa-solid fa-pen"></i>
           </button>
-          <button class="btn btn-sm btn-danger del-user" data-id="${user.ID}">
+          <button class="btn btn-sm btn-danger me-2 del-user delete-btn" data-id="${user.ID}">
             <i class="fa-solid fa-trash"></i>
           </button>
-          <button class="btn btn-sm btn-secondary me-2 soft-del-user" data-id="${user.ID}">
+          <button class="btn btn-sm btn-secondary me-2 soft-del-user soft-del-btn" data-id="${user.ID}">
             <i class="fa-solid fa-ban"></i>
           </button>
         </td>

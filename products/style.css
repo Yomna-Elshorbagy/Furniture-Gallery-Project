@@ -364,6 +364,24 @@ hr {
 .mobileCategory button:hover {
   opacity: 1;
 }
+
+@media (max-width: 991px) and (min-width: 700px) {
+  .categorysec {
+    margin: 0 auto;       
+    width: 90%;             
+  }
+
+  .categorysec .btn {
+    font-size: 0.75rem;       
+    padding: 8px 10px;
+  }
+
+  .categorysec h4 {
+    font-size: 1.1rem;
+  }
+}
+
+
 /* grid for part of filtration  products*/
 #product-list .product-card-wrapper {
   flex: 0 0 25%; /* 4 in a row */
@@ -386,6 +404,8 @@ hr {
     justify-content: space-between;
   }
 }
+
+
 /* *** colors *** */
 /* start styling for color buttons filteration*/
 #colorFilter {
@@ -748,9 +768,9 @@ h5.producttitlefav:hover {
 .fitermob {
   width: 90px !important;
 }
-.priceFilterLg {
+/* .priceFilterLg {
   width: 70px !important;
-}
+} */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;

@@ -197,10 +197,10 @@ if (cartbody) {
     updateGrandTotal();
 
     let checkoutdiv = document.createElement("div");
-    checkoutdiv.className = "d-flex flex-row justify-content-between btnStyle";
+    checkoutdiv.className = "d-flex flex-column flex-md-row justify-content-between btnStyle";
 
 let continueShopingBtn = document.createElement("button");
-    continueShopingBtn.className = "btn checkoutbtn emptycartbtn my-3";
+    continueShopingBtn.className = "btn checkoutbtn emptycartbtn mt-3";
     continueShopingBtn.textContent = "Continue Shoping ";
     checkoutdiv.appendChild(continueShopingBtn);
 
@@ -209,7 +209,7 @@ let continueShopingBtn = document.createElement("button");
     });
 
     let checkoutBtn = document.createElement("button");
-    checkoutBtn.className = "btn checkoutbtn emptycartbtn my-3";
+    checkoutBtn.className = "btn checkoutbtn emptycartbtn mt-0" ;
     checkoutBtn.textContent = "CHECKOUT ";
     checkoutdiv.appendChild(checkoutBtn);
     cartbody.appendChild(checkoutdiv);

@@ -117,17 +117,17 @@ export function initProductsPage(initialProducts = null) {
         </span>
       </td>
       <td>
-        <button class="btn btn-sm btn-warning me-2 edit-product" data-id="${
+        <button class="btn btn-sm btn-warning me-2 edit-product edit-btn" data-id="${
           prod.id
         }">
           <i class="fa-solid fa-pen"></i>
         </button>
-        <button class="btn btn-sm btn-danger me-2 del-product" data-id="${
+        <button class="btn btn-sm btn-danger me-2 del-product delete-btn" data-id="${
           prod.id
         }">
           <i class="fa-solid fa-trash"></i>
         </button>
-        <button class="btn btn-sm btn-secondary soft-del-product" data-id="${
+        <button class="btn btn-sm btn-secondary soft-del-product soft-del-btn" data-id="${
           prod.id
         }">
           <i class="fa-solid fa-ban"></i>
@@ -150,13 +150,13 @@ export function initProductsPage(initialProducts = null) {
       <td>${prod.category}</td>
       <td><span class="badge bg-warning">Pending</span></td>
       <td>
-        <button class="btn btn-sm btn-success me-2 accept-product" data-id="${prod.id}">
+        <button class="btn btn-sm btn-success me-2 accept-product edit-btn" data-id="${prod.id}">
           <i class="fa-solid fa-check"></i>
         </button>
         <button class="btn btn-sm btn-secondary me-2 reject-product" data-id="${prod.id}">
           <i class="fa-solid fa-xmark"></i>
         </button>
-        <button class="btn btn-sm btn-info view-product" data-id="${prod.id}">
+        <button class="btn btn-sm btn-info view-product view-btn" data-id="${prod.id}">
           <i class="fa-solid fa-eye"></i>
         </button>
       </td>

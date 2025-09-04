@@ -39,10 +39,10 @@ export function initCategoriesPage() {
         <td>${cat.name}</td>
         <td>${cat.description}</td>
         <td>
-          <button class="btn btn-sm btn-warning me-2 edit-cat" data-id="${cat.id}">
+          <button class="btn btn-sm btn-warning me-2 edit-cat edit-btn" data-id="${cat.id}">
             <i class="fa-solid fa-pen"></i>
           </button>
-          <button class="btn btn-sm btn-danger del-cat" data-id="${cat.id}">
+          <button class="btn btn-sm btn-danger del-cat delete-btn" data-id="${cat.id}">
             <i class="fa-solid fa-trash"></i>
           </button>
         </td>
