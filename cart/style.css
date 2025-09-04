@@ -348,6 +348,13 @@ margin-top: 140px !important;
   font-weight:400;
   letter-spacing: 4px;
 }
+
+.carttitle{
+  font-size: 20px !important;
+  font-weight:500;
+  letter-spacing: 4px;
+  margin-bottom: 40px;
+}
 .emptycartbtn {
   position: relative;
   border: 1px solid black;
@@ -407,24 +414,41 @@ margin-top: 140px !important;
 }
 
 .theadstyle th{
-  font-size: 10px;
+  font-size: 16px;
   font-weight: 300 !important;
   letter-spacing: 2px;
+  background-color: black !important;
+  color: white;
+  padding-top: 10px;
 }
 .table{
   width: 70%;
   margin: auto !important;
+  margin-top: 20px;
+  gap:10px
 }
+.table { --bs-table-bg: transparent; }
+.table tbody tr:nth-of-type(even) { 
+  background-color: #ecebe9 !important; 
+}
+
 .alltotal{
   margin-right:220px ;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 500;
+  font-size: 20px;
   letter-spacing: 2px;
 }
 .checkoutbtn{
-  margin-top: 15px;
-  margin-right: 160px;
+  margin-top: 10px;
+  width: 250px !important;
+  
+  /* margin-right: 160px; */
 
+}
+.btnStyle{
+  margin: auto;
+  gap: 30px;
 }
 
 .badgestyle{

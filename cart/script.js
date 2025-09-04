@@ -69,8 +69,9 @@ if (cartbody) {
       });
     }
   } else {
+     cartbody.innerHTML = "";
     let carttitle = document.createElement("h4");
-    carttitle.className = "emptycarttitle";
+    carttitle.className = "carttitle";
     carttitle.textContent = " CART DETAILS ";
     cartbody.appendChild(carttitle);
     let table = document.createElement("table");
@@ -196,7 +197,16 @@ if (cartbody) {
     updateGrandTotal();
 
     let checkoutdiv = document.createElement("div");
-    checkoutdiv.className = "d-flex flex-row justify-content-end";
+    checkoutdiv.className = "d-flex flex-row justify-content-between btnStyle";
+
+let continueShopingBtn = document.createElement("button");
+    continueShopingBtn.className = "btn checkoutbtn emptycartbtn my-3";
+    continueShopingBtn.textContent = "Continue Shoping ";
+    checkoutdiv.appendChild(continueShopingBtn);
+
+     continueShopingBtn.addEventListener("click", () => {
+      window.location.href = "../products/products.html";
+    });
 
     let checkoutBtn = document.createElement("button");
     checkoutBtn.className = "btn checkoutbtn emptycartbtn my-3";
