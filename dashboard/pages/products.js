@@ -193,14 +193,16 @@ export function initProductsPage(initialProducts = null) {
           if (result.isConfirmed) {
             // mark product as soft deleted
             products = products.map((prod) =>
-              String(prod.id) === id ? { ...prod, isDeleted: true } : prod
+              Number(prod.id) === Number(id)
+                ? { ...prod, isDeleted: true }
+                : prod
             );
 
             // save updated products
             localStorage.setItem("products", JSON.stringify(products));
 
             // refresh filtered list
-            searchededProducts = products.filter((p) => !p.isDeleted);
+            searchededProducts = [...products];
             renderProducts();
 
             Swal.fire({
@@ -364,77 +366,78 @@ export function initProductsPage(initialProducts = null) {
   }
 
   // ====>> Save Product <<=====
-// ====>> Save Product <<=====
-saveBtn.addEventListener("click", () => {
-  let name = nameInput.value.trim();
-  let price = priceInput.value.trim();
-  let oldPrice = OldPriceInput.value.trim();
-  let stock = stockInput.value.trim();
-  let category = categoryInput.value;
-  let desc = descInput.value.trim();
-  let imgUrl = imagePreview.src;
+  // ====>> Save Product <<=====
+  saveBtn.addEventListener("click", () => {
+    let name = nameInput.value.trim();
+    let price = priceInput.value.trim();
+    let oldPrice = OldPriceInput.value.trim();
+    let stock = stockInput.value.trim();
+    let category = categoryInput.value;
+    let desc = descInput.value.trim();
+    let imgUrl = imagePreview.src;
 
-  if (!name || !price || !stock) {
-    Swal.fire({
-      icon: "warning",
-      title: "Missing Fields",
-      text: "Please fill in all required fields",
-      confirmButtonText: "OK",
-    });
-    return;
-  }
+    if (!name || !price || !stock) {
+      Swal.fire({
+        icon: "warning",
+        title: "Missing Fields",
+        text: "Please fill in all required fields",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
 
-  if (editingId) {
-    // update existing product
-    products = products.map((prod) =>
-      prod.id === editingId
-        ? {
-            ...prod,
-            name,
-            price,
-            oldPrice: oldPrice || "",
-            stock,
-            category,
-            description: desc || "",
-            image: imgUrl || "../../server/data/products_img/default.jpg",
-            subImages: tempSubImages.length > 0 ? tempSubImages : [],
-          }
-        : prod
-    );
-  } else {
-    // create new product with safe defaults
-    let newId = products.length
-      ? Math.max(...products.map((p) => p.id)) + 1
-      : 1;
+    if (editingId) {
+      // update existing product
+      products = products.map((prod) =>
+        prod.id === editingId
+          ? {
+              ...prod,
+              name,
+              price,
+              oldPrice: oldPrice || "",
+              stock,
+              category,
+              description: desc || "",
+              image: imgUrl || "../../server/data/products_img/default.jpg",
+              subImages: tempSubImages.length > 0 ? tempSubImages : [],
+            }
+          : prod
+      );
+    } else {
+      // create new product with safe defaults
+      let newId = products.length
+        ? Math.max(...products.map((p) => p.id)) + 1
+        : 1;
 
-    let newProduct = {
-      id: newId,
-      name,
-      price,
-      oldPrice: oldPrice || "",
-      category: category || "",
-      reviews: "", 
-      stock: stock || 0,
-      description: desc || "",
-      image: imgUrl || "../../server/data/products_img/default.jpg",
-      subImages: tempSubImages.length > 0 ? tempSubImages : [],
-      dimentions: { width: "", height: "", Length: "" }, 
-      sellerId: "", 
-      sellerName: "",
-      color: { name: "", hex: "" }, 
-      status: "accepted",
-      isDeleted: false,
-    };
+      let newProduct = {
+        id: newId,
+        name,
+        price,
+        oldPrice: oldPrice || "",
+        category: category || "",
+        reviews: "",
+        stock: stock || 0,
+        description: desc || "",
+        image: imgUrl || "../../server/data/products_img/default.jpg",
+        subImages: tempSubImages.length > 0 ? tempSubImages : [],
+        reviews: "",
+        dimentions: { width: "0", height: "0", Length: "0" },
+        sellerId: p.sellerId || (loggedInUser?.ID ?? ""),
+        sellerName: p.sellerName || (loggedInUser?.Name ?? "Unknown"),
+        color: p.color || { name: "", hex: "" },
+        status: "accepted",
+        isDeleted: false,
+      };
 
-    products.push(newProduct);
-  }
+      products.push(newProduct);
+    }
 
-  localStorage.setItem("products", JSON.stringify(products));
-  searchededProducts = [...products];
-  applyFilters();
+    localStorage.setItem("products", JSON.stringify(products));
+    searchededProducts = [...products];
+    applyFilters();
 
-  bootstrap.Modal.getInstance(document.getElementById("productModal")).hide();
-});
+    bootstrap.Modal.getInstance(document.getElementById("productModal")).hide();
+  });
 
   // ====>> Delete Product <<====
   function handleDeleteProduct(e) {

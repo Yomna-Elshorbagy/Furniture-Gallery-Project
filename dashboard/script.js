@@ -12,6 +12,8 @@ import { overviewTemplate } from "./pages/overview/overviewTemplate.js";
 import { initOverviewPage } from "./pages/overview/overview.js";
 import { emailsTemplate } from "./pages/emails/emailsTemplete.js";
 import { initEmailsPage } from "./pages/emails/emails.js";
+import { initAdminReportsPage } from "./pages/reports/reports.js";
+import { adminReportsTemplate } from "./pages/reports/reportsTemplete.js";
 
 let serverDataFiles = {
   products: "../server/data/products.json",
@@ -39,7 +41,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("mainContent").innerHTML = overviewTemplate;
   initOverviewPage();
-  
+
   Object.entries(serverDataFiles).forEach(([key, url]) => {
     if (!localStorage.getItem(key)) {
       fetch(url)
@@ -92,6 +94,10 @@ document.getElementById("sellers").addEventListener("click", () => {
 document.getElementById("emails").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = emailsTemplate;
   initEmailsPage();
+});
+document.getElementById("reports").addEventListener("click", () => {
+  document.getElementById("mainContent").innerHTML = adminReportsTemplate;
+  initAdminReportsPage();
 });
 document.getElementById("logOut").addEventListener("click", () => {
   localStorage.removeItem("loggedInUser");

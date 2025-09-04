@@ -133,11 +133,7 @@
               >
                 log in
               </button>
-              <button
-                onclick="window.location.href='../Auth/log-in/login.html';"
-                class="hover-button ms-2 px-3 py-2 d-none"
-                id="logoutBtn"
-              >
+              <button class="hover-button ms-2 px-3 py-2 d-none" id="logoutBtn">
                 log out
               </button>
             </div>
@@ -146,7 +142,7 @@
       </div>
     </header>
     <!-- ========End Navbar============== -->
-     
+
     <div class="container pt-5">
       <div class="row pt-5 align-items-start">
         <div
@@ -278,14 +274,25 @@
                   Yes, I agree to the privacy terms
                 </label>
               </div>
-              <button type="submit" class="btn btn-outline-secondary w-20">
-                Submit
+              <button
+                class="btn hover-button w-100 mt-2 py-2"
+                data-bs-toggle="modal"
+                data-bs-target="#questionModal"
+                data-id="123"
+                data-name="Modern furniture"
+              >
+                Ask A QUESTION
               </button>
             </form>
           </div>
         </div>
       </div>
     </div>
+    <!-- -----------------start realeted---------------------------- -->
+    <section class="related-section">
+      <h3>YOU MAY ALSO LIKE</h3>
+      <div id="related-products" class="related-grid"></div>
+    </section>
 
     <!-- start features  -->
     <section id="features">
@@ -356,47 +363,45 @@
       </div>
 
       <!---------------------- favorite modal ---------------------->
-
     </section>
-          <div class="uniquemod modal fade" id="favModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div
-              class="d-flex flex-row bg-black d-flex justify-content-end align-items-center gap-3"
-            >
-              <button class="btn bg-black text-white opacity-100 border-0">
-                <i class="bi bi-person-fill-add text-white"></i>
-                <span class="text-white" id="favoritelabel"
-                  >example@gmail.com</span
-                >
+    <div
+      class="uniquemod modal fade"
+      id="favModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div
+            class="d-flex flex-row bg-black d-flex justify-content-end align-items-center gap-3"
+          >
+            <button class="btn bg-black text-white opacity-100 border-0">
+              <i class="bi bi-person-fill-add text-white"></i>
+              <span class="text-white" id="favoritelabel"
+                >example@gmail.com</span
+              >
+            </button>
+            <button
+              type="button"
+              class="btn-close btn-close-white opacity-100 me-1"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="d-flex flex-row justify-content-between mt-3 mx-3">
+              <h5>Favorites</h5>
+              <button class="bg-white border-0" id="clearBtn">
+                <i class="bi bi-trash"></i>
               </button>
-              <button
-                type="button"
-                class="btn-close btn-close-white opacity-100 me-1"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
             </div>
-            <div class="modal-body text-center">
-              <div class="d-flex flex-row justify-content-between mt-3 mx-3">
-                <h5>Favorites</h5>
-                <button class="bg-white border-0" id="clearBtn">
-                  <i class="bi bi-trash"></i>
-                </button>
-              </div>
-              <hr />
-              <div id="favmodalbody"></div>
-            </div>
+            <hr />
+            <div id="favmodalbody"></div>
           </div>
         </div>
       </div>
+    </div>
     <!-- ------------------end features-----------------------------  -->
-
-    <!-- -----------------start realeted---------------------------- -->
-    <section class="related-section">
-      <h3>YOU MAY ALSO LIKE</h3>
-      <div id="related-products" class="related-grid"></div>
-    </section>
 
     <!-- ------------start social gallery section ------------------- -->
     <section class="social-gallery mt-5 py-5 text-center">
@@ -526,7 +531,7 @@
     <!--------------- end social gallery section ----------------------->
 
     <!-- ===============  Main Footer Details ================  -->
-   <footer class="footer-down">
+    <footer class="footer-down">
       <div class="container">
         <div class="row">
           <div class="col-md-2 col-6 mb-4">
@@ -687,7 +692,7 @@
         </div>
       </div>
     </footer>
- 
+
     <script>
       window.addEventListener("scroll", function () {
         const navbar = document.querySelector(".nav");

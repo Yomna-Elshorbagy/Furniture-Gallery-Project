@@ -44,13 +44,11 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
   //=====>  handel logged in and logged out
-
   const categoryBtns = document.querySelectorAll(
     ".categorysec button, #offcanvasExample .list-group-item button"
   );
 
   if (!categoryBtns || categoryBtns.length === 0) return;
-
   categoryBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
       categoryBtns.forEach((b) => b.classList.remove("active"));
@@ -84,16 +82,19 @@ window.addEventListener("DOMContentLoaded", () => {
   updateFavBadge();
 });
 
+//==> get user targeted
 function getLoggedInUser() {
   return JSON.parse(localStorage.getItem("loggedInUser"));
 }
 
+//==> save data to user who logged in in his own & in users array
 function saveUsers(users, loggedInUser) {
   localStorage.setItem("users", JSON.stringify(users));
   localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
   localStorage.setItem("loggedInUserId", loggedInUser.ID);
 }
 
+//==> update user data
 function updateUserData(updatedUser) {
   let users = JSON.parse(localStorage.getItem("users")) || [];
   let idx = users.findIndex((u) => u.ID === updatedUser.ID);
@@ -105,6 +106,7 @@ function updateUserData(updatedUser) {
   localStorage.setItem("loggedInUserId", updatedUser.ID);
 }
 
+//==> handel authentication
 function handleAuthButtons() {
   const loginBtn = document.getElementById("loginBtn");
   const logoutBtn = document.getElementById("logoutBtn");
@@ -139,31 +141,32 @@ let pageSize = 20;
 
 products = JSON.parse(localStorage.getItem("products"));
 
-// display products according to categories
+// ==> display products according to categories
 function displayProducts() {
   let productList = document.getElementById("product-list");
   productList.innerHTML = "";
 
   let urlParams = new URLSearchParams(window.location.search);
   let category = urlParams.get("category");
-  let filtered = allProducts.filter(
-    (p) => !category || p.category === category
-  );
+
+  let filtered = allProducts
+    .filter((p) => !category || p.category === category)
+    .filter((p) => p.status === "accepted" && p.isDeleted === false);
+
   let start = (currentPage - 1) * pageSize;
   let end = start + pageSize;
   let currentProducts = filtered.slice(start, end);
 
   currentProducts.forEach((product) => {
-    if (!category || product.category === category) {
-      drowProduct(product, productList);
-    }
+    drowProduct(product, productList);
   });
+
   if (currentProducts.length === 0) {
     productList.innerHTML = `<p class="text-center text-muted">No products found</p>`;
   }
 }
 
-// display cart of products
+// ==> display cart of products
 function drowProduct(product, productList) {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {
     wishlist: [],
@@ -224,12 +227,12 @@ function drowProduct(product, productList) {
   productList.appendChild(card);
 }
 
-//change url category
+// ==> change url category
 function openCategory(categoryName) {
   window.location.href = `?category=${categoryName}`;
 }
 
-// Search function
+// ==> Search function
 var input = document.getElementById("categorySearch");
 function opensearchfun() {
   if (input.classList.contains("d-none")) {
@@ -242,8 +245,11 @@ function searchfun(name) {
   let productList = document.getElementById("product-list");
   productList.innerHTML = "";
 
-  let results = products.filter((product) =>
-    product.name.toLowerCase().includes(name)
+  let results = products.filter(
+    (product) =>
+      product.status === "accepted" &&
+      product.isDeleted === false &&
+      product.name.toLowerCase().includes(name)
   );
 
   if (results.length > 0) {
@@ -259,7 +265,6 @@ input.addEventListener("keyup", (e) => {
 });
 
 //======> filter function by value of price
-
 let minValue = document.getElementById("minValue");
 let maxValue = document.getElementById("maxValue");
 let minValueDesctop = document.getElementById("minValueDesctop");
@@ -295,7 +300,11 @@ function filterfun() {
     return;
   }
   let filtered = products.filter(
-    (pro) => pro.price >= minVal && pro.price <= maxVal
+    (pro) =>
+      pro.status === "accepted" &&
+      pro.isDeleted === false &&
+      pro.price >= minVal &&
+      pro.price <= maxVal
   );
 
   if (filtered.length > 0) {
@@ -308,7 +317,6 @@ function filterfun() {
 }
 
 // ===============Sort Function
-
 // from min to max
 var sortbtnMintoMAx = document.getElementById("sortbtnMintoMAx");
 
@@ -321,16 +329,22 @@ sortbtnMintoMAx.addEventListener("click", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const category = urlParams.get("category");
 
-  // لو مفيش category اعرض الكل
   if (!category) {
-    AllproductSorted = products.slice();
+    AllproductSorted = products
+      .filter((pro) => pro.status === "accepted" && pro.isDeleted === false)
+      .slice();
+
     AllproductSorted.sort((a, b) => a.price - b.price);
     AllproductSorted.forEach((pro) => {
       drowProduct(pro, productList);
     });
   } else {
-    categorySorted = products.filter((pro) => pro.category === category);
-    console.log(categorySorted);
+    categorySorted = products.filter(
+      (pro) =>
+        pro.category === category &&
+        pro.status === "accepted" &&
+        pro.isDeleted === false
+    );
 
     categorySorted.sort((a, b) => a.price - b.price);
     categorySorted.forEach((pro) => {
@@ -352,16 +366,22 @@ sortbtnMaxtoMin.addEventListener("click", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const category = urlParams.get("category");
 
-  // if not categries display all
   if (!category) {
-    AllproductSorted = products.slice();
+    AllproductSorted = products
+      .filter((pro) => pro.status === "accepted" && pro.isDeleted === false)
+      .slice();
+
     AllproductSorted.sort((a, b) => b.price - a.price);
     AllproductSorted.forEach((pro) => {
       drowProduct(pro, productList);
     });
   } else {
-    categorySorted = products.filter((pro) => pro.category === category);
-    console.log(categorySorted);
+    categorySorted = products.filter(
+      (pro) =>
+        pro.category === category &&
+        pro.status === "accepted" &&
+        pro.isDeleted === false
+    );
 
     categorySorted.sort((a, b) => b.price - a.price);
     categorySorted.forEach((pro) => {
@@ -379,11 +399,13 @@ function renderPagination() {
   let urlParams = new URLSearchParams(window.location.search);
   let category = urlParams.get("category");
 
-  let filtered = allProducts.filter(
-    (p) => !category || p.category === category
-  );
+  let filtered = allProducts
+    .filter((p) => !category || p.category === category)
+    .filter((p) => p.status === "accepted" && p.isDeleted === false);
 
   let totalPages = Math.ceil(filtered.length / pageSize);
+
+  if (totalPages === 0) return; // No pagination if no products
 
   // prev button
   let prevBtn = document.createElement("button");
@@ -425,8 +447,7 @@ function renderPagination() {
   paginationContainer.appendChild(nextBtn);
 }
 
-// build favorite functionality
-
+// ===> build favorite functionality
 // draw favorite in model
 function renderFavoriteModal() {
   const favmodalbody = document.getElementById("favmodalbody");
@@ -527,7 +548,7 @@ function renderFavoriteModal() {
   });
 }
 
-// check if user logged in or not to access userData links
+// ===> check if user logged in or not to access userData links
 document.addEventListener("click", (e) => {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
@@ -725,12 +746,19 @@ function renderColorOptions() {
   let colorContainers = document.querySelectorAll(".colorFilterContainer");
   if (!colorContainers.length) return;
 
-  // Get unique colors from products
+  // get unique colors from products
+  let filteredProducts = allProducts.filter(
+    (prod) =>
+      !prod.isDeleted &&
+      prod.status === "accepted" &&
+      prod.color &&
+      prod.color.hex
+  );
+
+  // get unique colors
   let uniqueColors = [
     ...new Map(
-      allProducts
-        .filter((prod) => prod.color && prod.color.hex)
-        .map((prod) => [prod.color.hex, prod.color])
+      filteredProducts.map((prod) => [prod.color.hex, prod.color])
     ).values(),
   ];
 

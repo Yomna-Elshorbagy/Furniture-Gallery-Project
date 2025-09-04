@@ -6,6 +6,8 @@ import { initOverviewPage } from "./pages/overview/overview.js";
 import { overviewTemplate } from "./pages/overview/overviewTemplete.js";
 import { initProductsPage } from "./pages/products/products.js";
 import { productsTemplate } from "./pages/products/productTemplete.js";
+import { initReportsPage } from "./pages/reports/reports.js";
+import { reportsTemplate } from "./pages/reports/reportsTemplete.js";
 
 let serverDataFiles = {
   products: "../server/data/products.json",
@@ -80,6 +82,11 @@ document.getElementById("categories").addEventListener("click", () => {
 document.getElementById("orders").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = ordersTemplate;
   initOrdersPage();
+});
+
+document.getElementById("reports").addEventListener("click", () => {
+  document.getElementById("mainContent").innerHTML = reportsTemplate;
+  initReportsPage();
 });
 
 document.getElementById("logOut").addEventListener("click", () => {

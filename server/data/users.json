@@ -6,6 +6,7 @@
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "user",
     "Phone": "011111111111",
+    "isDeleted": false,
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -17,6 +18,7 @@
     "Password": "$2a$10$E0aCIYxGDBKwU9vfN/K5jey47I0fHvir3T37CG1nxBnNTitWnWohC",
     "Role": "admin",
     "Phone": "01234567891",
+    "isDeleted": false,
     "cart": [],
     "wishlist": [],
     "orderHistory": []
@@ -72,7 +74,7 @@
   {
     "ID": "5",
     "Name": "ahmed Mohamed",
-    "Email": "ahmed@gmail.com",
+    "Email": "seller@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "seller",
     "Phone": "011112221111",
@@ -166,7 +168,7 @@
     "orderHistory": []
   },
   {
-    "ID": "12",
+    "ID": "13",
     "Name": "nora Mohamed",
     "Email": "nora@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
@@ -178,12 +180,13 @@
     "orderHistory": []
   },
   {
-    "ID": "1",
+    "ID": "14",
     "Name": "Yomna Mohamed",
     "Email": "yomna2@gmail.com",
     "Password": "$2a$10$PWqCr5OymkWhPwgyCgxeTeZ3oeQ0CywQW2Z.riZ5EOaKTWy696kzq",
     "Role": "admin",
     "Phone": "011111111111",
+    "isDeleted": false,
     "cart": [],
     "wishlist": [],
     "orderHistory": []

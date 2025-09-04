@@ -23,7 +23,10 @@ export function initOrdersPage() {
     let filteredOrders =
       selectedFilter === "All"
         ? orders
-        : orders.filter((order) => order.Status === selectedFilter);
+        : orders.filter(
+            (order) =>
+              order.Status.toLowerCase() === selectedFilter.toLowerCase()
+          );
 
     // apply search order id
     let searchId = searchIdInput.value.trim();

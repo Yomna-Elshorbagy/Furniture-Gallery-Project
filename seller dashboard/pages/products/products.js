@@ -386,8 +386,8 @@ export function initProductsPage(filteredList = null) {
               image: imgUrl || "../../server/data/products_img/default.jpg",
               subImages: tempSubImages.length > 0 ? tempSubImages : [],
               // ensure defaults are preserved if missing
-              reviews: p.reviews || "",
-              dimentions: p.dimentions || { width: "", height: "", Length: "" },
+              reviews: p.reviews || "NOT NOW",
+              dimentions: p.dimentions || { width: "0", height: "0", Length: "0" },
               sellerId: p.sellerId || (loggedInUser?.ID ?? ""),
               sellerName: p.sellerName || (loggedInUser?.Name ?? "Unknown"),
               color: p.color || { name: "", hex: "" },

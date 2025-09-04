@@ -1,4 +1,4 @@
-//======> handel logged in and logged out
+//====> if user Not logged in redirect him to login page
 let loggedInUser;
 document.addEventListener("DOMContentLoaded", () => {
   let loginBtn = document.getElementById("loginBtn");
@@ -31,27 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-document.addEventListener("click", (e) => {
-  let link = e.target.closest("a.userData");
-  if (!link) return;
-  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  if (!loggedInUser) {
-    e.preventDefault();
-    Swal.fire({
-      title: "🔒 Login Required",
-      text: "You must be logged in to access this page.",
-      icon: "warning",
-      showConfirmButton: true,
-      confirmButtonText: "Go to Login",
-    }).then(() => {
-      window.location.href = "../Auth/log-in/login.html";
-    });
-  } else {
-    window.location.href = link.href;
-  }
-});
-
-//====> if user Not logged in redirect him to login page
 document.addEventListener("click", (e) => {
   let link = e.target.closest("a.userData");
   if (!link) return;
@@ -108,41 +87,22 @@ function showProductDetails(products) {
         <span class="text-color fs-4 fw-bold">$${product.price}</span>
       </p>
       <p class="text-muted">${product.description}</p>
-      <p class="text-muted"> Reviews: <span class="text-secondary text-capitalize">${product.reviews}</span></p>
+      <p class="text-muted"> Reviews: <span class="text-secondary text-capitalize">${
+        product.reviews
+      }</span></p>
       <p><strong>In Stock:</strong> ${product.stock}</p>
         <div class="d-flex align-items-center mb-3">
         <button class="btn btn-outline-secondary me-2" id="decrease">-</button>
         <input type="text" id="quantity" value="1" class="form-control text-center" style="width:70px;" readonly>
         <button class="btn btn-outline-secondary ms-2" id="increase">+</button>
       </div>
-      <button class="btn btn-dark w-100 mb-2 mt-2 py-2 btnaddtocard" data-id="${product.id}">Add to Cart</button>
-      <button class="btn  hover-button w-100 mt-2 py-2" id="findStoreBtn">FIND IN STORES</button>
+      <button class="btn btn-dark w-100 mb-2 mt-2 py-2 btnaddtocard" data-id="${
+        product.id
+      }">Add to Cart</button>
      <button class="btn hover-button w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#questionModal">  Ask A QUESTIONS</button>
      <button class="btn hover-button w-100 mt-2 py-2" data-bs-toggle="modal" data-bs-target="#deliveryModal"> GET DELIVERY ESTIMATE</button>
 
-
-        <div class="social-icons mb-4 pt-2">
-        <span class="fw-bold  mb-2">Share:</span>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-pinterest"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </div>
-    `;
-
-  document.addEventListener("click", (e) => {
-    if (e.target.id === "findStoreBtn") {
-      window.location.href = "../findStore/find.html";
-    }
-  });
-  //====> get main image
-  document.getElementById("mainImage").innerHTML = `
-      <img src="${
-        product.image
-      }" id="currentImage" class="img-fluid shadow-sm" />
-             <div class="accordion py-3" id="accordionExample">
+  <div class="accordion py-3" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
@@ -166,6 +126,26 @@ function showProductDetails(products) {
         </div>
       </div>
       </div>
+        <div class="social-icons mb-4 pt-2">
+        <span class="fw-bold  mb-2">Share:</span>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    `;
+
+  document.addEventListener("click", (e) => {
+    if (e.target.id === "findStoreBtn") {
+      window.location.href = "../findStore/find.html";
+    }
+  });
+  //====> get main image
+  document.getElementById("mainImage").innerHTML = `
+      <img src="${product.image}" id="currentImage" class="img-fluid shadow-sm" />
+           
     `;
 
   // ====> get sub-images
@@ -284,7 +264,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function getRelatedProducts() {
     // get all products related to this category and save in anew array
     const sameCategory = products.filter(
-      (p) => p.category === currentProduct.category && p.id !== currentId
+      (prod) =>
+        prod.category.toLowerCase() === currentProduct.category.toLowerCase() &&
+        prod.id !== currentId
     );
 
     // if less than display
@@ -471,6 +453,54 @@ function updateCartBadge() {
   const user = getLoggedInUser();
   cartBadge.textContent = user?.cart?.length || 0;
 }
+
+let questionModal = document.getElementById("questionModal");
+
+questionModal.addEventListener("show.bs.modal", function (event) {
+  let button = event.relatedTarget; // Button that opened the modal
+  let productId = button.getAttribute("data-id");
+  let productName = button.getAttribute("data-name");
+
+  // store product info inside modal dataset
+  questionModal.dataset.productId = productId;
+  questionModal.dataset.productName = productName;
+});
+let questionForm = questionModal.querySelector("form");
+
+questionForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  // validate privacy check
+  if (!document.getElementById("privacyCheck").checked) {
+    Swal.fire("⚠️ Required", "You must agree to the privacy terms.", "warning");
+    return;
+  }
+
+  // collect form data
+  let newQuestion = {
+    id: Date.now(),
+    productId: questionModal.dataset.productId,
+    productName: questionModal.dataset.productName,
+    name: document.getElementById("nameInput").value.trim(),
+    email: document.getElementById("emailInput").value.trim(),
+    phone: document.getElementById("phoneInput").value.trim(),
+    postcode: document.getElementById("postcodeInput").value.trim(),
+    message: document.getElementById("helpInput").value.trim(),
+    date: new Date().toLocaleString(),
+  };
+
+  // Save to localStorage
+  let questions = JSON.parse(localStorage.getItem("questions")) || [];
+  questions.push(newQuestion);
+  localStorage.setItem("questions", JSON.stringify(questions));
+
+  // success message
+  Swal.fire(" Submitted", "Your question has been saved.", "success");
+
+  // Reset + close modal
+  questionForm.reset();
+  bootstrap.Modal.getInstance(questionModal).hide();
+});
 
 updateCartBadge();
 renderFavoriteModal();
