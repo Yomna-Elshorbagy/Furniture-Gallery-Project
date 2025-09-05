@@ -14,12 +14,15 @@ import { emailsTemplate } from "./pages/emails/emailsTemplete.js";
 import { initEmailsPage } from "./pages/emails/emails.js";
 import { initAdminReportsPage } from "./pages/reports/reports.js";
 import { adminReportsTemplate } from "./pages/reports/reportsTemplete.js";
+import { logsTemplate } from "./pages/logs/logsTemplete.js";
+import { initLogsPage } from "./pages/logs/logs.js";
 
 let serverDataFiles = {
   products: "../server/data/products.json",
   categories: "../server/data/categories.json",
   orders: "../server/data/orders.json",
   users: "../server/data/users.json",
+  contactMessages: "../server/data/contactMessages.json",
 };
 window.addEventListener("DOMContentLoaded", () => {
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -98,6 +101,10 @@ document.getElementById("emails").addEventListener("click", () => {
 document.getElementById("reports").addEventListener("click", () => {
   document.getElementById("mainContent").innerHTML = adminReportsTemplate;
   initAdminReportsPage();
+});
+document.getElementById("logs").addEventListener("click", () => {
+  document.getElementById("mainContent").innerHTML = logsTemplate;
+  initLogsPage();
 });
 document.getElementById("logOut").addEventListener("click", () => {
   localStorage.removeItem("loggedInUser");
@@ -198,4 +205,3 @@ document.getElementById("exportBtn").addEventListener("click", () => {
   //===> 5- cleanup
   URL.revokeObjectURL(link.href);
 });
-

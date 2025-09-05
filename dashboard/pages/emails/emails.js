@@ -1,3 +1,5 @@
+import { addLog } from "../logs/logs.js";
+
 // emails.js
 export function initEmailsPage() {
   let tableBody = document.getElementById("emailsTable");
@@ -65,7 +67,7 @@ export function initEmailsPage() {
     currentMessages.forEach((msg, index) => {
       let row = document.createElement("tr");
       row.innerHTML = `
-        <td>${start + index + 1}</td>
+        <td>${msg.id}</td>        
         <td>${msg.firstName} ${msg.lastName}</td>
         <td>${msg.email}</td>
         <td>${msg.phone}</td>
@@ -123,7 +125,16 @@ export function initEmailsPage() {
     respToInput.value = currentEmail.email;
     respSubjectInput.value = "Re: " + currentEmail.subject;
     respMessageInput.value = "";
-
+    // log when opening for reply
+    addLog(
+      "Opened Email for Reply",
+      {
+        id: currentEmail.id,
+        subject: currentEmail.subject,
+        name: currentEmail.email,
+      },
+      "Email"
+    );
     const modal = new bootstrap.Modal(document.getElementById("emailModal"));
     modal.show();
   }
@@ -149,10 +160,18 @@ export function initEmailsPage() {
       replyTo: currentEmail,
     });
     localStorage.setItem("emailResponses", JSON.stringify(responses));
-
+    addLog(
+      "Sent Email Response",
+      {
+        id: currentEmail.id,
+        subject,
+        name: currentEmail.email,
+      },
+      "Email"
+    );
     console.log("Response sent:", { to, subject, message });
 
-    // ✅ Find the Reply button for this email and style it
+    //  Find the Reply button for this email and style it
     const btn = document.querySelector(
       `.send-email[data-global-index="${contactMessages.indexOf(
         currentEmail

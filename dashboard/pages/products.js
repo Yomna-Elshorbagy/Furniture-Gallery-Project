@@ -1,3 +1,5 @@
+import { addLog } from "./logs/logs.js";
+
 export function initProductsPage(initialProducts = null) {
   let tableBody = document.getElementById("productsTable");
   let modalTitle = document.getElementById("productModalTitle");
@@ -168,9 +170,13 @@ export function initProductsPage(initialProducts = null) {
     document.querySelectorAll(".accept-product").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         let id = Number(e.currentTarget.dataset.id);
+        let prod = products.find((p) => p.id === id);
         products = products.map((p) =>
           p.id === id ? { ...p, status: "accepted" } : p
         );
+        if (prod) {
+          addLog("Accepted Request", prod, "Product");
+        }
         localStorage.setItem("products", JSON.stringify(products));
         Swal.fire("✅ Accepted", "Product has been approved.", "success");
         searchededProducts = [...products];
@@ -181,9 +187,13 @@ export function initProductsPage(initialProducts = null) {
     document.querySelectorAll(".reject-product").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         let id = Number(e.currentTarget.dataset.id);
+        let prod = products.find((p) => p.id === id);
         products = products.map((p) =>
           p.id === id ? { ...p, status: "rejected" } : p
         );
+        if (prod) {
+          addLog("Rejected Request", prod, "Product");
+        }
         localStorage.setItem("products", JSON.stringify(products));
         Swal.fire("❌ Rejected", "Product has been rejected.", "error");
         searchededProducts = [...products];
@@ -237,11 +247,15 @@ export function initProductsPage(initialProducts = null) {
           cancelButtonColor: "#d33",
         }).then((result) => {
           if (result.isConfirmed) {
+            let prod = products.find((p) => Number(p.id) === Number(id));
             products = products.map((prod) =>
               Number(prod.id) === Number(id)
                 ? { ...prod, isDeleted: true }
                 : prod
             );
+            if (prod) {
+              addLog("Soft Deleted", prod, "Product");
+            }
             localStorage.setItem("products", JSON.stringify(products));
             searchededProducts = [...products];
             renderProducts();
@@ -428,6 +442,7 @@ export function initProductsPage(initialProducts = null) {
     }
 
     if (editingId) {
+      let prod = products.find((p) => p.id === editingId);
       // update existing product
       products = products.map((prod) =>
         prod.id === editingId
@@ -444,6 +459,9 @@ export function initProductsPage(initialProducts = null) {
             }
           : prod
       );
+      if (prod) {
+        addLog("Edited", prod, "Product", "Product");
+      }
     } else {
       // create new product with safe defaults
       let newId = products.length
@@ -456,21 +474,21 @@ export function initProductsPage(initialProducts = null) {
         price,
         oldPrice: oldPrice || "",
         category: category || "",
-        reviews: "",
         stock: stock || 0,
         description: desc || "",
         image: imgUrl || "../../server/data/products_img/default.jpg",
         subImages: tempSubImages.length > 0 ? tempSubImages : [],
         reviews: "",
         dimentions: { width: "0", height: "0", Length: "0" },
-        sellerId: p.sellerId || (loggedInUser?.ID ?? ""),
-        sellerName: p.sellerName || (loggedInUser?.Name ?? "Unknown"),
-        color: p.color || { name: "", hex: "" },
+        sellerId: loggedInUser?.ID ?? "",
+        sellerName: loggedInUser?.Name ?? "Unknown",
+        color: { name: "", hex: "" },
         status: "accepted",
         isDeleted: false,
       };
 
       products.push(newProduct);
+      addLog("Added", newProduct, "Product");
     }
 
     localStorage.setItem("products", JSON.stringify(products));
@@ -494,13 +512,15 @@ export function initProductsPage(initialProducts = null) {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
+        let prod = products.find((p) => p.id === id);
         products = products.filter((p) => p.id !== id);
         localStorage.setItem("products", JSON.stringify(products));
-
+        if (prod) {
+          addLog("Deleted", prod, "Product");
+        }
         let totalPages = Math.ceil(products.length / pageSize);
         if (currentPage > totalPages) currentPage = totalPages || 1;
         searchededProducts = [...products];
-
         renderProducts();
         Swal.fire("Deleted!", "Product has been deleted.", "success");
       }
@@ -517,7 +537,6 @@ export function initProductsPage(initialProducts = null) {
     let container = document.getElementById("requestsContainer");
     container.classList.toggle("d-none");
 
-    // optional: change button text/icon dynamically
     let btn = document.getElementById("requestsBtn");
     if (container.classList.contains("d-none")) {
       btn.innerHTML = `<i class="fa-solid fa-clipboard-list"></i> Requests`;

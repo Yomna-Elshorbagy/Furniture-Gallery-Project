@@ -15,7 +15,7 @@ export const categoriesTemplate = `
     </div>
   </div>
   <div class="table-responsive">
-  <table class="table table-hover align-middle shadow-sm">
+  <table class="table table-hover align-middle shadow-sm p-2">
     <thead class="table-light">
       <tr>
         <th>ID</th>

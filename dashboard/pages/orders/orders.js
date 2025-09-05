@@ -1,3 +1,5 @@
+import { addLog } from "../logs/logs.js";
+
 export function initOrdersPage() {
   const tableBody = document.getElementById("ordersTable");
   const modalTitle = document.getElementById("orderModalTitle");
@@ -22,9 +24,10 @@ export function initOrdersPage() {
     // apply filter
     let filteredOrders =
       selectedFilter === "All"
-        ? orders
+        ? orders.filter((o) => !o.isDeleted)
         : orders.filter(
             (order) =>
+              !order.isDeleted &&
               order.Status.toLowerCase() === selectedFilter.toLowerCase()
           );
 
@@ -93,6 +96,9 @@ export function initOrdersPage() {
           <button class="btn btn-sm btn-danger del-order delete-btn" data-id="${order.ID}">
             <i class="fa-solid fa-trash"></i>
           </button>
+          <button class="btn btn-sm btn-secondary soft-del-order" data-id="${order.ID}">
+            <i class="fa-solid fa-ban"></i>
+          </button>
         </td>
       `;
       tableBody.appendChild(row);
@@ -104,6 +110,9 @@ export function initOrdersPage() {
     });
     document.querySelectorAll(".del-order").forEach((btn) => {
       btn.addEventListener("click", handleDeleteOrder);
+    });
+    document.querySelectorAll(".soft-del-order").forEach((btn) => {
+      btn.addEventListener("click", handleSoftDeleteOrder);
     });
 
     renderPagination(filteredOrders.length);
@@ -219,6 +228,7 @@ export function initOrdersPage() {
             }
           : order
       );
+      addLog("Edited Order", { id: editingId, name: user }, "Order");
     } else {
       // add new
       const newId = orders.length
@@ -229,8 +239,10 @@ export function initOrdersPage() {
         UserName: user,
         TotalPrice: price,
         Status: status,
+        isDeleted: false,
         // Date: date,
       });
+      addLog("Added Order", { id: newId, name: user }, "Order");
     }
 
     localStorage.setItem("orders", JSON.stringify(orders));
@@ -242,6 +254,7 @@ export function initOrdersPage() {
   // =====> delete order  <====
   function handleDeleteOrder(e) {
     const id = parseInt(e.currentTarget.dataset.id);
+    const deletedOrder = orders.find((o) => o.ID === id);
 
     Swal.fire({
       title: "Are you sure?",
@@ -262,8 +275,48 @@ export function initOrdersPage() {
         if (currentPage > totalPages) currentPage = totalPages || 1;
 
         renderOrders(); // re-render table + pagination
-
+        if (deletedOrder) {
+          addLog(
+            "Hard Deleted Order",
+            { id: deletedOrder.ID, name: deletedOrder.UserName },
+            "Order"
+          );
+        }
         Swal.fire("Deleted!", "Order has been deleted.", "success");
+      }
+    });
+  }
+
+  function handleSoftDeleteOrder(e) {
+    const id = parseInt(e.currentTarget.dataset.id);
+    const order = orders.find((o) => o.ID === id);
+
+    Swal.fire({
+      title: "Soft Deleted order?",
+      text: "This will hide the order but keep its data.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, soft deleted",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#6c757d",
+      cancelButtonColor: "#d33",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        orders = orders.map((o) =>
+          o.ID === id ? { ...o, isDeleted: true } : o
+        );
+        localStorage.setItem("orders", JSON.stringify(orders));
+        renderOrders();
+
+        if (order) {
+          addLog(
+            "Soft Deleted Order",
+            { id: order.ID, name: order.UserName, price: order.TotalPrice },
+            "Order"
+          );
+        }
+
+        Swal.fire("Deleted!", "The order has been deactivated.", "success");
       }
     });
   }

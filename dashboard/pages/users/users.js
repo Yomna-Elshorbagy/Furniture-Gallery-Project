@@ -1,3 +1,5 @@
+import { addLog } from "../logs/logs.js";
+
 export async function initUsersPage() {
   let tableBody = document.getElementById("usersTable");
   let users = JSON.parse(localStorage.getItem("users")) || [];
@@ -152,6 +154,9 @@ export async function initUsersPage() {
     localStorage.setItem("users", JSON.stringify(users));
     filteredUsers = users.filter((user) => user.Role?.toLowerCase() === "user");
     renderUsers();
+    //log it
+    addLog("Edited User", { id, name, email, phone, role }, "User");
+
     bootstrap.Modal.getInstance(
       document.getElementById("editUserModal")
     ).hide();
@@ -172,12 +177,21 @@ export async function initUsersPage() {
           showCancelButton: true,
         }).then((result) => {
           if (result.isConfirmed) {
+            //  capture before removal
+            let deletedUser = users.find((user) => String(user.ID) === id);
             users = users.filter((user) => String(user.ID) !== id);
             localStorage.setItem("users", JSON.stringify(users));
             filteredUsers = users.filter(
               (user) => user.Role?.toLowerCase() === "user"
             );
             renderUsers();
+            // log original data
+            if (deletedUser)
+              addLog(
+                "Hard Deleted User",
+                { id: deletedUser.ID, name: deletedUser.Name },
+                "User"
+              );
           }
         });
       })
@@ -202,7 +216,7 @@ export async function initUsersPage() {
               String(user.ID) === id ? { ...user, isDeleted: true } : user
             );
 
-            // ✅ persist changes (was saveUsers(users) before)
+            // persist changes (was saveUsers(users) before)
             localStorage.setItem("users", JSON.stringify(users));
 
             // refresh filtered list and UI
@@ -210,6 +224,14 @@ export async function initUsersPage() {
               (u) => u.Role?.toLowerCase() === "user" && !u.isDeleted
             );
             renderUsers();
+            // log soft delete
+            let softDeletedUser = users.find((u) => String(u.ID) === id);
+            if (softDeletedUser)
+              addLog(
+                "Soft Deleted User",
+                { id: softDeletedUser.ID, name: softDeletedUser.Name },
+                "User"
+              );
 
             Swal.fire({
               title: "Deactivated!",
@@ -235,6 +257,7 @@ export async function initUsersPage() {
       let user = users.find((u) => String(u.ID) === id);
 
       if (user) {
+        addLog("Viewed User", { id: user.ID, name: user.Name }, "User");
         // Fill basic info
         document.getElementById("viewUserId").textContent = user.ID;
         document.getElementById("viewUserName").textContent = user.Name;

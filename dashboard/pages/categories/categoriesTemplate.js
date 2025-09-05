@@ -2,37 +2,44 @@
 export const categoriesTemplate = `
   <h3>Categories</h3>
 
+
   <div class="mb-3 d-flex align-items-center justify-content-between flex-wrap gap-3 orders-filters">
 
-  <!-- Search by category ID -->
-  <div class="search-box d-flex align-items-center">
-    <div class="input-group">
-      <span class="input-group-text bg-light border-end-0"><i class="fa fa-hashtag"></i></span>
-      <input 
-        type="text" 
-        id="catSearchId" 
-        class="form-control border-start-0 custom-input" 
-        placeholder="🔎 Search by category ID..."
-      />
+    <!-- Search by category ID -->
+    <div class="search-box d-flex align-items-center">
+      <div class="input-group">
+        <span class="input-group-text bg-light border-end-0"><i class="fa fa-hashtag"></i></span>
+        <input 
+          type="text" 
+          id="catSearchId" 
+          class="form-control border-start-0 custom-input" 
+          placeholder="🔎 Search by category ID..."
+        />
+      </div>
     </div>
+
+    <!-- Search by category name  -->
+    <div class="search-box d-flex align-items-center">
+      <div class="input-group">
+        <span class="input-group-text bg-light border-end-0"><i class="fa fa-user"></i></span>
+        <input 
+          type="text" 
+          id="catSearch" 
+          class="form-control border-start-0 custom-input" 
+          placeholder="🔎 Search by name"
+        />
+      </div>
+    </div>
+
+    <!-- Add Category Button -->
+    <button id="addCategoryBtn" class="btn btn-secondary">
+      <i class="fa fa-plus"></i> Add Category
+    </button>
   </div>
 
-  <!-- Search by category name  -->
-  <div class="search-box d-flex align-items-center">
-    <div class="input-group">
-      <span class="input-group-text bg-light border-end-10"><i class="fa fa-user"></i></span>
-      <input 
-        type="text" 
-        id="catSearch" 
-        class="form-control border-start-0 custom-input" 
-        placeholder="🔎 Search by name"
-      />
-    </div>
-  </div>
-</div>
 </div>
   <div class="table-responsive">
-  <table class="table orders-table">
+  <table class="table orders-table p-2">
     <thead class="table-light">
       <tr>
         <th>ID</th>

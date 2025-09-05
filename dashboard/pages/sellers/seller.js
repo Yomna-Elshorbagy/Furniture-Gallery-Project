@@ -1,3 +1,5 @@
+import { addLog } from "../logs/logs.js";
+
 export async function initSellerPage() {
   let tableBody = document.getElementById("sellersTable");
   let users = JSON.parse(localStorage.getItem("users")) || [];
@@ -153,6 +155,8 @@ export async function initSellerPage() {
     localStorage.setItem("users", JSON.stringify(users));
     filteredUsers = users.filter((user) => user.Role === "seller");
     renderUsers();
+    addLog("Edited Seller", { id, name }, "Seller");
+
     bootstrap.Modal.getInstance(
       document.getElementById("editSellerModal")
     ).hide();
@@ -173,10 +177,18 @@ export async function initSellerPage() {
           showCancelButton: true,
         }).then((result) => {
           if (result.isConfirmed) {
+            let deletedSeller = users.find((u) => Number(u.ID) === id);
             users = users.filter((user) => Number(user.ID) !== id);
             localStorage.setItem("users", JSON.stringify(users));
             filteredUsers = users.filter((user) => user.Role === "seller");
             renderUsers();
+            //log deleted seller
+            if (deletedSeller)
+              addLog(
+                "Hard Deleted Seller",
+                { id: deletedSeller.ID, name: deletedSeller.Name },
+                "Seller"
+              );
           }
         });
       })
@@ -211,6 +223,15 @@ export async function initSellerPage() {
 
             renderUsers();
 
+            // log soft delete
+            let softDeletedSeller = users.find((u) => String(u.ID) === id);
+            if (softDeletedSeller)
+              addLog(
+                "Soft Deleted Seller",
+                { id: softDeletedSeller.ID, name: softDeletedSeller.Name },
+                "Seller"
+              );
+
             Swal.fire({
               title: "Deactivated!",
               text: "The seller has been deactivated successfully.",
@@ -234,6 +255,7 @@ export async function initSellerPage() {
       let user = users.find((u) => String(u.ID) === id);
 
       if (user) {
+        addLog("Viewed Seller", { id: user.ID, name: user.Name }, "Seller");
         // Fill basic info
         document.getElementById("viewUserId").textContent = user.ID;
         document.getElementById("viewUserName").textContent = user.Name;
