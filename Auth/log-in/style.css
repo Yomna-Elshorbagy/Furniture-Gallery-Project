@@ -13,7 +13,6 @@ body {
   /* padding-top: 110px; */
 }
 
-
 .loginFormData {
   width: 100%;
   max-width: 80%;
@@ -107,20 +106,20 @@ input:focus {
   box-shadow: 0 1px 6px rgba(30, 55, 80, 0.3);
 }
 
- .loginFormData .btn {
+.loginFormData .btn {
   display: block;
   width: 145px;
   height: 45px;
   font-size: 18px;
   letter-spacing: 1px;
-  background: linear-gradient(135deg, #a1907d,#c59d5f);
+  background: linear-gradient(135deg, #a1907d, #c59d5f);
   color: #fff;
   border: none;
   cursor: pointer;
   border-radius: 25px;
   margin: 10px auto;
   transition: background 0.3s, transform 0.2s;
-} 
+}
 .google-btn {
   display: flex;
   align-items: center;
@@ -148,6 +147,18 @@ input:focus {
   background: #f5f5f5;
   transform: translateY(-2px);
 }
+.buttons {
+  display: flex;
+  justify-content: center; 
+  gap: 15px; 
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.buttons .btn,
+.buttons .google-btn {
+  margin: 0; 
+}
 .buttons .btn:hover {
   background: linear-gradient(135deg, #848b92, #a1907d);
   transform: translateY(-2px);
@@ -167,15 +178,21 @@ input:focus {
   text-align: center;
   font-size: 16px;
 }
+.register2 {
+  text-align: center;
+  font-size: 16px;
+}
 
-.register a {
+.register a,
+.register2 a {
   color: #000;
   text-decoration: none;
   font-weight: bold;
   font-size: large;
 }
 
-.register a:hover {
+.register a:hover,
+.register2 a:hover {
   text-decoration: underline;
 }
 
@@ -332,13 +349,11 @@ button.hover-button::after {
   border-bottom: 2px solid #c7b9a9;
 }
 
-.badgestyle{
+.badgestyle {
   width: 15px;
   height: 15px;
-  font-size:8px;
+  font-size: 8px;
   margin: auto;
-
-
 }
 /* ......................... start social-gallery.......................  */
 .head-section .main {
