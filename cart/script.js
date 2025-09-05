@@ -209,7 +209,7 @@ let continueShopingBtn = document.createElement("button");
     });
 
     let checkoutBtn = document.createElement("button");
-    checkoutBtn.className = "btn checkoutbtn emptycartbtn mt-0" ;
+    checkoutBtn.className = "btn checkoutbtn emptycartbtn mt-3" ;
     checkoutBtn.textContent = "CHECKOUT ";
     checkoutdiv.appendChild(checkoutBtn);
     cartbody.appendChild(checkoutdiv);

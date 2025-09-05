@@ -19,6 +19,8 @@ export function initProductsPage(initialProducts = null) {
   let searchById = document.getElementById("searchById");
   let searchByName = document.getElementById("searchByName");
   let searchByStock = document.getElementById("searchByStock");
+  let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+
 
   // reapply filters whenever any input changes
   [categoryFilter, searchById, searchByName, searchByStock].forEach((el) => {
