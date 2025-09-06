@@ -46,7 +46,14 @@ function addContactDetails() {
       });
       return;
     }
+    let storedMessages =
+      JSON.parse(localStorage.getItem("contactMessages")) || [];
+    let nextId = storedMessages.length
+      ? Math.max(...storedMessages.map((msg) => msg.id || 0)) + 1
+      : 1;
+
     let contactData = {
+      id: nextId,
       firstName: document.getElementById("firstName").value.trim(),
       lastName: document.getElementById("lastName").value.trim(),
       email: document.getElementById("email").value.trim(),
@@ -101,10 +108,6 @@ function addContactDetails() {
       showAlert("👀 You must accept the terms.", "danger");
       return;
     }
-
-    // --- Save if valid ---
-    let storedMessages =
-      JSON.parse(localStorage.getItem("contactMessages")) || [];
     storedMessages.push(contactData);
     localStorage.setItem("contactMessages", JSON.stringify(storedMessages));
 

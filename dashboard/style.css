@@ -27,7 +27,7 @@
 }
 
 :root {
-  --main-gradient: linear-gradient(135deg, #0d9488, #2563eb);
+  --main-gradient: linear-gradient(135deg, #0d9488, #506797);
   --card-bg: rgba(255, 255, 255, 0.7);
   --dark-bg: #0f172a;
 }
@@ -123,7 +123,9 @@ table tbody tr:hover {
   background: linear-gradient(135deg, #2d6762, #0d9488) !important;
   color: #fff;
 }
-
+.text-color {
+  color: #0d9488;
+}
 /* ****** admin location style ******* */
 #profileAdmin {
   cursor: pointer;
@@ -145,7 +147,8 @@ body.fade-out {
 .styleToast {
   background-color: #9e8e76 !important;
 }
-.carddatabg .card {
+.carddatabg .card,
+.btn-color2 {
   background: linear-gradient(135deg, #398590, #56cfe1) !important;
   color: #fff !important;
 }
@@ -210,15 +213,15 @@ body.fade-out {
   letter-spacing: 0.5px;
 }
 
-.table{
+.table {
   --bs-table-bg: transparent;
   /* --bs-table-color:#fff; */
 }
-.table thead{
+.table thead {
   --bs-table-bg: transparent;
-  --bs-table-color:#fff;
+  --bs-table-color: #fff;
 }
- .Thead{
+.Thead {
   background: linear-gradient(135deg, #398590, #56cfe1) !important;
   color: #fff !important;
   font-weight: 600 !important;
@@ -336,12 +339,12 @@ body.fade-out {
 }
 
 .delete-btn {
-  background-color: #dc2626  !important;
+  background-color: #dc2626 !important;
   border: none !important;
   color: #fff !important;
 }
 .delete-btn:hover {
-  background-color: #991b1b  !important;
+  background-color: #991b1b !important;
 }
 
 .soft-del-btn {
@@ -361,4 +364,11 @@ body.fade-out {
 .view-btn:hover {
   background-color: #2e6e31 !important;
   color: #fff !important;
+}
+
+/* *** for printing reports **** */
+@media print {
+  #printReportsBtn {
+    display: none !important;
+  }
 }

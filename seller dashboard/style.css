@@ -7,7 +7,6 @@
   font-family: "Raleway", sans-serif;
 }
 
-
 :root {
   --main-color: #c7b9a9;
   --main-gradient: linear-gradient(135deg, #c7b9a9, #a89984);
@@ -46,7 +45,6 @@
   color: #fff;
   font-weight: bold;
 }
-
 
 body {
   /* background: linear-gradient(to top, #f1e4c8, #b9a473); */
@@ -95,15 +93,15 @@ table {
   border-collapse: separate;
   border-spacing: 0 10px;
 }
-.table{
+.table {
   --bs-table-bg: transparent;
   /* --bs-table-color:#fff; */
 }
-.table thead{
+.table thead {
   --bs-table-bg: transparent;
-  --bs-table-color:#31290c;
+  --bs-table-color: #31290c;
 }
- .Thead{
+.Thead {
   background: linear-gradient(135deg, #dad2c8, #ebebcf) !important;
   color: #000000 !important;
   font-weight: 600 !important;
@@ -220,14 +218,15 @@ body.fade-out {
   margin: 0 auto;
 }
 
-#sidebar.collapsed~main {
+#sidebar.collapsed ~ main {
   flex: 1;
   max-width: calc(100% - 70px);
 }
 
-.btn-add {
+.btn-add,
+.btn-color3 {
   background-color: #91805d;
-  border-color: #B0A18E;
+  border-color: #b0a18e;
 }
 
 .btn-add:hover {
@@ -235,7 +234,8 @@ body.fade-out {
   border-color: #a29586;
 }
 
-.btn-color2:hover {
+.btn-color2:hover,
+.btn-color3:hover {
   background-color: #a29586;
   border-color: #c7b9a9;
 }

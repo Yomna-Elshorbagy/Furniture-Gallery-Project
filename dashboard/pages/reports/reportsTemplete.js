@@ -3,6 +3,12 @@ export const adminReportsTemplate = `
   <div class="container my-4">
     <h3 class="text-center mb-4">📑 Admin Business Reports</h3>
 
+    <!-- Print Button -->
+    <div class="text-end mb-3">
+      <button id="printReportsBtn" class="btn btn-color2">
+        🖨️ Print Reports
+      </button>
+    </div>
     <!-- Monthly Income Report -->
     <div class="p-3 shadow-sm rounded bg-white mb-4">
       <h5>💰 Monthly Income Report</h5>
@@ -102,4 +108,3 @@ export const adminReportsTemplate = `
     </div>
   </div>
 `;
-

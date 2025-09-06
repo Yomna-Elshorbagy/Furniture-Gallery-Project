@@ -15,6 +15,10 @@ export function initProductsPage(initialProducts = null) {
   let pmSubImagesPreview = document.getElementById("pmSubImagesPreview");
   let saveBtn = document.getElementById("pmSave");
 
+  let widthInput = document.getElementById("pmWidth");
+  let heightInput = document.getElementById("pmHeight");
+  let lengthInput = document.getElementById("pmLength");
+
   let categoryFilter = document.getElementById("categoryFilter");
   let searchById = document.getElementById("searchById");
   let searchByName = document.getElementById("searchByName");
@@ -431,8 +435,11 @@ export function initProductsPage(initialProducts = null) {
     let category = categoryInput.value;
     let desc = descInput.value.trim();
     let imgUrl = imagePreview.src;
+    let width = widthInput.value.trim();
+    let height = heightInput.value.trim();
+    let length = lengthInput.value.trim();
 
-    if (!name || !price || !stock) {
+    if (!name || !price || !stock || !width || !height || !length) {
       Swal.fire({
         icon: "warning",
         title: "Missing Fields",
@@ -457,6 +464,7 @@ export function initProductsPage(initialProducts = null) {
               description: desc || "",
               image: imgUrl || "../../server/data/products_img/default.jpg",
               subImages: tempSubImages.length > 0 ? tempSubImages : [],
+              dimentions: { width, height, length },
             }
           : prod
       );
@@ -479,8 +487,8 @@ export function initProductsPage(initialProducts = null) {
         description: desc || "",
         image: imgUrl || "../../server/data/products_img/default.jpg",
         subImages: tempSubImages.length > 0 ? tempSubImages : [],
-        reviews:"⭐⭐⭐⭐⭐",
-        dimentions: { width: "0", height: "0", Length: "0" },
+        reviews: "⭐⭐⭐⭐⭐",
+        dimentions: { width, height, length },
         sellerId: loggedInUser?.ID ?? "",
         sellerName: loggedInUser?.Name ?? "Unknown",
         color: { name: "Timberwolf", hex: "#D8D5CF" },
