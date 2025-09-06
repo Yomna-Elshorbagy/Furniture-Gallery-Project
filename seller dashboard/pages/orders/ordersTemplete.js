@@ -15,7 +15,7 @@ export const ordersTemplate = `
   </div>
  <div class="table-responsive">
   <table class="table p-2">
-    <thead class="table-light">
+    <thead class="Thead">
       <tr>
         <th>ID</th>
         <th>User</th>

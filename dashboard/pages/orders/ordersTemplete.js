@@ -46,7 +46,7 @@ export const ordersTemplate = `
 
   <div class="table-responsive">
   <table class="table orders-table">
-    <thead class="table-light">
+    <thead class="Thead">
       <tr>
         <th>ID</th>
         <th>User</th>

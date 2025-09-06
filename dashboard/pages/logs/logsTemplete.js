@@ -6,7 +6,7 @@ export const logsTemplate = `
     </button>
   </div>
   <table class="table table-hover align-middle">
-    <thead class="table-light">
+    <thead class="Thead">
       <tr>
         <th>ID</th>
         <th>Action</th>

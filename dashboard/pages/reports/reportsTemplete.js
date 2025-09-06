@@ -7,7 +7,7 @@ export const adminReportsTemplate = `
     <div class="p-3 shadow-sm rounded bg-white mb-4">
       <h5>💰 Monthly Income Report</h5>
       <table class="table table-bordered table-striped">
-        <thead class="table-light">
+        <thead class="Thead">
           <tr>
             <th>Month-Year</th>
             <th>Total Income ($)</th>

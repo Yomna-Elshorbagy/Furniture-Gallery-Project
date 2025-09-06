@@ -40,7 +40,7 @@ export const categoriesTemplate = `
 </div>
   <div class="table-responsive">
   <table class="table orders-table p-2">
-    <thead class="table-light">
+    <thead class="Thead">
       <tr>
         <th>ID</th>
         <th>Name</th>

@@ -71,7 +71,7 @@ export const productsTemplate = `
 </div>
  <div class="table-responsive">
   <table class="table table-hover align-middle p-2">
-    <thead class="table-light">
+    <thead class="Thead">
       <tr>
         <th>Image</th>
         <th>ID</th>

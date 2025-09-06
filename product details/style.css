@@ -363,6 +363,8 @@ button.hover-button::after {
   overflow: hidden;
   text-align: center;
   transition: 0.3s;
+    box-shadow: 0 0 5px  rgba(0, 0, 0, 0.4);
+
 }
 
 .related-card:hover {

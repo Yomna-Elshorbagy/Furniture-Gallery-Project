@@ -21,7 +21,7 @@ export const reportsTemplate = `
     <div class="p-3 shadow-sm rounded bg-white mb-4">
       <h5>🛒 Products by Category</h5>
       <table class="table table-bordered table-striped">
-        <thead class="table-light">
+        <thead class="Thead">
           <tr>
             <th>Category</th>
             <th>Number of Products</th>

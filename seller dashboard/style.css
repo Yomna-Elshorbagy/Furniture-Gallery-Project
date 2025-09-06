@@ -18,6 +18,7 @@
 #lowStock {
   cursor: pointer;
 }
+
 /* pagination container */
 #pagination button {
   border: 1px solid #c7b9a9;
@@ -48,7 +49,7 @@
 
 
 body {
-  background: linear-gradient(to top, #f1e4c8, #b9a473);
+  /* background: linear-gradient(to top, #f1e4c8, #b9a473); */
   min-height: 100vh;
   color: #ffffff;
   font-family: "Segoe UI", sans-serif;
@@ -64,7 +65,7 @@ body.dark {
   background: linear-gradient(to top, #272626, #3c3333);
   backdrop-filter: blur(12px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
 }
 
 .nav button {
@@ -83,10 +84,10 @@ body.dark {
 }
 
 .bg-card {
-  background: rgb(223, 221, 216);
+  background: rgb(244, 242, 236);
   border-radius: 20px;
   backdrop-filter: blur(15px);
-  box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.4);
   transition: 0.4s;
 }
 
@@ -94,12 +95,31 @@ table {
   border-collapse: separate;
   border-spacing: 0 10px;
 }
-
+.table{
+  --bs-table-bg: transparent;
+  /* --bs-table-color:#fff; */
+}
+.table thead{
+  --bs-table-bg: transparent;
+  --bs-table-color:#31290c;
+}
+ .Thead{
+  background: linear-gradient(135deg, #dad2c8, #ebebcf) !important;
+  color: #000000 !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
 table thead {
   position: sticky;
   top: 0;
   background: var(--main-gradient);
-  color: white;
+  color: rgb(224, 222, 217);
+  background-color: #91805d;
+}
+
+.table-light {
+  background-color: #91805d;
 }
 
 table tbody tr {
@@ -117,6 +137,7 @@ table tbody tr:hover {
   border-radius: 50%;
   padding: 8px;
   transition: 0.3s;
+  color: #302009;
 }
 
 .theme-toggle:hover {
@@ -169,7 +190,6 @@ body.fade-out {
 }
 
 .carddatabg .card {
-  background: linear-gradient(135deg, #ffffff, #fffefc) !important;
   color: #302009 !important;
 }
 
@@ -177,18 +197,19 @@ body.fade-out {
   width: 40% !important;
   border: 2px solid #c7b9a9 !important;
 }
+
 .badge.bg-danger {
   background-color: #dc3545 !important;
 }
 
 /******** collapsed sidebar ********/
 #sidebar.collapsed {
-  width: 70px !important; 
+  width: 70px !important;
   min-width: 70px;
 }
 
 #sidebar.collapsed .sidebar-text {
-  display: none; 
+  display: none;
 }
 
 #sidebar.collapsed .sidebar-header {
@@ -199,19 +220,22 @@ body.fade-out {
   margin: 0 auto;
 }
 
-#sidebar.collapsed ~ main {
+#sidebar.collapsed~main {
   flex: 1;
   max-width: calc(100% - 70px);
 }
-.btn-add{
-    background-color: #91805d;
+
+.btn-add {
+  background-color: #91805d;
   border-color: #B0A18E;
 }
-.btn-add:hover{
+
+.btn-add:hover {
   background-color: #7f6f57;
   border-color: #a29586;
 }
-.btn-color2:hover{
+
+.btn-color2:hover {
   background-color: #a29586;
   border-color: #c7b9a9;
 }

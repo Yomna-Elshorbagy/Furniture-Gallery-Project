@@ -28,7 +28,7 @@ export const emailsTemplate = `
   <!-- Messages Table -->
   <div class="table-responsive">
     <table class="table table-striped table-bordered align-middle text-center p-2">
-      <thead class="table-light">
+      <thead class="Thead">
         <tr>
           <th>#</th>
           <th>Sender</th>

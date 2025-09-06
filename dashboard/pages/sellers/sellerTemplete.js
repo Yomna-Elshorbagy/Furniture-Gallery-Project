@@ -31,7 +31,7 @@ export const SellersTemplate = `
 </div>
   <div class="table-responsive">
   <table class="table orders-table">
-    <thead class="table-light">
+    <thead class="Thead">
       <tr>
         <th>ID</th>
         <th>Name</th>
