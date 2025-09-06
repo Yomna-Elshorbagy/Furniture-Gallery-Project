@@ -360,12 +360,11 @@ export function initProductsPage(filteredList = null) {
   }
 
   // =====> Save Product <======
-  // =====> Save Product <======
   saveBtn.addEventListener("click", () => {
     let name = nameInput.value.trim();
-    let price = priceInput.value.trim();
+    let price = Number(priceInput.value.trim()) || 0; 
     let oldPrice = OldPriceInput.value.trim();
-    let stock = stockInput.value.trim();
+    let stock = Number(stockInput.value.trim()) || 0;
     let category = categoryInput.value;
     let desc = descInput.value.trim();
     let imgUrl = imagePreview.src;
@@ -392,10 +391,10 @@ export function initProductsPage(filteredList = null) {
               stock: stock || 0,
               category: category || "",
               description: desc || "",
-              image: imgUrl || "../../server/data/products_img/default.jpg",
+              image: imgUrl || "../../../server/data/products_img//default.jpg",
               subImages: tempSubImages.length > 0 ? tempSubImages : [],
               // ensure defaults are preserved if missing
-              reviews: p.reviews || "NOT NOW",
+              reviews: p.reviews || "⭐⭐⭐⭐⭐",
               dimentions: p.dimentions || {
                 width: "0",
                 height: "0",
@@ -403,7 +402,7 @@ export function initProductsPage(filteredList = null) {
               },
               sellerId: p.sellerId || (loggedInUser?.ID ?? ""),
               sellerName: p.sellerName || (loggedInUser?.Name ?? "Unknown"),
-              color: p.color || { name: "", hex: "" },
+              color: p.color || { name: "Timberwolf", hex: "#D8D5CF" },
               status: p.status || "pending",
               isDeleted: p.isDeleted ?? false,
             }
@@ -430,11 +429,11 @@ export function initProductsPage(filteredList = null) {
         stock: stock || 0,
         category: category || "",
         description: desc || "",
-        image: imgUrl || "../../server/data/products_img/default.jpg",
+        image: imgUrl || "../../../server/data/products_img//default.jpg",
         subImages: tempSubImages.length > 0 ? tempSubImages : [],
         // === safe defaults for new product ===
-        reviews: "",
-        dimentions: { width: "", height: "", Length: "" },
+        reviews: "⭐⭐⭐⭐⭐",
+        dimentions: { width: "10", height: "10", Length: "10" },
         sellerId: loggedInUser?.ID || "",
         sellerName: loggedInUser?.Name || "Unknown",
         color: { name: "", hex: "" },

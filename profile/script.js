@@ -92,9 +92,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 (order) =>
                   order.ID == orderId && order.userId == loggedInUser.ID
               );
+
               if (orderIndex !== -1) {
+                // 1. Mark as cancelled
                 orders[orderIndex].Status = "Cancelled";
                 localStorage.setItem("orders", JSON.stringify(orders));
+
+                // 2. Restore product stock
+                let products =
+                  JSON.parse(localStorage.getItem("products")) || [];
+                orders[orderIndex].products.forEach((orderedProd) => {
+                  let prodIndex = products.findIndex(
+                    (p) => p.id === orderedProd.id
+                  );
+                  if (prodIndex !== -1) {
+                    products[prodIndex].stock += orderedProd.quantity;
+                  }
+                });
+                localStorage.setItem("products", JSON.stringify(products));
               }
 
               Swal.fire({
@@ -111,9 +126,9 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         });
       });
-    }
 
-    ordersSection.classList.remove("d-none");
+      ordersSection.classList.remove("d-none");
+    }
   });
 
   // ===> check if user logged in or not to access userData links

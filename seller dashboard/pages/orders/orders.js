@@ -18,6 +18,23 @@ export function initOrdersPage() {
     order.products.some((prod) => Number(prod.sellerId) === sellerId)
   );
   let selectedFilter = "All";
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+
+  function restoreStock(order) {
+    if (!Array.isArray(products)) return;
+
+    order.products.forEach((orderedProduct) => {
+      let prod = products.find(
+        (p) => Number(p.id) === Number(orderedProduct.id)
+      );
+      if (prod) {
+        let qty = Number(orderedProduct.quantity) || 0;
+        prod.stock = (Number(prod.stock) || 0) + qty;
+      }
+    });
+
+    localStorage.setItem("products", JSON.stringify(products));
+  }
 
   // ====> render Orders table <====
   function renderOrders() {
@@ -193,6 +210,15 @@ export function initOrdersPage() {
     }
 
     if (editingId) {
+      let oldOrder = orders.find((o) => o.ID === editingId);
+
+      if (
+        oldOrder &&
+        oldOrder.Status.toLowerCase() === "pending" &&
+        status.toLowerCase() === "cancelled"
+      ) {
+        restoreStock(oldOrder);
+      }
       // update existing
       orders = orders.map((order) =>
         order.ID === editingId
@@ -230,6 +256,7 @@ export function initOrdersPage() {
   // =====> delete order  <=====
   function handleDeleteOrder(e) {
     const id = parseInt(e.currentTarget.dataset.id);
+    const deletedOrder = orders.find((o) => o.ID === id);
 
     Swal.fire({
       title: "Are you sure?",
@@ -241,15 +268,22 @@ export function initOrdersPage() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        // delete from orders array
+        // restore stock if pending
+        if (deletedOrder && deletedOrder.Status.toLowerCase() === "pending") {
+          restoreStock(deletedOrder);
+        }
+
+        // update both seller's orders and global orders
         orders = orders.filter((o) => o.ID !== id);
-        localStorage.setItem("orders", JSON.stringify(orders));
+        allOrders = allOrders.filter((o) => o.ID !== id);
+
+        localStorage.setItem("orders", JSON.stringify(allOrders));
 
         // handle empty page after deletion
         const totalPages = Math.ceil(orders.length / pageSize);
         if (currentPage > totalPages) currentPage = totalPages || 1;
 
-        renderOrders(); // re-render table + pagination
+        renderOrders();
 
         Swal.fire("Deleted!", "Order has been deleted.", "success");
       }

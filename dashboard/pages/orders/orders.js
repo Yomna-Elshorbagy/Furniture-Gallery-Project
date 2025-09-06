@@ -16,6 +16,23 @@ export function initOrdersPage() {
   let currentPage = 1;
   const pageSize = 6;
   let selectedFilter = "All";
+  let products = JSON.parse(localStorage.getItem("products")) || [];
+
+  function restoreStock(order) {
+    if (!Array.isArray(products)) return;
+
+    order.products.forEach((orderedProduct) => {
+      let prod = products.find(
+        (p) => Number(p.id) === Number(orderedProduct.id)
+      );
+      if (prod) {
+        let qty = Number(orderedProduct.quantity) || 0;
+        prod.stock = (Number(prod.stock) || 0) + qty;
+      }
+    });
+
+    localStorage.setItem("products", JSON.stringify(products));
+  }
 
   // ---- render Orders table ----
   function renderOrders() {
@@ -216,6 +233,15 @@ export function initOrdersPage() {
     }
 
     if (editingId) {
+      let oldOrder = orders.find((o) => o.ID === editingId);
+
+      if (
+        oldOrder &&
+        oldOrder.Status.toLowerCase() === "pending" &&
+        status.toLowerCase() === "cancelled"
+      ) {
+        restoreStock(oldOrder);
+      }
       // update existing
       orders = orders.map((order) =>
         order.ID === editingId
@@ -266,6 +292,9 @@ export function initOrdersPage() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
+        if (deletedOrder && deletedOrder.Status.toLowerCase() === "pending") {
+          restoreStock(deletedOrder); // return stock before deleting
+        }
         // delete from orders array
         orders = orders.filter((o) => o.ID !== id);
         localStorage.setItem("orders", JSON.stringify(orders));
@@ -302,6 +331,9 @@ export function initOrdersPage() {
       cancelButtonColor: "#d33",
     }).then((result) => {
       if (result.isConfirmed) {
+        if (order && order.Status.toLowerCase() === "pending") {
+          restoreStock(order); // return stock on soft delete too
+        }
         orders = orders.map((o) =>
           o.ID === id ? { ...o, isDeleted: true } : o
         );

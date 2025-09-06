@@ -21,7 +21,6 @@ export function initProductsPage(initialProducts = null) {
   let searchByStock = document.getElementById("searchByStock");
   let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-
   // reapply filters whenever any input changes
   [categoryFilter, searchById, searchByName, searchByStock].forEach((el) => {
     el?.addEventListener("input", applyFilters);
@@ -480,11 +479,11 @@ export function initProductsPage(initialProducts = null) {
         description: desc || "",
         image: imgUrl || "../../server/data/products_img/default.jpg",
         subImages: tempSubImages.length > 0 ? tempSubImages : [],
-        reviews: "",
+        reviews:"⭐⭐⭐⭐⭐",
         dimentions: { width: "0", height: "0", Length: "0" },
         sellerId: loggedInUser?.ID ?? "",
         sellerName: loggedInUser?.Name ?? "Unknown",
-        color: { name: "", hex: "" },
+        color: { name: "Timberwolf", hex: "#D8D5CF" },
         status: "accepted",
         isDeleted: false,
       };

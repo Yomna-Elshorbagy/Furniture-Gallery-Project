@@ -150,7 +150,9 @@ function displayProducts() {
   let category = urlParams.get("category");
 
   let filtered = allProducts
-    .filter((p) => !category || p.category === category)
+    .filter(
+      (p) => !category || p.category.toLowerCase() === category.toLowerCase()
+    )
     .filter((p) => p.status === "accepted" && p.isDeleted === false);
 
   let start = (currentPage - 1) * pageSize;
