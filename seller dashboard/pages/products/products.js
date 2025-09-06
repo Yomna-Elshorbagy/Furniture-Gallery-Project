@@ -13,6 +13,10 @@ export function initProductsPage(filteredList = null) {
   let pmSubImagesPreview = document.getElementById("pmSubImagesPreview");
   let saveBtn = document.getElementById("pmSave");
 
+  let widthInput = document.getElementById("pmWidth");
+  let heightInput = document.getElementById("pmHeight");
+  let lengthInput = document.getElementById("pmLength");
+
   let categoryFilter = document.getElementById("categoryFilter");
   let searchById = document.getElementById("searchById");
   let searchByName = document.getElementById("searchByName");
@@ -360,22 +364,34 @@ export function initProductsPage(filteredList = null) {
   }
 
   // =====> Save Product <======
-  saveBtn.addEventListener("click", () => {
+  saveBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let errorMsg = document.getElementById("formErrorMsg");
+    errorMsg.classList.add("d-none"); // hide on each attempt
+    errorMsg.textContent = "";
+
     let name = nameInput.value.trim();
-    let price = Number(priceInput.value.trim()) || 0; 
+    let price = Number(priceInput.value.trim()) || 0;
     let oldPrice = OldPriceInput.value.trim();
     let stock = Number(stockInput.value.trim()) || 0;
     let category = categoryInput.value;
     let desc = descInput.value.trim();
     let imgUrl = imagePreview.src;
-
-    if (!name || !price || !stock) {
-      Swal.fire({
-        icon: "warning",
-        title: "Missing Fields",
-        text: "Please fill in all required fields",
-        confirmButtonText: "OK",
-      });
+    let width = widthInput.value.trim();
+    let height = heightInput.value.trim();
+    let length = lengthInput.value.trim();
+    if (
+      !name ||
+      !price ||
+      !stock ||
+      !category ||
+      !width ||
+      !height ||
+      !length ||
+      !imgUrl
+    ) {
+      errorMsg.textContent = "⚠️ Please fill in all required fields";
+      errorMsg.classList.remove("d-none");
       return;
     }
 

@@ -428,6 +428,10 @@ export function initProductsPage(initialProducts = null) {
   // ====>> Save Product <<=====
   // ====>> Save Product <<=====
   saveBtn.addEventListener("click", () => {
+    let errorMsg = document.getElementById("formErrorMsg");
+    errorMsg.classList.add("d-none");
+    errorMsg.textContent = "";
+
     let name = nameInput.value.trim();
     let price = priceInput.value.trim();
     let oldPrice = OldPriceInput.value.trim();
@@ -439,13 +443,18 @@ export function initProductsPage(initialProducts = null) {
     let height = heightInput.value.trim();
     let length = lengthInput.value.trim();
 
-    if (!name || !price || !stock || !width || !height || !length) {
-      Swal.fire({
-        icon: "warning",
-        title: "Missing Fields",
-        text: "Please fill in all required fields",
-        confirmButtonText: "OK",
-      });
+    if (
+      !name ||
+      !price ||
+      !stock ||
+      !category ||
+      !width ||
+      !height ||
+      !length ||
+      !imgUrl
+    ) {
+      errorMsg.textContent = "⚠️ Please fill in all required fields";
+      errorMsg.classList.remove("d-none");
       return;
     }
 

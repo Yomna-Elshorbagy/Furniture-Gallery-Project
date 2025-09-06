@@ -130,7 +130,8 @@ export const productsTemplate = `
         <!-- Body -->
         <div class="modal-body p-4">
           <div class="row g-4">
-            
+            <div id="formErrorMsg" class="alert alert-danger d-none" role="alert"></div>
+
             <!-- Left Column: Details -->
             <div class="col-md-7">
               <div class="card border-0 shadow-sm rounded-3 p-3">

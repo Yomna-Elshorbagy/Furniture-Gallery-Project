@@ -101,9 +101,11 @@ export const productsTemplate = `
           <h5 class="modal-title fw-semibold" id="productModalTitle">Add Product</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
+   <!-- Body -->
         <div class="modal-body p-4">
           <div class="row g-4">
-            
+            <div id="formErrorMsg" class="alert alert-danger d-none" role="alert"></div>
+
             <!-- Left Column: Details -->
             <div class="col-md-7">
               <div class="card border-0 shadow-sm rounded-3 p-3">
@@ -111,73 +113,96 @@ export const productsTemplate = `
                 <div class="row g-3">
                   
                   <div class="col-md-6">
-                    <label class="form-label">Name</label>
+                    <label for="pmTitle" class="form-label">Name</label>
                     <div class="input-group">
                       <span class="input-group-text"><i class="fa-solid fa-tag"></i></span>
-                      <input id="pmTitle" type="text" class="form-control" placeholder="Product Name" />
+                      <input id="pmTitle" type="text" class="form-control" placeholder="Product Name" required />
                     </div>
                   </div>
                   
                   <div class="col-md-3">
-                    <label class="form-label">Price ($)</label>
+                    <label for="pmPrice" class="form-label">Price ($)</label>
                     <div class="input-group">
                       <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
-                      <input id="pmPrice" type="number" step="0.01" class="form-control" placeholder="0.00" />
+                      <input id="pmPrice" type="number" step="0.01" min="0" class="form-control" placeholder="0.00" required />
                     </div>
                   </div>
 
                   <div class="col-md-3">
-                    <label class="form-label">Old Price ($)</label>
+                    <label for="pmOldPrice" class="form-label">Old Price ($)</label>
                     <div class="input-group">
                       <span class="input-group-text"><i class="fa-solid fa-tag"></i></span>
-                      <input id="pmOldPrice" type="number" step="0.01" class="form-control" placeholder="0.00" />
+                      <input id="pmOldPrice" type="number" step="0.01" min="0" class="form-control" placeholder="0.00" />
                     </div>
                   </div>
                   
                   <div class="col-md-4">
-                    <label class="form-label">Stock</label>
+                    <label for="pmStock" class="form-label">Stock</label>
                     <div class="input-group">
                       <span class="input-group-text"><i class="fa-solid fa-box"></i></span>
-                      <input id="pmStock" type="number" class="form-control" placeholder="0" />
+                      <input id="pmStock" type="number" min="0" class="form-control" placeholder="0" required />
                     </div>
                   </div>
                   
                   <div class="col-md-8">
-                    <label class="form-label">Category</label>
-                    <select id="pmCategory" class="form-select">
+                    <label for="pmCategory" class="form-label">Category</label>
+                    <select id="pmCategory" class="form-select" required>
                       <option value="">Select Category</option>
-                      <option value="Living">Living</option>
-                      <option value="Dining">Dining</option>
-                      <option value="Bedroom">Bedroom</option>
-                      <option value="Outdoor">Outdoor</option>
+                      <option value="living">living</option>
+                      <option value="dining">dining</option>
+                      <option value="bedroom">bedroom</option>
+                      <option value="outdoor">outdoor</option>
+                      <option value="decor">decor</option>
                     </select>
                   </div>
 
-                <div class="col-12 mt-3">
-                    <label class="form-label">Sub Images </label>
-                      <textarea id="pmSubImages" class="form-control" rows="3" placeholder="Enter image URLs..."></textarea>
-                    </div>
-
-
+                  <!-- Dimensions -->
                   <div class="col-12">
-                    <label class="form-label">Description</label>
-                    <textarea id="pmDesc" class="form-control" rows="3" placeholder="Write product description..."></textarea>
+                    <div class="row g-3">
+                      <div class="col-md-4">
+                        <label for="pmWidth" class="form-label">Width (cm)</label>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="fa-solid fa-ruler-horizontal"></i></span>
+                          <input id="pmWidth" type="number" min="1" class="form-control" placeholder="Width" required />
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <label for="pmHeight" class="form-label">Height (cm)</label>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="fa-solid fa-ruler-vertical"></i></span>
+                          <input id="pmHeight" type="number" min="1" class="form-control" placeholder="Height" required />
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <label for="pmLength" class="form-label">Length (cm)</label>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="fa-solid fa-ruler-combined"></i></span>
+                          <input id="pmLength" type="number" min="1" class="form-control" placeholder="Length" required />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Description -->
+                  <div class="col-12">
+                    <label for="pmDesc" class="form-label">Description</label>
+                    <textarea id="pmDesc" class="form-control" rows="3" placeholder="Write product description..." required></textarea>
                   </div>
                 </div>
               </div>
             </div>
 
-
-
             <!-- Right Column: Images -->
             <div class="col-md-5">
               <div class="card border-0 shadow-sm rounded-3 p-3 text-center">
-                <label class="form-label">Main Image</label>
-                <input id="pmImage" type="file" class="form-control" />
+                <label for="pmImage" class="form-label">Main Image</label>
+                <input id="pmImage" type="file" class="form-control" accept="image/*" required />
                 <img id="pmImagePreview" src="" alt="Preview" style="display:none;max-height:200px;margin-top:5px;">
                 <hr/>
-                <label class="form-label">Sub Images</label>
-                <input id="pmSubImagesInput" type="file" class="form-control" multiple />
+                <label for="pmSubImagesInput" class="form-label">Sub Images</label>
+                <input id="pmSubImagesInput" type="file" class="form-control" accept="image/*" multiple />
                 <div id="pmSubImagesPreview" class="d-flex flex-wrap gap-2 mt-2"></div>
               </div>
             </div>

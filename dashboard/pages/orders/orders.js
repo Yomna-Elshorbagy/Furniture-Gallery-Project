@@ -225,10 +225,14 @@ export function initOrdersPage() {
     const user = userInput.value.trim();
     const price = priceInput.value.trim();
     const status = statusInput.value;
-    // const date = dateInput.value;
+
+    const errorMsgEl = document.getElementById("formErrorMsg");
+    errorMsgEl.classList.add("d-none");
+    errorMsgEl.textContent = "";
 
     if (!user || !price || !status) {
-      alert("Please fill in all fields");
+      errorMsgEl.textContent = "⚠️ Please fill in all fields.";
+      errorMsgEl.classList.remove("d-none");
       return;
     }
 
@@ -242,21 +246,14 @@ export function initOrdersPage() {
       ) {
         restoreStock(oldOrder);
       }
-      // update existing
+
       orders = orders.map((order) =>
         order.ID === editingId
-          ? {
-              ...order,
-              UserName: user,
-              TotalPrice: price,
-              Status: status,
-              // Date: date,
-            }
+          ? { ...order, UserName: user, TotalPrice: price, Status: status }
           : order
       );
       addLog("Edited Order", { id: editingId, name: user }, "Order");
     } else {
-      // add new
       const newId = orders.length
         ? Math.max(...orders.map((o) => o.ID)) + 1
         : 1;
@@ -266,7 +263,6 @@ export function initOrdersPage() {
         TotalPrice: price,
         Status: status,
         isDeleted: false,
-        // Date: date,
       });
       addLog("Added Order", { id: newId, name: user }, "Order");
     }
@@ -274,7 +270,10 @@ export function initOrdersPage() {
     localStorage.setItem("orders", JSON.stringify(orders));
     renderOrders();
 
-    bootstrap.Modal.getInstance(document.getElementById("orderModal")).hide();
+    let modalEl = document.getElementById("orderModal");
+    let modalInstance =
+      bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+    modalInstance.hide();
   });
 
   // =====> delete order  <====

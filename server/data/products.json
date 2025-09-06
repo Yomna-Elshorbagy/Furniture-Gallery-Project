@@ -55,7 +55,7 @@
   },
   {
     "id": 3,
-    "name": "Florabelle 4 Seater Sofa - Vanilla",
+    "name": "Florabelle 55 green Sofa - Vanilla",
     "price": "4699",
     "oldPrice": "7999",
     "category": "living",
@@ -561,34 +561,9 @@
     "status": "accepted",
     "isDeleted": false
   },
+
   {
     "id": 22,
-    "name": "Zaha Bench Seat",
-    "price": "700",
-    "oldPrice": null,
-    "category": "bedroom",
-    "reviews": "⭐⭐⭐⭐⭐",
-    "stock": 5,
-    "description": "Enrich your bedroom or living space with the luxurious Zaha Bench Seat, upholstered in stunning chocolate brown velvet. The gently moulded legs form effortlessly into the seat, creating an elegant and captivating design. ",
-    "image": "https://thefurnituregallery.com.au/cdn/shop/files/lf9cmYHg_1800x1800.jpg?v=1753145072",
-    "subImages": [
-      "https://thefurnituregallery.com.au/cdn/shop/files/IMG_7201_1399x1757.jpg?v=1730781257",
-      "https://thefurnituregallery.com.au/cdn/shop/files/IMG_7201_1399x1757.jpg?v=1730781257",
-      "https://thefurnituregallery.com.au/cdn/shop/files/8168Fj4A_1349x1799.jpg?v=1730776684"
-    ],
-    "dimentions": {
-      "width": "39.5 cm",
-      "height": "49.5 cm",
-      "Length": "153.5 cm"
-    },
-    "sellerId": "7",
-    "sellerName": "doaa Mohamed",
-    "color": { "name": "Dark Gold", "hex": "#AB6431" },
-    "status": "accepted",
-    "isDeleted": false
-  },
-  {
-    "id": 23,
     "name": "Iris Bed",
     "price": "1599",
     "oldPrice": "2199",
@@ -614,7 +589,7 @@
     "isDeleted": false
   },
   {
-    "id": 24,
+    "id": 23,
     "name": "Giselle Bed",
     "price": "1999",
     "oldPrice": "2899",
@@ -639,32 +614,9 @@
     "status": "accepted",
     "isDeleted": false
   },
+
   {
-    "id": 25,
-    "name": "Surrey Bed with Drawers",
-    "price": "1999",
-    "oldPrice": null,
-    "category": "bedroom",
-    "reviews": "⭐⭐⭐⭐",
-    "stock": 5,
-    "description": "Make your bedroom truly alluring and inviting with the Allure Bed in Natural. Upholstered in a neutral fabric in a tweed-like texture, this stunning piece features a statement vertical panel headboard that oozes grandeur, and practical underbed storage.",
-    "image": "https://thefurnituregallery.com.au/cdn/shop/products/635734d7beb8523f8b0c66e3_Surrey_20King_20Bedroom_20with_20Tallboy_20-_20resized_d4c9ea0c-25cf-4b88-9bf3-dc92fdc0ce3a_1248x1248.jpg?v=1752193290",
-    "subImages": [
-      "https://thefurnituregallery.com.au/cdn/shop/products/635734d7beb8523f8b0c66e3_Surrey_20King_20Bedroom_20with_20Tallboy_20-_20resized_d4c9ea0c-25cf-4b88-9bf3-dc92fdc0ce3a_1248x1248.jpg?v=1752193290"
-    ],
-    "dimentions": {
-      "width": "Q: 155 cm - K: 188 cm",
-      "height": "Q: 130 cm - K: 130 cm",
-      "Length": "Q: 205 cm - K: 205 cm"
-    },
-    "sellerId": "6",
-    "sellerName": "asmaa Mohamed",
-    "color": { "name": "Extreme White", "hex": "#FBFAF6" },
-    "status": "accepted",
-    "isDeleted": false
-  },
-  {
-    "id": 26,
+    "id": 24,
     "name": "Alsace Dressing Table & Mirror - Rustic Oak",
     "price": "1899",
     "oldPrice": "2699",
@@ -688,7 +640,7 @@
     "isDeleted": false
   },
   {
-    "id": 27,
+    "id": 25,
     "name": "Wentworth Elite Bed",
     "price": "1999",
     "oldPrice": null,
@@ -715,7 +667,7 @@
     "isDeleted": false
   },
   {
-    "id": 28,
+    "id": 26,
     "name": "Edina 6 Drawer Dressing Table",
     "price": "1499",
     "oldPrice": "1999",
@@ -742,7 +694,7 @@
     "isDeleted": false
   },
   {
-    "id": 29,
+    "id": 27,
     "name": "Amore Dresser",
     "price": "1690",
     "oldPrice": "2499",
@@ -769,7 +721,7 @@
     "isDeleted": false
   },
   {
-    "id": 30,
+    "id": 28,
     "name": "Remarkable Rug - Pure White",
     "price": "1999",
     "oldPrice": null,
@@ -795,7 +747,7 @@
     "isDeleted": false
   },
   {
-    "id": 31,
+    "id": 29,
     "name": "Uplifting - Textured Canvas with Dune Floater",
     "price": "1199",
     "oldPrice": null,
@@ -820,7 +772,7 @@
     "isDeleted": false
   },
   {
-    "id": 32,
+    "id": 30,
     "name": "James Floor Mirror - Walnut",
     "price": "900",
     "oldPrice": null,
@@ -846,7 +798,7 @@
     "isDeleted": false
   },
   {
-    "id": 33,
+    "id": 31,
     "name": "Fonteyn Chandelier - Medium",
     "price": "2499",
     "oldPrice": null,
@@ -871,7 +823,7 @@
     "isDeleted": false
   },
   {
-    "id": 34,
+    "id": 32,
     "name": "Verna Drinks Trolley",
     "price": "999",
     "oldPrice": null,
@@ -895,7 +847,7 @@
     "isDeleted": false
   },
   {
-    "id": 35,
+    "id": 33,
     "name": "Amore Dresser",
     "price": "449",
     "oldPrice": null,
@@ -919,7 +871,7 @@
     "isDeleted": false
   },
   {
-    "id": 36,
+    "id": 34,
     "name": "Frame Clock - Gold",
     "price": "399",
     "oldPrice": null,
@@ -943,7 +895,7 @@
     "isDeleted": false
   },
   {
-    "id": 37,
+    "id": 35,
     "name": "Reverie Rug - Rose Brown",
     "price": "1300",
     "oldPrice": null,
@@ -970,7 +922,7 @@
     "isDeleted": false
   },
   {
-    "id": 38,
+    "id": 36,
     "name": "Barrow Scalloped Rug - Chocolate",
     "price": "799",
     "oldPrice": null,
@@ -997,7 +949,7 @@
     "isDeleted": false
   },
   {
-    "id": 39,
+    "id": 37,
     "name": "Orb White Onyx Vase",
     "price": "210",
     "oldPrice": null,
@@ -1021,33 +973,9 @@
     "status": "accepted",
     "isDeleted": false
   },
+
   {
-    "id": 40,
-    "name": "Lela Vase",
-    "price": "129",
-    "oldPrice": null,
-    "category": "decor",
-    "reviews": "⭐⭐⭐",
-    "stock": 5,
-    "description": "Make a chic and timeless statement with the James Floor Mirror — a striking two-metre tall arched silhouette crafted from solid birch wood. Finished in a warm walnut stain, this full-length mirror brings elegance and a sense of space to any room, whether styled in a bedroom, living area, or long hallway. Its clean arc design nods to both classic and contemporary interiors, offering versatility and enduring appeal. Lean it casually against the wall or position it with intention — either ways",
-    "image": "https://thefurnituregallery.com.au/cdn/shop/files/107499-2_800x800.png?v=1718942236",
-    "subImages": [
-      "https://thefurnituregallery.com.au/cdn/shop/files/107499-2_800x800.png?v=1718942236",
-      "https://thefurnituregallery.com.au/cdn/shop/files/107499-1_800x800.png?v=1718942236"
-    ],
-    "dimentions": {
-      "width": "28 cm",
-      "height": "25 cm",
-      "Length": null
-    },
-    "sellerId": "5",
-    "sellerName": "ahmed Mohamed",
-    "color": { "name": "Dark Gold", "hex": "#AB6431" },
-    "status": "accepted",
-    "isDeleted": false
-  },
-  {
-    "id": 41,
+    "id": 38,
     "name": "Esperance Dining Table",
     "price": "8999",
     "oldPrice": "12999",

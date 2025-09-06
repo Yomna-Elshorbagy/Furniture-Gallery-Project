@@ -204,8 +204,13 @@ export function initOrdersPage() {
     const status = statusInput.value;
     // const date = dateInput.value;
 
+    const errorMsgEl = document.getElementById("formErrorMsg");
+    errorMsgEl.classList.add("d-none");
+    errorMsgEl.textContent = "";
+
     if (!user || !price || !status) {
-      alert("Please fill in all fields");
+      errorMsgEl.textContent = "⚠️ Please fill in all fields.";
+      errorMsgEl.classList.remove("d-none");
       return;
     }
 

@@ -41,6 +41,7 @@ export const ordersTemplate = `
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
+          <div id="formErrorMsg" class="alert alert-danger d-none" role="alert"></div>
           <div class="mb-3">
             <label class="form-label">User Name</label>
             <input type="text" id="omUser" class="form-control" />

@@ -66,11 +66,11 @@ export const emailsTemplate = `
           </div>
           <div class="mb-3">
             <label for="respSubject" class="form-label">Subject</label>
-            <input type="text" class="form-control" id="respSubject" />
+            <input type="text" class="form-control" id="respSubject" required/>
           </div>
           <div class="mb-3">
             <label for="respMessage" class="form-label">Message</label>
-            <textarea class="form-control" id="respMessage" rows="4"></textarea>
+            <textarea class="form-control" id="respMessage" rows="4" required></textarea>
           </div>
         </div>
         <div class="modal-footer">

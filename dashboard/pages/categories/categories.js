@@ -102,12 +102,16 @@ export function initCategoriesPage() {
   }
 
   // ---- Save (Add or Update) ----
-  // ---- Save (Add or Update) ----
   saveBtn.addEventListener("click", () => {
     const name = nameInput.value.trim();
     const desc = descInput.value.trim();
+    let errorMsg = document.getElementById("formErrorMsg");
+    errorMsg.classList.add("d-none");
+    errorMsg.textContent = "";
+
     if (!name || !desc) {
-      alert("Please fill in all fields");
+      errorMsg.textContent = "⚠️ Please fill in all required fields";
+      errorMsg.classList.remove("d-none");
       return;
     }
 

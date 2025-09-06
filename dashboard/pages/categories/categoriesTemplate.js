@@ -53,6 +53,7 @@ export const categoriesTemplate = `
 
   <!-- Category Modal -->
 <div class="modal fade" id="categoryModal" tabindex="-1">
+
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -60,14 +61,16 @@ export const categoriesTemplate = `
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
+        <div id="formErrorMsg" class="alert alert-danger d-none" role="alert"></div>
+
         <div class="mb-3">
           <label class="form-label">Name</label>
-          <input type="text" id="cmName" class="form-control" />
+          <input type="text" id="cmName" class="form-control" required/>
           <div id="nameFeedback" class="invalid-feedback"></div>
         </div>
         <div class="mb-3">
           <label class="form-label">Description</label>
-          <textarea id="cmDesc" class="form-control"></textarea>
+          <textarea id="cmDesc" class="form-control" required></textarea>
           <div id="categoryFeedback" class="invalid-feedback"></div>
         </div>
       </div>
