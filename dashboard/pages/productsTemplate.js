@@ -74,6 +74,7 @@ export const productsTemplate = `
     </div>
   </div>
 </div>
+    <div class="table-responsive">
   <table class="table table-hover align-middle orders-table">
     <thead class="Thead">
       <tr>
@@ -108,6 +109,7 @@ export const productsTemplate = `
     </thead>
     <tbody id="requestsTable"></tbody>
   </table>
+</div>
 </div>
 
   <div class="d-flex justify-content-between mt-3">
