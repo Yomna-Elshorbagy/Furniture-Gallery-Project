@@ -163,4 +163,100 @@ export function initReportsPage() {
       printWindow.close();
     };
   });
+
+  document
+    .getElementById("SellerReportsCSVBtn")
+    ?.addEventListener("click", () => {
+      let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+      if (!loggedInUser || loggedInUser.Role !== "seller") return;
+
+      let sellerId = loggedInUser.ID;
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];
+      let products = JSON.parse(localStorage.getItem("products")) || [];
+
+      let sellerOrders = orders.filter((order) =>
+        order.products.some(
+          (prod) => String(prod.sellerId) === String(sellerId)
+        )
+      );
+      let completedOrders = sellerOrders.filter(
+        (ord) => ord.Status === "Completed"
+      );
+
+      let csvRows = [];
+
+      // ===== Monthly Income =====
+      csvRows.push(["Monthly Income Report"]);
+      csvRows.push(["Month-Year", "Total Income ($)"]);
+      let monthlyIncome = {};
+      completedOrders.forEach((order) => {
+        let monthYear = new Date(order.Date).toLocaleString("default", {
+          month: "short",
+          year: "numeric",
+        });
+        let sellerRevenue = 0;
+        order.products.forEach((prod) => {
+          if (String(prod.sellerId) === String(sellerId)) {
+            sellerRevenue += Number(prod.price) * Number(prod.quantity);
+          }
+        });
+        monthlyIncome[monthYear] =
+          (monthlyIncome[monthYear] || 0) + sellerRevenue;
+      });
+      for (let [month, income] of Object.entries(monthlyIncome)) {
+        csvRows.push([month, income]);
+      }
+      csvRows.push([]);
+
+      // ===== Products by Category =====
+      csvRows.push(["Products by Category"]);
+      csvRows.push(["Category", "Number of Products"]);
+      let sellerProducts = products.filter(
+        (prod) => String(prod.sellerId) === String(sellerId)
+      );
+      let categories = sellerProducts.map((p) => p.category);
+      let mainCategories = [...new Set(categories)];
+      mainCategories.forEach((cat) => {
+        let count = categories.filter((c) => c === cat).length;
+        csvRows.push([cat, count]);
+      });
+      csvRows.push([]);
+
+      // ===== Orders by Status =====
+      csvRows.push(["Orders by Status"]);
+      csvRows.push(["Status", "Orders Count"]);
+      let statusList = ["Completed", "Pending", "Shipped", "Cancelled"];
+      statusList.forEach((status) => {
+        let count = sellerOrders.filter((ord) => ord.Status === status).length;
+        csvRows.push([status, count]);
+      });
+      csvRows.push([]);
+
+      // ===== Revenue by Category =====
+      csvRows.push(["Revenue by Category"]);
+      csvRows.push(["Category", "Total Revenue ($)"]);
+      let revenueByCategory = {};
+      completedOrders.forEach((order) => {
+        order.products.forEach((item) => {
+          if (String(item.sellerId) === String(sellerId)) {
+            let revenue = Number(item.price) * Number(item.quantity);
+            revenueByCategory[item.category] =
+              (revenueByCategory[item.category] || 0) + revenue;
+          }
+        });
+      });
+      for (let [cat, rev] of Object.entries(revenueByCategory)) {
+        csvRows.push([cat, rev]);
+      }
+
+      // ===== convert to CSV String =====
+      let csvContent = csvRows.map((e) => e.join(",")).join("\n");
+
+      // ===== download CSV =====
+      let blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      let link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "seller_reports.csv";
+      link.click();
+    });
 }

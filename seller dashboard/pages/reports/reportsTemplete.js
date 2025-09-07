@@ -4,6 +4,9 @@ export const reportsTemplate = `
     <h3 class="text-center mb-4">📑 Business Reports</h3>
   <!-- Print Button -->
     <div class="text-end mb-3">
+      <button id="SellerReportsCSVBtn" class="btn btn-color3">
+        📥 CSV
+      </button>
       <button id="printReportsBtn" class="btn btn-color3">
         🖨️ Print Reports
       </button>

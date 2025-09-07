@@ -5,9 +5,17 @@ export const adminReportsTemplate = `
 
     <!-- Print Button -->
     <div class="text-end mb-3">
+       <!-- Download CSV Button -->
+      <button id="downloadAllReportsCSVBtn" class="btn btn-color2">
+        📥 CSV
+      </button>
       <button id="printReportsBtn" class="btn btn-color2">
         🖨️ Print Reports
       </button>
+   
+
+</div>
+
     </div>
     <!-- Monthly Income Report -->
     <div class="p-3 shadow-sm rounded bg-white mb-4">
