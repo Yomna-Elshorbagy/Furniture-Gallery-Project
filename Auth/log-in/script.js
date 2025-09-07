@@ -150,45 +150,104 @@ if (googleBtn) {
     google.accounts.id.prompt();
   });
 }
-function handleGoogleLoginResponse(response) {
-  // decode JWT
-  const data = JSON.parse(atob(response.credential.split(".")[1]));
-  console.log("Google user:", data);
 
-  let users = JSON.parse(localStorage.getItem("users")) || [];
-  let existingUser = users.find(
-    (u) => u.Email.toLowerCase() === data.email.toLowerCase()
-  );
+let loginInProgress = false;
 
-  let loggedInUser;
-  if (!existingUser) {
-    // if user never signed up manually, create a new one
-    let id = Date.now() + Math.floor(Math.random() * 1000);
-    loggedInUser = new User(
-      id,
-      data.name,
-      data.email,
-      data.sub, // save Google ID as phone
-      "google-auth", // fake password but not needed
-      "user"
-    );
-    users.push(loggedInUser);
-    localStorage.setItem("users", JSON.stringify(users));
-  } else {
-    loggedInUser = existingUser;
+async function handleGoogleLoginResponse(response) {
+  if (loginInProgress) {
+    Swal.fire({
+      title: "⚠️ Please Wait",
+      text: "Login is already in progress.",
+      icon: "info",
+      timer: 2000,
+      showConfirmButton: false,
+    });
+    return;
   }
 
-  // Save session
-  localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
-  localStorage.setItem("loggedInUserId", loggedInUser.ID);
+  loginInProgress = true;
 
-  Swal.fire({
-    title: `✅ Welcome ${data.name}!`,
-    text: "You have logged in with Google.",
-    icon: "success",
-    timer: 2000,
-    showConfirmButton: false,
-  }).then(() => {
-    window.location.href = "../../home/home.html";
-  });
+  try {
+    if (!response || !response.credential) {
+      throw new Error("No Google login response received.");
+    }
+
+    // decode JWT
+    const data = JSON.parse(atob(response.credential.split(".")[1]));
+    console.log("Google user:", data);
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    let existingUser = users.find(
+      (u) => u.Email.toLowerCase() === data.email.toLowerCase()
+    );
+
+    let loggedInUser;
+
+    if (existingUser) {
+      // link Google ID to existing account if not already linked
+      if (!existingUser.GoogleID) {
+        existingUser.GoogleID = data.sub;
+        users = users.map((u) =>
+          u.Email.toLowerCase() === data.email.toLowerCase() ? existingUser : u
+        );
+        localStorage.setItem("users", JSON.stringify(users));
+      }
+      loggedInUser = existingUser;
+    } else {
+      // If user never signed up manually, create a new account
+      let id = users.length ? Math.max(...users.map((u) => u.ID)) + 1 : 1;
+      loggedInUser = {
+        ID: id,
+        Name: data.name,
+        Email: data.email,
+        Phone: data.sub,
+        Password: "google-auth",
+        Role: "user",
+        GoogleID: data.sub,
+      };
+      users.push(loggedInUser);
+      localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    // Save session
+    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+    localStorage.setItem("loggedInUserId", loggedInUser.ID);
+
+    Swal.fire({
+      title: `✅ Welcome ${data.name}!`,
+      text: "You have logged in with Google.",
+      icon: "success",
+      timer: 2000,
+      showConfirmButton: false,
+    }).then(() => {
+      setTimeout(() => {
+        window.location.href = "../../home/home.html";
+      }, 200);
+    });
+  } catch (error) {
+    console.error("Google login failed:", error);
+
+    Swal.fire({
+      title: "❌ Login Failed",
+      text:
+        error.message ||
+        "Something went wrong during Google login. Please try again.",
+      icon: "error",
+      confirmButtonText: "OK",
+    });
+  } finally {
+    loginInProgress = false;
+  }
 }
+
+// global error listener for unexpected AbortErrors (FedCM / credentials API)
+window.addEventListener("unhandledrejection", (event) => {
+  if (event.reason?.name === "AbortError") {
+    Swal.fire({
+      title: "⚠️ Login Interrupted",
+      text: "Your login attempt was cancelled. Please try again.",
+      icon: "warning",
+      confirmButtonText: "Retry",
+    });
+  }
+});

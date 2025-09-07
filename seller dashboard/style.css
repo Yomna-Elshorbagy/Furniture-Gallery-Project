@@ -10,7 +10,7 @@
 :root {
   --main-color: #c7b9a9;
   --main-gradient: linear-gradient(135deg, #c7b9a9, #a89984);
-  --card-bg: rgba(255, 255, 255, 0.7);
+  --card-bg: rgba(248, 243, 243, 0.7);
   --dark-bg: #0f172a;
 }
 
@@ -227,6 +227,7 @@ body.fade-out {
 .btn-color3 {
   background-color: #91805d;
   border-color: #b0a18e;
+  color: white;
 }
 
 .btn-add:hover {

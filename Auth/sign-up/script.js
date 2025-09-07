@@ -225,13 +225,13 @@ if (googleBtn) {
   });
 }
 
-// Process Google login response
+// ==> Process Google login response
 function handleGoogleResponse(response) {
-  // Decode JWT
+  //==> Decode JWT
   const data = JSON.parse(atob(response.credential.split(".")[1]));
   console.log("Google user:", data);
 
-  // Check if user already exists
+  // ==> Check if user already exists
   let users = getUsers();
   let existingUser = users.find(
     (u) => u.Email.toLowerCase() === data.email.toLowerCase()
@@ -239,7 +239,7 @@ function handleGoogleResponse(response) {
 
   let loggedInUser;
   if (!existingUser) {
-    let id = Date.now() + Math.floor(Math.random() * 1000);
+    let id = users.length ? Math.max(...users.map((u) => u.ID)) + 1 : 1;
     loggedInUser = new User(
       id,
       data.name,
@@ -254,7 +254,7 @@ function handleGoogleResponse(response) {
     loggedInUser = existingUser;
   }
 
-  // Save session
+  //==> Save session
   localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
   Swal.fire({
