@@ -1,18 +1,23 @@
 // ***** enable dark mode ******
-let darkSwitch = document.getElementById("darkModeSwitch");
+let toggle = document.getElementById("darkModeSwitch");
 
-if (localStorage.getItem("darkMode") === "enabled") {
+// Load saved theme on page load
+if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
-  darkSwitch.checked = true;
+  toggle.checked = true;
+} else {
+  document.body.classList.remove("dark");
+  toggle.checked = false;
 }
 
-darkSwitch.addEventListener("change", () => {
-  if (darkSwitch.checked) {
+// Toggle theme on change
+toggle.addEventListener("change", () => {
+  if (toggle.checked) {
     document.body.classList.add("dark");
-    localStorage.setItem("darkMode", "enabled");
+    localStorage.setItem("theme", "dark");
   } else {
     document.body.classList.remove("dark");
-    localStorage.setItem("darkMode", "disabled");
+    localStorage.setItem("theme", "light");
   }
 });
 

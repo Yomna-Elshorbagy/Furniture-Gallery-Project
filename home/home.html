@@ -350,7 +350,9 @@
               you to call home. Because life is too short not to love <br />
               where you live.
             </p>
-            <button onclick="window.location.href='../about/about.html'">Book a design consult</button>
+            <button onclick="window.location.href='../about/about.html'">
+              Book a design consult
+            </button>
           </aside>
 
           <div class="item">
@@ -899,10 +901,29 @@
     <!-- ==================== script for BS & sweet alerts ===================== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="module">
-      import { handleUserRedirect } from "../home/js/script.js";
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const userIcon = document.querySelector(
+          ".userData[href='../profile/profile.html']"
+        );
+        let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-      handleUserRedirect();
+        if (userIcon) {
+          userIcon.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            if (!loggedInUser) {
+              window.location.href = "../Auth/log-in/login.html";
+            } else if (loggedInUser.Role === "admin") {
+              window.location.href = "../dashboard/dashboard.html";
+            } else if (loggedInUser.Role === "seller") {
+              window.location.href = "../seller dashboard/seller.html";
+            } else {
+              window.location.href = "../profile/profile.html";
+            }
+          });
+        }
+      });
     </script>
     <script src="./js/script.js"></script>
   </body>

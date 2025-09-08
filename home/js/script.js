@@ -440,28 +440,3 @@ function updateCartBadge() {
   cartBadge.textContent = user?.cart?.length || 0;
 }
 
-// navbarRedirect.js
-export function handleUserRedirect() {
-  document.addEventListener("DOMContentLoaded", () => {
-    const userIcon = document.querySelector(
-      ".userData[href='../profile/profile.html']"
-    );
-    let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-
-    if (userIcon) {
-      userIcon.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        if (!loggedInUser) {
-          window.location.href = "../Auth/log-in/login.html";
-        } else if (loggedInUser.Role === "admin") {
-          window.location.href = "../dashboard/dashboard.html";
-        } else if (loggedInUser.Role === "seller") {
-          window.location.href = "../seller dashboard/seller.html";
-        } else {
-          window.location.href = "../profile/profile.html";
-        }
-      });
-    }
-  });
-}

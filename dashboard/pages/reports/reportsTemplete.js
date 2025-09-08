@@ -4,7 +4,7 @@ export const adminReportsTemplate = `
     <h3 class="text-center mb-4">📑 Admin Business Reports</h3>
 
     <!-- Print Button -->
-    <div class="text-end mb-3">
+    <div class="text-end mb-3 text-center">
        <!-- Download CSV Button -->
       <button id="downloadAllReportsCSVBtn" class="btn btn-color2">
         📥 CSV
@@ -12,9 +12,33 @@ export const adminReportsTemplate = `
       <button id="printReportsBtn" class="btn btn-color2">
         🖨️ Print Reports
       </button>
-   
-
-</div>
+  </div>
+ 
+    <!-- Filters -->
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <label class="form-label">From:</label>
+        <input type="date" id="filterFromDate" class="form-control" />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">To:</label>
+        <input type="date" id="filterToDate" class="form-control" />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Order Status:</label>
+        <select id="filterStatus" class="form-select">
+          <option value="">All</option>
+          <option value="Completed">Completed</option>
+          <option value="Pending">Pending</option>
+          <option value="Shipped">Shipped</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      </div>
+    </div>
+    <div class="text-end mb-3 text-center">
+      <button id="applyFiltersBtn" class="btn btn-color2">🔍 Apply Filters</button>
+      <button id="resetFiltersBtn" class="btn btn-color2">♻️ Reset</button>
+    </div>
 
     </div>
     <!-- Monthly Income Report -->
