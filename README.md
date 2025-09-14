@@ -16,11 +16,16 @@ Furniture-Gallery-Project/
 │   │   ├── login.html
 │   │   ├── style.css
 │   │   └── script.js
-│   └── signup/
-├──     ├── images
-│       ├── signup.html
-│       ├── style.css
-│       └── script.js
+│   |__└── signup/
+├── |   ├── images
+│   |   ├── signup.html
+│   |   ├── style.css
+│   |   └── script.js
+|   |__└── forget/
+├── |   ├── forget.html
+│   |   ├── reset.html
+│   |   ├── forget.js
+│   |   └── reset.js
 │── home/                  # Home page
 ├── ├── images
 │   ├── home.html
@@ -94,8 +99,9 @@ Furniture-Gallery-Project/
 
 - User **Signup** & **Signin**
 - Validation & error handling
-- Bcrypted password for security
-- oAuth Google Log in for secure Authentication
+- bcrypted password for security
+- oAuth Google Login for secure Authentication
+- forget and reset password -> sending otp expiration
 
 ### 👤 Authorization
 
@@ -105,22 +111,27 @@ Furniture-Gallery-Project/
 - user have access for the shopping project
 
 ### 🏠 User Features
+- ✨ Authentication with bcrypt + Google OAuth. 
+- ✨ Account Management (profile, control pending orders, history)
+- ✨ Browse Categories, Products , Search, Filter & Sort
+- ✨ Wishlist 💖 | Add to Cart 🛒 | Checkout 💳 | Orders Tracking 📦
 
-- Browse products with categories
-- Add/remove products from **Cart**
-- **Checkout** with order summary
-- View & update **Profile**
 
 ### 🛍️ Seller Features
 
-- **Seller Dashboard** to manage products
-- Add, edit, or delete product listings and orders status
-- Analytics & reporting (orders, users, products) of his orders only
+- **Seller Dashboard** to ✨ Manage Products 📦 (add, update, delete → with soft & hard delete)
+- ✨ Send Requests for New Products 📝
+- ✨ Order Tracking 🔎
+- ✨ Analytics & Reports with Filtering + JSON Import/Export 📑
+- ✨ Dark Mode 🌙 (with saved preferences)
 
 ### ⚙️ Admin Features
 
-- **Admin Dashboard** for managing users, sellers, and products
-- Analytics & reporting (orders, users, products) for all site
+- **Admin Dashboard** ✨ Full-featured Dashboards 📊
+- ✨ Manage Categories 🪑, Products 🏷️, Orders 📦, Users 👥, Sellers 🏪
+- ✨ Logs Tracking & Reports Printing 🖨️
+- ✨ Profile Management ⚙️
+- ✨ Dark Mode 🌙 (with saved preferences)
 
 ### 📌 Additional Pages
 
@@ -128,6 +139,7 @@ Furniture-Gallery-Project/
 - **Contact Us** – Send queries or feedback
 - **Find Store** – Locate nearby branches
 - **Product Details** – Detailed product view
+- **Form model** – to send question about specif product
 
 ---
 
@@ -136,6 +148,7 @@ Furniture-Gallery-Project/
 - **Frontend**: HTML5, CSS3, JavaScript
 - **Styling**: Bootstrap, Animation CSS
 - **Alerts & Popups**: SweetAlert2 , Padges , toaster
+- **Libraries**: bcrypt 🔐 (secure password hashing), Google OAuth 🌐 (credential authentication), Chart.js for 📊 (analytics)
 - **Deployment**: [Vercel](https://furnature-gallery-project.vercel.app/home/home.html)
 
 ---
