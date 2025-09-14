@@ -205,3 +205,49 @@ document.getElementById("exportBtn").addEventListener("click", () => {
   //===> 5- cleanup
   URL.revokeObjectURL(link.href);
 });
+
+// =====> Import Json Data
+document.getElementById("importFile").addEventListener("change", (event) => {
+  let file = event.target.files[0];
+  if (!file) return;
+
+  let reader = new FileReader();
+
+  reader.onload = (e) => {
+    try {
+      //1- ===> Parse the uploaded JSON
+      let importedData = JSON.parse(e.target.result);
+
+      // 2- ===> only handle products JSON
+      if (importedData.products) {
+        localStorage.setItem("products", JSON.stringify(importedData.products));
+        console.log("Products imported successfully:", importedData.products);
+
+        //3- ===> refresh UI counts
+        countProducts();
+        CountLowStock();
+
+        Swal.fire({
+          icon: "success",
+          title: "Products Imported!",
+          text: `${importedData.products.length} products imported successfully.`,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Invalid File",
+          text: "JSON file must contain 'products' key.",
+        });
+      }
+    } catch (err) {
+      console.error("Error parsing JSON:", err);
+      Swal.fire({
+        icon: "error",
+        title: "Invalid JSON",
+        text: "The file you uploaded is not valid JSON.",
+      });
+    }
+  };
+
+  reader.readAsText(file);
+});
