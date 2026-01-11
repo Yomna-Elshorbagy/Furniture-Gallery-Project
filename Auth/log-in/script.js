@@ -204,6 +204,10 @@ async function handleGoogleLoginResponse(response) {
         Password: "google-auth",
         Role: "user",
         GoogleID: data.sub,
+        cart: [],
+        wishlist: [],
+        orderHistory: [],
+        isDeleted: false,
       };
       users.push(loggedInUser);
       localStorage.setItem("users", JSON.stringify(users));

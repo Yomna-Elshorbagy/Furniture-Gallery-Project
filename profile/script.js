@@ -5,12 +5,109 @@ document.addEventListener("DOMContentLoaded", () => {
   let ordersSection = document.getElementById("ordersSection");
   let ordersTableBody = document.getElementById("ordersTableBody");
 
+  // ===> Filtering & Searching Handler
+  function applyOrderFilters(orders, loggedInUser) {
+    let searchValue =
+      document.getElementById("orderSearch")?.value.toLowerCase() || "";
+    let filterValue =
+      document.getElementById("orderFilter")?.value.toLowerCase() || "";
+    let dateValue = document.getElementById("orderDate")?.value || "";
+
+    // ==> 1- user orders
+    let filtered = orders.filter((order) => order.userId == loggedInUser.ID);
+
+    // ==> 2️- status filter
+    if (filterValue) {
+      filtered = filtered.filter(
+        (order) => order.Status.toLowerCase() === filterValue
+      );
+    }
+
+    // ==> 3️- date filter
+    if (dateValue) {
+      filtered = filtered.filter((order) => {
+        let orderDate = new Date(order.Date);
+        let formatted = orderDate.toISOString().split("T")[0]; // match YYYY-MM-DD
+        return formatted === dateValue;
+      });
+    }
+
+    // ==> 4️- search filter
+    if (searchValue) {
+      filtered = filtered.filter((order) => {
+        let itemsList = Array.isArray(order.products)
+          ? order.products
+              .map((p) => p.name)
+              .join(" ")
+              .toLowerCase()
+          : "";
+        return (
+          order.ID.toString().includes(searchValue) ||
+          order.Date.toLowerCase().includes(searchValue) ||
+          itemsList.includes(searchValue)
+        );
+      });
+    }
+
+    // 5️⃣ sort
+    filtered.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+
+    return filtered;
+  }
+  if (window.location.hash === "#orders") {
+    document.querySelector("#ordersTab")?.click();
+    document.getElementById("orderItem")?.click(); 
+    document
+      .querySelector("#ordersSection")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }
+
   orderItem.addEventListener("click", (e) => {
     e.preventDefault();
+    //===> handel filtering and searching
+    if (!document.getElementById("orderSearch")) {
+      let controls = document.createElement("div");
+      controls.className = "d-flex mb-3";
+      controls.innerHTML = `
+        <input type="text" id="orderSearch" class="form-control me-2" placeholder="Search orders ID, Product name , date...">
+        <select id="orderFilter" class="form-select me-2" style="max-width:200px">
+          <option value="">All Status</option>
+          <option value="pending">Pending</option>
+          <option value="completed">Completed</option>
+          <option value="shipped">Shipped</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      <div class="input-group" style="max-width:220px">
+        <input type="date" id="orderDate" class="form-control">
+        <button class="btn btn-outline-danger" type="button" id="clearDate">
+          <i class="bi bi-x-circle"></i>
+        </button>
+      </div>
+
+      `;
+
+      ordersSection.prepend(controls);
+      document.getElementById("orderSearch").addEventListener("input", () => {
+        orderItem.click();
+      });
+      document.getElementById("orderFilter").addEventListener("change", () => {
+        orderItem.click();
+      });
+      document.getElementById("orderDate").addEventListener("change", () => {
+        orderItem.click();
+      });
+      document.getElementById("clearDate").addEventListener("click", () => {
+        document.getElementById("orderDate").value = "";
+        orderItem.click();
+      });
+    }
+
     ordersTableBody.innerHTML = "";
 
-    let userOrders = orders.filter((order) => order.userId == loggedInUser.ID);
-    userOrders.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+    // let userOrders = orders.filter((order) => order.userId == loggedInUser.ID);
+    // userOrders.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+
+    let userOrders = applyOrderFilters(orders, loggedInUser);
 
     if (userOrders.length === 0) {
       ordersTableBody.innerHTML = `

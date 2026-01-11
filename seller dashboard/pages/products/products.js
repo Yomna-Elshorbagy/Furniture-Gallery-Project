@@ -445,7 +445,7 @@ export function initProductsPage(filteredList = null) {
         stock: stock || 0,
         category: category || "",
         description: desc || "",
-        image: imgUrl || "../../../server/data/products_img//default.jpg",
+        image: imgUrl || "../../../server/data/products_img/default.jpg",
         subImages: tempSubImages.length > 0 ? tempSubImages : [],
         // === safe defaults for new product ===
         reviews: "⭐⭐⭐⭐⭐",

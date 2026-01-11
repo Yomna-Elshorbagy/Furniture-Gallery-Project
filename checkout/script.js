@@ -423,7 +423,7 @@ placeOrderBtn.addEventListener("click", () => {
     showConfirmButton: false,
     confirmButtonText: "continue shopping",
   }).then(() => {
-    window.location.href = "../home/home.html";
+    window.location.href = "../profile/profile.html#orders";
   });
   updateCartBadge();
 });
