@@ -5,6 +5,108 @@ It includes features for **users, sellers, and admins**, making it a complete pl
 
 ---
 
+## 🚀 Features
+
+### 👤 Authentication
+
+- User **Signup** & **Signin**
+- Validation & error handling
+- bcrypted password for security
+- oAuth Google Login for secure Authentication
+- forget and reset password -> sending otp expiration
+
+### 👤 Authorization
+
+- Each user has role (admin - seller - user)
+- Admin Have full access and controles for all project
+- Seller have limited access only for his products and orders
+- user have access for the shopping project
+
+### 🏠 User Features
+- ✨ Authentication with bcrypt + Google OAuth. 
+- ✨ Account Management (profile, control pending orders, history)
+- ✨ Browse Categories, Products , Search, Filter & Sort
+- ✨ Wishlist 💖 | Add to Cart 🛒 | Checkout 💳 | Orders Tracking 📦
+
+
+### 🛍️ Seller Features
+
+- **Seller Dashboard** to ✨ Manage Products 📦 (add, update, delete → with soft & hard delete)
+- ✨ Send Requests for New Products 📝
+- ✨ Order Tracking 🔎
+- ✨ Analytics & Reports with Filtering + JSON Import/Export 📑
+- ✨ Dark Mode 🌙 (with saved preferences)
+
+### ⚙️ Admin Features
+
+- **Admin Dashboard** ✨ Full-featured Dashboards 📊
+- ✨ Manage Categories 🪑, Products 🏷️, Orders 📦, Users 👥, Sellers 🏪
+- ✨ Logs Tracking & Reports Printing 🖨️
+- ✨ Profile Management ⚙️
+- ✨ Dark Mode 🌙 (with saved preferences)
+
+### 📌 Additional Pages
+
+- **About Us** – Info about the company
+- **Contact Us** – Send queries or feedback
+- **Find Store** – Locate nearby branches
+- **Product Details** – Detailed product view
+- **Form model** – to send question about specif product
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Styling**: Bootstrap, Animation CSS
+- **Alerts & Popups**: SweetAlert2 , Padges , toaster
+- **Libraries**: bcrypt 🔐 (secure password hashing), Google OAuth 🌐 (credential authentication), Chart.js for 📊 (analytics)
+- **Deployment**: [Vercel](https://furnature-gallery-project.vercel.app/home/home.html)
+
+---
+## 🔑 Demo Accounts (Roles & Credentials)
+
+
+| Role   | Email                                               | Password   |
+| ------ | --------------------------------------------------- | ---------- |
+| Admin  | [adminyomna@gmail.com](mailto:adminyomna@gmail.com) | Yomna123   |
+| Seller | [seller@gmail.com](mailto:seller@gmail.com)         | Yomna123   |
+| User   | [yomna@gmail.com](mailto:yomna@gmail.com)           | Yomna123   |
+
+---
+
+## 📦 Installation & Setup
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/Yomna-Elshorbagy/Furniture-Gallery-Project.git
+   ```
+2. Open the project folder
+   ```bash
+   cd Furniture-Gallery-Project
+   ```
+3. Open `index.html` in your browser (or use Live Server in VSCode)
+
+---
+
+## 🌐 Live Demo
+
+🔗 [Furniture Gallery Live Project](https://furnature-gallery-project.vercel.app/home/home.html)
+
+---
+
+## 👨‍💻 Contributors
+
+- Designed & Developed by **Team Furniture Gallery**
+- Special thanks to contributors for Frontend designs and functionality improvements
+
+---
+
+## 📜 License
+
+This project is licensed under the **Our Team** – feel free to use and modify it.
+
+
 ## 📂 Project Structure
 
 ```
@@ -90,96 +192,3 @@ Furniture-Gallery-Project/
 │   ├── users.json
 │── index.html             # Main entry point
 ```
-
----
-
-## 🚀 Features
-
-### 👤 Authentication
-
-- User **Signup** & **Signin**
-- Validation & error handling
-- bcrypted password for security
-- oAuth Google Login for secure Authentication
-- forget and reset password -> sending otp expiration
-
-### 👤 Authorization
-
-- Each user has role (admin - seller - user)
-- Admin Have full access and controles for all project
-- Seller have limited access only for his products and orders
-- user have access for the shopping project
-
-### 🏠 User Features
-- ✨ Authentication with bcrypt + Google OAuth. 
-- ✨ Account Management (profile, control pending orders, history)
-- ✨ Browse Categories, Products , Search, Filter & Sort
-- ✨ Wishlist 💖 | Add to Cart 🛒 | Checkout 💳 | Orders Tracking 📦
-
-
-### 🛍️ Seller Features
-
-- **Seller Dashboard** to ✨ Manage Products 📦 (add, update, delete → with soft & hard delete)
-- ✨ Send Requests for New Products 📝
-- ✨ Order Tracking 🔎
-- ✨ Analytics & Reports with Filtering + JSON Import/Export 📑
-- ✨ Dark Mode 🌙 (with saved preferences)
-
-### ⚙️ Admin Features
-
-- **Admin Dashboard** ✨ Full-featured Dashboards 📊
-- ✨ Manage Categories 🪑, Products 🏷️, Orders 📦, Users 👥, Sellers 🏪
-- ✨ Logs Tracking & Reports Printing 🖨️
-- ✨ Profile Management ⚙️
-- ✨ Dark Mode 🌙 (with saved preferences)
-
-### 📌 Additional Pages
-
-- **About Us** – Info about the company
-- **Contact Us** – Send queries or feedback
-- **Find Store** – Locate nearby branches
-- **Product Details** – Detailed product view
-- **Form model** – to send question about specif product
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Styling**: Bootstrap, Animation CSS
-- **Alerts & Popups**: SweetAlert2 , Padges , toaster
-- **Libraries**: bcrypt 🔐 (secure password hashing), Google OAuth 🌐 (credential authentication), Chart.js for 📊 (analytics)
-- **Deployment**: [Vercel](https://furnature-gallery-project.vercel.app/home/home.html)
-
----
-
-## 📦 Installation & Setup
-
-1. Clone the repository
-   ```bash
-   git clone https://github.com/Yomna-Elshorbagy/Furniture-Gallery-Project.git
-   ```
-2. Open the project folder
-   ```bash
-   cd Furniture-Gallery-Project
-   ```
-3. Open `index.html` in your browser (or use Live Server in VSCode)
-
----
-
-## 🌐 Live Demo
-
-🔗 [Furniture Gallery Live Project](https://furnature-gallery-project.vercel.app/home/home.html)
-
----
-
-## 👨‍💻 Contributors
-
-- Designed & Developed by **Team Furniture Gallery**
-- Special thanks to contributors for Frontend designs and functionality improvements
-
----
-
-## 📜 License
-
-This project is licensed under the **Our Team** – feel free to use and modify it.
